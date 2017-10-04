@@ -1,0 +1,13 @@
+c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\bin\Debug\SAARTAC1.1.exe.config
+c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\bin\Debug\SAARTAC1.1.exe
+c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\bin\Debug\SAARTAC1.1.pdb
+c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\bin\Debug\OpenTK.dll
+c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\bin\Debug\OpenTK.pdb
+c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\bin\Debug\OpenTK.xml
+c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\bin\Debug\OpenTK.dll.config
+c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.csprojResolveAssemblyReference.cache
+c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1._1.mainVentana.resources
+c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1._1.Properties.Resources.resources
+c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.csproj.GenerateResource.Cache
+c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.exe
+c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.pdb
