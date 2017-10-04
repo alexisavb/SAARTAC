@@ -11,3 +11,16 @@ c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\obj\D
 c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.csproj.GenerateResource.Cache
 c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.exe
 c:\users\raull\documents\visual studio 2017\Projects\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.pdb
+C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\bin\Debug\SAARTAC1.1.exe.config
+C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\bin\Debug\SAARTAC1.1.exe
+C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\bin\Debug\SAARTAC1.1.pdb
+C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\bin\Debug\OpenTK.dll
+C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\bin\Debug\OpenTK.pdb
+C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\bin\Debug\OpenTK.xml
+C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\bin\Debug\OpenTK.dll.config
+C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.csprojResolveAssemblyReference.cache
+C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1._1.mainVentana.resources
+C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1._1.Properties.Resources.resources
+C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.csproj.GenerateResource.Cache
+C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.exe
+C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.pdb

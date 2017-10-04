@@ -12,6 +12,7 @@ namespace SAARTAC1._1 {
     public partial class mainVentana : Form {
         public mainVentana() {
             InitializeComponent();
-        }
+            barraHerramientas.Renderer = new MyRenderer();            
+        }       
     }
 }
