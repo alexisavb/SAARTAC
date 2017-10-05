@@ -52,8 +52,7 @@ namespace SAARTAC1._1
         public static double[] Pregunta_Python_Dimensiones(int pregunta, string ruta){
 
             string python = @"C:\Python27\python.exe";
-            string myPythonApp = @"C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#\sum.py";
-            //C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#
+            string myPythonApp = @"C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\TT2.0C#\sum.py";            
 
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
@@ -94,7 +93,7 @@ namespace SAARTAC1._1
             int pregunta = o.x;
             int pos = o.pos;
             string python = @"C:\Python27\python.exe";
-            string myPythonApp = @"C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#\sum.py";
+            string myPythonApp = @"C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\TT2.0C#\sum.py";
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
             myProcessStartInfo.UseShellExecute = false;

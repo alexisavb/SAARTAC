@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,8 +13,8 @@ namespace SAARTAC1._1 {
     public partial class mainVentana : Form {
 
         private static MatrizDicom auxUH;
-        //private Seccion seccion;
-        //private Regla regla;
+        private Seccion seccion;
+        private Regla regla;
         private static int ventanaZoom = 100;
         private bool draw = false, reglaBool = false, zoomCon = false;
         private List<Bitmap> imagenesCaja1 = new List<Bitmap>();
@@ -98,6 +99,66 @@ namespace SAARTAC1._1 {
                 mostrarOriginal.Refresh();
                 //mostrarTratada.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
                 //mostrarTratada.Refresh();
+            }
+        }
+
+        //El evento mousemove /sacar UH/ /sacar el promedio/
+        private void mostrarOriginal_MouseMove(object sender, MouseEventArgs e){
+            int x = mostrarOriginal.PointToClient(Cursor.Position).X;
+            int y = mostrarOriginal.PointToClient(Cursor.Position).Y;
+            if (auxUH != null) resultadoUHMouse.Text = (auxUH.ObtenerUH(x, y)).ToString();
+            if (draw & e.Button == MouseButtons.Left){
+                seccion.setFinal(x, y);
+                Graphics objGrafico = this.mostrarOriginal.CreateGraphics();
+                seccion.setRectangle();
+                objGrafico.DrawRectangle(seccion.getPen(), seccion.getRectangle());
+                mostrarOriginal.Invalidate();
+            }
+        }
+
+        //Evento cuando es mousedown sacar el punto de inicio.
+        private void mostrarOriginal_MouseDown(object sender, MouseEventArgs e){
+            if (e.Button == MouseButtons.Left && reglaBool != true && auxUH != null && bandera != 1){                
+                draw = true;
+                seccion = new Seccion(mostrarOriginal.PointToClient(Cursor.Position).X, mostrarOriginal.PointToClient(Cursor.Position).Y, auxUH);
+            }
+        }
+
+        //Dibuja el rectangulo completo y saca el promedio.
+        private void mostrarOriginal_MouseUp(object sender, MouseEventArgs e){
+            if (draw){
+                Graphics objGrafico = this.mostrarOriginal.CreateGraphics();
+                seccion.setRectangle();
+                objGrafico.DrawRectangle(seccion.getPen(), seccion.getRectangle());
+                resultadoPromedio.Text = (seccion.createAverage()).ToString();
+                draw = false;
+                int milliseconds = 1200;
+                Thread.Sleep(milliseconds);
+                mostrarOriginal.Invalidate();
+            }
+        }
+
+        //Se activa la bandera para sacar distancia.
+        private void distanciaBarraDeHerramientas_Click(object sender, EventArgs e) { reglaBool = true; }
+
+        //saca la distancia /saca el punto inicial/ /saca el punto final/
+        private void mostrarOriginal_Click(object sender, EventArgs e){
+            if (reglaBool && bandera == 0){                
+                regla = new Regla(mostrarOriginal.PointToClient(Cursor.Position).X, mostrarOriginal.PointToClient(Cursor.Position).Y);
+                bandera = 1;
+            }
+            else if (reglaBool && bandera == 1){                
+                reglaBool = false;
+                bandera = 0;
+                regla.setFinal(mostrarOriginal.PointToClient(Cursor.Position).X, mostrarOriginal.PointToClient(Cursor.Position).Y);
+                Graphics objGrafico = this.mostrarOriginal.CreateGraphics();
+                Pen myPen = new Pen(Color.Red, 1);
+                objGrafico.DrawLine(myPen, regla.getPointInicio(), regla.getPoinFinal());
+                double[] distancias = LecturaArchivosDicom.Pregunta_Python_Dimensiones(1, auxUH.obtenerRuta());
+                resultadoDistancia.Text = (regla.getDistancia(distancias[0], distancias[1])).ToString("N3");
+                int milliseconds = 1200;
+                Thread.Sleep(milliseconds);
+                mostrarOriginal.Invalidate();
             }
         }
 

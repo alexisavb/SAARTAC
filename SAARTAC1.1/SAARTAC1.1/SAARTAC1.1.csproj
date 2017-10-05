@@ -52,6 +52,8 @@
     <Compile Include="LecturaArchivosDicom.cs" />
     <Compile Include="MatrizDicom.cs" />
     <Compile Include="ParametroPython.cs" />
+    <Compile Include="Regla.cs" />
+    <Compile Include="Seccion.cs" />
     <Compile Include="Venatana.cs">
       <SubType>Form</SubType>
     </Compile>

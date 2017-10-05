@@ -69,20 +69,20 @@
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeSAARTACBarraDeHerramientas = new System.Windows.Forms.ToolStripMenuItem();
             this.contenedorBarraDeIconos = new System.Windows.Forms.ToolStripContainer();
-            this.barraDeIconos = new System.Windows.Forms.ToolStrip();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.panelInformacion = new System.Windows.Forms.Panel();
-            this.textoUHMouse = new System.Windows.Forms.Label();
-            this.resultadoUHMouse = new System.Windows.Forms.Label();
-            this.textoPromedio = new System.Windows.Forms.Label();
-            this.resultadoPromedio = new System.Windows.Forms.Label();
-            this.textoDistancia = new System.Windows.Forms.Label();
-            this.resultadoDistancia = new System.Windows.Forms.Label();
             this.textoMm = new System.Windows.Forms.Label();
+            this.resultadoDistancia = new System.Windows.Forms.Label();
+            this.textoDistancia = new System.Windows.Forms.Label();
+            this.resultadoPromedio = new System.Windows.Forms.Label();
+            this.textoPromedio = new System.Windows.Forms.Label();
+            this.resultadoUHMouse = new System.Windows.Forms.Label();
+            this.textoUHMouse = new System.Windows.Forms.Label();
             this.botonSiguient = new System.Windows.Forms.Button();
             this.botonAtras = new System.Windows.Forms.Button();
             this.mostrarTratada = new System.Windows.Forms.PictureBox();
             this.mostrarOriginal = new System.Windows.Forms.PictureBox();
+            this.barraDeIconos = new System.Windows.Forms.ToolStrip();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.barraHerramientas.SuspendLayout();
             this.contenedorBarraDeIconos.ContentPanel.SuspendLayout();
             this.contenedorBarraDeIconos.TopToolStripPanel.SuspendLayout();
@@ -193,6 +193,7 @@
             this.distanciaBarraDeHerramientas.Name = "distanciaBarraDeHerramientas";
             this.distanciaBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
             this.distanciaBarraDeHerramientas.Text = "Distancia";
+            this.distanciaBarraDeHerramientas.Click += new System.EventHandler(this.distanciaBarraDeHerramientas_Click);
             // 
             // rotar90DerechaBarraDeHerramientas
             // 
@@ -232,7 +233,7 @@
             this.ventanaBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ventanaBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.ventanaBarraDeHerramientas.Name = "ventanaBarraDeHerramientas";
-            this.ventanaBarraDeHerramientas.Size = new System.Drawing.Size(66, 21);
+            this.ventanaBarraDeHerramientas.Size = new System.Drawing.Size(67, 21);
             this.ventanaBarraDeHerramientas.Text = "Ventana";
             // 
             // defaultBarraDeHerramientas
@@ -512,7 +513,7 @@
             this.acercaDeSAARTACBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.acercaDeSAARTACBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.acercaDeSAARTACBarraDeHerramientas.Name = "acercaDeSAARTACBarraDeHerramientas";
-            this.acercaDeSAARTACBarraDeHerramientas.Size = new System.Drawing.Size(191, 22);
+            this.acercaDeSAARTACBarraDeHerramientas.Size = new System.Drawing.Size(193, 22);
             this.acercaDeSAARTACBarraDeHerramientas.Text = "Acerca De SAARTAC";
             // 
             // contenedorBarraDeIconos
@@ -551,19 +552,6 @@
             this.contenedorBarraDeIconos.TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraDeIconos);
             // 
-            // barraDeIconos
-            // 
-            this.barraDeIconos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.barraDeIconos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.barraDeIconos.Dock = System.Windows.Forms.DockStyle.None;
-            this.barraDeIconos.Location = new System.Drawing.Point(3, 0);
-            this.barraDeIconos.Name = "barraDeIconos";
-            this.barraDeIconos.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.barraDeIconos.Size = new System.Drawing.Size(111, 25);
-            this.barraDeIconos.TabIndex = 0;
-            // 
             // panelInformacion
             // 
             this.panelInformacion.Controls.Add(this.textoMm);
@@ -575,28 +563,46 @@
             this.panelInformacion.Controls.Add(this.textoUHMouse);
             this.panelInformacion.Location = new System.Drawing.Point(31, 545);
             this.panelInformacion.Name = "panelInformacion";
-            this.panelInformacion.Size = new System.Drawing.Size(388, 39);
+            this.panelInformacion.Size = new System.Drawing.Size(424, 39);
             this.panelInformacion.TabIndex = 4;
             // 
-            // textoUHMouse
+            // textoMm
             // 
-            this.textoUHMouse.AutoSize = true;
-            this.textoUHMouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoUHMouse.ForeColor = System.Drawing.Color.White;
-            this.textoUHMouse.Location = new System.Drawing.Point(3, 5);
-            this.textoUHMouse.Name = "textoUHMouse";
-            this.textoUHMouse.Size = new System.Drawing.Size(41, 20);
-            this.textoUHMouse.TabIndex = 0;
-            this.textoUHMouse.Text = "UH: ";
+            this.textoMm.AutoSize = true;
+            this.textoMm.ForeColor = System.Drawing.Color.White;
+            this.textoMm.Location = new System.Drawing.Point(330, 8);
+            this.textoMm.Name = "textoMm";
+            this.textoMm.Size = new System.Drawing.Size(35, 20);
+            this.textoMm.TabIndex = 6;
+            this.textoMm.Text = "mm";
             // 
-            // resultadoUHMouse
+            // resultadoDistancia
             // 
-            this.resultadoUHMouse.AutoSize = true;
-            this.resultadoUHMouse.ForeColor = System.Drawing.Color.White;
-            this.resultadoUHMouse.Location = new System.Drawing.Point(39, 5);
-            this.resultadoUHMouse.Name = "resultadoUHMouse";
-            this.resultadoUHMouse.Size = new System.Drawing.Size(0, 20);
-            this.resultadoUHMouse.TabIndex = 1;
+            this.resultadoDistancia.AutoSize = true;
+            this.resultadoDistancia.ForeColor = System.Drawing.Color.White;
+            this.resultadoDistancia.Location = new System.Drawing.Point(276, 5);
+            this.resultadoDistancia.Name = "resultadoDistancia";
+            this.resultadoDistancia.Size = new System.Drawing.Size(0, 20);
+            this.resultadoDistancia.TabIndex = 5;
+            // 
+            // textoDistancia
+            // 
+            this.textoDistancia.AutoSize = true;
+            this.textoDistancia.ForeColor = System.Drawing.Color.White;
+            this.textoDistancia.Location = new System.Drawing.Point(199, 5);
+            this.textoDistancia.Name = "textoDistancia";
+            this.textoDistancia.Size = new System.Drawing.Size(83, 20);
+            this.textoDistancia.TabIndex = 4;
+            this.textoDistancia.Text = "Distancia: ";
+            // 
+            // resultadoPromedio
+            // 
+            this.resultadoPromedio.AutoSize = true;
+            this.resultadoPromedio.ForeColor = System.Drawing.Color.White;
+            this.resultadoPromedio.Location = new System.Drawing.Point(148, 5);
+            this.resultadoPromedio.Name = "resultadoPromedio";
+            this.resultadoPromedio.Size = new System.Drawing.Size(0, 20);
+            this.resultadoPromedio.TabIndex = 3;
             // 
             // textoPromedio
             // 
@@ -608,43 +614,25 @@
             this.textoPromedio.TabIndex = 2;
             this.textoPromedio.Text = "Promedio: ";
             // 
-            // resultadoPromedio
+            // resultadoUHMouse
             // 
-            this.resultadoPromedio.AutoSize = true;
-            this.resultadoPromedio.ForeColor = System.Drawing.Color.White;
-            this.resultadoPromedio.Location = new System.Drawing.Point(148, 5);
-            this.resultadoPromedio.Name = "resultadoPromedio";
-            this.resultadoPromedio.Size = new System.Drawing.Size(0, 20);
-            this.resultadoPromedio.TabIndex = 3;
+            this.resultadoUHMouse.AutoSize = true;
+            this.resultadoUHMouse.ForeColor = System.Drawing.Color.White;
+            this.resultadoUHMouse.Location = new System.Drawing.Point(39, 5);
+            this.resultadoUHMouse.Name = "resultadoUHMouse";
+            this.resultadoUHMouse.Size = new System.Drawing.Size(0, 20);
+            this.resultadoUHMouse.TabIndex = 1;
             // 
-            // textoDistancia
+            // textoUHMouse
             // 
-            this.textoDistancia.AutoSize = true;
-            this.textoDistancia.ForeColor = System.Drawing.Color.White;
-            this.textoDistancia.Location = new System.Drawing.Point(197, 5);
-            this.textoDistancia.Name = "textoDistancia";
-            this.textoDistancia.Size = new System.Drawing.Size(83, 20);
-            this.textoDistancia.TabIndex = 4;
-            this.textoDistancia.Text = "Distancia: ";
-            // 
-            // resultadoDistancia
-            // 
-            this.resultadoDistancia.AutoSize = true;
-            this.resultadoDistancia.ForeColor = System.Drawing.Color.White;
-            this.resultadoDistancia.Location = new System.Drawing.Point(276, 5);
-            this.resultadoDistancia.Name = "resultadoDistancia";
-            this.resultadoDistancia.Size = new System.Drawing.Size(0, 20);
-            this.resultadoDistancia.TabIndex = 5;
-            // 
-            // textoMm
-            // 
-            this.textoMm.AutoSize = true;
-            this.textoMm.ForeColor = System.Drawing.Color.White;
-            this.textoMm.Location = new System.Drawing.Point(314, 8);
-            this.textoMm.Name = "textoMm";
-            this.textoMm.Size = new System.Drawing.Size(35, 20);
-            this.textoMm.TabIndex = 6;
-            this.textoMm.Text = "mm";
+            this.textoUHMouse.AutoSize = true;
+            this.textoUHMouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoUHMouse.ForeColor = System.Drawing.Color.White;
+            this.textoUHMouse.Location = new System.Drawing.Point(3, 5);
+            this.textoUHMouse.Name = "textoUHMouse";
+            this.textoUHMouse.Size = new System.Drawing.Size(41, 20);
+            this.textoUHMouse.TabIndex = 0;
+            this.textoUHMouse.Text = "UH: ";
             // 
             // botonSiguient
             // 
@@ -690,6 +678,23 @@
             this.mostrarOriginal.Size = new System.Drawing.Size(512, 512);
             this.mostrarOriginal.TabIndex = 0;
             this.mostrarOriginal.TabStop = false;
+            this.mostrarOriginal.Click += new System.EventHandler(this.mostrarOriginal_Click);
+            this.mostrarOriginal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mostrarOriginal_MouseDown);
+            this.mostrarOriginal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mostrarOriginal_MouseMove);
+            this.mostrarOriginal.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mostrarOriginal_MouseUp);
+            // 
+            // barraDeIconos
+            // 
+            this.barraDeIconos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.barraDeIconos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.barraDeIconos.Dock = System.Windows.Forms.DockStyle.None;
+            this.barraDeIconos.Location = new System.Drawing.Point(3, 0);
+            this.barraDeIconos.Name = "barraDeIconos";
+            this.barraDeIconos.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.barraDeIconos.Size = new System.Drawing.Size(111, 25);
+            this.barraDeIconos.TabIndex = 0;
             // 
             // mainVentana
             // 
