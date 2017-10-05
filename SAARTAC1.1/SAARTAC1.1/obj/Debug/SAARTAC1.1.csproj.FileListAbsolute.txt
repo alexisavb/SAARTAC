@@ -24,3 +24,15 @@ C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug
 C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.csproj.GenerateResource.Cache
 C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.exe
 C:\Users\raull\Documents\VersionFinalGit\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.pdb
+C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\SAARTAC1.1\SAARTAC1.1\bin\Debug\SAARTAC1.1.exe.config
+C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\SAARTAC1.1\SAARTAC1.1\bin\Debug\SAARTAC1.1.exe
+C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\SAARTAC1.1\SAARTAC1.1\bin\Debug\SAARTAC1.1.pdb
+C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\SAARTAC1.1\SAARTAC1.1\bin\Debug\OpenTK.pdb
+C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\SAARTAC1.1\SAARTAC1.1\bin\Debug\OpenTK.xml
+C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\SAARTAC1.1\SAARTAC1.1\bin\Debug\OpenTK.dll.config
+C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.csprojResolveAssemblyReference.cache
+C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1._1.mainVentana.resources
+C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1._1.Properties.Resources.resources
+C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.csproj.GenerateResource.Cache
+C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.exe
+C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\SAARTAC1.1\SAARTAC1.1\obj\Debug\SAARTAC1.1.pdb

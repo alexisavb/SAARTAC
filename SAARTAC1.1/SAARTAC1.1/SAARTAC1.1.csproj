@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LecturaArchivosDicom.cs" />
+    <Compile Include="MatrizDicom.cs" />
+    <Compile Include="ParametroPython.cs" />
     <Compile Include="Venatana.cs">
       <SubType>Form</SubType>
     </Compile>
