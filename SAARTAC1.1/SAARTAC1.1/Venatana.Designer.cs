@@ -68,9 +68,17 @@
             this.nivel3BarraDeHerramientas = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeSAARTACBarraDeHerramientas = new System.Windows.Forms.ToolStripMenuItem();
-            this.contenedorBarraDeIconos = new System.Windows.Forms.ToolStripContainer();
-            this.barraDeIconos = new System.Windows.Forms.ToolStrip();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
+            this.barraDeIconos = new System.Windows.Forms.ToolStrip();
+            this.mostrarOriginal = new System.Windows.Forms.PictureBox();
+            this.mostrarTratada = new System.Windows.Forms.PictureBox();
+            this.botonAtras = new System.Windows.Forms.Button();
+            this.botonSiguient = new System.Windows.Forms.Button();
             this.panelInformacion = new System.Windows.Forms.Panel();
             this.textoUHMouse = new System.Windows.Forms.Label();
             this.resultadoUHMouse = new System.Windows.Forms.Label();
@@ -79,17 +87,14 @@
             this.textoDistancia = new System.Windows.Forms.Label();
             this.resultadoDistancia = new System.Windows.Forms.Label();
             this.textoMm = new System.Windows.Forms.Label();
-            this.botonSiguient = new System.Windows.Forms.Button();
-            this.botonAtras = new System.Windows.Forms.Button();
-            this.mostrarTratada = new System.Windows.Forms.PictureBox();
-            this.mostrarOriginal = new System.Windows.Forms.PictureBox();
+            this.contenedorBarraDeIconos = new System.Windows.Forms.ToolStripContainer();
             this.barraHerramientas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrarOriginal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrarTratada)).BeginInit();
+            this.panelInformacion.SuspendLayout();
             this.contenedorBarraDeIconos.ContentPanel.SuspendLayout();
             this.contenedorBarraDeIconos.TopToolStripPanel.SuspendLayout();
             this.contenedorBarraDeIconos.SuspendLayout();
-            this.panelInformacion.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrarTratada)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrarOriginal)).BeginInit();
             this.SuspendLayout();
             // 
             // barraHerramientas
@@ -515,41 +520,47 @@
             this.acercaDeSAARTACBarraDeHerramientas.Size = new System.Drawing.Size(191, 22);
             this.acercaDeSAARTACBarraDeHerramientas.Text = "Acerca De SAARTAC";
             // 
-            // contenedorBarraDeIconos
+            // BottomToolStripPanel
             // 
+            this.BottomToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.BottomToolStripPanel.Location = new System.Drawing.Point(0, 0);
+            this.BottomToolStripPanel.Name = "BottomToolStripPanel";
+            this.BottomToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.BottomToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.BottomToolStripPanel.Size = new System.Drawing.Size(0, 0);
             // 
-            // contenedorBarraDeIconos.BottomToolStripPanel
+            // TopToolStripPanel
             // 
-            this.contenedorBarraDeIconos.BottomToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.TopToolStripPanel.Location = new System.Drawing.Point(0, 0);
+            this.TopToolStripPanel.Name = "TopToolStripPanel";
+            this.TopToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.TopToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.TopToolStripPanel.Size = new System.Drawing.Size(0, 0);
             // 
-            // contenedorBarraDeIconos.ContentPanel
+            // RightToolStripPanel
             // 
-            this.contenedorBarraDeIconos.ContentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.panelInformacion);
-            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.botonSiguient);
-            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.botonAtras);
-            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.mostrarTratada);
-            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.mostrarOriginal);
-            this.contenedorBarraDeIconos.ContentPanel.Size = new System.Drawing.Size(1270, 672);
-            this.contenedorBarraDeIconos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RightToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.RightToolStripPanel.Location = new System.Drawing.Point(0, 0);
+            this.RightToolStripPanel.Name = "RightToolStripPanel";
+            this.RightToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.RightToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.RightToolStripPanel.Size = new System.Drawing.Size(0, 0);
             // 
-            // contenedorBarraDeIconos.LeftToolStripPanel
+            // LeftToolStripPanel
             // 
-            this.contenedorBarraDeIconos.LeftToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.contenedorBarraDeIconos.Location = new System.Drawing.Point(0, 25);
-            this.contenedorBarraDeIconos.Name = "contenedorBarraDeIconos";
+            this.LeftToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.LeftToolStripPanel.Location = new System.Drawing.Point(0, 0);
+            this.LeftToolStripPanel.Name = "LeftToolStripPanel";
+            this.LeftToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.LeftToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.LeftToolStripPanel.Size = new System.Drawing.Size(0, 0);
             // 
-            // contenedorBarraDeIconos.RightToolStripPanel
+            // ContentPanel
             // 
-            this.contenedorBarraDeIconos.RightToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.contenedorBarraDeIconos.Size = new System.Drawing.Size(1270, 697);
-            this.contenedorBarraDeIconos.TabIndex = 1;
-            this.contenedorBarraDeIconos.Text = "toolStripContainer1";
-            // 
-            // contenedorBarraDeIconos.TopToolStripPanel
-            // 
-            this.contenedorBarraDeIconos.TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraDeIconos);
+            this.ContentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.ContentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ContentPanel.Size = new System.Drawing.Size(1270, 672);
             // 
             // barraDeIconos
             // 
@@ -563,6 +574,52 @@
             this.barraDeIconos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.barraDeIconos.Size = new System.Drawing.Size(111, 25);
             this.barraDeIconos.TabIndex = 0;
+            // 
+            // mostrarOriginal
+            // 
+            this.mostrarOriginal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.mostrarOriginal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.mostrarOriginal.Location = new System.Drawing.Point(31, 27);
+            this.mostrarOriginal.Name = "mostrarOriginal";
+            this.mostrarOriginal.Size = new System.Drawing.Size(512, 512);
+            this.mostrarOriginal.TabIndex = 0;
+            this.mostrarOriginal.TabStop = false;
+            // 
+            // mostrarTratada
+            // 
+            this.mostrarTratada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.mostrarTratada.Location = new System.Drawing.Point(828, 27);
+            this.mostrarTratada.Name = "mostrarTratada";
+            this.mostrarTratada.Size = new System.Drawing.Size(512, 512);
+            this.mostrarTratada.TabIndex = 1;
+            this.mostrarTratada.TabStop = false;
+            // 
+            // botonAtras
+            // 
+            this.botonAtras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.botonAtras.FlatAppearance.BorderSize = 0;
+            this.botonAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonAtras.Image = global::SAARTAC1._1.Properties.Resources._905524_32;
+            this.botonAtras.Location = new System.Drawing.Point(491, 543);
+            this.botonAtras.Name = "botonAtras";
+            this.botonAtras.Size = new System.Drawing.Size(28, 34);
+            this.botonAtras.TabIndex = 5;
+            this.botonAtras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.botonAtras.UseVisualStyleBackColor = false;
+            this.botonAtras.Click += new System.EventHandler(this.botonAtras_Click);
+            // 
+            // botonSiguient
+            // 
+            this.botonSiguient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.botonSiguient.FlatAppearance.BorderSize = 0;
+            this.botonSiguient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonSiguient.Image = global::SAARTAC1._1.Properties.Resources._905535_32;
+            this.botonSiguient.Location = new System.Drawing.Point(515, 543);
+            this.botonSiguient.Name = "botonSiguient";
+            this.botonSiguient.Size = new System.Drawing.Size(28, 34);
+            this.botonSiguient.TabIndex = 5;
+            this.botonSiguient.UseVisualStyleBackColor = false;
+            this.botonSiguient.Click += new System.EventHandler(this.botonSiguient_Click);
             // 
             // panelInformacion
             // 
@@ -592,8 +649,8 @@
             // resultadoUHMouse
             // 
             this.resultadoUHMouse.AutoSize = true;
-            this.resultadoUHMouse.ForeColor = System.Drawing.Color.White;
-            this.resultadoUHMouse.Location = new System.Drawing.Point(39, 5);
+            this.resultadoUHMouse.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.resultadoUHMouse.Location = new System.Drawing.Point(44, 5);
             this.resultadoUHMouse.Name = "resultadoUHMouse";
             this.resultadoUHMouse.Size = new System.Drawing.Size(0, 20);
             this.resultadoUHMouse.TabIndex = 1;
@@ -611,8 +668,8 @@
             // resultadoPromedio
             // 
             this.resultadoPromedio.AutoSize = true;
-            this.resultadoPromedio.ForeColor = System.Drawing.Color.White;
-            this.resultadoPromedio.Location = new System.Drawing.Point(148, 5);
+            this.resultadoPromedio.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.resultadoPromedio.Location = new System.Drawing.Point(155, 5);
             this.resultadoPromedio.Name = "resultadoPromedio";
             this.resultadoPromedio.Size = new System.Drawing.Size(0, 20);
             this.resultadoPromedio.TabIndex = 3;
@@ -621,7 +678,7 @@
             // 
             this.textoDistancia.AutoSize = true;
             this.textoDistancia.ForeColor = System.Drawing.Color.White;
-            this.textoDistancia.Location = new System.Drawing.Point(197, 5);
+            this.textoDistancia.Location = new System.Drawing.Point(211, 5);
             this.textoDistancia.Name = "textoDistancia";
             this.textoDistancia.Size = new System.Drawing.Size(83, 20);
             this.textoDistancia.TabIndex = 4;
@@ -630,8 +687,8 @@
             // resultadoDistancia
             // 
             this.resultadoDistancia.AutoSize = true;
-            this.resultadoDistancia.ForeColor = System.Drawing.Color.White;
-            this.resultadoDistancia.Location = new System.Drawing.Point(276, 5);
+            this.resultadoDistancia.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.resultadoDistancia.Location = new System.Drawing.Point(294, 5);
             this.resultadoDistancia.Name = "resultadoDistancia";
             this.resultadoDistancia.Size = new System.Drawing.Size(0, 20);
             this.resultadoDistancia.TabIndex = 5;
@@ -640,56 +697,48 @@
             // 
             this.textoMm.AutoSize = true;
             this.textoMm.ForeColor = System.Drawing.Color.White;
-            this.textoMm.Location = new System.Drawing.Point(314, 8);
+            this.textoMm.Location = new System.Drawing.Point(324, 5);
             this.textoMm.Name = "textoMm";
             this.textoMm.Size = new System.Drawing.Size(35, 20);
             this.textoMm.TabIndex = 6;
             this.textoMm.Text = "mm";
             // 
-            // botonSiguient
+            // contenedorBarraDeIconos
             // 
-            this.botonSiguient.BackgroundImage = global::SAARTAC1._1.Properties.Resources._905535_32;
-            this.botonSiguient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.botonSiguient.FlatAppearance.BorderSize = 0;
-            this.botonSiguient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.botonSiguient.Location = new System.Drawing.Point(515, 546);
-            this.botonSiguient.Name = "botonSiguient";
-            this.botonSiguient.Size = new System.Drawing.Size(28, 34);
-            this.botonSiguient.TabIndex = 3;
-            this.botonSiguient.UseVisualStyleBackColor = false;
-            this.botonSiguient.Click += new System.EventHandler(this.botonSiguient_Click);
             // 
-            // botonAtras
+            // contenedorBarraDeIconos.BottomToolStripPanel
             // 
-            this.botonAtras.BackgroundImage = global::SAARTAC1._1.Properties.Resources._905524_32;
-            this.botonAtras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.botonAtras.FlatAppearance.BorderSize = 0;
-            this.botonAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.botonAtras.Location = new System.Drawing.Point(491, 546);
-            this.botonAtras.Name = "botonAtras";
-            this.botonAtras.Size = new System.Drawing.Size(28, 34);
-            this.botonAtras.TabIndex = 2;
-            this.botonAtras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.botonAtras.UseVisualStyleBackColor = false;
-            this.botonAtras.Click += new System.EventHandler(this.botonAtras_Click);
+            this.contenedorBarraDeIconos.BottomToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             // 
-            // mostrarTratada
+            // contenedorBarraDeIconos.ContentPanel
             // 
-            this.mostrarTratada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.mostrarTratada.Location = new System.Drawing.Point(828, 27);
-            this.mostrarTratada.Name = "mostrarTratada";
-            this.mostrarTratada.Size = new System.Drawing.Size(512, 512);
-            this.mostrarTratada.TabIndex = 1;
-            this.mostrarTratada.TabStop = false;
+            this.contenedorBarraDeIconos.ContentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.contenedorBarraDeIconos.ContentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.panelInformacion);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.botonSiguient);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.botonAtras);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.mostrarTratada);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.mostrarOriginal);
+            this.contenedorBarraDeIconos.ContentPanel.Size = new System.Drawing.Size(1270, 672);
+            this.contenedorBarraDeIconos.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
-            // mostrarOriginal
+            // contenedorBarraDeIconos.LeftToolStripPanel
             // 
-            this.mostrarOriginal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.mostrarOriginal.Location = new System.Drawing.Point(31, 27);
-            this.mostrarOriginal.Name = "mostrarOriginal";
-            this.mostrarOriginal.Size = new System.Drawing.Size(512, 512);
-            this.mostrarOriginal.TabIndex = 0;
-            this.mostrarOriginal.TabStop = false;
+            this.contenedorBarraDeIconos.LeftToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.contenedorBarraDeIconos.Location = new System.Drawing.Point(0, 25);
+            this.contenedorBarraDeIconos.Name = "contenedorBarraDeIconos";
+            // 
+            // contenedorBarraDeIconos.RightToolStripPanel
+            // 
+            this.contenedorBarraDeIconos.RightToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.contenedorBarraDeIconos.Size = new System.Drawing.Size(1270, 697);
+            this.contenedorBarraDeIconos.TabIndex = 1;
+            this.contenedorBarraDeIconos.Text = "toolStripContainer1";
+            // 
+            // contenedorBarraDeIconos.TopToolStripPanel
+            // 
+            this.contenedorBarraDeIconos.TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraDeIconos);
             // 
             // mainVentana
             // 
@@ -705,19 +754,18 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "mainVentana";
             this.Text = "SAARTAC - TT2016 B018";
-            this.TransparencyKey = System.Drawing.Color.Transparent;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.TransparencyKey = System.Drawing.SystemColors.Control;
             this.barraHerramientas.ResumeLayout(false);
             this.barraHerramientas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrarOriginal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrarTratada)).EndInit();
+            this.panelInformacion.ResumeLayout(false);
+            this.panelInformacion.PerformLayout();
             this.contenedorBarraDeIconos.ContentPanel.ResumeLayout(false);
             this.contenedorBarraDeIconos.TopToolStripPanel.ResumeLayout(false);
             this.contenedorBarraDeIconos.TopToolStripPanel.PerformLayout();
             this.contenedorBarraDeIconos.ResumeLayout(false);
             this.contenedorBarraDeIconos.PerformLayout();
-            this.panelInformacion.ResumeLayout(false);
-            this.panelInformacion.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrarTratada)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrarOriginal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -767,15 +815,19 @@
         private System.Windows.Forms.ToolStripMenuItem editarBarraHerramientas;
         private System.Windows.Forms.ToolStripMenuItem deshacerBarraDeHerramientas;
         private System.Windows.Forms.ToolStripMenuItem rehacerBarraDeHerramientas;
-        private System.Windows.Forms.ToolStripContainer contenedorBarraDeIconos;
-        private System.Windows.Forms.ToolStrip barraDeIconos;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeSAARTACBarraDeHerramientas;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.ToolStripPanel BottomToolStripPanel;
+        private System.Windows.Forms.ToolStripPanel TopToolStripPanel;
+        private System.Windows.Forms.ToolStripPanel RightToolStripPanel;
+        private System.Windows.Forms.ToolStripPanel LeftToolStripPanel;
+        private System.Windows.Forms.ToolStripContentPanel ContentPanel;
+        private System.Windows.Forms.ToolStrip barraDeIconos;
         private System.Windows.Forms.PictureBox mostrarOriginal;
         private System.Windows.Forms.PictureBox mostrarTratada;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.Button botonSiguient;
         private System.Windows.Forms.Button botonAtras;
+        private System.Windows.Forms.Button botonSiguient;
         private System.Windows.Forms.Panel panelInformacion;
         private System.Windows.Forms.Label textoMm;
         private System.Windows.Forms.Label resultadoDistancia;
@@ -784,6 +836,7 @@
         private System.Windows.Forms.Label textoPromedio;
         private System.Windows.Forms.Label resultadoUHMouse;
         private System.Windows.Forms.Label textoUHMouse;
+        private System.Windows.Forms.ToolStripContainer contenedorBarraDeIconos;
     }
 }
 
