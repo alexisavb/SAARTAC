@@ -54,7 +54,6 @@ namespace SAARTAC1._1
             string python = @"C:\Python27\python.exe";
             string myPythonApp = @"C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#\sum.py";
             //C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#
-
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
             myProcessStartInfo.UseShellExecute = false;

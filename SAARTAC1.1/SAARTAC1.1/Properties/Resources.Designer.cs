@@ -79,5 +79,25 @@ namespace SAARTAC1._1.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap open_folder_with_document_1_ {
+            get {
+                object obj = ResourceManager.GetObject("open-folder-with-document(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save_icon_silhouette_1_ {
+            get {
+                object obj = ResourceManager.GetObject("save-icon-silhouette(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

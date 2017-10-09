@@ -52,6 +52,8 @@
     <Compile Include="LecturaArchivosDicom.cs" />
     <Compile Include="MatrizDicom.cs" />
     <Compile Include="ParametroPython.cs" />
+    <Compile Include="Regla.cs" />
+    <Compile Include="Seccion.cs" />
     <Compile Include="Venatana.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +94,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\905524-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open-folder-with-document%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save-icon-silhouette%281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
