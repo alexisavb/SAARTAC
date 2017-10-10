@@ -54,6 +54,7 @@
     <Compile Include="ParametroPython.cs" />
     <Compile Include="Regla.cs" />
     <Compile Include="Seccion.cs" />
+    <Compile Include="Umbralizacion.cs" />
     <Compile Include="Venatana.cs">
       <SubType>Form</SubType>
     </Compile>
