@@ -101,5 +101,29 @@
   <ItemGroup>
     <None Include="Resources\save-icon-silhouette%281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon%282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom-minus-symbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\increase-zoom-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dog-bone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drop%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brain-upper-view-outline.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

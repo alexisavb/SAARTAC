@@ -24,7 +24,12 @@ namespace SAARTAC1._1 {
         
         public mainVentana() {
             InitializeComponent();
-            barraHerramientas.Renderer = new MyRenderer();            
+            barraHerramientas.Renderer = new MyRenderer();
+            barraIconos3D.Renderer = new MyRenderer();
+            barraDeIconos.Renderer = new MyRenderer();
+            barraIconosUmbralizacion.Renderer = new MyRenderer();
+            barraIconoRegla.Renderer = new MyRenderer();
+            barraIconoClasificacion.Renderer = new MyRenderer();
         }
 
 //Eventos de los botones
@@ -160,6 +165,10 @@ namespace SAARTAC1._1 {
                 Thread.Sleep(milliseconds);
                 mostrarOriginal.Invalidate();
             }
+        }
+
+        private void contenedorBarraDeIconos_TopToolStripPanel_Click(object sender, EventArgs e) {
+
         }
 
         //Ventana para cerebro.
