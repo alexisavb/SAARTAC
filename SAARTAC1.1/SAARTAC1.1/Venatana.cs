@@ -24,7 +24,12 @@ namespace SAARTAC1._1 {
         
         public mainVentana() {
             InitializeComponent();
-            barraHerramientas.Renderer = new MyRenderer();            
+            barraHerramientas.Renderer = new MyRenderer();
+            barraIconos3D.Renderer = new MyRenderer();
+            barraDeIconos.Renderer = new MyRenderer();
+            barraIconosUmbralizacion.Renderer = new MyRenderer();
+            barraIconoRegla.Renderer = new MyRenderer();
+            barraIconoClasificacion.Renderer = new MyRenderer();
         }
 
 //Eventos de los botones
@@ -162,6 +167,7 @@ namespace SAARTAC1._1 {
             }
         }
 
+<<<<<<< HEAD
         //umbral de agua
         private void aguaBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Agua", Color.FromArgb(98, 184, 230)); }
 
@@ -195,6 +201,11 @@ namespace SAARTAC1._1 {
         private void sangreBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Sangre", Color.FromArgb(225, 4, 0)); }
 
         private void sangreCoaguladaBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("SangreCoagulada", Color.FromArgb(176, 5, 2)); }
+=======
+        private void contenedorBarraDeIconos_TopToolStripPanel_Click(object sender, EventArgs e) {
+
+        }
+>>>>>>> master
 
         //Ventana para cerebro.
         private void cerebroBarraDeHerramientas_Click(object sender, EventArgs e){

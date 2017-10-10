@@ -39,5 +39,20 @@ namespace SAARTAC1._1 {
         public override Color ToolStripDropDownBackground {
             get { return Color.Black; }
         }
+
+        public override Color ToolStripBorder {
+            get { return Color.Transparent; }
+        }
+        public override Color ToolStripGradientBegin {
+            get { return Color.Transparent; }
+        }
+
+        public override Color ToolStripGradientMiddle {
+            get { return Color.Transparent; }
+        }
+
+        public override Color ToolStripGradientEnd {
+            get { return Color.Transparent; }
+        }
     }
 }
