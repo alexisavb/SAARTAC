@@ -11,3 +11,9 @@ SAARTAC1.1/SAARTAC1.1/bin/Debug/SAARTAC1.1.pdb
 *.CopyComplete
 *.csproj.FileListAbsolute.txt
 SAARTAC1.1/.vs/SAARTAC1.1/v15/.suo
+*.cache
+SAARTAC1.1/.vs/SAARTAC1.1/v15/.suo
+SAARTAC1.1/SAARTAC1.1/obj/Debug/SAARTAC1.1.csproj.FileListAbsolute.txt
+SAARTAC1.1/SAARTAC1.1/obj/Debug/SAARTAC1.1.csproj.GenerateResource.Cache
+SAARTAC1.1/SAARTAC1.1/obj/Debug/SAARTAC1.1.csprojResolveAssemblyReference.cache
+SAARTAC1.1/SAARTAC1.1/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
