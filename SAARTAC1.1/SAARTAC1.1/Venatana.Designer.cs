@@ -105,12 +105,9 @@
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.barraIconoClasificacion = new System.Windows.Forms.ToolStrip();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-<<<<<<< HEAD
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-=======
             this.toolStripButton9 = new System.Windows.Forms.ToolStripSplitButton();
->>>>>>> master
             this.barraHerramientas.SuspendLayout();
             this.barraDeIconos.SuspendLayout();
             this.contenedorBarraDeIconos.ContentPanel.SuspendLayout();
@@ -269,11 +266,7 @@
             this.ventanaBarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ventanaBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.ventanaBarraDeHerramientas.Name = "ventanaBarraDeHerramientas";
-<<<<<<< HEAD
-            this.ventanaBarraDeHerramientas.Size = new System.Drawing.Size(66, 21);
-=======
             this.ventanaBarraDeHerramientas.Size = new System.Drawing.Size(78, 25);
->>>>>>> master
             this.ventanaBarraDeHerramientas.Text = "Ventana";
             // 
             // defaultBarraDeHerramientas
@@ -567,11 +560,7 @@
             this.acercaDeSAARTACBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.acercaDeSAARTACBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.acercaDeSAARTACBarraDeHerramientas.Name = "acercaDeSAARTACBarraDeHerramientas";
-<<<<<<< HEAD
-            this.acercaDeSAARTACBarraDeHerramientas.Size = new System.Drawing.Size(191, 22);
-=======
             this.acercaDeSAARTACBarraDeHerramientas.Size = new System.Drawing.Size(213, 26);
->>>>>>> master
             this.acercaDeSAARTACBarraDeHerramientas.Text = "Acerca De SAARTAC";
             // 
             // BottomToolStripPanel
@@ -988,7 +977,6 @@
             this.toolStripSplitButton1.Size = new System.Drawing.Size(34, 22);
             this.toolStripSplitButton1.Text = "toolStripSplitButton1";
             // 
-<<<<<<< HEAD
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(665, 2);
@@ -1003,7 +991,6 @@
             this.backgroundWorker1.WorkerSupportsCancellation = true;
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
-=======
             // toolStripButton9
             // 
             this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -1012,7 +999,6 @@
             this.toolStripButton9.Name = "toolStripButton9";
             this.toolStripButton9.Size = new System.Drawing.Size(34, 22);
             this.toolStripButton9.Text = "toolStripButton9";
->>>>>>> master
             // 
             // mainVentana
             // 
@@ -1020,16 +1006,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1270, 722);
-<<<<<<< HEAD
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.barraIconoClasificacion);
-            this.Controls.Add(this.barraIconoRegla);
-            this.Controls.Add(this.barraIconoContrste);
-            this.Controls.Add(this.barraIconosUmbralizacion);
-            this.Controls.Add(this.barraDeIconos);
-            this.Controls.Add(this.barraIconos3D);
-=======
->>>>>>> master
             this.Controls.Add(this.contenedorBarraDeIconos);
             this.Controls.Add(this.barraHerramientas);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
