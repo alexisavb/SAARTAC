@@ -101,14 +101,15 @@
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.barraIconoContrste = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.barraIconoRegla = new System.Windows.Forms.ToolStrip();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.barraIconoClasificacion = new System.Windows.Forms.ToolStrip();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.toolStripButton9 = new System.Windows.Forms.ToolStripSplitButton();
             this.barraHerramientas.SuspendLayout();
             this.barraDeIconos.SuspendLayout();
             this.contenedorBarraDeIconos.ContentPanel.SuspendLayout();
+            this.contenedorBarraDeIconos.TopToolStripPanel.SuspendLayout();
             this.contenedorBarraDeIconos.SuspendLayout();
             this.panelInformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mostrarTratada)).BeginInit();
@@ -123,6 +124,8 @@
             // barraHerramientas
             // 
             this.barraHerramientas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.barraHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barraHerramientas.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.barraHerramientas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoBarraHerramientas,
             this.editarBarraHerramientas,
@@ -132,7 +135,7 @@
             this.ayudaToolStripMenuItem});
             this.barraHerramientas.Location = new System.Drawing.Point(0, 0);
             this.barraHerramientas.Name = "barraHerramientas";
-            this.barraHerramientas.Size = new System.Drawing.Size(1270, 25);
+            this.barraHerramientas.Size = new System.Drawing.Size(1270, 29);
             this.barraHerramientas.TabIndex = 0;
             this.barraHerramientas.Text = "menuStrip1";
             // 
@@ -142,10 +145,10 @@
             this.abrirBarraHerramientas,
             this.exportarBarraHerramientas,
             this.salirToolStripMenuItem});
-            this.archivoBarraHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.archivoBarraHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.archivoBarraHerramientas.ForeColor = System.Drawing.Color.White;
             this.archivoBarraHerramientas.Name = "archivoBarraHerramientas";
-            this.archivoBarraHerramientas.Size = new System.Drawing.Size(63, 21);
+            this.archivoBarraHerramientas.Size = new System.Drawing.Size(71, 25);
             this.archivoBarraHerramientas.Text = "Archivo";
             // 
             // abrirBarraHerramientas
@@ -153,7 +156,7 @@
             this.abrirBarraHerramientas.BackColor = System.Drawing.Color.Black;
             this.abrirBarraHerramientas.ForeColor = System.Drawing.Color.White;
             this.abrirBarraHerramientas.Name = "abrirBarraHerramientas";
-            this.abrirBarraHerramientas.Size = new System.Drawing.Size(195, 22);
+            this.abrirBarraHerramientas.Size = new System.Drawing.Size(212, 26);
             this.abrirBarraHerramientas.Text = "Abrir";
             this.abrirBarraHerramientas.Click += new System.EventHandler(this.abrirBarraHerramientas_Click);
             // 
@@ -162,7 +165,7 @@
             this.exportarBarraHerramientas.BackColor = System.Drawing.Color.Black;
             this.exportarBarraHerramientas.ForeColor = System.Drawing.Color.White;
             this.exportarBarraHerramientas.Name = "exportarBarraHerramientas";
-            this.exportarBarraHerramientas.Size = new System.Drawing.Size(195, 22);
+            this.exportarBarraHerramientas.Size = new System.Drawing.Size(212, 26);
             this.exportarBarraHerramientas.Text = "Exportar tomografía";
             // 
             // salirToolStripMenuItem
@@ -170,7 +173,7 @@
             this.salirToolStripMenuItem.BackColor = System.Drawing.Color.Black;
             this.salirToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.salirToolStripMenuItem.Text = "Salir";
             // 
             // editarBarraHerramientas
@@ -180,7 +183,7 @@
             this.rehacerBarraDeHerramientas});
             this.editarBarraHerramientas.ForeColor = System.Drawing.Color.White;
             this.editarBarraHerramientas.Name = "editarBarraHerramientas";
-            this.editarBarraHerramientas.Size = new System.Drawing.Size(49, 21);
+            this.editarBarraHerramientas.Size = new System.Drawing.Size(62, 25);
             this.editarBarraHerramientas.Text = "Editar";
             // 
             // deshacerBarraDeHerramientas
@@ -189,7 +192,7 @@
             this.deshacerBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deshacerBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.deshacerBarraDeHerramientas.Name = "deshacerBarraDeHerramientas";
-            this.deshacerBarraDeHerramientas.Size = new System.Drawing.Size(129, 22);
+            this.deshacerBarraDeHerramientas.Size = new System.Drawing.Size(152, 22);
             this.deshacerBarraDeHerramientas.Text = "Deshacer";
             // 
             // rehacerBarraDeHerramientas
@@ -198,7 +201,7 @@
             this.rehacerBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rehacerBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.rehacerBarraDeHerramientas.Name = "rehacerBarraDeHerramientas";
-            this.rehacerBarraDeHerramientas.Size = new System.Drawing.Size(129, 22);
+            this.rehacerBarraDeHerramientas.Size = new System.Drawing.Size(152, 22);
             this.rehacerBarraDeHerramientas.Text = "Rehacer";
             // 
             // HerramientasBarraDeHerramientas
@@ -208,10 +211,10 @@
             this.rotar90DerechaBarraDeHerramientas,
             this.rotar90IquierdaBarraDeHerramientas,
             this.zoomBarraDeHerramientas});
-            this.HerramientasBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HerramientasBarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HerramientasBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.HerramientasBarraDeHerramientas.Name = "HerramientasBarraDeHerramientas";
-            this.HerramientasBarraDeHerramientas.Size = new System.Drawing.Size(98, 21);
+            this.HerramientasBarraDeHerramientas.Size = new System.Drawing.Size(112, 25);
             this.HerramientasBarraDeHerramientas.Text = "Herramientas";
             // 
             // distanciaBarraDeHerramientas
@@ -219,7 +222,7 @@
             this.distanciaBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.distanciaBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.distanciaBarraDeHerramientas.Name = "distanciaBarraDeHerramientas";
-            this.distanciaBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.distanciaBarraDeHerramientas.Size = new System.Drawing.Size(207, 26);
             this.distanciaBarraDeHerramientas.Text = "Distancia";
             this.distanciaBarraDeHerramientas.Click += new System.EventHandler(this.distanciaBarraDeHerramientas_Click);
             // 
@@ -228,7 +231,7 @@
             this.rotar90DerechaBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.rotar90DerechaBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.rotar90DerechaBarraDeHerramientas.Name = "rotar90DerechaBarraDeHerramientas";
-            this.rotar90DerechaBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.rotar90DerechaBarraDeHerramientas.Size = new System.Drawing.Size(207, 26);
             this.rotar90DerechaBarraDeHerramientas.Text = "Rotar 90° Derecha";
             this.rotar90DerechaBarraDeHerramientas.Click += new System.EventHandler(this.rotar90DerechaBarraDeHerramientas_Click);
             // 
@@ -237,7 +240,7 @@
             this.rotar90IquierdaBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.rotar90IquierdaBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.rotar90IquierdaBarraDeHerramientas.Name = "rotar90IquierdaBarraDeHerramientas";
-            this.rotar90IquierdaBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.rotar90IquierdaBarraDeHerramientas.Size = new System.Drawing.Size(207, 26);
             this.rotar90IquierdaBarraDeHerramientas.Text = "Rotar 90° Iquierda";
             this.rotar90IquierdaBarraDeHerramientas.Click += new System.EventHandler(this.rotar90IquierdaBarraDeHerramientas_Click);
             // 
@@ -246,7 +249,7 @@
             this.zoomBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.zoomBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.zoomBarraDeHerramientas.Name = "zoomBarraDeHerramientas";
-            this.zoomBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.zoomBarraDeHerramientas.Size = new System.Drawing.Size(207, 26);
             this.zoomBarraDeHerramientas.Text = "Zoom";
             // 
             // ventanaBarraDeHerramientas
@@ -258,10 +261,10 @@
             this.partesBlandasBarraDeHerramientas,
             this.pesonalizadaVBarraDeHerramientas,
             this.pulmónBarraDeHerramientas});
-            this.ventanaBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ventanaBarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ventanaBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.ventanaBarraDeHerramientas.Name = "ventanaBarraDeHerramientas";
-            this.ventanaBarraDeHerramientas.Size = new System.Drawing.Size(67, 21);
+            this.ventanaBarraDeHerramientas.Size = new System.Drawing.Size(78, 25);
             this.ventanaBarraDeHerramientas.Text = "Ventana";
             // 
             // defaultBarraDeHerramientas
@@ -269,7 +272,7 @@
             this.defaultBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.defaultBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.defaultBarraDeHerramientas.Name = "defaultBarraDeHerramientas";
-            this.defaultBarraDeHerramientas.Size = new System.Drawing.Size(161, 22);
+            this.defaultBarraDeHerramientas.Size = new System.Drawing.Size(181, 26);
             this.defaultBarraDeHerramientas.Text = "Default";
             // 
             // cerebroBarraDeHerramientas
@@ -277,7 +280,7 @@
             this.cerebroBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.cerebroBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.cerebroBarraDeHerramientas.Name = "cerebroBarraDeHerramientas";
-            this.cerebroBarraDeHerramientas.Size = new System.Drawing.Size(161, 22);
+            this.cerebroBarraDeHerramientas.Size = new System.Drawing.Size(181, 26);
             this.cerebroBarraDeHerramientas.Text = "Cerebro";
             this.cerebroBarraDeHerramientas.Click += new System.EventHandler(this.cerebroBarraDeHerramientas_Click);
             // 
@@ -286,7 +289,7 @@
             this.huesoBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.huesoBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.huesoBarraDeHerramientas.Name = "huesoBarraDeHerramientas";
-            this.huesoBarraDeHerramientas.Size = new System.Drawing.Size(161, 22);
+            this.huesoBarraDeHerramientas.Size = new System.Drawing.Size(181, 26);
             this.huesoBarraDeHerramientas.Text = "Hueso";
             this.huesoBarraDeHerramientas.Click += new System.EventHandler(this.huesoBarraDeHerramientas_Click);
             // 
@@ -295,7 +298,7 @@
             this.partesBlandasBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.partesBlandasBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.partesBlandasBarraDeHerramientas.Name = "partesBlandasBarraDeHerramientas";
-            this.partesBlandasBarraDeHerramientas.Size = new System.Drawing.Size(161, 22);
+            this.partesBlandasBarraDeHerramientas.Size = new System.Drawing.Size(181, 26);
             this.partesBlandasBarraDeHerramientas.Text = "Partes Blandas";
             this.partesBlandasBarraDeHerramientas.Click += new System.EventHandler(this.partesBlandasBarraDeHerramientas_Click);
             // 
@@ -304,7 +307,7 @@
             this.pesonalizadaVBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.pesonalizadaVBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.pesonalizadaVBarraDeHerramientas.Name = "pesonalizadaVBarraDeHerramientas";
-            this.pesonalizadaVBarraDeHerramientas.Size = new System.Drawing.Size(161, 22);
+            this.pesonalizadaVBarraDeHerramientas.Size = new System.Drawing.Size(181, 26);
             this.pesonalizadaVBarraDeHerramientas.Text = "Personalizada";
             // 
             // pulmónBarraDeHerramientas
@@ -312,7 +315,7 @@
             this.pulmónBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.pulmónBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.pulmónBarraDeHerramientas.Name = "pulmónBarraDeHerramientas";
-            this.pulmónBarraDeHerramientas.Size = new System.Drawing.Size(161, 22);
+            this.pulmónBarraDeHerramientas.Size = new System.Drawing.Size(181, 26);
             this.pulmónBarraDeHerramientas.Text = "Pulmón";
             this.pulmónBarraDeHerramientas.Click += new System.EventHandler(this.pulmónBarraDeHerramientas_Click);
             // 
@@ -335,26 +338,26 @@
             this.nivel3BarraDeHerramientas});
             this.umbralizaciónBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.umbralizaciónBarraDeHerramientas.Name = "umbralizaciónBarraDeHerramientas";
-            this.umbralizaciónBarraDeHerramientas.Size = new System.Drawing.Size(95, 21);
+            this.umbralizaciónBarraDeHerramientas.Size = new System.Drawing.Size(118, 25);
             this.umbralizaciónBarraDeHerramientas.Text = "Umbralización";
             // 
             // aguaBarraDeHerramientas
             // 
             this.aguaBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
-            this.aguaBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aguaBarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aguaBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.aguaBarraDeHerramientas.Name = "aguaBarraDeHerramientas";
-            this.aguaBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.aguaBarraDeHerramientas.Size = new System.Drawing.Size(202, 26);
             this.aguaBarraDeHerramientas.Text = "Agua";
             this.aguaBarraDeHerramientas.Click += new System.EventHandler(this.aguaBarraDeHerramientas_Click);
             // 
             // aireBarraDeHerramientas
             // 
             this.aireBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
-            this.aireBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aireBarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aireBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.aireBarraDeHerramientas.Name = "aireBarraDeHerramientas";
-            this.aireBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.aireBarraDeHerramientas.Size = new System.Drawing.Size(202, 26);
             this.aireBarraDeHerramientas.Text = "Aire";
             this.aireBarraDeHerramientas.Click += new System.EventHandler(this.aireBarraDeHerramientas_Click);
             // 
@@ -365,10 +368,10 @@
             this.fluidoCerebroEspinalBarraDeHerramientas,
             this.sustanciaCerebralBlancaBarraDeHerramientas,
             this.sustanciaCerebralGrisToolStripMenuItem});
-            this.cerebroUBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cerebroUBarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cerebroUBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.cerebroUBarraDeHerramientas.Name = "cerebroUBarraDeHerramientas";
-            this.cerebroUBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.cerebroUBarraDeHerramientas.Size = new System.Drawing.Size(202, 26);
             this.cerebroUBarraDeHerramientas.Text = "Cerebro";
             // 
             // fluidoCerebroEspinalBarraDeHerramientas
@@ -376,7 +379,7 @@
             this.fluidoCerebroEspinalBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.fluidoCerebroEspinalBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.fluidoCerebroEspinalBarraDeHerramientas.Name = "fluidoCerebroEspinalBarraDeHerramientas";
-            this.fluidoCerebroEspinalBarraDeHerramientas.Size = new System.Drawing.Size(225, 22);
+            this.fluidoCerebroEspinalBarraDeHerramientas.Size = new System.Drawing.Size(256, 26);
             this.fluidoCerebroEspinalBarraDeHerramientas.Text = "Fluido CerebroEspinal";
             this.fluidoCerebroEspinalBarraDeHerramientas.Click += new System.EventHandler(this.fluidoCerebroEspinalBarraDeHerramientas_Click);
             // 
@@ -385,7 +388,7 @@
             this.sustanciaCerebralBlancaBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.sustanciaCerebralBlancaBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.sustanciaCerebralBlancaBarraDeHerramientas.Name = "sustanciaCerebralBlancaBarraDeHerramientas";
-            this.sustanciaCerebralBlancaBarraDeHerramientas.Size = new System.Drawing.Size(225, 22);
+            this.sustanciaCerebralBlancaBarraDeHerramientas.Size = new System.Drawing.Size(256, 26);
             this.sustanciaCerebralBlancaBarraDeHerramientas.Text = "Sustancia Cerebral Blanca";
             this.sustanciaCerebralBlancaBarraDeHerramientas.Click += new System.EventHandler(this.sustanciaCerebralBlancaBarraDeHerramientas_Click);
             // 
@@ -394,37 +397,37 @@
             this.sustanciaCerebralGrisToolStripMenuItem.BackColor = System.Drawing.Color.Black;
             this.sustanciaCerebralGrisToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.sustanciaCerebralGrisToolStripMenuItem.Name = "sustanciaCerebralGrisToolStripMenuItem";
-            this.sustanciaCerebralGrisToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.sustanciaCerebralGrisToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
             this.sustanciaCerebralGrisToolStripMenuItem.Text = "Sustancia Cerebral Gris";
             this.sustanciaCerebralGrisToolStripMenuItem.Click += new System.EventHandler(this.sustanciaCerebralGrisToolStripMenuItem_Click);
             // 
             // grasaBarraDeHerramientas
             // 
             this.grasaBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
-            this.grasaBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grasaBarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grasaBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.grasaBarraDeHerramientas.Name = "grasaBarraDeHerramientas";
-            this.grasaBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.grasaBarraDeHerramientas.Size = new System.Drawing.Size(202, 26);
             this.grasaBarraDeHerramientas.Text = "Grasa";
             this.grasaBarraDeHerramientas.Click += new System.EventHandler(this.grasaBarraDeHerramientas_Click);
             // 
             // huesoCompactoBarraDeHerramientas
             // 
             this.huesoCompactoBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
-            this.huesoCompactoBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.huesoCompactoBarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.huesoCompactoBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.huesoCompactoBarraDeHerramientas.Name = "huesoCompactoBarraDeHerramientas";
-            this.huesoCompactoBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.huesoCompactoBarraDeHerramientas.Size = new System.Drawing.Size(202, 26);
             this.huesoCompactoBarraDeHerramientas.Text = "Hueso Compacto";
             this.huesoCompactoBarraDeHerramientas.Click += new System.EventHandler(this.huesoCompactoBarraDeHerramientas_Click);
             // 
             // huesoEsponjosoBarraDeHerramientas
             // 
             this.huesoEsponjosoBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
-            this.huesoEsponjosoBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.huesoEsponjosoBarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.huesoEsponjosoBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.huesoEsponjosoBarraDeHerramientas.Name = "huesoEsponjosoBarraDeHerramientas";
-            this.huesoEsponjosoBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.huesoEsponjosoBarraDeHerramientas.Size = new System.Drawing.Size(202, 26);
             this.huesoEsponjosoBarraDeHerramientas.Text = "Hueso Esponjoso";
             this.huesoEsponjosoBarraDeHerramientas.Click += new System.EventHandler(this.huesoEsponjosoBarraDeHerramientas_Click);
             // 
@@ -436,10 +439,10 @@
             this.pancreasBarraDeHerramientas,
             this.pulmónUToolStripMenuItem,
             this.riñonBarraDeHerramientas});
-            this.organosBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.organosBarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.organosBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.organosBarraDeHerramientas.Name = "organosBarraDeHerramientas";
-            this.organosBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.organosBarraDeHerramientas.Size = new System.Drawing.Size(202, 26);
             this.organosBarraDeHerramientas.Text = "Organos";
             // 
             // higadoBarraDeHerramientas
@@ -447,7 +450,7 @@
             this.higadoBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.higadoBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.higadoBarraDeHerramientas.Name = "higadoBarraDeHerramientas";
-            this.higadoBarraDeHerramientas.Size = new System.Drawing.Size(128, 22);
+            this.higadoBarraDeHerramientas.Size = new System.Drawing.Size(152, 26);
             this.higadoBarraDeHerramientas.Text = "Higado";
             this.higadoBarraDeHerramientas.Click += new System.EventHandler(this.higadoBarraDeHerramientas_Click);
             // 
@@ -456,7 +459,7 @@
             this.pancreasBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.pancreasBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.pancreasBarraDeHerramientas.Name = "pancreasBarraDeHerramientas";
-            this.pancreasBarraDeHerramientas.Size = new System.Drawing.Size(128, 22);
+            this.pancreasBarraDeHerramientas.Size = new System.Drawing.Size(152, 26);
             this.pancreasBarraDeHerramientas.Text = "Páncreas";
             this.pancreasBarraDeHerramientas.Click += new System.EventHandler(this.pancreasBarraDeHerramientas_Click);
             // 
@@ -465,7 +468,7 @@
             this.pulmónUToolStripMenuItem.BackColor = System.Drawing.Color.Black;
             this.pulmónUToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.pulmónUToolStripMenuItem.Name = "pulmónUToolStripMenuItem";
-            this.pulmónUToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.pulmónUToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.pulmónUToolStripMenuItem.Text = "Pulmón";
             this.pulmónUToolStripMenuItem.Click += new System.EventHandler(this.pulmónUToolStripMenuItem_Click);
             // 
@@ -474,36 +477,36 @@
             this.riñonBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.riñonBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.riñonBarraDeHerramientas.Name = "riñonBarraDeHerramientas";
-            this.riñonBarraDeHerramientas.Size = new System.Drawing.Size(128, 22);
+            this.riñonBarraDeHerramientas.Size = new System.Drawing.Size(152, 26);
             this.riñonBarraDeHerramientas.Text = "Riñon";
             this.riñonBarraDeHerramientas.Click += new System.EventHandler(this.riñonBarraDeHerramientas_Click);
             // 
             // personalizadaBarraDeHerramientas
             // 
             this.personalizadaBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
-            this.personalizadaBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.personalizadaBarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.personalizadaBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.personalizadaBarraDeHerramientas.Name = "personalizadaBarraDeHerramientas";
-            this.personalizadaBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.personalizadaBarraDeHerramientas.Size = new System.Drawing.Size(202, 26);
             this.personalizadaBarraDeHerramientas.Text = "Personalizada";
             // 
             // sangreBarraDeHerramientas
             // 
             this.sangreBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
-            this.sangreBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sangreBarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sangreBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.sangreBarraDeHerramientas.Name = "sangreBarraDeHerramientas";
-            this.sangreBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.sangreBarraDeHerramientas.Size = new System.Drawing.Size(202, 26);
             this.sangreBarraDeHerramientas.Text = "Sangre";
             this.sangreBarraDeHerramientas.Click += new System.EventHandler(this.sangreBarraDeHerramientas_Click);
             // 
             // sangreCoaguladaBarraDeHerramientas
             // 
             this.sangreCoaguladaBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
-            this.sangreCoaguladaBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sangreCoaguladaBarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sangreCoaguladaBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.sangreCoaguladaBarraDeHerramientas.Name = "sangreCoaguladaBarraDeHerramientas";
-            this.sangreCoaguladaBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.sangreCoaguladaBarraDeHerramientas.Size = new System.Drawing.Size(202, 26);
             this.sangreCoaguladaBarraDeHerramientas.Text = "Sangre Coagulada";
             this.sangreCoaguladaBarraDeHerramientas.Click += new System.EventHandler(this.sangreCoaguladaBarraDeHerramientas_Click);
             // 
@@ -511,43 +514,43 @@
             // 
             this.separadorUmbralizacion.BackColor = System.Drawing.Color.Black;
             this.separadorUmbralizacion.Name = "separadorUmbralizacion";
-            this.separadorUmbralizacion.Size = new System.Drawing.Size(180, 6);
+            this.separadorUmbralizacion.Size = new System.Drawing.Size(199, 6);
             // 
             // nivel1BarraDeHerramientas
             // 
             this.nivel1BarraDeHerramientas.BackColor = System.Drawing.Color.Black;
-            this.nivel1BarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nivel1BarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nivel1BarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.nivel1BarraDeHerramientas.Name = "nivel1BarraDeHerramientas";
-            this.nivel1BarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.nivel1BarraDeHerramientas.Size = new System.Drawing.Size(202, 26);
             this.nivel1BarraDeHerramientas.Text = "Nivel 1";
             // 
             // nivel2BarraDeHerramientas
             // 
             this.nivel2BarraDeHerramientas.BackColor = System.Drawing.Color.Black;
-            this.nivel2BarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nivel2BarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nivel2BarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.nivel2BarraDeHerramientas.Name = "nivel2BarraDeHerramientas";
-            this.nivel2BarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.nivel2BarraDeHerramientas.Size = new System.Drawing.Size(202, 26);
             this.nivel2BarraDeHerramientas.Text = "Nivel 2";
             // 
             // nivel3BarraDeHerramientas
             // 
             this.nivel3BarraDeHerramientas.BackColor = System.Drawing.Color.Black;
-            this.nivel3BarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nivel3BarraDeHerramientas.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nivel3BarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.nivel3BarraDeHerramientas.Name = "nivel3BarraDeHerramientas";
-            this.nivel3BarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
+            this.nivel3BarraDeHerramientas.Size = new System.Drawing.Size(202, 26);
             this.nivel3BarraDeHerramientas.Text = "Nivel 3";
             // 
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.acercaDeSAARTACBarraDeHerramientas});
-            this.ayudaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ayudaToolStripMenuItem.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ayudaToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(64, 25);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
             // acercaDeSAARTACBarraDeHerramientas
@@ -555,7 +558,7 @@
             this.acercaDeSAARTACBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.acercaDeSAARTACBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.acercaDeSAARTACBarraDeHerramientas.Name = "acercaDeSAARTACBarraDeHerramientas";
-            this.acercaDeSAARTACBarraDeHerramientas.Size = new System.Drawing.Size(193, 22);
+            this.acercaDeSAARTACBarraDeHerramientas.Size = new System.Drawing.Size(213, 26);
             this.acercaDeSAARTACBarraDeHerramientas.Text = "Acerca De SAARTAC";
             // 
             // BottomToolStripPanel
@@ -605,6 +608,7 @@
             this.barraDeIconos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.barraDeIconos.Dock = System.Windows.Forms.DockStyle.None;
             this.barraDeIconos.GripMargin = new System.Windows.Forms.Padding(0);
+            this.barraDeIconos.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.barraDeIconos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.abrirBarraIconos,
             this.exportarBarraIconos,
@@ -613,7 +617,7 @@
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripButton4});
-            this.barraDeIconos.Location = new System.Drawing.Point(9, 25);
+            this.barraDeIconos.Location = new System.Drawing.Point(15, 0);
             this.barraDeIconos.Name = "barraDeIconos";
             this.barraDeIconos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.barraDeIconos.Size = new System.Drawing.Size(152, 25);
@@ -694,25 +698,32 @@
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.botonAtras);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.mostrarTratada);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.mostrarOriginal);
-            this.contenedorBarraDeIconos.ContentPanel.Size = new System.Drawing.Size(1270, 672);
+            this.contenedorBarraDeIconos.ContentPanel.Size = new System.Drawing.Size(1270, 643);
             this.contenedorBarraDeIconos.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // contenedorBarraDeIconos.LeftToolStripPanel
             // 
             this.contenedorBarraDeIconos.LeftToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.contenedorBarraDeIconos.Location = new System.Drawing.Point(0, 25);
+            this.contenedorBarraDeIconos.LeftToolStripPanel.Margin = new System.Windows.Forms.Padding(10);
+            this.contenedorBarraDeIconos.Location = new System.Drawing.Point(0, 29);
             this.contenedorBarraDeIconos.Name = "contenedorBarraDeIconos";
             // 
             // contenedorBarraDeIconos.RightToolStripPanel
             // 
             this.contenedorBarraDeIconos.RightToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.contenedorBarraDeIconos.Size = new System.Drawing.Size(1270, 697);
+            this.contenedorBarraDeIconos.Size = new System.Drawing.Size(1270, 693);
             this.contenedorBarraDeIconos.TabIndex = 1;
             this.contenedorBarraDeIconos.Text = "toolStripContainer1";
             // 
             // contenedorBarraDeIconos.TopToolStripPanel
             // 
             this.contenedorBarraDeIconos.TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraDeIconos);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconosUmbralizacion);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoContrste);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoClasificacion);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoRegla);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconos3D);
             this.contenedorBarraDeIconos.TopToolStripPanel.Click += new System.EventHandler(this.contenedorBarraDeIconos_TopToolStripPanel_Click);
             // 
             // panelInformacion
@@ -854,7 +865,7 @@
             this.barraIconos3D.GripMargin = new System.Windows.Forms.Padding(0);
             this.barraIconos3D.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton8});
-            this.barraIconos3D.Location = new System.Drawing.Point(242, 25);
+            this.barraIconos3D.Location = new System.Drawing.Point(294, 0);
             this.barraIconos3D.Name = "barraIconos3D";
             this.barraIconos3D.Size = new System.Drawing.Size(31, 25);
             this.barraIconos3D.TabIndex = 2;
@@ -872,11 +883,12 @@
             // 
             this.barraIconosUmbralizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.barraIconosUmbralizacion.Dock = System.Windows.Forms.DockStyle.None;
+            this.barraIconosUmbralizacion.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.barraIconosUmbralizacion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton5,
             this.toolStripButton6,
             this.toolStripButton7});
-            this.barraIconosUmbralizacion.Location = new System.Drawing.Point(161, 25);
+            this.barraIconosUmbralizacion.Location = new System.Drawing.Point(167, 0);
             this.barraIconosUmbralizacion.Name = "barraIconosUmbralizacion";
             this.barraIconosUmbralizacion.Size = new System.Drawing.Size(81, 25);
             this.barraIconosUmbralizacion.TabIndex = 1;
@@ -912,29 +924,22 @@
             // 
             this.barraIconoContrste.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.barraIconoContrste.Dock = System.Windows.Forms.DockStyle.None;
+            this.barraIconoContrste.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.barraIconoContrste.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton9});
-            this.barraIconoContrste.Location = new System.Drawing.Point(282, 25);
+            this.barraIconoContrste.Location = new System.Drawing.Point(248, 0);
             this.barraIconoContrste.Name = "barraIconoContrste";
-            this.barraIconoContrste.Size = new System.Drawing.Size(35, 25);
+            this.barraIconoContrste.Size = new System.Drawing.Size(46, 25);
             this.barraIconoContrste.TabIndex = 0;
-            // 
-            // toolStripButton9
-            // 
-            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
-            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton9.Text = "toolStripButton9";
             // 
             // barraIconoRegla
             // 
             this.barraIconoRegla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.barraIconoRegla.Dock = System.Windows.Forms.DockStyle.None;
+            this.barraIconoRegla.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.barraIconoRegla.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton10});
-            this.barraIconoRegla.Location = new System.Drawing.Point(329, 25);
+            this.barraIconoRegla.Location = new System.Drawing.Point(325, 0);
             this.barraIconoRegla.Name = "barraIconoRegla";
             this.barraIconoRegla.Size = new System.Drawing.Size(35, 25);
             this.barraIconoRegla.TabIndex = 0;
@@ -952,11 +957,12 @@
             // 
             this.barraIconoClasificacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.barraIconoClasificacion.Dock = System.Windows.Forms.DockStyle.None;
+            this.barraIconoClasificacion.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.barraIconoClasificacion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSplitButton1});
-            this.barraIconoClasificacion.Location = new System.Drawing.Point(389, 25);
+            this.barraIconoClasificacion.Location = new System.Drawing.Point(360, 0);
             this.barraIconoClasificacion.Name = "barraIconoClasificacion";
-            this.barraIconoClasificacion.Size = new System.Drawing.Size(44, 25);
+            this.barraIconoClasificacion.Size = new System.Drawing.Size(46, 25);
             this.barraIconoClasificacion.TabIndex = 6;
             this.barraIconoClasificacion.Text = "toolStrip1";
             // 
@@ -966,8 +972,17 @@
             this.toolStripSplitButton1.Image = global::SAARTAC1._1.Properties.Resources.brain_upper_view_outline;
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(34, 22);
             this.toolStripSplitButton1.Text = "toolStripSplitButton1";
+            // 
+            // toolStripButton9
+            // 
+            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
+            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton9.Name = "toolStripButton9";
+            this.toolStripButton9.Size = new System.Drawing.Size(34, 22);
+            this.toolStripButton9.Text = "toolStripButton9";
             // 
             // mainVentana
             // 
@@ -975,12 +990,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1270, 722);
-            this.Controls.Add(this.barraIconoClasificacion);
-            this.Controls.Add(this.barraIconoRegla);
-            this.Controls.Add(this.barraIconoContrste);
-            this.Controls.Add(this.barraIconosUmbralizacion);
-            this.Controls.Add(this.barraDeIconos);
-            this.Controls.Add(this.barraIconos3D);
             this.Controls.Add(this.contenedorBarraDeIconos);
             this.Controls.Add(this.barraHerramientas);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -995,6 +1004,8 @@
             this.barraDeIconos.ResumeLayout(false);
             this.barraDeIconos.PerformLayout();
             this.contenedorBarraDeIconos.ContentPanel.ResumeLayout(false);
+            this.contenedorBarraDeIconos.TopToolStripPanel.ResumeLayout(false);
+            this.contenedorBarraDeIconos.TopToolStripPanel.PerformLayout();
             this.contenedorBarraDeIconos.ResumeLayout(false);
             this.contenedorBarraDeIconos.PerformLayout();
             this.panelInformacion.ResumeLayout(false);
@@ -1097,10 +1108,10 @@
         private System.Windows.Forms.ToolStripContentPanel ContentPanel;
         private System.Windows.Forms.ToolStrip barraIconoClasificacion;
         private System.Windows.Forms.ToolStrip barraIconoContrste;
-        private System.Windows.Forms.ToolStripButton toolStripButton9;
         private System.Windows.Forms.ToolStrip barraIconoRegla;
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
+        private System.Windows.Forms.ToolStripSplitButton toolStripButton9;
     }
 }
 

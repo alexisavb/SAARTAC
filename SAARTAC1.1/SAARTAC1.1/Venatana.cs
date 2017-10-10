@@ -30,6 +30,7 @@ namespace SAARTAC1._1 {
             barraIconosUmbralizacion.Renderer = new MyRenderer();
             barraIconoRegla.Renderer = new MyRenderer();
             barraIconoClasificacion.Renderer = new MyRenderer();
+            barraIconoContrste.Renderer = new MyRenderer();
         }
 
 //Eventos de los botones
