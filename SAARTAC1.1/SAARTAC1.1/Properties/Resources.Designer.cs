@@ -83,76 +83,6 @@ namespace SAARTAC1._1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap brain_upper_view_outline {
-            get {
-                object obj = ResourceManager.GetObject("brain-upper-view-outline", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap dog_bone {
-            get {
-                object obj = ResourceManager.GetObject("dog-bone", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap drop {
-            get {
-                object obj = ResourceManager.GetObject("drop", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap drop_1_ {
-            get {
-                object obj = ResourceManager.GetObject("drop(1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icon_1_ {
-            get {
-                object obj = ResourceManager.GetObject("icon(1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icon_2_ {
-            get {
-                object obj = ResourceManager.GetObject("icon(2)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap increase_zoom_button {
-            get {
-                object obj = ResourceManager.GetObject("increase-zoom-button", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap open_folder_with_document_1_ {
             get {
                 object obj = ResourceManager.GetObject("open-folder-with-document(1)", resourceCulture);
@@ -166,16 +96,6 @@ namespace SAARTAC1._1.Properties {
         internal static System.Drawing.Bitmap save_icon_silhouette_1_ {
             get {
                 object obj = ResourceManager.GetObject("save-icon-silhouette(1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap zoom_minus_symbol {
-            get {
-                object obj = ResourceManager.GetObject("zoom-minus-symbol", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
