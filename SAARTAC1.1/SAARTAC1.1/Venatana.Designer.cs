@@ -14,8 +14,7 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
-        }
-
+        }   
         #region Código generado por el Diseñador de Windows Forms
 
         /// <summary>
@@ -448,7 +447,7 @@
             this.higadoBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.higadoBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.higadoBarraDeHerramientas.Name = "higadoBarraDeHerramientas";
-            this.higadoBarraDeHerramientas.Size = new System.Drawing.Size(152, 22);
+            this.higadoBarraDeHerramientas.Size = new System.Drawing.Size(128, 22);
             this.higadoBarraDeHerramientas.Text = "Higado";
             this.higadoBarraDeHerramientas.Click += new System.EventHandler(this.higadoBarraDeHerramientas_Click);
             // 
@@ -457,7 +456,7 @@
             this.pancreasBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.pancreasBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.pancreasBarraDeHerramientas.Name = "pancreasBarraDeHerramientas";
-            this.pancreasBarraDeHerramientas.Size = new System.Drawing.Size(152, 22);
+            this.pancreasBarraDeHerramientas.Size = new System.Drawing.Size(128, 22);
             this.pancreasBarraDeHerramientas.Text = "Páncreas";
             this.pancreasBarraDeHerramientas.Click += new System.EventHandler(this.pancreasBarraDeHerramientas_Click);
             // 
@@ -466,7 +465,7 @@
             this.pulmónUToolStripMenuItem.BackColor = System.Drawing.Color.Black;
             this.pulmónUToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.pulmónUToolStripMenuItem.Name = "pulmónUToolStripMenuItem";
-            this.pulmónUToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pulmónUToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.pulmónUToolStripMenuItem.Text = "Pulmón";
             this.pulmónUToolStripMenuItem.Click += new System.EventHandler(this.pulmónUToolStripMenuItem_Click);
             // 
@@ -475,7 +474,7 @@
             this.riñonBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.riñonBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.riñonBarraDeHerramientas.Name = "riñonBarraDeHerramientas";
-            this.riñonBarraDeHerramientas.Size = new System.Drawing.Size(152, 22);
+            this.riñonBarraDeHerramientas.Size = new System.Drawing.Size(128, 22);
             this.riñonBarraDeHerramientas.Text = "Riñon";
             this.riñonBarraDeHerramientas.Click += new System.EventHandler(this.riñonBarraDeHerramientas_Click);
             // 
@@ -957,7 +956,7 @@
             this.toolStripSplitButton1});
             this.barraIconoClasificacion.Location = new System.Drawing.Point(389, 25);
             this.barraIconoClasificacion.Name = "barraIconoClasificacion";
-            this.barraIconoClasificacion.Size = new System.Drawing.Size(75, 25);
+            this.barraIconoClasificacion.Size = new System.Drawing.Size(44, 25);
             this.barraIconoClasificacion.TabIndex = 6;
             this.barraIconoClasificacion.Text = "toolStrip1";
             // 
@@ -990,7 +989,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "mainVentana";
             this.Text = "SAARTAC - TT2016 B018";
-            this.TransparencyKey = System.Drawing.SystemColors.Control;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.barraHerramientas.ResumeLayout(false);
             this.barraHerramientas.PerformLayout();
