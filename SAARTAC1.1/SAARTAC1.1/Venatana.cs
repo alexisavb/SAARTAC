@@ -162,40 +162,6 @@ namespace SAARTAC1._1 {
             }
         }
 
-        //umbral de agua
-        private void aguaBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Agua", Color.FromArgb(98, 184, 230)); }
-
-        //umbral aire
-        private void aireBarraDeHerramientas_Click(object sender, EventArgs e) { imagenesCaja2.Clear(); dibujarUmbral("Aire", Color.FromArgb(60,11,239));}
-
-        //umbral fluido cerebral espinal
-        private void fluidoCerebroEspinalBarraDeHerramientas_Click(object sender, EventArgs e) { imagenesCaja2.Clear(); dibujarUmbral("FluidoEspinal", Color.FromArgb(44, 213, 6)); }
-
-        //umbral sustancia cerebral blanca
-        private void sustanciaCerebralBlancaBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("CerebralBlanca", Color.FromArgb(76, 205, 72)); }
-
-        //umbral sustancia cerebral gris
-        private void sustanciaCerebralGrisToolStripMenuItem_Click(object sender, EventArgs e) { imagenesCaja2.Clear(); dibujarUmbral("CerebralGris", Color.FromArgb(235, 16, 73)); }
-
-        //umbral hueso compacto
-        private void huesoCompactoBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Hueso compacto", Color.FromArgb(203, 36, 79)); }
-
-        private void huesoEsponjosoBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Hueso esponjoso", Color.FromArgb(117, 7, 35));}
-
-        private void grasaBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Grasa", Color.FromArgb(225, 183, 24)); }
-
-        private void higadoBarraDeHerramientas_Click(object sender, EventArgs e) { imagenesCaja2.Clear(); dibujarUmbral("Higado", Color.FromArgb(15, 23, 86)); }
-
-        private void pancreasBarraDeHerramientas_Click(object sender, EventArgs e) { imagenesCaja2.Clear(); dibujarUmbral("Pancreas", Color.FromArgb(220, 48, 13)); }
-
-        private void pulmónUToolStripMenuItem_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Pulmones", Color.FromArgb(9, 134, 66)); }
-
-        private void riñonBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Riñon", Color.FromArgb(104, 0, 146)); }
-
-        private void sangreBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Sangre", Color.FromArgb(225, 4, 0)); }
-
-        private void sangreCoaguladaBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("SangreCoagulada", Color.FromArgb(176, 5, 2)); }
-
         //Ventana para cerebro.
         private void cerebroBarraDeHerramientas_Click(object sender, EventArgs e){
             int lim_inf_ven = -10;
@@ -216,26 +182,12 @@ namespace SAARTAC1._1 {
         }
 
         
+ ///---------------------------------------------------------------------------------------------------------------------------------------------------
 
-        ///---------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-        //Funciones 
-        //***************************************************************************************************************************************************** 
+//Funciones 
+//***************************************************************************************************************************************************** 
         //mostrar imagen sin tratamiento.
-
-
-        private void dibujarUmbral(string lectura, Color color){
-            Umbralizacion operaciones = new Umbralizacion();
-            for (int i = 0; i < lect.num_archivos(); i++){
-                var archivo = lect.obtenerArchivo(i);
-                var matrizResultado = operaciones.UmbralizacionPara(lectura, archivo.matriz);
-                var imagenResultado = obtenerImagenUmbral(matrizResultado, archivo.ObtenerImagen(), color);
-                imagenesCaja2.Add(imagenResultado);
-            }
-            MostrarImagenTratada();
-        }
-
         private void MostrarImagenOriginal(){
             if (imagenesCaja1.Count() > 0){ mostrarOriginal.Image = imagenesCaja1[id_tac]; return;}//Esto es para cambiar de imagen y lo dibuje.
             MatrizDicom aux = lect.obtenerArchivo(id_tac); //se obtiene la matriz.
@@ -258,18 +210,6 @@ namespace SAARTAC1._1 {
                 imagenesCaja1.Add(imagen);
             }
             MostrarImagenOriginal();
-        }
-
-        //genera la imagen con el umbral
-        private Bitmap obtenerImagenUmbral(bool[,] umbral, Bitmap matrizOriginal, Color color){
-            Bitmap resultado = new Bitmap(matrizOriginal);
-            int N = umbral.GetLength(0);
-            int M = umbral.GetLength(1);
-            for (int i = 0; i < N; i++)
-                for (int j = 0; j < M; j++)                
-                    if (umbral[i, j])                    
-                        resultado.SetPixel(i, j, color);                                                
-            return resultado;
         }
 
         //Crea una imagen con la nueva ventana establecida.

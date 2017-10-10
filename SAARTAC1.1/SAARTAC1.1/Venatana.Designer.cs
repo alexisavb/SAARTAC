@@ -242,7 +242,7 @@
             this.ventanaBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ventanaBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.ventanaBarraDeHerramientas.Name = "ventanaBarraDeHerramientas";
-            this.ventanaBarraDeHerramientas.Size = new System.Drawing.Size(67, 21);
+            this.ventanaBarraDeHerramientas.Size = new System.Drawing.Size(66, 21);
             this.ventanaBarraDeHerramientas.Text = "Ventana";
             // 
             // defaultBarraDeHerramientas
@@ -327,7 +327,6 @@
             this.aguaBarraDeHerramientas.Name = "aguaBarraDeHerramientas";
             this.aguaBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
             this.aguaBarraDeHerramientas.Text = "Agua";
-            this.aguaBarraDeHerramientas.Click += new System.EventHandler(this.aguaBarraDeHerramientas_Click);
             // 
             // aireBarraDeHerramientas
             // 
@@ -337,7 +336,6 @@
             this.aireBarraDeHerramientas.Name = "aireBarraDeHerramientas";
             this.aireBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
             this.aireBarraDeHerramientas.Text = "Aire";
-            this.aireBarraDeHerramientas.Click += new System.EventHandler(this.aireBarraDeHerramientas_Click);
             // 
             // cerebroUBarraDeHerramientas
             // 
@@ -359,7 +357,6 @@
             this.fluidoCerebroEspinalBarraDeHerramientas.Name = "fluidoCerebroEspinalBarraDeHerramientas";
             this.fluidoCerebroEspinalBarraDeHerramientas.Size = new System.Drawing.Size(225, 22);
             this.fluidoCerebroEspinalBarraDeHerramientas.Text = "Fluido CerebroEspinal";
-            this.fluidoCerebroEspinalBarraDeHerramientas.Click += new System.EventHandler(this.fluidoCerebroEspinalBarraDeHerramientas_Click);
             // 
             // sustanciaCerebralBlancaBarraDeHerramientas
             // 
@@ -368,7 +365,6 @@
             this.sustanciaCerebralBlancaBarraDeHerramientas.Name = "sustanciaCerebralBlancaBarraDeHerramientas";
             this.sustanciaCerebralBlancaBarraDeHerramientas.Size = new System.Drawing.Size(225, 22);
             this.sustanciaCerebralBlancaBarraDeHerramientas.Text = "Sustancia Cerebral Blanca";
-            this.sustanciaCerebralBlancaBarraDeHerramientas.Click += new System.EventHandler(this.sustanciaCerebralBlancaBarraDeHerramientas_Click);
             // 
             // sustanciaCerebralGrisToolStripMenuItem
             // 
@@ -377,7 +373,6 @@
             this.sustanciaCerebralGrisToolStripMenuItem.Name = "sustanciaCerebralGrisToolStripMenuItem";
             this.sustanciaCerebralGrisToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.sustanciaCerebralGrisToolStripMenuItem.Text = "Sustancia Cerebral Gris";
-            this.sustanciaCerebralGrisToolStripMenuItem.Click += new System.EventHandler(this.sustanciaCerebralGrisToolStripMenuItem_Click);
             // 
             // grasaBarraDeHerramientas
             // 
@@ -387,7 +382,6 @@
             this.grasaBarraDeHerramientas.Name = "grasaBarraDeHerramientas";
             this.grasaBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
             this.grasaBarraDeHerramientas.Text = "Grasa";
-            this.grasaBarraDeHerramientas.Click += new System.EventHandler(this.grasaBarraDeHerramientas_Click);
             // 
             // huesoCompactoBarraDeHerramientas
             // 
@@ -397,7 +391,6 @@
             this.huesoCompactoBarraDeHerramientas.Name = "huesoCompactoBarraDeHerramientas";
             this.huesoCompactoBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
             this.huesoCompactoBarraDeHerramientas.Text = "Hueso Compacto";
-            this.huesoCompactoBarraDeHerramientas.Click += new System.EventHandler(this.huesoCompactoBarraDeHerramientas_Click);
             // 
             // huesoEsponjosoBarraDeHerramientas
             // 
@@ -407,7 +400,6 @@
             this.huesoEsponjosoBarraDeHerramientas.Name = "huesoEsponjosoBarraDeHerramientas";
             this.huesoEsponjosoBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
             this.huesoEsponjosoBarraDeHerramientas.Text = "Hueso Esponjoso";
-            this.huesoEsponjosoBarraDeHerramientas.Click += new System.EventHandler(this.huesoEsponjosoBarraDeHerramientas_Click);
             // 
             // organosBarraDeHerramientas
             // 
@@ -428,36 +420,32 @@
             this.higadoBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.higadoBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.higadoBarraDeHerramientas.Name = "higadoBarraDeHerramientas";
-            this.higadoBarraDeHerramientas.Size = new System.Drawing.Size(152, 22);
+            this.higadoBarraDeHerramientas.Size = new System.Drawing.Size(128, 22);
             this.higadoBarraDeHerramientas.Text = "Higado";
-            this.higadoBarraDeHerramientas.Click += new System.EventHandler(this.higadoBarraDeHerramientas_Click);
             // 
             // pancreasBarraDeHerramientas
             // 
             this.pancreasBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.pancreasBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.pancreasBarraDeHerramientas.Name = "pancreasBarraDeHerramientas";
-            this.pancreasBarraDeHerramientas.Size = new System.Drawing.Size(152, 22);
+            this.pancreasBarraDeHerramientas.Size = new System.Drawing.Size(128, 22);
             this.pancreasBarraDeHerramientas.Text = "Páncreas";
-            this.pancreasBarraDeHerramientas.Click += new System.EventHandler(this.pancreasBarraDeHerramientas_Click);
             // 
             // pulmónUToolStripMenuItem
             // 
             this.pulmónUToolStripMenuItem.BackColor = System.Drawing.Color.Black;
             this.pulmónUToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.pulmónUToolStripMenuItem.Name = "pulmónUToolStripMenuItem";
-            this.pulmónUToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pulmónUToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.pulmónUToolStripMenuItem.Text = "Pulmón";
-            this.pulmónUToolStripMenuItem.Click += new System.EventHandler(this.pulmónUToolStripMenuItem_Click);
             // 
             // riñonBarraDeHerramientas
             // 
             this.riñonBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.riñonBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.riñonBarraDeHerramientas.Name = "riñonBarraDeHerramientas";
-            this.riñonBarraDeHerramientas.Size = new System.Drawing.Size(152, 22);
+            this.riñonBarraDeHerramientas.Size = new System.Drawing.Size(128, 22);
             this.riñonBarraDeHerramientas.Text = "Riñon";
-            this.riñonBarraDeHerramientas.Click += new System.EventHandler(this.riñonBarraDeHerramientas_Click);
             // 
             // personalizadaBarraDeHerramientas
             // 
@@ -476,7 +464,6 @@
             this.sangreBarraDeHerramientas.Name = "sangreBarraDeHerramientas";
             this.sangreBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
             this.sangreBarraDeHerramientas.Text = "Sangre";
-            this.sangreBarraDeHerramientas.Click += new System.EventHandler(this.sangreBarraDeHerramientas_Click);
             // 
             // sangreCoaguladaBarraDeHerramientas
             // 
@@ -486,7 +473,6 @@
             this.sangreCoaguladaBarraDeHerramientas.Name = "sangreCoaguladaBarraDeHerramientas";
             this.sangreCoaguladaBarraDeHerramientas.Size = new System.Drawing.Size(183, 22);
             this.sangreCoaguladaBarraDeHerramientas.Text = "Sangre Coagulada";
-            this.sangreCoaguladaBarraDeHerramientas.Click += new System.EventHandler(this.sangreCoaguladaBarraDeHerramientas_Click);
             // 
             // separadorUmbralizacion
             // 
@@ -536,7 +522,7 @@
             this.acercaDeSAARTACBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.acercaDeSAARTACBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.acercaDeSAARTACBarraDeHerramientas.Name = "acercaDeSAARTACBarraDeHerramientas";
-            this.acercaDeSAARTACBarraDeHerramientas.Size = new System.Drawing.Size(193, 22);
+            this.acercaDeSAARTACBarraDeHerramientas.Size = new System.Drawing.Size(191, 22);
             this.acercaDeSAARTACBarraDeHerramientas.Text = "Acerca De SAARTAC";
             // 
             // BottomToolStripPanel
