@@ -106,6 +106,8 @@
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.barraIconoClasificacion = new System.Windows.Forms.ToolStrip();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.barraHerramientas.SuspendLayout();
             this.barraDeIconos.SuspendLayout();
             this.contenedorBarraDeIconos.ContentPanel.SuspendLayout();
@@ -261,7 +263,7 @@
             this.ventanaBarraDeHerramientas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ventanaBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.ventanaBarraDeHerramientas.Name = "ventanaBarraDeHerramientas";
-            this.ventanaBarraDeHerramientas.Size = new System.Drawing.Size(67, 21);
+            this.ventanaBarraDeHerramientas.Size = new System.Drawing.Size(66, 21);
             this.ventanaBarraDeHerramientas.Text = "Ventana";
             // 
             // defaultBarraDeHerramientas
@@ -555,7 +557,7 @@
             this.acercaDeSAARTACBarraDeHerramientas.BackColor = System.Drawing.Color.Black;
             this.acercaDeSAARTACBarraDeHerramientas.ForeColor = System.Drawing.Color.White;
             this.acercaDeSAARTACBarraDeHerramientas.Name = "acercaDeSAARTACBarraDeHerramientas";
-            this.acercaDeSAARTACBarraDeHerramientas.Size = new System.Drawing.Size(193, 22);
+            this.acercaDeSAARTACBarraDeHerramientas.Size = new System.Drawing.Size(191, 22);
             this.acercaDeSAARTACBarraDeHerramientas.Text = "Acerca De SAARTAC";
             // 
             // BottomToolStripPanel
@@ -969,12 +971,28 @@
             this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
             this.toolStripSplitButton1.Text = "toolStripSplitButton1";
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(665, 2);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(512, 23);
+            this.progressBar1.TabIndex = 6;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.WorkerSupportsCancellation = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            // 
             // mainVentana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1270, 722);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.barraIconoClasificacion);
             this.Controls.Add(this.barraIconoRegla);
             this.Controls.Add(this.barraIconoContrste);
@@ -1101,6 +1119,8 @@
         private System.Windows.Forms.ToolStrip barraIconoRegla;
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

@@ -21,6 +21,8 @@ namespace SAARTAC1._1 {
         private List<Bitmap> imagenesCaja2 = new List<Bitmap>();
         private int id_tac, num_tacs, uh_per, factor_per, bandera = 0;
         private LecturaArchivosDicom lect;
+        private string ruta;
+        //private int abrirArchivo = 0;
         
         public mainVentana() {
             InitializeComponent();
@@ -39,17 +41,15 @@ namespace SAARTAC1._1 {
             try{
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK){ //verifica si se abrio.                    
                     id_tac = 0;
-                    string imagen = folderBrowserDialog1.SelectedPath; //se saca el path del archivo.
-                    lect = new LecturaArchivosDicom(imagen);//se le da el path para sacar los archivos.
-                    num_tacs = lect.num_archivos();//se saca el número de archivos que hay en el estudio.
-                    imagenesCaja2.Clear();
-                    imagenesCaja1.Clear();//se limpia la lista del bitmap.
-                    MostrarImagenOriginal();
-                    MostrarImagenTratada();                    
+                    ruta = folderBrowserDialog1.SelectedPath; //se saca el path del archivo.
+                                  
                 }
                 else Console.WriteLine("Hay un problema al abrir el archivo");
             }
             catch (Exception ex) { MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido"); }
+
+            backgroundWorker1.RunWorkerAsync();
+            progressBar1.Value = 0;
         }
 
         //Avanzar hacia delante sobre la tira.
@@ -224,7 +224,27 @@ namespace SAARTAC1._1 {
                 MostrarImagenTratada();
         }
 
-        
+        private void progressBar1_Click(object sender, EventArgs e) {
+
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) {
+            Thread.Sleep(100);
+            lect = new LecturaArchivosDicom(ruta, sender as BackgroundWorker);//se le da el path para sacar los archivos.
+            num_tacs = lect.num_archivos();//se saca el número de archivos que hay en el estudio.
+            imagenesCaja2.Clear();
+            imagenesCaja1.Clear();//se limpia la lista del bitmap.
+            MostrarImagenOriginal();
+            MostrarImagenTratada();
+            Thread.Sleep(100);
+            progressBar1.Value = 100;
+            
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e) {
+            progressBar1.Value = e.ProgressPercentage;
+        }
+
 
         ///---------------------------------------------------------------------------------------------------------------------------------------------------
 

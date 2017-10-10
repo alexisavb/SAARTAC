@@ -2,19 +2,22 @@
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
+using System.ComponentModel;
 
 namespace SAARTAC1._1
 {
     internal class LecturaArchivosDicom{
 
         public static MatrizDicom[] archivosDicom;
+        public static int cargado = 0;
         public Thread[] threadsArray;
         private static Mutex[] mutex;
         private int numeroHilos = 4;
 
         public MatrizDicom obtenerArchivo(int x) { return archivosDicom[x]; }
 
-        public LecturaArchivosDicom(string ruta){
+        public LecturaArchivosDicom(string ruta, BackgroundWorker bw) {
+            cargado = 0;
             mutex = new Mutex[numeroHilos];
             for (int i = 0; i < mutex.Length; i++)            
                 mutex[i] = new Mutex();            
@@ -33,10 +36,12 @@ namespace SAARTAC1._1
 
             }
             for (int i = 0; i < N; i++)            
-                threadsArray[i].Start();            
-            for (int i = 0; i < N; i++)            
-                threadsArray[i].Join();            
-
+                threadsArray[i].Start();
+            for (int i = 0; i < N; i++) {
+                threadsArray [i].Join();
+                Console.WriteLine((cargado * 100) / N);
+                bw.ReportProgress((cargado * 100) / N);
+            }
             TimeSpan timeDiff = DateTime.Now - start;
             var res = timeDiff.TotalMilliseconds;
             Console.WriteLine("Tiempo de ejecucion: " + res);
@@ -45,14 +50,15 @@ namespace SAARTAC1._1
             //pruebaImagen.Dispose();
 
             //Console.WriteLine("llegue aqui");
+            bw.ReportProgress(100);
         }
 
         public int num_archivos() { return archivosDicom.Length; }
 
         public static double[] Pregunta_Python_Dimensiones(int pregunta, string ruta){
 
-            string python = @"C:\Python27\python.exe";
-            string myPythonApp = @"C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\TT2.0C#\sum.py";
+            string python = @"D:\Python27\python.exe";
+            string myPythonApp = "\"D:\\Trabajo Terminal\\SAARTAC\\TT2.0C#\\sum.py\"";
             //C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
@@ -92,8 +98,8 @@ namespace SAARTAC1._1
             string ruta = o.ruta;
             int pregunta = o.x;
             int pos = o.pos;
-            string python = @"C:\Python27\python.exe";
-            string myPythonApp = @"C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\TT2.0C#\sum.py";
+            string python = @"D:\Python27\python.exe";
+            string myPythonApp = "\"D:\\Trabajo Terminal\\SAARTAC\\TT2.0C#\\sum.py\"";
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
             myProcessStartInfo.UseShellExecute = false;
@@ -127,6 +133,7 @@ namespace SAARTAC1._1
             myProcess.Close();
             archivosDicom[pos] = dicom;
             mutex[pos_hilo].ReleaseMutex();
+            cargado++;
         }
     }
 
