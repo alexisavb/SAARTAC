@@ -40,9 +40,24 @@ namespace SAARTAC1._1
         public int createAverage(){
             int limY = RectanguloSeleccion.Y + RectanguloSeleccion.Height;
             int limX = RectanguloSeleccion.X + RectanguloSeleccion.Width;
+            int iniX = RectanguloSeleccion.X;
+            int iniY = RectanguloSeleccion.Y;
+            if (limY < iniY)
+            {
+                int aux = iniY;
+                iniY = limY;
+                limY = aux;
+            }
+            if (limX < iniX)
+            {
+                int aux = iniX;
+                iniX = limX;
+                limX = aux;
+            }
+
             int sum = 0, cnt = 0;
-            for (int i = RectanguloSeleccion.Y; i <= limY; i++){
-                for (int j = RectanguloSeleccion.X; j <= limX; j++){
+            for (int i = iniY; i <= limY; i++){
+                for (int j = iniX; j <= limX; j++){
                     sum += auxUH.ObtenerUH(j, i);
                     cnt++;
                 }

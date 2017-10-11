@@ -42,8 +42,7 @@ namespace SAARTAC1._1 {
             try{
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK){ //verifica si se abrio.                    
                     id_tac = 0;
-                    ruta = folderBrowserDialog1.SelectedPath; //se saca el path del archivo.
-                                  
+                    ruta = folderBrowserDialog1.SelectedPath; //se saca el path del archivo.                                  
                 }
                 else Console.WriteLine("Hay un problema al abrir el archivo");
             }
@@ -120,6 +119,16 @@ namespace SAARTAC1._1 {
                 objGrafico.DrawRectangle(seccion.getPen(), seccion.getRectangle());
                 mostrarOriginal.Invalidate();
             }
+            //PARTE DEL ZOOM
+            if (zoomCon){
+               Bitmap zoomImage = new Bitmap(mostrarOriginal.Image);
+                Rectangle zoomRect = new Rectangle(x - (ventanaZoom / 2), y - (ventanaZoom / 2), ventanaZoom, ventanaZoom);
+                if (zoomRect.Left >= 0 && zoomRect.Top >= 0 && zoomRect.Right <= 512 && zoomRect.Bottom <= 512){
+                    var newzoomImage = zoomImage.Clone(zoomRect, zoomImage.PixelFormat);
+                    zoom.Image = newzoomImage;
+                    zoom.SizeMode = PictureBoxSizeMode.StretchImage;
+                }                
+            }
         }
 
         //Evento cuando es mousedown sacar el punto de inicio.
@@ -186,25 +195,31 @@ namespace SAARTAC1._1 {
         //umbral hueso compacto
         private void huesoCompactoBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Hueso compacto", Color.FromArgb(203, 36, 79)); }
 
+        //umbral hueso esponjonso
         private void huesoEsponjosoBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Hueso esponjoso", Color.FromArgb(117, 7, 35));}
 
+        //umbral grasa
         private void grasaBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Grasa", Color.FromArgb(225, 183, 24)); }
 
+        //umbral higado
         private void higadoBarraDeHerramientas_Click(object sender, EventArgs e) { imagenesCaja2.Clear(); dibujarUmbral("Higado", Color.FromArgb(15, 23, 86)); }
 
+        //umbral pancreas
         private void pancreasBarraDeHerramientas_Click(object sender, EventArgs e) { imagenesCaja2.Clear(); dibujarUmbral("Pancreas", Color.FromArgb(220, 48, 13)); }
 
+        //umbral pulmon
         private void pulmónUToolStripMenuItem_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Pulmones", Color.FromArgb(9, 134, 66)); }
 
+        //umbral riñon
         private void riñonBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Riñon", Color.FromArgb(104, 0, 146)); }
 
+        //umbral sangre
         private void sangreBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Sangre", Color.FromArgb(225, 4, 0)); }
 
+        //umbral sangre coagulada
         private void sangreCoaguladaBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("SangreCoagulada", Color.FromArgb(176, 5, 2)); }
-        private void contenedorBarraDeIconos_TopToolStripPanel_Click(object sender, EventArgs e) {
 
-        }
-
+        private void contenedorBarraDeIconos_TopToolStripPanel_Click(object sender, EventArgs e) {}
 
         //Ventana para cerebro.
         private void cerebroBarraDeHerramientas_Click(object sender, EventArgs e){
@@ -225,10 +240,9 @@ namespace SAARTAC1._1 {
                 MostrarImagenTratada();
         }
 
-        private void progressBar1_Click(object sender, EventArgs e) {
+        private void progressBar1_Click(object sender, EventArgs e) {}
 
-        }
-
+        //obtiene las imagenes en background 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) {
             Thread.Sleep(100);
             lect = new LecturaArchivosDicom(ruta, sender as BackgroundWorker);//se le da el path para sacar los archivos.
@@ -239,12 +253,67 @@ namespace SAARTAC1._1 {
             MostrarImagenTratada();
             Thread.Sleep(100);
             progressBar1.Value = 100;
-            
+            zoomCon = true;
         }
 
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e) {
-            progressBar1.Value = e.ProgressPercentage;
+        //reporten del progreso, barra de progreso
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e) { progressBar1.Value = e.ProgressPercentage;}
+           
+        //abrir archivo icono
+        private void abrirBarraIconos_Click(object sender, EventArgs e){ abrirBarraHerramientas_Click(sender,e);}
+
+        //Rotar 90 grados izquirda icono
+        private void toolStripButton1_Click(object sender, EventArgs e){ rotar90IquierdaBarraDeHerramientas_Click(sender, e); }
+
+        //Rotar 90 grados derecha icono
+        private void toolStripButton2_Click(object sender, EventArgs e) { rotar90DerechaBarraDeHerramientas_Click(sender, e);}
+
+        //Umbral de huevo icono
+        private void toolStripButton5_Click(object sender, EventArgs e){ huesoCompactoBarraDeHerramientas_Click(sender,e); }
+
+        //umbral de agua icono
+        private void toolStripButton6_Click(object sender, EventArgs e){ aguaBarraDeHerramientas_Click(sender, e); }
+
+        //umbral de sangre icono
+        private void toolStripButton7_Click(object sender, EventArgs e){ sangreBarraDeHerramientas_Click(sender,e); }
+
+        //Activar regla icono
+        private void toolStripButton10_Click(object sender, EventArgs e){ reglaBool = true; }
+
+        //ventana default
+        private void defaultBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja1.Clear(); MostrarImagenOriginal();}
+
+        //ventana default iconos
+        private void predeterminadoIcono_Click(object sender, EventArgs e){ imagenesCaja1.Clear(); MostrarImagenOriginal();}
+
+        //ventana cerebro iconos
+        private void cerebroIcono_Click(object sender, EventArgs e){ cerebroBarraDeHerramientas_Click(sender, e); }
+
+        //venatana hueso iconos
+        private void huesoContrasteIcono_Click(object sender, EventArgs e){ huesoBarraDeHerramientas_Click(sender,e); }
+
+        //Sacar UH en la imagen tratada
+        private void mostrarTratada_MouseMove(object sender, MouseEventArgs e){
+            int x = mostrarTratada.PointToClient(Cursor.Position).X;
+            int y = mostrarTratada.PointToClient(Cursor.Position).Y;
+            if (auxUH != null) resultadoUHMouse.Text = (auxUH.ObtenerUH(x, y)).ToString();
+            //PARTE DEL ZOOM
+            if (zoomCon){
+                if (mostrarTratada.Image != null){
+                    Bitmap zoomTratedImage = new Bitmap(mostrarTratada.Image);
+                    Rectangle zoomRect2 = new Rectangle(x - (ventanaZoom / 2), y - (ventanaZoom / 2), ventanaZoom, ventanaZoom);
+                    if (zoomRect2.Left >= 0 && zoomRect2.Top >= 0 && zoomRect2.Right <= 512 && zoomRect2.Bottom <= 512){
+                        var newzoomImage = zoomTratedImage.Clone(zoomRect2, zoomTratedImage.PixelFormat);
+                        zoom.Image = newzoomImage;
+                        zoom.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
+                }
+            }
         }
+
+        
+
+
 
 
         ///---------------------------------------------------------------------------------------------------------------------------------------------------
