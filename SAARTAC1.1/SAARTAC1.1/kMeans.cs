@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,12 +18,19 @@ namespace SAARTAC1._1
         private List<Double> conjunto = new List<Double>();
         private int[,,] clases;
         private Random rnd;
+        private BackgroundWorker reporteProgreso;
+        private static int operaciones_cargando, operaciones_total;
 
-        public kMeans(LecturaArchivosDicom lect, int k, int iteraciones, int numeros_archivos){
+        public kMeans(LecturaArchivosDicom lect, int k, int iteraciones, int numeros_archivos, BackgroundWorker bw){
             matrices = lect;
             numerosK = k;
+            reporteProgreso = bw;
+            reporteProgreso.ReportProgress(0);
+            operaciones_cargando = 0;
             clases = new int[512, 512, numeros_archivos];
             ite = iteraciones;
+
+            operaciones_total = ite * 512 * 512 * matrices.num_archivos();
             generarCentros();
             mainKmeans();
         }
@@ -76,6 +84,8 @@ namespace SAARTAC1._1
                         //if (matriz_actual.ObtenerUH(i, j) < -890) continue;
                         sumas[clases[i, j, p] - 1] += matriz_actual.ObtenerUH(i, j);
                         contador[clases[i, j, p] - 1]++;
+                        operaciones_cargando++;
+                        reporteProgreso.ReportProgress((90 * operaciones_cargando) / operaciones_total);
                     }
                 }
             }
