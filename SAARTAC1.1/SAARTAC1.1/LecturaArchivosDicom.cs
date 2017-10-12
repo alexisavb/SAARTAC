@@ -59,7 +59,7 @@ namespace SAARTAC1._1
         public int num_archivos() { return archivosDicom.Length; }
 
         public static double[] Pregunta_Python_Dimensiones(int pregunta, string ruta){
-
+            
             //C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
@@ -99,7 +99,7 @@ namespace SAARTAC1._1
             string ruta = o.ruta;
             int pregunta = o.x;
             int pos = o.pos;
-            
+
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
             myProcessStartInfo.UseShellExecute = false;
