@@ -14,7 +14,8 @@ namespace SAARTAC1._1
         private static Mutex[] mutex;
         private int numeroHilos = 4;
         private const string python = @"C:\Python27\python.exe";
-        private const string myPythonApp = "\"C:\\Users\\Edgar Nieves\\Documents\\GitHub\\SAARTAC\\TT2.0C#\\sum.py\"";
+        //C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#
+        private const string myPythonApp = @"C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#\sum.py";
         public MatrizDicom obtenerArchivo(int x) { return archivosDicom[x]; }
 
         public LecturaArchivosDicom(string ruta, BackgroundWorker bw) {
@@ -60,7 +61,6 @@ namespace SAARTAC1._1
 
         public static double[] Pregunta_Python_Dimensiones(int pregunta, string ruta){
             
-            //C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
             myProcessStartInfo.UseShellExecute = false;
