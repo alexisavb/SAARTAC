@@ -14,7 +14,7 @@ namespace SAARTAC1._1
         private static Mutex[] mutex;
         private int numeroHilos = 4;
         private const string python = @"C:\Python27\python.exe";
-        private const string myPythonApp = "\"C:\\Users\\Edgar Nieves\\Documents\\GitHub\\SAARTAC\\TT2.0C#\\sum.py\"";
+        private const string myPythonApp = @"C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\TT2.0C#\sum.py";
         public MatrizDicom obtenerArchivo(int x) { return archivosDicom[x]; }
 
         public LecturaArchivosDicom(string ruta, BackgroundWorker bw) {
