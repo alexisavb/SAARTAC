@@ -13,8 +13,8 @@ namespace SAARTAC1._1
         public Thread[] threadsArray;
         private static Mutex[] mutex;
         private int numeroHilos = 4;
-        private const string python = @"D:\Python27\python.exe";
-        private const string myPythonApp = "\"D:\\Trabajo Terminal\\SAARTAC\\TT2.0C#\\sum.py\"";
+        private const string python = @"C:\Python27\python.exe";
+        private const string myPythonApp = "\"C:\\Users\\Edgar Nieves\\Documents\\GitHub\\SAARTAC\\TT2.0C#\\sum.py\"";
         public MatrizDicom obtenerArchivo(int x) { return archivosDicom[x]; }
 
         public LecturaArchivosDicom(string ruta, BackgroundWorker bw) {
@@ -60,9 +60,6 @@ namespace SAARTAC1._1
 
         public static double[] Pregunta_Python_Dimensiones(int pregunta, string ruta){
 
-            string python = @"C:\Python27\python.exe";
-            string myPythonApp = @"C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\TT2.0C#\sum.py"; ;
-
             //C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
@@ -102,9 +99,7 @@ namespace SAARTAC1._1
             string ruta = o.ruta;
             int pregunta = o.x;
             int pos = o.pos;
-
-            string python = @"C:\Python27\python.exe";
-            string myPythonApp = @"C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\TT2.0C#\sum.py";
+            
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
             myProcessStartInfo.UseShellExecute = false;
