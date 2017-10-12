@@ -417,16 +417,54 @@ namespace SAARTAC1._1 {
             }
         }
 
+        //zoom para restarle
+        private void toolStripButton3_Click(object sender, EventArgs e){
+            if (ventanaZoom == 100) return;
+            ventanaZoom += 20;
+        }
 
-            ///---------------------------------------------------------------------------------------------------------------------------------------------------
+        //zoom para sumarle
+        private void toolStripButton4_Click(object sender, EventArgs e){
+            if (ventanaZoom == 20) return;
+            ventanaZoom -= 20;
+        }
+
+        //exportar original icono
+        private void exportarOriginalIcono_Click(object sender, EventArgs e){
+            if (mostrarOriginal.Image == null) return;
+            SaveFileDialog f = new SaveFileDialog();
+            f.Filter = "JPG(.JPG)|.jpg|Png Image (.png)|*.png";
+            if (f.ShowDialog() == DialogResult.OK)            
+                mostrarOriginal.Image.Save(f.FileName);            
+        }
+
+        //exportar tratada icono
+        private void exportarTratadaIcono_Click(object sender, EventArgs e){
+            if (mostrarTratada.Image == null) return;
+            SaveFileDialog f = new SaveFileDialog();
+            f.Filter = "JPG(.JPG)|.jpg|Png Image (.png)|*.png";
+            if (f.ShowDialog() == DialogResult.OK)
+                mostrarTratada.Image.Save(f.FileName);
+        }
+
+        //exportar original 
+        private void exportarOriginal_Click(object sender, EventArgs e){ exportarOriginalIcono_Click(sender,e); }
+
+        //exportar tratada
+        private void exportarTratada_Click(object sender, EventArgs e){ exportarTratadaIcono_Click(sender,e); }
 
 
-            //Funciones 
-            //***************************************************************************************************************************************************** 
-            //mostrar imagen sin tratamiento.
 
 
-            private void dibujarUmbral(string lectura, Color color){
+        ///---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+        //Funciones 
+        //***************************************************************************************************************************************************** 
+        //mostrar imagen sin tratamiento.
+
+
+        private void dibujarUmbral(string lectura, Color color){
             Umbralizacion operaciones = new Umbralizacion();
             for (int i = 0; i < lect.num_archivos(); i++){
                 var archivo = lect.obtenerArchivo(i);
@@ -436,6 +474,8 @@ namespace SAARTAC1._1 {
             }
             MostrarImagenTratada();
         }
+        private void exportarBarraIconos_Click(object sender, EventArgs e){}
+        
 
         private void MostrarImagenOriginal(){
             if (imagenesCaja1.Count() <= 0) {
