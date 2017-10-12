@@ -42,8 +42,8 @@ namespace SAARTAC1._1
             for (int i = 0; i < N; i++) {
                 threadsArray [i].Join();
                 Thread.Sleep(100);
-                Console.WriteLine((cargado * 100) / N);
-                bw.ReportProgress((cargado * 100) / N);
+                Console.WriteLine((cargado * 90) / N);
+                bw.ReportProgress((cargado * 90) / N);
             }
             TimeSpan timeDiff = DateTime.Now - start;
             var res = timeDiff.TotalMilliseconds;
@@ -53,7 +53,7 @@ namespace SAARTAC1._1
             //pruebaImagen.Dispose();
 
             //Console.WriteLine("llegue aqui");
-            bw.ReportProgress(100);
+            bw.ReportProgress(90);
         }
 
         public int num_archivos() { return archivosDicom.Length; }

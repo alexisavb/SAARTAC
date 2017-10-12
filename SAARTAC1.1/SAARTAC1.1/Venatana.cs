@@ -277,7 +277,6 @@ namespace SAARTAC1._1 {
             imagenesCaja1.Clear();//se limpia la lista del bitmap.
             MostrarImagenOriginal();
             MostrarImagenTratada();
-            progressBar1.Value = 100;
             zoomCon = true;
         }
 
@@ -365,11 +364,15 @@ namespace SAARTAC1._1 {
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e){
             if (e.Cancelled)
-                MessageBox.Show("The task has been cancelled");            
-            else if (e.Error != null)            
-                MessageBox.Show("Error. Details: " + (e.Error as Exception).ToString());            
-            else            
-                progressBar1.Visible = false;            
+                MessageBox.Show("The task has been cancelled");
+            else if (e.Error != null)
+                MessageBox.Show("Error. Details: " + (e.Error as Exception).ToString());
+            else{
+
+                progressBar1.Value = 100;
+                Thread.Sleep(500);
+                progressBar1.Visible = false;
+            }
         }
 
 
@@ -394,10 +397,14 @@ namespace SAARTAC1._1 {
         
 
         private void MostrarImagenOriginal(){
-            if (imagenesCaja1.Count() > 0){ mostrarOriginal.Image = imagenesCaja1[id_tac]; return;}//Esto es para cambiar de imagen y lo dibuje.
-            MatrizDicom aux = lect.obtenerArchivo(id_tac); //se obtiene la matriz.
-            auxUH = lect.obtenerArchivo(id_tac);
-            mostrarOriginal.Image = aux.ObtenerImagen(); //se dibuja la matriz.
+            if (imagenesCaja1.Count() <= 0) {
+                for (int i = 0; i < lect.num_archivos(); i++) {
+                    var archivo = lect.obtenerArchivo(i);
+                    var imagenResultado = archivo.ObtenerImagen();
+                    imagenesCaja1.Add(imagenResultado);
+                }
+            }
+            mostrarOriginal.Image = imagenesCaja1[id_tac];
         }
 
         //mostrar imagen con tratamiento.
