@@ -38,25 +38,27 @@ namespace SAARTAC1._1 {
 
         //Evento MouseWheel
         private void ventanaMouseWheel(object sender, MouseEventArgs e) {
-            if (e.Delta > 0) {
-                if (id_tac >= num_tacs - 1)
-                    id_tac = 0;
-                else
-                    id_tac++;
-                auxUH = lect.obtenerArchivo(id_tac);
-                MostrarImagenOriginal();
-                if (imagenesCaja2.Count > 0)
-                    MostrarImagenTratada();
-            }
-            if (e.Delta < 0) {
-                if (id_tac == 0)
-                    id_tac = num_tacs - 1;
-                else
-                    id_tac--;
-                auxUH = lect.obtenerArchivo(id_tac);
-                MostrarImagenOriginal();
-                if (imagenesCaja2.Count > 0)
-                    MostrarImagenTratada();
+            if (mostrarOriginal.Image != null) {
+                if (e.Delta > 0) {
+                    if (id_tac >= num_tacs - 1)
+                        id_tac = 0;
+                    else
+                        id_tac++;
+                    auxUH = lect.obtenerArchivo(id_tac);
+                    MostrarImagenOriginal();
+                    if (imagenesCaja2.Count > 0)
+                        MostrarImagenTratada();
+                }
+                if (e.Delta < 0) {
+                    if (id_tac == 0)
+                        id_tac = num_tacs - 1;
+                    else
+                        id_tac--;
+                    auxUH = lect.obtenerArchivo(id_tac);
+                    MostrarImagenOriginal();
+                    if (imagenesCaja2.Count > 0)
+                        MostrarImagenTratada();
+                }
             }
         }
 
@@ -73,7 +75,8 @@ namespace SAARTAC1._1 {
                 else Console.WriteLine("Hay un problema al abrir el archivo");
             }
             catch (Exception ex) { MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido"); }
-            progressBar1.Visible = true;
+
+            panelProgressBar.Visible = true;
             progressBar1.Value = 1;
             backgroundWorker1.RunWorkerAsync(1);
         }
@@ -386,14 +389,14 @@ namespace SAARTAC1._1 {
 
         //Cluster de k-means 
         private void kmeans_Click(object sender, EventArgs e){
-            progressBar1.Visible = true;
+            panelProgressBar.Visible = true;
             progressBar1.Value = 1;
             backgroundWorker1.RunWorkerAsync(2);
         }
 
         //Cluster C-fuzzy
         private void fuzzy_Click(object sender, EventArgs e){
-            progressBar1.Visible = true;
+            panelProgressBar.Visible = true;
             progressBar1.Value = 1;
             backgroundWorker1.RunWorkerAsync(3);
         }
@@ -413,7 +416,7 @@ namespace SAARTAC1._1 {
 
                 progressBar1.Value = 100;
                 Thread.Sleep(500);
-                progressBar1.Visible = false;
+                panelProgressBar.Visible = false;
             }
         }
 
@@ -473,6 +476,17 @@ namespace SAARTAC1._1 {
                 imagenesCaja2.Add(imagenResultado);
             }
             MostrarImagenTratada();
+        }
+        private void personalizadaBarraDeHerramientas_Click(object sender, EventArgs e) {
+            panelPersonalizada.Visible = true;
+        }
+
+        private void pesonalizadaVBarraDeHerramientas_Click(object sender, EventArgs e) {
+            panelPersonalizada.Visible = true;
+        }
+
+        private void botonAplicarPersonalizada_Click(object sender, EventArgs e) {
+            panelPersonalizada.Visible = false;
         }
         private void exportarBarraIconos_Click(object sender, EventArgs e){}
         

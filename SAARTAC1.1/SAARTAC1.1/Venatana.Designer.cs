@@ -83,6 +83,16 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.contenedorBarraDeIconos = new System.Windows.Forms.ToolStripContainer();
+            this.panelPersonalizada = new System.Windows.Forms.Panel();
+            this.botonAplicarPersonalizada = new System.Windows.Forms.Button();
+            this.valorAncho = new System.Windows.Forms.TextBox();
+            this.valorCentro = new System.Windows.Forms.TextBox();
+            this.textoAnchoPersonalizada = new System.Windows.Forms.Label();
+            this.textoCentroPersonalizada = new System.Windows.Forms.Label();
+            this.textoPersonalizada = new System.Windows.Forms.Label();
+            this.panelProgressBar = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.textoProcesando = new System.Windows.Forms.Label();
             this.zoom = new System.Windows.Forms.PictureBox();
             this.panelInformacion = new System.Windows.Forms.Panel();
             this.textoMm = new System.Windows.Forms.Label();
@@ -96,6 +106,8 @@
             this.botonAtras = new System.Windows.Forms.Button();
             this.mostrarTratada = new System.Windows.Forms.PictureBox();
             this.mostrarOriginal = new System.Windows.Forms.PictureBox();
+            this.barraIconoRegla = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.barraIconosUmbralizacion = new System.Windows.Forms.ToolStrip();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
@@ -111,6 +123,17 @@
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.kmeansIcono = new System.Windows.Forms.ToolStripMenuItem();
             this.fuzzyIcono = new System.Windows.Forms.ToolStripMenuItem();
+            this.barraIconos3D = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.barraIconoContrste = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton9 = new System.Windows.Forms.ToolStripSplitButton();
+            this.predeterminadoIcono = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerebroIcono = new System.Windows.Forms.ToolStripMenuItem();
+            this.huesoContrasteIcono = new System.Windows.Forms.ToolStripMenuItem();
+            this.barraIconosUmbralizacion = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.barraIconoRegla = new System.Windows.Forms.ToolStrip();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -125,6 +148,8 @@
             this.contenedorBarraDeIconos.ContentPanel.SuspendLayout();
             this.contenedorBarraDeIconos.TopToolStripPanel.SuspendLayout();
             this.contenedorBarraDeIconos.SuspendLayout();
+            this.panelPersonalizada.SuspendLayout();
+            this.panelProgressBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zoom)).BeginInit();
             this.panelInformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mostrarTratada)).BeginInit();
@@ -320,6 +345,7 @@
             this.pesonalizadaVBarraDeHerramientas.Name = "pesonalizadaVBarraDeHerramientas";
             this.pesonalizadaVBarraDeHerramientas.Size = new System.Drawing.Size(186, 24);
             this.pesonalizadaVBarraDeHerramientas.Text = "Personalizada";
+            this.pesonalizadaVBarraDeHerramientas.Click += new System.EventHandler(this.pesonalizadaVBarraDeHerramientas_Click);
             // 
             // pulmónBarraDeHerramientas
             // 
@@ -500,6 +526,7 @@
             this.personalizadaBarraDeHerramientas.Name = "personalizadaBarraDeHerramientas";
             this.personalizadaBarraDeHerramientas.Size = new System.Drawing.Size(211, 24);
             this.personalizadaBarraDeHerramientas.Text = "Personalizada";
+            this.personalizadaBarraDeHerramientas.Click += new System.EventHandler(this.personalizadaBarraDeHerramientas_Click);
             // 
             // sangreBarraDeHerramientas
             // 
@@ -656,7 +683,7 @@
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripButton4});
-            this.barraDeIconos.Location = new System.Drawing.Point(3, 0);
+            this.barraDeIconos.Location = new System.Drawing.Point(3, 125);
             this.barraDeIconos.Name = "barraDeIconos";
             this.barraDeIconos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.barraDeIconos.Size = new System.Drawing.Size(163, 25);
@@ -728,13 +755,15 @@
             // 
             this.contenedorBarraDeIconos.ContentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.contenedorBarraDeIconos.ContentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.panelPersonalizada);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.panelProgressBar);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.zoom);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.panelInformacion);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.botonSiguient);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.botonAtras);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.mostrarTratada);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.mostrarOriginal);
-            this.contenedorBarraDeIconos.ContentPanel.Size = new System.Drawing.Size(1354, 544);
+            this.contenedorBarraDeIconos.ContentPanel.Size = new System.Drawing.Size(1354, 543);
             this.contenedorBarraDeIconos.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // contenedorBarraDeIconos.LeftToolStripPanel
@@ -762,10 +791,109 @@
             this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoRegla);
             this.contenedorBarraDeIconos.TopToolStripPanel.Click += new System.EventHandler(this.contenedorBarraDeIconos_TopToolStripPanel_Click);
             // 
+            // panelPersonalizada
+            // 
+            this.panelPersonalizada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelPersonalizada.Controls.Add(this.botonAplicarPersonalizada);
+            this.panelPersonalizada.Controls.Add(this.valorAncho);
+            this.panelPersonalizada.Controls.Add(this.valorCentro);
+            this.panelPersonalizada.Controls.Add(this.textoAnchoPersonalizada);
+            this.panelPersonalizada.Controls.Add(this.textoCentroPersonalizada);
+            this.panelPersonalizada.Controls.Add(this.textoPersonalizada);
+            this.panelPersonalizada.Location = new System.Drawing.Point(1125, 264);
+            this.panelPersonalizada.Name = "panelPersonalizada";
+            this.panelPersonalizada.Size = new System.Drawing.Size(229, 151);
+            this.panelPersonalizada.TabIndex = 8;
+            this.panelPersonalizada.Visible = false;
+            // 
+            // botonAplicarPersonalizada
+            // 
+            this.botonAplicarPersonalizada.Location = new System.Drawing.Point(70, 110);
+            this.botonAplicarPersonalizada.Name = "botonAplicarPersonalizada";
+            this.botonAplicarPersonalizada.Size = new System.Drawing.Size(106, 27);
+            this.botonAplicarPersonalizada.TabIndex = 5;
+            this.botonAplicarPersonalizada.Text = "Aplicar";
+            this.botonAplicarPersonalizada.UseVisualStyleBackColor = true;
+            this.botonAplicarPersonalizada.Click += new System.EventHandler(this.botonAplicarPersonalizada_Click);
+            // 
+            // valorAncho
+            // 
+            this.valorAncho.Location = new System.Drawing.Point(155, 78);
+            this.valorAncho.Name = "valorAncho";
+            this.valorAncho.Size = new System.Drawing.Size(59, 26);
+            this.valorAncho.TabIndex = 4;
+            // 
+            // valorCentro
+            // 
+            this.valorCentro.Location = new System.Drawing.Point(155, 46);
+            this.valorCentro.Name = "valorCentro";
+            this.valorCentro.Size = new System.Drawing.Size(59, 26);
+            this.valorCentro.TabIndex = 3;
+            // 
+            // textoAnchoPersonalizada
+            // 
+            this.textoAnchoPersonalizada.AutoSize = true;
+            this.textoAnchoPersonalizada.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textoAnchoPersonalizada.Location = new System.Drawing.Point(3, 81);
+            this.textoAnchoPersonalizada.Name = "textoAnchoPersonalizada";
+            this.textoAnchoPersonalizada.Size = new System.Drawing.Size(142, 20);
+            this.textoAnchoPersonalizada.TabIndex = 2;
+            this.textoAnchoPersonalizada.Text = "Ancho de ventana:";
+            // 
+            // textoCentroPersonalizada
+            // 
+            this.textoCentroPersonalizada.AutoSize = true;
+            this.textoCentroPersonalizada.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textoCentroPersonalizada.Location = new System.Drawing.Point(3, 49);
+            this.textoCentroPersonalizada.Name = "textoCentroPersonalizada";
+            this.textoCentroPersonalizada.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textoCentroPersonalizada.Size = new System.Drawing.Size(65, 20);
+            this.textoCentroPersonalizada.TabIndex = 1;
+            this.textoCentroPersonalizada.Text = "Centro: ";
+            // 
+            // textoPersonalizada
+            // 
+            this.textoPersonalizada.AutoSize = true;
+            this.textoPersonalizada.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textoPersonalizada.Location = new System.Drawing.Point(3, 10);
+            this.textoPersonalizada.Name = "textoPersonalizada";
+            this.textoPersonalizada.Size = new System.Drawing.Size(173, 20);
+            this.textoPersonalizada.TabIndex = 0;
+            this.textoPersonalizada.Text = "Ventana personalizada";
+            // 
+            // panelProgressBar
+            // 
+            this.panelProgressBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelProgressBar.Controls.Add(this.progressBar1);
+            this.panelProgressBar.Controls.Add(this.textoProcesando);
+            this.panelProgressBar.Location = new System.Drawing.Point(301, 236);
+            this.panelProgressBar.Name = "panelProgressBar";
+            this.panelProgressBar.Size = new System.Drawing.Size(546, 97);
+            this.panelProgressBar.TabIndex = 7;
+            this.panelProgressBar.Visible = false;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(16, 54);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(512, 23);
+            this.progressBar1.TabIndex = 6;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
+            // 
+            // textoProcesando
+            // 
+            this.textoProcesando.AutoSize = true;
+            this.textoProcesando.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.textoProcesando.Location = new System.Drawing.Point(12, 18);
+            this.textoProcesando.Name = "textoProcesando";
+            this.textoProcesando.Size = new System.Drawing.Size(106, 20);
+            this.textoProcesando.TabIndex = 0;
+            this.textoProcesando.Text = "Procesando...";
+            // 
             // zoom
             // 
             this.zoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.zoom.Location = new System.Drawing.Point(1121, 35);
+            this.zoom.Location = new System.Drawing.Point(1121, 27);
             this.zoom.Name = "zoom";
             this.zoom.Size = new System.Drawing.Size(230, 207);
             this.zoom.TabIndex = 6;
@@ -904,6 +1032,18 @@
             this.mostrarOriginal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mostrarOriginal_MouseMove);
             this.mostrarOriginal.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mostrarOriginal_MouseUp);
             // 
+            // barraIconoRegla
+            // 
+            this.barraIconoRegla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.barraIconoRegla.Dock = System.Windows.Forms.DockStyle.None;
+            this.barraIconoRegla.ImageScalingSize = new System.Drawing.Size(18, 18);
+            this.barraIconoRegla.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton10});
+            this.barraIconoRegla.Location = new System.Drawing.Point(115, 0);
+            this.barraIconoRegla.Name = "barraIconoRegla";
+            this.barraIconoRegla.Size = new System.Drawing.Size(35, 25);
+            this.barraIconoRegla.TabIndex = 0;
+            this.barraIconoRegla.Text = "Medir distancia";
             // barraIconosUmbralizacion
             // 
             this.barraIconosUmbralizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
@@ -1029,7 +1169,7 @@
             this.barraIconoClasificacion.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.barraIconoClasificacion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSplitButton1});
-            this.barraIconoClasificacion.Location = new System.Drawing.Point(293, 0);
+            this.barraIconoClasificacion.Location = new System.Drawing.Point(104, 25);
             this.barraIconoClasificacion.Name = "barraIconoClasificacion";
             this.barraIconoClasificacion.Size = new System.Drawing.Size(46, 25);
             this.barraIconoClasificacion.TabIndex = 6;
@@ -1084,7 +1224,7 @@
             this.barraIconos3D.GripMargin = new System.Windows.Forms.Padding(0);
             this.barraIconos3D.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton8});
-            this.barraIconos3D.Location = new System.Drawing.Point(339, 0);
+            this.barraIconos3D.Location = new System.Drawing.Point(119, 50);
             this.barraIconos3D.Name = "barraIconos3D";
             this.barraIconos3D.Size = new System.Drawing.Size(31, 25);
             this.barraIconos3D.TabIndex = 2;
@@ -1100,13 +1240,101 @@
             this.toolStripButton10.Text = "Distancia";
             this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
             // 
-            // progressBar1
+            // barraIconoContrste
             // 
-            this.progressBar1.Location = new System.Drawing.Point(764, 0);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(512, 23);
-            this.progressBar1.TabIndex = 6;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
+            this.barraIconoContrste.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.barraIconoContrste.Dock = System.Windows.Forms.DockStyle.None;
+            this.barraIconoContrste.ImageScalingSize = new System.Drawing.Size(18, 18);
+            this.barraIconoContrste.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton9});
+            this.barraIconoContrste.Location = new System.Drawing.Point(104, 75);
+            this.barraIconoContrste.Name = "barraIconoContrste";
+            this.barraIconoContrste.Size = new System.Drawing.Size(46, 25);
+            this.barraIconoContrste.TabIndex = 0;
+            // 
+            // toolStripButton9
+            // 
+            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton9.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.predeterminadoIcono,
+            this.cerebroIcono,
+            this.huesoContrasteIcono});
+            this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
+            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton9.Name = "toolStripButton9";
+            this.toolStripButton9.Size = new System.Drawing.Size(34, 22);
+            this.toolStripButton9.Text = "Contraste";
+            // 
+            // predeterminadoIcono
+            // 
+            this.predeterminadoIcono.BackColor = System.Drawing.Color.Black;
+            this.predeterminadoIcono.ForeColor = System.Drawing.Color.White;
+            this.predeterminadoIcono.Name = "predeterminadoIcono";
+            this.predeterminadoIcono.Size = new System.Drawing.Size(159, 22);
+            this.predeterminadoIcono.Text = "Predeterminado";
+            this.predeterminadoIcono.Click += new System.EventHandler(this.predeterminadoIcono_Click);
+            // 
+            // cerebroIcono
+            // 
+            this.cerebroIcono.BackColor = System.Drawing.Color.Black;
+            this.cerebroIcono.ForeColor = System.Drawing.Color.White;
+            this.cerebroIcono.Name = "cerebroIcono";
+            this.cerebroIcono.Size = new System.Drawing.Size(159, 22);
+            this.cerebroIcono.Text = "Cerebro";
+            this.cerebroIcono.Click += new System.EventHandler(this.cerebroIcono_Click);
+            // 
+            // huesoContrasteIcono
+            // 
+            this.huesoContrasteIcono.BackColor = System.Drawing.Color.Black;
+            this.huesoContrasteIcono.ForeColor = System.Drawing.Color.White;
+            this.huesoContrasteIcono.Name = "huesoContrasteIcono";
+            this.huesoContrasteIcono.Size = new System.Drawing.Size(159, 22);
+            this.huesoContrasteIcono.Text = "Hueso";
+            this.huesoContrasteIcono.Click += new System.EventHandler(this.huesoContrasteIcono_Click);
+            // 
+            // barraIconosUmbralizacion
+            // 
+            this.barraIconosUmbralizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.barraIconosUmbralizacion.Dock = System.Windows.Forms.DockStyle.None;
+            this.barraIconosUmbralizacion.ImageScalingSize = new System.Drawing.Size(18, 18);
+            this.barraIconosUmbralizacion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton5,
+            this.toolStripButton6,
+            this.toolStripButton7});
+            this.barraIconosUmbralizacion.Location = new System.Drawing.Point(69, 100);
+            this.barraIconosUmbralizacion.Name = "barraIconosUmbralizacion";
+            this.barraIconosUmbralizacion.Size = new System.Drawing.Size(81, 25);
+            this.barraIconosUmbralizacion.TabIndex = 1;
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton5.Image = global::SAARTAC1._1.Properties.Resources.dog_bone;
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton5.Text = "Umbral hueso";
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton6.Image = global::SAARTAC1._1.Properties.Resources.drop_1_;
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton6.Text = "Umbral agua";
+            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
+            // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton7.Image = global::SAARTAC1._1.Properties.Resources.drop;
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton7.Text = "Umbral sangre";
+            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
             // backgroundWorker1
             // 
@@ -1172,7 +1400,6 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1354, 722);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.contenedorBarraDeIconos);
             this.Controls.Add(this.barraHerramientas);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1191,6 +1418,10 @@
             this.contenedorBarraDeIconos.TopToolStripPanel.PerformLayout();
             this.contenedorBarraDeIconos.ResumeLayout(false);
             this.contenedorBarraDeIconos.PerformLayout();
+            this.panelPersonalizada.ResumeLayout(false);
+            this.panelPersonalizada.PerformLayout();
+            this.panelProgressBar.ResumeLayout(false);
+            this.panelProgressBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zoom)).EndInit();
             this.panelInformacion.ResumeLayout(false);
             this.panelInformacion.PerformLayout();
@@ -1305,6 +1536,15 @@
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.ToolStripMenuItem kmeansIcono;
         private System.Windows.Forms.ToolStripMenuItem fuzzyIcono;
+        private System.Windows.Forms.Panel panelProgressBar;
+        private System.Windows.Forms.Label textoProcesando;
+        private System.Windows.Forms.Panel panelPersonalizada;
+        private System.Windows.Forms.Label textoCentroPersonalizada;
+        private System.Windows.Forms.Label textoPersonalizada;
+        private System.Windows.Forms.TextBox valorAncho;
+        private System.Windows.Forms.TextBox valorCentro;
+        private System.Windows.Forms.Label textoAnchoPersonalizada;
+        private System.Windows.Forms.Button botonAplicarPersonalizada;
         private System.Windows.Forms.ToolStripSplitButton exportarBarraIconos;
         private System.Windows.Forms.ToolStripMenuItem exportarOriginalIcono;
         private System.Windows.Forms.ToolStripMenuItem exportarTratadaIcono;
