@@ -14,10 +14,11 @@ namespace SAARTAC1._1
         private static Mutex[] mutex;
         private int numeroHilos = 4;
         private const string python = @"C:\Python27\python.exe";
-        private const string myPythonApp = @"C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\TT2.0C#\sum.py";
+        private const string myPythonApp = "\"C:\\Users\\Edgar Nieves\\Documents\\GitHub\\SAARTAC\\TT2.0C#\\sum.py\"";
         public MatrizDicom obtenerArchivo(int x) { return archivosDicom[x]; }
 
         public LecturaArchivosDicom(string ruta, BackgroundWorker bw) {
+            bw.ReportProgress(0);
             cargado = 0;
             mutex = new Mutex[numeroHilos];
             for (int i = 0; i < mutex.Length; i++)            
@@ -126,7 +127,7 @@ namespace SAARTAC1._1
                 string[] tokens2 = myString.Split();
                 int[] filaDicom = Array.ConvertAll(tokens2, int.Parse);
                 for (int k = 0; k < M; k++)                
-                    auxMatriz[j, k] = filaDicom[k] - 1000;                
+                    auxMatriz[k, j] = filaDicom[k] - 1000;                
             }
             dicom.CopiarMatriz(ref auxMatriz);
             myProcess.WaitForExit();
