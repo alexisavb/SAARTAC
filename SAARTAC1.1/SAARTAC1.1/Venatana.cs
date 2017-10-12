@@ -39,6 +39,7 @@ namespace SAARTAC1._1 {
 //---------------------------------------------------------------------------------------------------------------------------------------------------
         //Abrir archivos.
         private void abrirBarraHerramientas_Click(object sender, EventArgs e){
+            
             try{
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK){ //verifica si se abrio.                    
                     id_tac = 0;
@@ -47,9 +48,8 @@ namespace SAARTAC1._1 {
                 else Console.WriteLine("Hay un problema al abrir el archivo");
             }
             catch (Exception ex) { MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido"); }
-
+            progressBar1.Visible = true;
             backgroundWorker1.RunWorkerAsync();
-            progressBar1.Value = 0;
         }
 
         //Avanzar hacia delante sobre la tira.
@@ -244,6 +244,7 @@ namespace SAARTAC1._1 {
 
         //obtiene las imagenes en background 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) {
+
             Thread.Sleep(100);
             lect = new LecturaArchivosDicom(ruta, sender as BackgroundWorker);//se le da el path para sacar los archivos.
             num_tacs = lect.num_archivos();//se saca el número de archivos que hay en el estudio.
@@ -251,8 +252,8 @@ namespace SAARTAC1._1 {
             imagenesCaja1.Clear();//se limpia la lista del bitmap.
             MostrarImagenOriginal();
             MostrarImagenTratada();
-            Thread.Sleep(100);
             progressBar1.Value = 100;
+<<<<<<< HEAD
             zoomCon = true;
         }
 
@@ -309,6 +310,10 @@ namespace SAARTAC1._1 {
                     }
                 }
             }
+=======
+
+            Thread.Sleep(100);
+>>>>>>> d84493cd8125ee3273762da1d815c72abe23824a
         }
 
         //Cluster de k-means 
@@ -321,6 +326,7 @@ namespace SAARTAC1._1 {
             MostrarImagenTratada();
         }
 
+<<<<<<< HEAD
         //Cluster C-fuzzy
         private void fuzzy_Click(object sender, EventArgs e){
             FuzzyCMeans algoritmo = new FuzzyCMeans(lect, 6, lect.num_archivos());
@@ -336,16 +342,33 @@ namespace SAARTAC1._1 {
 
         //Cluster C-fuzzy icono
         private void fuzzyIcono_Click(object sender, EventArgs e){ fuzzy_Click(sender,e); }
+=======
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                MessageBox.Show("The task has been cancelled");
+            }
+            else if (e.Error != null)
+            {
+                MessageBox.Show("Error. Details: " + (e.Error as Exception).ToString());
+            }
+            else
+            {
+                progressBar1.Visible = false;
+            }
+        }
+>>>>>>> d84493cd8125ee3273762da1d815c72abe23824a
 
-        ///---------------------------------------------------------------------------------------------------------------------------------------------------
+            ///---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-        //Funciones 
-        //***************************************************************************************************************************************************** 
-        //mostrar imagen sin tratamiento.
+            //Funciones 
+            //***************************************************************************************************************************************************** 
+            //mostrar imagen sin tratamiento.
 
 
-        private void dibujarUmbral(string lectura, Color color){
+            private void dibujarUmbral(string lectura, Color color){
             Umbralizacion operaciones = new Umbralizacion();
             for (int i = 0; i < lect.num_archivos(); i++){
                 var archivo = lect.obtenerArchivo(i);

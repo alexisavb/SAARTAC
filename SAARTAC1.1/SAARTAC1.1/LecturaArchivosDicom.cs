@@ -13,7 +13,8 @@ namespace SAARTAC1._1
         public Thread[] threadsArray;
         private static Mutex[] mutex;
         private int numeroHilos = 4;
-
+        private const string python = @"D:\Python27\python.exe";
+        private const string myPythonApp = "\"D:\\Trabajo Terminal\\SAARTAC\\TT2.0C#\\sum.py\"";
         public MatrizDicom obtenerArchivo(int x) { return archivosDicom[x]; }
 
         public LecturaArchivosDicom(string ruta, BackgroundWorker bw) {
@@ -35,10 +36,12 @@ namespace SAARTAC1._1
                 threadsArray[i] = new Thread(() => Pregunta_Python(aux));
 
             }
+            bw.ReportProgress(3);
             for (int i = 0; i < N; i++)            
                 threadsArray[i].Start();
             for (int i = 0; i < N; i++) {
                 threadsArray [i].Join();
+                Thread.Sleep(100);
                 Console.WriteLine((cargado * 100) / N);
                 bw.ReportProgress((cargado * 100) / N);
             }
@@ -56,9 +59,12 @@ namespace SAARTAC1._1
         public int num_archivos() { return archivosDicom.Length; }
 
         public static double[] Pregunta_Python_Dimensiones(int pregunta, string ruta){
+<<<<<<< HEAD
 
             string python = @"C:\Python27\python.exe";
             string myPythonApp = @"C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\TT2.0C#\sum.py"; ;
+=======
+>>>>>>> d84493cd8125ee3273762da1d815c72abe23824a
             //C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
@@ -98,8 +104,11 @@ namespace SAARTAC1._1
             string ruta = o.ruta;
             int pregunta = o.x;
             int pos = o.pos;
+<<<<<<< HEAD
             string python = @"C:\Python27\python.exe";
             string myPythonApp = @"C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\TT2.0C#\sum.py";
+=======
+>>>>>>> d84493cd8125ee3273762da1d815c72abe23824a
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
             myProcessStartInfo.UseShellExecute = false;
