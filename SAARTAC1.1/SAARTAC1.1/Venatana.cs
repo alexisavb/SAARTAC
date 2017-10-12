@@ -33,10 +33,35 @@ namespace SAARTAC1._1 {
             barraIconoRegla.Renderer = new MyRenderer();
             barraIconoClasificacion.Renderer = new MyRenderer();
             barraIconoContrste.Renderer = new MyRenderer();
+            this.MouseWheel += new MouseEventHandler(ventanaMouseWheel);
         }
 
-//Eventos de los botones
-//---------------------------------------------------------------------------------------------------------------------------------------------------
+        //Evento MouseWheel
+        private void ventanaMouseWheel(object sender, MouseEventArgs e) {
+            if (e.Delta > 0) {
+                if (id_tac >= num_tacs - 1)
+                    id_tac = 0;
+                else
+                    id_tac++;
+                auxUH = lect.obtenerArchivo(id_tac);
+                MostrarImagenOriginal();
+                if (imagenesCaja2.Count > 0)
+                    MostrarImagenTratada();
+            }
+            if (e.Delta < 0) {
+                if (id_tac == 0)
+                    id_tac = num_tacs - 1;
+                else
+                    id_tac--;
+                auxUH = lect.obtenerArchivo(id_tac);
+                MostrarImagenOriginal();
+                if (imagenesCaja2.Count > 0)
+                    MostrarImagenTratada();
+            }
+        }
+
+        //Eventos de los botones
+        //---------------------------------------------------------------------------------------------------------------------------------------------------
         //Abrir archivos.
         private void abrirBarraHerramientas_Click(object sender, EventArgs e){
             
