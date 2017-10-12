@@ -311,10 +311,31 @@ namespace SAARTAC1._1 {
             }
         }
 
-        
+        //Cluster de k-means 
+        private void kmeans_Click(object sender, EventArgs e){
+            kMeans k = new kMeans(lect, 6, 10, lect.num_archivos());
+            int[,,] clases = k.getClases();
+            imagenesCaja2.Clear();
+            for (int i = 0; i < lect.num_archivos(); i++)            
+                imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));            
+            MostrarImagenTratada();
+        }
 
+        //Cluster C-fuzzy
+        private void fuzzy_Click(object sender, EventArgs e){
+            FuzzyCMeans algoritmo = new FuzzyCMeans(lect, 6, lect.num_archivos());
+            int[,,] clases = algoritmo.getClases();
+            imagenesCaja2.Clear();
+            for (int i = 0; i < lect.num_archivos(); i++)            
+                imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));            
+            MostrarImagenTratada();
+        }
 
+        //Cluster de k-means icono
+        private void kmeansIcono_Click(object sender, EventArgs e){ kmeans_Click(sender,e);}
 
+        //Cluster C-fuzzy icono
+        private void fuzzyIcono_Click(object sender, EventArgs e){ fuzzy_Click(sender,e); }
 
         ///---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -334,6 +355,7 @@ namespace SAARTAC1._1 {
             }
             MostrarImagenTratada();
         }
+        
 
         private void MostrarImagenOriginal(){
             if (imagenesCaja1.Count() > 0){ mostrarOriginal.Image = imagenesCaja1[id_tac]; return;}//Esto es para cambiar de imagen y lo dibuje.
@@ -392,6 +414,17 @@ namespace SAARTAC1._1 {
             }
             return imagen;
         }
+
+        //se genera la imagen con base a las clases que se tiene
+        private Bitmap obtenerImgK(Bitmap matrizOriginal, int[,,] lista, int p){
+            Bitmap resultado = new Bitmap(matrizOriginal);
+            List<Color> colores = new List<Color>() { Color.Black, Color.Red, Color.Blue, Color.Orange, Color.Yellow, Color.Pink, Color.Purple };
+            for (int i = 0; i < 512; i++)            
+                for (int j = 0; j < 512; j++)                
+                    resultado.SetPixel(i, j, colores[lista[i, j, p]]);                            
+            return resultado;
+        }
+
 
         //***************************************************************************************************************************************************** 
 

@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FuzzyCMeans.cs" />
+    <Compile Include="kMeans.cs" />
     <Compile Include="LecturaArchivosDicom.cs" />
     <Compile Include="MatrizDicom.cs" />
     <Compile Include="ParametroPython.cs" />
