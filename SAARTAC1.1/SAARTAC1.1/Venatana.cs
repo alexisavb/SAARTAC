@@ -253,7 +253,6 @@ namespace SAARTAC1._1 {
             MostrarImagenOriginal();
             MostrarImagenTratada();
             progressBar1.Value = 100;
-<<<<<<< HEAD
             zoomCon = true;
         }
 
@@ -310,10 +309,7 @@ namespace SAARTAC1._1 {
                     }
                 }
             }
-=======
-
             Thread.Sleep(100);
->>>>>>> d84493cd8125ee3273762da1d815c72abe23824a
         }
 
         //Cluster de k-means 
@@ -326,7 +322,6 @@ namespace SAARTAC1._1 {
             MostrarImagenTratada();
         }
 
-<<<<<<< HEAD
         //Cluster C-fuzzy
         private void fuzzy_Click(object sender, EventArgs e){
             FuzzyCMeans algoritmo = new FuzzyCMeans(lect, 6, lect.num_archivos());
@@ -342,23 +337,16 @@ namespace SAARTAC1._1 {
 
         //Cluster C-fuzzy icono
         private void fuzzyIcono_Click(object sender, EventArgs e){ fuzzy_Click(sender,e); }
-=======
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e){
             if (e.Cancelled)
-            {
-                MessageBox.Show("The task has been cancelled");
-            }
-            else if (e.Error != null)
-            {
-                MessageBox.Show("Error. Details: " + (e.Error as Exception).ToString());
-            }
-            else
-            {
-                progressBar1.Visible = false;
-            }
+                MessageBox.Show("The task has been cancelled");            
+            else if (e.Error != null)            
+                MessageBox.Show("Error. Details: " + (e.Error as Exception).ToString());            
+            else            
+                progressBar1.Visible = false;            
         }
->>>>>>> d84493cd8125ee3273762da1d815c72abe23824a
+
 
             ///---------------------------------------------------------------------------------------------------------------------------------------------------
 

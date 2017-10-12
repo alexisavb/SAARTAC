@@ -59,12 +59,10 @@ namespace SAARTAC1._1
         public int num_archivos() { return archivosDicom.Length; }
 
         public static double[] Pregunta_Python_Dimensiones(int pregunta, string ruta){
-<<<<<<< HEAD
 
             string python = @"C:\Python27\python.exe";
             string myPythonApp = @"C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\TT2.0C#\sum.py"; ;
-=======
->>>>>>> d84493cd8125ee3273762da1d815c72abe23824a
+
             //C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
@@ -104,11 +102,9 @@ namespace SAARTAC1._1
             string ruta = o.ruta;
             int pregunta = o.x;
             int pos = o.pos;
-<<<<<<< HEAD
+
             string python = @"C:\Python27\python.exe";
             string myPythonApp = @"C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\TT2.0C#\sum.py";
-=======
->>>>>>> d84493cd8125ee3273762da1d815c72abe23824a
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
             myProcessStartInfo.UseShellExecute = false;
