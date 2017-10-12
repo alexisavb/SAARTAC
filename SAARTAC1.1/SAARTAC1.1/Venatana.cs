@@ -39,6 +39,7 @@ namespace SAARTAC1._1 {
 //---------------------------------------------------------------------------------------------------------------------------------------------------
         //Abrir archivos.
         private void abrirBarraHerramientas_Click(object sender, EventArgs e){
+            
             try{
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK){ //verifica si se abrio.                    
                     id_tac = 0;
@@ -48,9 +49,8 @@ namespace SAARTAC1._1 {
                 else Console.WriteLine("Hay un problema al abrir el archivo");
             }
             catch (Exception ex) { MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido"); }
-
+            progressBar1.Visible = true;
             backgroundWorker1.RunWorkerAsync();
-            progressBar1.Value = 0;
         }
 
         //Avanzar hacia delante sobre la tira.
@@ -230,6 +230,7 @@ namespace SAARTAC1._1 {
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) {
+
             Thread.Sleep(100);
             lect = new LecturaArchivosDicom(ruta, sender as BackgroundWorker);//se le da el path para sacar los archivos.
             num_tacs = lect.num_archivos();//se saca el número de archivos que hay en el estudio.
@@ -237,25 +238,40 @@ namespace SAARTAC1._1 {
             imagenesCaja1.Clear();//se limpia la lista del bitmap.
             MostrarImagenOriginal();
             MostrarImagenTratada();
-            Thread.Sleep(100);
             progressBar1.Value = 100;
-            
+
+            Thread.Sleep(100);
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e) {
             progressBar1.Value = e.ProgressPercentage;
         }
 
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                MessageBox.Show("The task has been cancelled");
+            }
+            else if (e.Error != null)
+            {
+                MessageBox.Show("Error. Details: " + (e.Error as Exception).ToString());
+            }
+            else
+            {
+                progressBar1.Visible = false;
+            }
+        }
 
-        ///---------------------------------------------------------------------------------------------------------------------------------------------------
+            ///---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-        //Funciones 
-        //***************************************************************************************************************************************************** 
-        //mostrar imagen sin tratamiento.
+            //Funciones 
+            //***************************************************************************************************************************************************** 
+            //mostrar imagen sin tratamiento.
 
 
-        private void dibujarUmbral(string lectura, Color color){
+            private void dibujarUmbral(string lectura, Color color){
             Umbralizacion operaciones = new Umbralizacion();
             for (int i = 0; i < lect.num_archivos(); i++){
                 var archivo = lect.obtenerArchivo(i);
