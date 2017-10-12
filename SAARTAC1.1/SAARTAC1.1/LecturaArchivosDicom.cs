@@ -19,6 +19,7 @@ namespace SAARTAC1._1
         public MatrizDicom obtenerArchivo(int x) { return archivosDicom[x]; }
 
         public LecturaArchivosDicom(string ruta, BackgroundWorker bw) {
+            bw.ReportProgress(0);
             cargado = 0;
             mutex = new Mutex[numeroHilos];
             for (int i = 0; i < mutex.Length; i++)            
@@ -126,7 +127,7 @@ namespace SAARTAC1._1
                 string[] tokens2 = myString.Split();
                 int[] filaDicom = Array.ConvertAll(tokens2, int.Parse);
                 for (int k = 0; k < M; k++)                
-                    auxMatriz[j, k] = filaDicom[k] - 1000;                
+                    auxMatriz[k, j] = filaDicom[k] - 1000;                
             }
             dicom.CopiarMatriz(ref auxMatriz);
             myProcess.WaitForExit();

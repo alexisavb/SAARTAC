@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,15 +18,20 @@ namespace SAARTAC1._1{
         private double[,,,] distancias;
         private Random rnd;
         private double m = 2.0;
+        private BackgroundWorker bw;
+        private static int operaciones_cargando, operaciones_total;
 
-        public FuzzyCMeans(LecturaArchivosDicom lect, int k, int numeros_archivos, int iteraciones = 10){
+        public FuzzyCMeans(LecturaArchivosDicom lect, BackgroundWorker bw, int k, int numeros_archivos, int iteraciones = 10){
             matrices = lect;
             numerosK = k;
             numArchivos = numeros_archivos;
+            this.bw = bw;
+            operaciones_cargando = 0;
             clases = new int[512, 512, numeros_archivos];
             pertenencia = new double[512, 512, k, numeros_archivos];
             distancias = new double[512, 512, k, numeros_archivos];
             ite = iteraciones;
+            operaciones_total = iteraciones * numeros_archivos * 512 * 512 * numerosK;
             rnd = new Random();
             generarCentros();
             for (int i = 0; i < iteraciones; i++){
@@ -79,8 +85,10 @@ namespace SAARTAC1._1{
                         for (int k = 0; k < numerosK; k++){
                             double sum = 0.0;
                             for (int l = 0; l < numerosK; l++)
-                                sum += Math.Pow(distancias[i, j, k, p] / distancias[i, j, l, p], 2.0 / (m - 1.0));                            
+                                sum += Math.Pow(distancias[i, j, k, p] / distancias[i, j, l, p], 2.0 / (m - 1.0));  
                             pertenencia[i, j, k, p] = 1.0 / sum;
+                            operaciones_cargando++;
+                            bw.ReportProgress((operaciones_cargando * 90) / operaciones_total);
                         }
                     }
                 }

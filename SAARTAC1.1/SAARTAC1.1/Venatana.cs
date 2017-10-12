@@ -75,8 +75,10 @@ namespace SAARTAC1._1 {
                 else Console.WriteLine("Hay un problema al abrir el archivo");
             }
             catch (Exception ex) { MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido"); }
+
             panelProgressBar.Visible = true;
-            backgroundWorker1.RunWorkerAsync();
+            progressBar1.Value = 1;
+            backgroundWorker1.RunWorkerAsync(1);
         }
 
         //Avanzar hacia delante sobre la tira.
@@ -269,20 +271,67 @@ namespace SAARTAC1._1 {
 
         private void progressBar1_Click(object sender, EventArgs e) {}
 
-        //obtiene las imagenes en background 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) {
-
-            Thread.Sleep(100);
-            lect = new LecturaArchivosDicom(ruta, sender as BackgroundWorker);//se le da el path para sacar los archivos.
+        private void AbrirArchivosDICOM(BackgroundWorker bw)
+        {
+            lect = new LecturaArchivosDicom(ruta, bw);//se le da el path para sacar los archivos.
             num_tacs = lect.num_archivos();//se saca el número de archivos que hay en el estudio.
             imagenesCaja2.Clear();
             imagenesCaja1.Clear();//se limpia la lista del bitmap.
             MostrarImagenOriginal();
             MostrarImagenTratada();
+            bw.ReportProgress(100);
+            Thread.Sleep(1000);
             zoomCon = true;
         }
 
-        //reporten del progreso, barra de progreso
+        private void ProcesoKMeans(BackgroundWorker bw)
+        {
+            kMeans k = new kMeans(lect, 6, 10, lect.num_archivos(), bw);
+            int[,,] clases = k.getClases();
+            imagenesCaja2.Clear();
+
+            for (int i = 0; i < lect.num_archivos(); i++)
+            {
+                imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));
+                bw.ReportProgress(90 + (10 * (i + 1)) / lect.num_archivos());
+            }
+            bw.ReportProgress(100);
+            MostrarImagenTratada();
+        }
+
+        private void ProcesoFuzzyCMeans(BackgroundWorker bw)
+        {
+            FuzzyCMeans algoritmo = new FuzzyCMeans(lect, bw, 6, lect.num_archivos());
+            int[,,] clases = algoritmo.getClases();
+            imagenesCaja2.Clear();
+            for (int i = 0; i < lect.num_archivos(); i++)
+            {
+                imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));
+                bw.ReportProgress(90 + (10 * (i + 1)) / lect.num_archivos());
+            }
+            MostrarImagenTratada();
+        }
+
+
+        //obtiene las imagenes en background 
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) {
+            int opcion = (int)e.Argument;
+            BackgroundWorker bw = sender as BackgroundWorker;
+            switch (opcion)
+            {
+                case 1:
+                    AbrirArchivosDICOM(bw);
+                    break;
+                case 2:
+                    ProcesoKMeans(bw);
+                    break;
+                case 3:
+                    ProcesoFuzzyCMeans(bw);
+                    break;
+            }
+        }
+
+        //reporte del progreso abrir archivos dicom, barra de progreso
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e) { progressBar1.Value = e.ProgressPercentage;}
            
         //abrir archivo icono
@@ -340,22 +389,16 @@ namespace SAARTAC1._1 {
 
         //Cluster de k-means 
         private void kmeans_Click(object sender, EventArgs e){
-            kMeans k = new kMeans(lect, 6, 10, lect.num_archivos());
-            int[,,] clases = k.getClases();
-            imagenesCaja2.Clear();
-            for (int i = 0; i < lect.num_archivos(); i++)            
-                imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));            
-            MostrarImagenTratada();
+            panelProgressBar.Visible = true;
+            progressBar1.Value = 1;
+            backgroundWorker1.RunWorkerAsync(2);
         }
 
         //Cluster C-fuzzy
         private void fuzzy_Click(object sender, EventArgs e){
-            FuzzyCMeans algoritmo = new FuzzyCMeans(lect, 6, lect.num_archivos());
-            int[,,] clases = algoritmo.getClases();
-            imagenesCaja2.Clear();
-            for (int i = 0; i < lect.num_archivos(); i++)            
-                imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));            
-            MostrarImagenTratada();
+            panelProgressBar.Visible = true;
+            progressBar1.Value = 1;
+            backgroundWorker1.RunWorkerAsync(3);
         }
 
         //Cluster de k-means icono
@@ -377,16 +420,54 @@ namespace SAARTAC1._1 {
             }
         }
 
+        //zoom para restarle
+        private void toolStripButton3_Click(object sender, EventArgs e){
+            if (ventanaZoom == 100) return;
+            ventanaZoom += 20;
+        }
 
-            ///---------------------------------------------------------------------------------------------------------------------------------------------------
+        //zoom para sumarle
+        private void toolStripButton4_Click(object sender, EventArgs e){
+            if (ventanaZoom == 20) return;
+            ventanaZoom -= 20;
+        }
+
+        //exportar original icono
+        private void exportarOriginalIcono_Click(object sender, EventArgs e){
+            if (mostrarOriginal.Image == null) return;
+            SaveFileDialog f = new SaveFileDialog();
+            f.Filter = "JPG(.JPG)|.jpg|Png Image (.png)|*.png";
+            if (f.ShowDialog() == DialogResult.OK)            
+                mostrarOriginal.Image.Save(f.FileName);            
+        }
+
+        //exportar tratada icono
+        private void exportarTratadaIcono_Click(object sender, EventArgs e){
+            if (mostrarTratada.Image == null) return;
+            SaveFileDialog f = new SaveFileDialog();
+            f.Filter = "JPG(.JPG)|.jpg|Png Image (.png)|*.png";
+            if (f.ShowDialog() == DialogResult.OK)
+                mostrarTratada.Image.Save(f.FileName);
+        }
+
+        //exportar original 
+        private void exportarOriginal_Click(object sender, EventArgs e){ exportarOriginalIcono_Click(sender,e); }
+
+        //exportar tratada
+        private void exportarTratada_Click(object sender, EventArgs e){ exportarTratadaIcono_Click(sender,e); }
 
 
-            //Funciones 
-            //***************************************************************************************************************************************************** 
-            //mostrar imagen sin tratamiento.
 
 
-            private void dibujarUmbral(string lectura, Color color){
+        ///---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+        //Funciones 
+        //***************************************************************************************************************************************************** 
+        //mostrar imagen sin tratamiento.
+
+
+        private void dibujarUmbral(string lectura, Color color){
             Umbralizacion operaciones = new Umbralizacion();
             for (int i = 0; i < lect.num_archivos(); i++){
                 var archivo = lect.obtenerArchivo(i);
@@ -396,7 +477,6 @@ namespace SAARTAC1._1 {
             }
             MostrarImagenTratada();
         }
-
         private void personalizadaBarraDeHerramientas_Click(object sender, EventArgs e) {
             panelPersonalizada.Visible = true;
         }
@@ -408,6 +488,8 @@ namespace SAARTAC1._1 {
         private void botonAplicarPersonalizada_Click(object sender, EventArgs e) {
             panelPersonalizada.Visible = false;
         }
+        private void exportarBarraIconos_Click(object sender, EventArgs e){}
+        
 
         private void MostrarImagenOriginal(){
             if (imagenesCaja1.Count() <= 0) {

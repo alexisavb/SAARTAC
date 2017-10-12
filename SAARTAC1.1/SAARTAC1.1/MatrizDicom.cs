@@ -29,7 +29,7 @@ namespace SAARTAC1._1{
         }
 
         public int ObtenerUH(int x, int y){
-            if (x >= N || y >= M)
+            if (x >= N || y >= M || x < 0 || y < 0)
                 return -100000;
             return matriz[x, y];
         }
