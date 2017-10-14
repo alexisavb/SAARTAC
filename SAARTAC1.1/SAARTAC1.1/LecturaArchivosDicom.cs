@@ -13,13 +13,13 @@ namespace SAARTAC1._1
         public Thread[] threadsArray;
         private static Mutex[] mutex;
         private int numeroHilos = 4;
-        private const string python = @"C:\Python27\python.exe";
+        private const string python = @"D:\Python27\python.exe";
         //C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#
-        private const string myPythonApp = @"C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#\sum.py";
+        private const string myPythonApp = "\"D:\\Trabajo Terminal\\SAARTAC\\TT2.0C#\\sum.py\"";
         public MatrizDicom obtenerArchivo(int x) { return archivosDicom[x]; }
 
-        public LecturaArchivosDicom(string ruta, BackgroundWorker bw) {
-            bw.ReportProgress(0);
+        public LecturaArchivosDicom(string ruta, BackgroundWorker reporte_progreso) {
+            reporte_progreso.ReportProgress(0);
             cargado = 0;
             mutex = new Mutex[numeroHilos];
             for (int i = 0; i < mutex.Length; i++)            
@@ -38,14 +38,17 @@ namespace SAARTAC1._1
                 threadsArray[i] = new Thread(() => Pregunta_Python(aux));
 
             }
-            bw.ReportProgress(3);
+            reporte_progreso.ReportProgress(3);
             for (int i = 0; i < N; i++)            
                 threadsArray[i].Start();
             for (int i = 0; i < N; i++) {
                 threadsArray [i].Join();
                 Thread.Sleep(100);
                 Console.WriteLine((cargado * 90) / N);
-                bw.ReportProgress((cargado * 90) / N);
+                reporte_progreso.ReportProgress((cargado * 90) / N);
+                if (reporte_progreso.CancellationPending) {
+                    return;
+                }
             }
             TimeSpan timeDiff = DateTime.Now - start;
             var res = timeDiff.TotalMilliseconds;
@@ -55,7 +58,7 @@ namespace SAARTAC1._1
             //pruebaImagen.Dispose();
 
             //Console.WriteLine("llegue aqui");
-            bw.ReportProgress(90);
+            reporte_progreso.ReportProgress(90);
         }
 
         public int num_archivos() { return archivosDicom.Length; }
@@ -66,7 +69,7 @@ namespace SAARTAC1._1
 
             myProcessStartInfo.UseShellExecute = false;
             myProcessStartInfo.RedirectStandardOutput = true;
-
+            ruta = "\"" + ruta + "\"";
             myProcessStartInfo.Arguments = myPythonApp + " " + pregunta + " " + ruta;
             myProcessStartInfo.CreateNoWindow = true;
             Process myProcess = new Process();

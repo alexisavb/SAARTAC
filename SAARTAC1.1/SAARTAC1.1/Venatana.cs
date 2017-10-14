@@ -274,6 +274,9 @@ namespace SAARTAC1._1 {
         private void AbrirArchivosDICOM(BackgroundWorker bw)
         {
             lect = new LecturaArchivosDicom(ruta, bw);//se le da el path para sacar los archivos.
+            if (bw.CancellationPending)
+                return;
+
             num_tacs = lect.num_archivos();//se saca el número de archivos que hay en el estudio.
             imagenesCaja2.Clear();
             imagenesCaja1.Clear();//se limpia la lista del bitmap.
@@ -287,6 +290,9 @@ namespace SAARTAC1._1 {
         private void ProcesoKMeans(BackgroundWorker bw)
         {
             kMeans k = new kMeans(lect, 6, 10, lect.num_archivos(), bw);
+            if (bw.CancellationPending)
+                return;
+
             int[,,] clases = k.getClases();
             imagenesCaja2.Clear();
 
@@ -302,6 +308,9 @@ namespace SAARTAC1._1 {
         private void ProcesoFuzzyCMeans(BackgroundWorker bw)
         {
             FuzzyCMeans algoritmo = new FuzzyCMeans(lect, bw, 6, lect.num_archivos());
+            if (bw.CancellationPending)
+                return;
+
             int[,,] clases = algoritmo.getClases();
             imagenesCaja2.Clear();
             for (int i = 0; i < lect.num_archivos(); i++)
@@ -313,7 +322,7 @@ namespace SAARTAC1._1 {
         }
 
 
-        //obtiene las imagenes en background 
+        //Todos los metodos del background
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) {
             int opcion = (int)e.Argument;
             BackgroundWorker bw = sender as BackgroundWorker;
@@ -489,7 +498,12 @@ namespace SAARTAC1._1 {
             panelPersonalizada.Visible = false;
         }
         private void exportarBarraIconos_Click(object sender, EventArgs e){}
-        
+
+        private void butonCancelarProceso_Click(object sender, EventArgs e) {
+            backgroundWorker1.CancelAsync();
+            panelProgressBar.Visible = false;
+            
+        }
 
         private void MostrarImagenOriginal(){
             if (imagenesCaja1.Count() <= 0) {

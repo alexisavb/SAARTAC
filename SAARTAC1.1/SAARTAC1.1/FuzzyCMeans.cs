@@ -18,26 +18,28 @@ namespace SAARTAC1._1{
         private double[,,,] distancias;
         private Random rnd;
         private double m = 2.0;
-        private BackgroundWorker bw;
+        private BackgroundWorker reporte_progreso;
         private static int operaciones_cargando, operaciones_total;
 
-        public FuzzyCMeans(LecturaArchivosDicom lect, BackgroundWorker bw, int k, int numeros_archivos, int iteraciones = 10){
+        public FuzzyCMeans(LecturaArchivosDicom lect, BackgroundWorker reporte_progreso, int k, int numeros_archivos, int iteraciones = 10){
             matrices = lect;
             numerosK = k;
             numArchivos = numeros_archivos;
-            this.bw = bw;
+            this.reporte_progreso = reporte_progreso;
             operaciones_cargando = 0;
             clases = new int[512, 512, numeros_archivos];
             pertenencia = new double[512, 512, k, numeros_archivos];
             distancias = new double[512, 512, k, numeros_archivos];
             ite = iteraciones;
-            operaciones_total = iteraciones * numeros_archivos * 512 * 512 * numerosK;
+            operaciones_total = iteraciones * 512;
             rnd = new Random();
             generarCentros();
             for (int i = 0; i < iteraciones; i++){
                 GenerarDistancias();
                 ActualizarPertenencia();
                 GeneraNuevosCentros();
+                if (reporte_progreso.CancellationPending)
+                    return;
             }
             for (int i = 0; i < 512; i++){
                 for (int j = 0; j < 512; j++){
@@ -65,6 +67,8 @@ namespace SAARTAC1._1{
 
         public void GenerarDistancias(){
             for (int i = 0; i < 512; i++){
+                if (reporte_progreso.CancellationPending)
+                    return;
                 for (int j = 0; j < 512; j++){
                     for (int p = 0; p < numArchivos; p++){
                         matriz_actual = matrices.obtenerArchivo(p);
@@ -80,6 +84,10 @@ namespace SAARTAC1._1{
 
         public void ActualizarPertenencia(){
             for (int i = 0; i < 512; i++){
+                operaciones_cargando++;
+                reporte_progreso.ReportProgress((operaciones_cargando * 90) / operaciones_total);
+                if (reporte_progreso.CancellationPending)
+                    return;
                 for (int j = 0; j < 512; j++){
                     for (int p = 0; p < numArchivos; p++){
                         for (int k = 0; k < numerosK; k++){
@@ -87,8 +95,7 @@ namespace SAARTAC1._1{
                             for (int l = 0; l < numerosK; l++)
                                 sum += Math.Pow(distancias[i, j, k, p] / distancias[i, j, l, p], 2.0 / (m - 1.0));  
                             pertenencia[i, j, k, p] = 1.0 / sum;
-                            operaciones_cargando++;
-                            bw.ReportProgress((operaciones_cargando * 90) / operaciones_total);
+                            
                         }
                     }
                 }
@@ -100,6 +107,8 @@ namespace SAARTAC1._1{
                 long aa = 0;
                 long bb = 0;
                 for (int p = 0; p < numArchivos; p++){
+                    if (reporte_progreso.CancellationPending)
+                        return;
                     matriz_actual = matrices.obtenerArchivo(p);
                     for (int i = 0; i < 512; i++){
                         for (int j = 0; j < 512; j++){

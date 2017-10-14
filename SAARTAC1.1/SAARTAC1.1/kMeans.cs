@@ -18,19 +18,19 @@ namespace SAARTAC1._1
         private List<Double> conjunto = new List<Double>();
         private int[,,] clases;
         private Random rnd;
-        private BackgroundWorker reporteProgreso;
+        private BackgroundWorker reporte_progreso;
         private static int operaciones_cargando, operaciones_total;
 
         public kMeans(LecturaArchivosDicom lect, int k, int iteraciones, int numeros_archivos, BackgroundWorker bw){
             matrices = lect;
             numerosK = k;
-            reporteProgreso = bw;
-            reporteProgreso.ReportProgress(0);
+            reporte_progreso = bw;
+            reporte_progreso.ReportProgress(0);
             operaciones_cargando = 0;
             clases = new int[512, 512, numeros_archivos];
             ite = iteraciones;
 
-            operaciones_total = ite * 512 * 512 * matrices.num_archivos();
+            operaciones_total = ite * 512  * matrices.num_archivos();
             generarCentros();
             mainKmeans();
         }
@@ -53,6 +53,8 @@ namespace SAARTAC1._1
 
                 }
                 promedio();
+                if (reporte_progreso.CancellationPending)
+                    return;
             }
 
         }
@@ -84,10 +86,13 @@ namespace SAARTAC1._1
                         //if (matriz_actual.ObtenerUH(i, j) < -890) continue;
                         sumas[clases[i, j, p] - 1] += matriz_actual.ObtenerUH(i, j);
                         contador[clases[i, j, p] - 1]++;
-                        operaciones_cargando++;
-                        reporteProgreso.ReportProgress((90 * operaciones_cargando) / operaciones_total);
                     }
+                    if (reporte_progreso.CancellationPending)
+                        return;
+                    operaciones_cargando++;
+                    reporte_progreso.ReportProgress((90 * operaciones_cargando) / operaciones_total);
                 }
+
             }
             centros.Clear();
             for (int i = 0; i < numerosK; i++)            
