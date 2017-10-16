@@ -70,48 +70,65 @@ namespace SAARTAC1._1 {
             try{
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK){ //verifica si se abrio.                    
                     id_tac = 0;
-                    ruta = folderBrowserDialog1.SelectedPath; //se saca el path del archivo.                                  
+                    ruta = folderBrowserDialog1.SelectedPath; //se saca el path del archivo.  
+                    panelProgressBar.Visible = true;
+                    progressBar1.Value = 1;
+                    backgroundWorker1.RunWorkerAsync(1);
                 }
                 else Console.WriteLine("Hay un problema al abrir el archivo");
             }
             catch (Exception ex) { MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido"); }
 
-            panelProgressBar.Visible = true;
-            progressBar1.Value = 1;
-            backgroundWorker1.RunWorkerAsync(1);
+            
         }
 
         //Avanzar hacia delante sobre la tira.
         private void botonSiguient_Click(object sender, EventArgs e){
-            if (id_tac >= num_tacs - 1)
-                id_tac = 0;
-            else
-                id_tac++;
-            auxUH = lect.obtenerArchivo(id_tac);
-            MostrarImagenOriginal();
-            if (imagenesCaja2.Count > 0)
-                MostrarImagenTratada();
+            try{
+                if (id_tac >= num_tacs - 1)
+                    id_tac = 0;
+                else
+                    id_tac++;
+                auxUH = lect.obtenerArchivo(id_tac);
+                MostrarImagenOriginal();
+                if (imagenesCaja2.Count > 0)
+                    MostrarImagenTratada();
+            }catch (Exception ex){
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
         }
 
         //ventana para hueso.
         private void huesoBarraDeHerramientas_Click(object sender, EventArgs e){
-            int lim_inf_ven = -450;
-            int lim_sup_ven = 1050;
-            generalEscalaGris(lim_inf_ven, lim_sup_ven);
-        }
+            try{
+                int lim_inf_ven = -450;
+                int lim_sup_ven = 1050;
+                generalEscalaGris(lim_inf_ven, lim_sup_ven);
+            }catch (Exception ex){
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
+}
 
         //venta para partes blandas.
         private void partesBlandasBarraDeHerramientas_Click(object sender, EventArgs e){
-            int lim_inf_ven = -125;
-            int lim_sup_ven = 225;
-            generalEscalaGris(lim_inf_ven, lim_sup_ven);
+            try {
+                int lim_inf_ven = -125;
+                int lim_sup_ven = 225;
+                generalEscalaGris(lim_inf_ven, lim_sup_ven);
+            }catch (Exception ex){
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
         }
 
         //ventana para pulmón.
         private void pulmónBarraDeHerramientas_Click(object sender, EventArgs e){
-            int lim_inf_ven = -1200;
-            int lim_sup_ven = 800;
-            generalEscalaGris(lim_inf_ven, lim_sup_ven);
+            try{ 
+                int lim_inf_ven = -1200;
+                int lim_sup_ven = 800;
+                generalEscalaGris(lim_inf_ven, lim_sup_ven);
+            }catch (Exception ex){
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
         }
 
         //Rotar 90 grados a la derecha
@@ -503,7 +520,7 @@ namespace SAARTAC1._1 {
             panelProgressBar.Visible = false;
             
         }
-
+            
         private void MostrarImagenOriginal(){
             if (imagenesCaja1.Count() <= 0) {
                 for (int i = 0; i < lect.num_archivos(); i++) {
