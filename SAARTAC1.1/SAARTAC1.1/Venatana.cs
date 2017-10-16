@@ -150,7 +150,7 @@ namespace SAARTAC1._1 {
             }
             //PARTE DEL ZOOM
             if (zoomCon){
-               Bitmap zoomImage = new Bitmap(mostrarOriginal.Image);
+               Bitmap zoomImage = imagenesCaja1[id_tac];
                 Rectangle zoomRect = new Rectangle(x - (ventanaZoom / 2), y - (ventanaZoom / 2), ventanaZoom, ventanaZoom);
                 if (zoomRect.Left >= 0 && zoomRect.Top >= 0 && zoomRect.Right <= 512 && zoomRect.Bottom <= 512){
                     var newzoomImage = zoomImage.Clone(zoomRect, zoomImage.PixelFormat);
@@ -384,7 +384,7 @@ namespace SAARTAC1._1 {
             //PARTE DEL ZOOM
             if (zoomCon){
                 if (mostrarTratada.Image != null){
-                    Bitmap zoomTratedImage = new Bitmap(mostrarTratada.Image);
+                    Bitmap zoomTratedImage = imagenesCaja2[id_tac];
                     Rectangle zoomRect2 = new Rectangle(x - (ventanaZoom / 2), y - (ventanaZoom / 2), ventanaZoom, ventanaZoom);
                     if (zoomRect2.Left >= 0 && zoomRect2.Top >= 0 && zoomRect2.Right <= 512 && zoomRect2.Bottom <= 512){
                         var newzoomImage = zoomTratedImage.Clone(zoomRect2, zoomTratedImage.PixelFormat);
@@ -393,7 +393,6 @@ namespace SAARTAC1._1 {
                     }
                 }
             }
-            Thread.Sleep(100);
         }
 
         //Cluster de k-means 
