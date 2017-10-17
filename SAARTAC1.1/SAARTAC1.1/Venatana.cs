@@ -158,12 +158,15 @@ namespace SAARTAC1._1 {
             int x = mostrarOriginal.PointToClient(Cursor.Position).X;
             int y = mostrarOriginal.PointToClient(Cursor.Position).Y;
             if (auxUH != null) resultadoUHMouse.Text = (auxUH.ObtenerUH(x, y)).ToString();
+
+            mostrarOriginal.Refresh();
             if (draw & e.Button == MouseButtons.Left){
                 seccion.setFinal(x, y);
                 Graphics objGrafico = this.mostrarOriginal.CreateGraphics();
                 seccion.setRectangle();
                 objGrafico.DrawRectangle(seccion.getPen(), seccion.getRectangle());
-                mostrarOriginal.Invalidate();
+                
+
             }
             //PARTE DEL ZOOM
             if (zoomCon){
@@ -355,7 +358,6 @@ namespace SAARTAC1._1 {
 
         //Todos los metodos del background
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) {
-            if (lect == null) return;
             int opcion = (int)e.Argument;
             BackgroundWorker bw = sender as BackgroundWorker;
             switch (opcion)
@@ -363,6 +365,7 @@ namespace SAARTAC1._1 {
                 case 1:
                     AbrirArchivosDICOM(bw);
                     break;
+                if (lect == null) return;
                 case 2:
                     ProcesoKMeans(bw);
                     break;
@@ -543,7 +546,12 @@ namespace SAARTAC1._1 {
             panelProgressBar.Visible = false;
             
         }
-            
+
+        private void mostrarOriginal_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
         private void MostrarImagenOriginal(){
             if (lect == null) return;
             if (imagenesCaja1.Count() <= 0) {
