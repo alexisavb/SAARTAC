@@ -204,6 +204,7 @@ namespace SAARTAC1._1 {
 
         //saca la distancia /saca el punto inicial/ /saca el punto final/
         private void mostrarOriginal_Click(object sender, EventArgs e){
+            if (lect == null) return;
             if (reglaBool && bandera == 0){                
                 regla = new Regla(mostrarOriginal.PointToClient(Cursor.Position).X, mostrarOriginal.PointToClient(Cursor.Position).Y);
                 bandera = 1;
@@ -269,21 +270,34 @@ namespace SAARTAC1._1 {
 
         //Ventana para cerebro.
         private void cerebroBarraDeHerramientas_Click(object sender, EventArgs e){
-            int lim_inf_ven = -10;
-            int lim_sup_ven = 80;
-            generalEscalaGris(lim_inf_ven, lim_sup_ven);
+            try
+            {
+                int lim_inf_ven = -10;
+                int lim_sup_ven = 80;
+                generalEscalaGris(lim_inf_ven, lim_sup_ven);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
         }
 
         //Avanzar hacia atrás sobre la tira.
         private void botonAtras_Click(object sender, EventArgs e){
-            if (id_tac == 0)
-                id_tac = num_tacs - 1;
-            else
-                id_tac--;
-            auxUH = lect.obtenerArchivo(id_tac);
-            MostrarImagenOriginal();
-            if (imagenesCaja2.Count > 0)
-                MostrarImagenTratada();
+            try {
+                if (id_tac == 0)
+                    id_tac = num_tacs - 1;
+                else
+                    id_tac--;
+                auxUH = lect.obtenerArchivo(id_tac);
+                MostrarImagenOriginal();
+                if (imagenesCaja2.Count > 0)
+                    MostrarImagenTratada();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
         }
 
         private void progressBar1_Click(object sender, EventArgs e) {}
@@ -341,6 +355,7 @@ namespace SAARTAC1._1 {
 
         //Todos los metodos del background
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) {
+            if (lect == null) return;
             int opcion = (int)e.Argument;
             BackgroundWorker bw = sender as BackgroundWorker;
             switch (opcion)
@@ -493,14 +508,22 @@ namespace SAARTAC1._1 {
 
 
         private void dibujarUmbral(string lectura, Color color){
-            Umbralizacion operaciones = new Umbralizacion();
-            for (int i = 0; i < lect.num_archivos(); i++){
-                var archivo = lect.obtenerArchivo(i);
-                var matrizResultado = operaciones.UmbralizacionPara(lectura, archivo.matriz);
-                var imagenResultado = obtenerImagenUmbral(matrizResultado, archivo.ObtenerImagen(), color);
-                imagenesCaja2.Add(imagenResultado);
+            try
+            {
+                Umbralizacion operaciones = new Umbralizacion();
+                for (int i = 0; i < lect.num_archivos(); i++)
+                {
+                    var archivo = lect.obtenerArchivo(i);
+                    var matrizResultado = operaciones.UmbralizacionPara(lectura, archivo.matriz);
+                    var imagenResultado = obtenerImagenUmbral(matrizResultado, archivo.ObtenerImagen(), color);
+                    imagenesCaja2.Add(imagenResultado);
+                }
+                MostrarImagenTratada();
             }
-            MostrarImagenTratada();
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
         }
         private void personalizadaBarraDeHerramientas_Click(object sender, EventArgs e) {
             panelPersonalizada.Visible = true;
@@ -522,6 +545,7 @@ namespace SAARTAC1._1 {
         }
             
         private void MostrarImagenOriginal(){
+            if (lect == null) return;
             if (imagenesCaja1.Count() <= 0) {
                 for (int i = 0; i < lect.num_archivos(); i++) {
                     var archivo = lect.obtenerArchivo(i);
@@ -534,6 +558,7 @@ namespace SAARTAC1._1 {
 
         //mostrar imagen con tratamiento.
         private void MostrarImagenTratada(){
+            if (lect == null) return;
             if (imagenesCaja2.Count() > 0) mostrarTratada.Image = imagenesCaja2[id_tac];            
             else mostrarTratada.Image = null;            
         }
