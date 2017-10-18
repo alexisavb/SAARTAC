@@ -16,7 +16,8 @@ namespace SAARTAC1._1 {
         private Seccion seccion;
         private Regla regla;
         private static int ventanaZoom = 100;
-        private bool draw = false, reglaBool = false, zoomCon = false, region_creciente = false;
+        private bool draw = false, reglaBool = false, zoomCon = false, 
+            region_creciente = false, seleccion_region = false;
         private List<Bitmap> imagenesCaja1 = new List<Bitmap>();
         private List<Bitmap> imagenesCaja2 = new List<Bitmap>();
         private int id_tac, num_tacs, uh_per, factor_per, bandera = 0;
@@ -184,7 +185,7 @@ namespace SAARTAC1._1 {
         private void mostrarOriginal_MouseDown(object sender, MouseEventArgs e){
             int x = mostrarOriginal.PointToClient(Cursor.Position).X;
             int y = mostrarOriginal.PointToClient(Cursor.Position).Y;
-            if (e.Button == MouseButtons.Left && auxUH != null) {
+            if (e.Button == MouseButtons.Left && auxUH != null && region_creciente) {
                 ProcesoRegionCreciente(x, y);
                 region_creciente = false;
                 return;
@@ -207,6 +208,16 @@ namespace SAARTAC1._1 {
                 Thread.Sleep(milliseconds);
                 mostrarOriginal.Invalidate();
             }
+            if (seleccion_region) {
+                seleccion_region = false;
+                var seleccion = seccion.obtenerImagen(imagenesCaja1 [id_tac]);
+                Bitmap ajustarImagen = new Bitmap(seleccion, new Size(512, 512));
+                MostrarImagenTratada(ajustarImagen);
+            }
+        }
+
+        private void MostrarImagenTratada(Bitmap seleccion) {
+            mostrarTratada.Image = seleccion;
         }
 
         //Se activa la bandera para sacar distancia.
@@ -426,7 +437,7 @@ namespace SAARTAC1._1 {
             //PARTE DEL ZOOM
             if (zoomCon){
                 if (mostrarTratada.Image != null){
-                    Bitmap zoomTratedImage = imagenesCaja2[id_tac];
+                    Bitmap zoomTratedImage = (Bitmap) mostrarTratada.Image;
                     Rectangle zoomRect2 = new Rectangle(x - (ventanaZoom / 2), y - (ventanaZoom / 2), ventanaZoom, ventanaZoom);
                     if (zoomRect2.Left >= 0 && zoomRect2.Top >= 0 && zoomRect2.Right <= 512 && zoomRect2.Bottom <= 512){
                         var newzoomImage = zoomTratedImage.Clone(zoomRect2, zoomTratedImage.PixelFormat);
@@ -575,6 +586,10 @@ namespace SAARTAC1._1 {
             int [,] mancha = aux.ObtenerRegion(calidad);
             imagenesCaja2 [id_tac] = CrearImagenRegion(mancha);
             MostrarImagenTratada();
+        }
+
+        private void seleccionarToolStripMenuItem_Click(object sender, EventArgs e) {
+            seleccion_region = true;
         }
 
         private Bitmap CrearImagenRegion(int [,] mancha) {
