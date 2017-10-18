@@ -16,7 +16,7 @@ namespace SAARTAC1._1 {
         private Seccion seccion;
         private Regla regla;
         private static int ventanaZoom = 100;
-        private bool draw = false, reglaBool = false, zoomCon = false;
+        private bool draw = false, reglaBool = false, zoomCon = false, region_creciente = false;
         private List<Bitmap> imagenesCaja1 = new List<Bitmap>();
         private List<Bitmap> imagenesCaja2 = new List<Bitmap>();
         private int id_tac, num_tacs, uh_per, factor_per, bandera = 0;
@@ -182,9 +182,16 @@ namespace SAARTAC1._1 {
 
         //Evento cuando es mousedown sacar el punto de inicio.
         private void mostrarOriginal_MouseDown(object sender, MouseEventArgs e){
+            int x = mostrarOriginal.PointToClient(Cursor.Position).X;
+            int y = mostrarOriginal.PointToClient(Cursor.Position).Y;
+            if (e.Button == MouseButtons.Left && auxUH != null) {
+                ProcesoRegionCreciente(x, y);
+                region_creciente = false;
+                return;
+            }
             if (e.Button == MouseButtons.Left && reglaBool != true && auxUH != null && bandera != 1){                
                 draw = true;
-                seccion = new Seccion(mostrarOriginal.PointToClient(Cursor.Position).X, mostrarOriginal.PointToClient(Cursor.Position).Y, auxUH);
+                seccion = new Seccion(x, y, auxUH);
             }
         }
 
@@ -365,7 +372,7 @@ namespace SAARTAC1._1 {
                 case 1:
                     AbrirArchivosDICOM(bw);
                     break;
-                if (lect == null) return;
+                
                 case 2:
                     ProcesoKMeans(bw);
                     break;
@@ -432,6 +439,9 @@ namespace SAARTAC1._1 {
 
         //Cluster de k-means 
         private void kmeans_Click(object sender, EventArgs e){
+
+            if (lect == null)
+                return;
             panelProgressBar.Visible = true;
             progressBar1.Value = 1;
             backgroundWorker1.RunWorkerAsync(2);
@@ -439,6 +449,9 @@ namespace SAARTAC1._1 {
 
         //Cluster C-fuzzy
         private void fuzzy_Click(object sender, EventArgs e){
+
+            if (lect == null)
+                return;
             panelProgressBar.Visible = true;
             progressBar1.Value = 1;
             backgroundWorker1.RunWorkerAsync(3);
@@ -552,6 +565,30 @@ namespace SAARTAC1._1 {
 
         }
 
+        private void regionCrecienteToolStripMenuItem_Click(object sender, EventArgs e) {
+            region_creciente = true;
+        }
+
+        private void ProcesoRegionCreciente(int y, int x, int calidad = 1) {
+
+            RegionCreciente aux = new RegionCreciente(auxUH.obtenerMatriz(), y, x);
+            int [,] mancha = aux.ObtenerRegion(calidad);
+            imagenesCaja2 [id_tac] = CrearImagenRegion(mancha);
+            MostrarImagenTratada();
+        }
+
+        private Bitmap CrearImagenRegion(int [,] mancha) {
+            int N = auxUH.obtenerN();
+            int M = auxUH.obtenerM();
+            Bitmap salida = new Bitmap(N, M);
+            for(int i = 0; i < N; i++) {
+                for(int j = 0; j < M; j++) {
+                    salida.SetPixel(i, j, (mancha [i, j] == 1 ? Color.White : Color.Black));
+                }
+            }
+            return salida;
+        }
+
         private void MostrarImagenOriginal(){
             if (lect == null) return;
             if (imagenesCaja1.Count() <= 0) {
@@ -559,6 +596,7 @@ namespace SAARTAC1._1 {
                     var archivo = lect.obtenerArchivo(i);
                     var imagenResultado = archivo.ObtenerImagen();
                     imagenesCaja1.Add(imagenResultado);
+                    imagenesCaja2.Add(null);
                 }
             }
             mostrarOriginal.Image = imagenesCaja1[id_tac];
