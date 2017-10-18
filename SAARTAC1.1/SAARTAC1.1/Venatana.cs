@@ -70,48 +70,65 @@ namespace SAARTAC1._1 {
             try{
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK){ //verifica si se abrio.                    
                     id_tac = 0;
-                    ruta = folderBrowserDialog1.SelectedPath; //se saca el path del archivo.                                  
+                    ruta = folderBrowserDialog1.SelectedPath; //se saca el path del archivo.  
+                    panelProgressBar.Visible = true;
+                    progressBar1.Value = 1;
+                    backgroundWorker1.RunWorkerAsync(1);
                 }
                 else Console.WriteLine("Hay un problema al abrir el archivo");
             }
             catch (Exception ex) { MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido"); }
 
-            panelProgressBar.Visible = true;
-            progressBar1.Value = 1;
-            backgroundWorker1.RunWorkerAsync(1);
+            
         }
 
         //Avanzar hacia delante sobre la tira.
         private void botonSiguient_Click(object sender, EventArgs e){
-            if (id_tac >= num_tacs - 1)
-                id_tac = 0;
-            else
-                id_tac++;
-            auxUH = lect.obtenerArchivo(id_tac);
-            MostrarImagenOriginal();
-            if (imagenesCaja2.Count > 0)
-                MostrarImagenTratada();
+            try{
+                if (id_tac >= num_tacs - 1)
+                    id_tac = 0;
+                else
+                    id_tac++;
+                auxUH = lect.obtenerArchivo(id_tac);
+                MostrarImagenOriginal();
+                if (imagenesCaja2.Count > 0)
+                    MostrarImagenTratada();
+            }catch (Exception ex){
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
         }
 
         //ventana para hueso.
         private void huesoBarraDeHerramientas_Click(object sender, EventArgs e){
-            int lim_inf_ven = -450;
-            int lim_sup_ven = 1050;
-            generalEscalaGris(lim_inf_ven, lim_sup_ven);
-        }
+            try{
+                int lim_inf_ven = -450;
+                int lim_sup_ven = 1050;
+                generalEscalaGris(lim_inf_ven, lim_sup_ven);
+            }catch (Exception ex){
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
+}
 
         //venta para partes blandas.
         private void partesBlandasBarraDeHerramientas_Click(object sender, EventArgs e){
-            int lim_inf_ven = -125;
-            int lim_sup_ven = 225;
-            generalEscalaGris(lim_inf_ven, lim_sup_ven);
+            try {
+                int lim_inf_ven = -125;
+                int lim_sup_ven = 225;
+                generalEscalaGris(lim_inf_ven, lim_sup_ven);
+            }catch (Exception ex){
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
         }
 
         //ventana para pulmón.
         private void pulmónBarraDeHerramientas_Click(object sender, EventArgs e){
-            int lim_inf_ven = -1200;
-            int lim_sup_ven = 800;
-            generalEscalaGris(lim_inf_ven, lim_sup_ven);
+            try{ 
+                int lim_inf_ven = -1200;
+                int lim_sup_ven = 800;
+                generalEscalaGris(lim_inf_ven, lim_sup_ven);
+            }catch (Exception ex){
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
         }
 
         //Rotar 90 grados a la derecha
@@ -141,16 +158,19 @@ namespace SAARTAC1._1 {
             int x = mostrarOriginal.PointToClient(Cursor.Position).X;
             int y = mostrarOriginal.PointToClient(Cursor.Position).Y;
             if (auxUH != null) resultadoUHMouse.Text = (auxUH.ObtenerUH(x, y)).ToString();
+
+            mostrarOriginal.Refresh();
             if (draw & e.Button == MouseButtons.Left){
                 seccion.setFinal(x, y);
                 Graphics objGrafico = this.mostrarOriginal.CreateGraphics();
                 seccion.setRectangle();
                 objGrafico.DrawRectangle(seccion.getPen(), seccion.getRectangle());
-                mostrarOriginal.Invalidate();
+                
+
             }
             //PARTE DEL ZOOM
             if (zoomCon){
-               Bitmap zoomImage = new Bitmap(mostrarOriginal.Image);
+               Bitmap zoomImage = imagenesCaja1[id_tac];
                 Rectangle zoomRect = new Rectangle(x - (ventanaZoom / 2), y - (ventanaZoom / 2), ventanaZoom, ventanaZoom);
                 if (zoomRect.Left >= 0 && zoomRect.Top >= 0 && zoomRect.Right <= 512 && zoomRect.Bottom <= 512){
                     var newzoomImage = zoomImage.Clone(zoomRect, zoomImage.PixelFormat);
@@ -187,6 +207,7 @@ namespace SAARTAC1._1 {
 
         //saca la distancia /saca el punto inicial/ /saca el punto final/
         private void mostrarOriginal_Click(object sender, EventArgs e){
+            if (lect == null) return;
             if (reglaBool && bandera == 0){                
                 regla = new Regla(mostrarOriginal.PointToClient(Cursor.Position).X, mostrarOriginal.PointToClient(Cursor.Position).Y);
                 bandera = 1;
@@ -252,21 +273,34 @@ namespace SAARTAC1._1 {
 
         //Ventana para cerebro.
         private void cerebroBarraDeHerramientas_Click(object sender, EventArgs e){
-            int lim_inf_ven = -10;
-            int lim_sup_ven = 80;
-            generalEscalaGris(lim_inf_ven, lim_sup_ven);
+            try
+            {
+                int lim_inf_ven = -10;
+                int lim_sup_ven = 80;
+                generalEscalaGris(lim_inf_ven, lim_sup_ven);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
         }
 
         //Avanzar hacia atrás sobre la tira.
         private void botonAtras_Click(object sender, EventArgs e){
-            if (id_tac == 0)
-                id_tac = num_tacs - 1;
-            else
-                id_tac--;
-            auxUH = lect.obtenerArchivo(id_tac);
-            MostrarImagenOriginal();
-            if (imagenesCaja2.Count > 0)
-                MostrarImagenTratada();
+            try {
+                if (id_tac == 0)
+                    id_tac = num_tacs - 1;
+                else
+                    id_tac--;
+                auxUH = lect.obtenerArchivo(id_tac);
+                MostrarImagenOriginal();
+                if (imagenesCaja2.Count > 0)
+                    MostrarImagenTratada();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
         }
 
         private void progressBar1_Click(object sender, EventArgs e) {}
@@ -274,6 +308,9 @@ namespace SAARTAC1._1 {
         private void AbrirArchivosDICOM(BackgroundWorker bw)
         {
             lect = new LecturaArchivosDicom(ruta, bw);//se le da el path para sacar los archivos.
+            if (bw.CancellationPending)
+                return;
+
             num_tacs = lect.num_archivos();//se saca el número de archivos que hay en el estudio.
             imagenesCaja2.Clear();
             imagenesCaja1.Clear();//se limpia la lista del bitmap.
@@ -287,6 +324,9 @@ namespace SAARTAC1._1 {
         private void ProcesoKMeans(BackgroundWorker bw)
         {
             kMeans k = new kMeans(lect, 6, 10, lect.num_archivos(), bw);
+            if (bw.CancellationPending)
+                return;
+
             int[,,] clases = k.getClases();
             imagenesCaja2.Clear();
 
@@ -302,6 +342,9 @@ namespace SAARTAC1._1 {
         private void ProcesoFuzzyCMeans(BackgroundWorker bw)
         {
             FuzzyCMeans algoritmo = new FuzzyCMeans(lect, bw, 6, lect.num_archivos());
+            if (bw.CancellationPending)
+                return;
+
             int[,,] clases = algoritmo.getClases();
             imagenesCaja2.Clear();
             for (int i = 0; i < lect.num_archivos(); i++)
@@ -313,7 +356,7 @@ namespace SAARTAC1._1 {
         }
 
 
-        //obtiene las imagenes en background 
+        //Todos los metodos del background
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) {
             int opcion = (int)e.Argument;
             BackgroundWorker bw = sender as BackgroundWorker;
@@ -322,6 +365,7 @@ namespace SAARTAC1._1 {
                 case 1:
                     AbrirArchivosDICOM(bw);
                     break;
+                if (lect == null) return;
                 case 2:
                     ProcesoKMeans(bw);
                     break;
@@ -375,7 +419,7 @@ namespace SAARTAC1._1 {
             //PARTE DEL ZOOM
             if (zoomCon){
                 if (mostrarTratada.Image != null){
-                    Bitmap zoomTratedImage = new Bitmap(mostrarTratada.Image);
+                    Bitmap zoomTratedImage = imagenesCaja2[id_tac];
                     Rectangle zoomRect2 = new Rectangle(x - (ventanaZoom / 2), y - (ventanaZoom / 2), ventanaZoom, ventanaZoom);
                     if (zoomRect2.Left >= 0 && zoomRect2.Top >= 0 && zoomRect2.Right <= 512 && zoomRect2.Bottom <= 512){
                         var newzoomImage = zoomTratedImage.Clone(zoomRect2, zoomTratedImage.PixelFormat);
@@ -384,7 +428,6 @@ namespace SAARTAC1._1 {
                     }
                 }
             }
-            Thread.Sleep(100);
         }
 
         //Cluster de k-means 
@@ -468,14 +511,22 @@ namespace SAARTAC1._1 {
 
 
         private void dibujarUmbral(string lectura, Color color){
-            Umbralizacion operaciones = new Umbralizacion();
-            for (int i = 0; i < lect.num_archivos(); i++){
-                var archivo = lect.obtenerArchivo(i);
-                var matrizResultado = operaciones.UmbralizacionPara(lectura, archivo.matriz);
-                var imagenResultado = obtenerImagenUmbral(matrizResultado, archivo.ObtenerImagen(), color);
-                imagenesCaja2.Add(imagenResultado);
+            try
+            {
+                Umbralizacion operaciones = new Umbralizacion();
+                for (int i = 0; i < lect.num_archivos(); i++)
+                {
+                    var archivo = lect.obtenerArchivo(i);
+                    var matrizResultado = operaciones.UmbralizacionPara(lectura, archivo.matriz);
+                    var imagenResultado = obtenerImagenUmbral(matrizResultado, archivo.ObtenerImagen(), color);
+                    imagenesCaja2.Add(imagenResultado);
+                }
+                MostrarImagenTratada();
             }
-            MostrarImagenTratada();
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
         }
         private void personalizadaBarraDeHerramientas_Click(object sender, EventArgs e) {
             panelPersonalizada.Visible = true;
@@ -489,9 +540,20 @@ namespace SAARTAC1._1 {
             panelPersonalizada.Visible = false;
         }
         private void exportarBarraIconos_Click(object sender, EventArgs e){}
-        
+
+        private void butonCancelarProceso_Click(object sender, EventArgs e) {
+            backgroundWorker1.CancelAsync();
+            panelProgressBar.Visible = false;
+            
+        }
+
+        private void mostrarOriginal_MouseHover(object sender, EventArgs e)
+        {
+
+        }
 
         private void MostrarImagenOriginal(){
+            if (lect == null) return;
             if (imagenesCaja1.Count() <= 0) {
                 for (int i = 0; i < lect.num_archivos(); i++) {
                     var archivo = lect.obtenerArchivo(i);
@@ -504,6 +566,7 @@ namespace SAARTAC1._1 {
 
         //mostrar imagen con tratamiento.
         private void MostrarImagenTratada(){
+            if (lect == null) return;
             if (imagenesCaja2.Count() > 0) mostrarTratada.Image = imagenesCaja2[id_tac];            
             else mostrarTratada.Image = null;            
         }
