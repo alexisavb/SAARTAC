@@ -23,6 +23,11 @@ namespace SAARTAC1._1
             umbralesDelCuerpo["SangreCoagulada"] = new int[] { 55, 5 };
         }
 
+        public Umbralizacion(int valorUH, int tolerancia){
+            umbralesDelCuerpo["Personalizada"] = new int[] {valorUH, tolerancia };
+        }
+
+
         public bool[,] UmbralizacionPara(string tipo, int[,] matriz){
             int x = umbralesDelCuerpo[tipo][0];
             int y = umbralesDelCuerpo[tipo][1];

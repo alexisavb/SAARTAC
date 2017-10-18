@@ -15,7 +15,8 @@ namespace SAARTAC1._1
         private int numeroHilos = 4;
         private const string python = @"C:\Python27\python.exe";
         //C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#
-        private const string myPythonApp = "\"C:\\Users\\Edgar Nieves\\Documents\\GitHub\\SAARTAC\\TT2.0C#\\sum.py\"";
+        // @"C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\TT2.0C#\sum.py";
+        private const string myPythonApp = @"C:\Users\AlexisAlan\Documents\SAARTAC\SAARTAC\TT2.0C#\sum.py";
         public MatrizDicom obtenerArchivo(int x) { return archivosDicom[x]; }
 
         public LecturaArchivosDicom(string ruta, BackgroundWorker reporte_progreso) {
