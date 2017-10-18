@@ -54,6 +54,7 @@
     <Compile Include="LecturaArchivosDicom.cs" />
     <Compile Include="MatrizDicom.cs" />
     <Compile Include="ParametroPython.cs" />
+    <Compile Include="RegionCreciente.cs" />
     <Compile Include="Regla.cs" />
     <Compile Include="Seccion.cs" />
     <Compile Include="Umbralizacion.cs" />

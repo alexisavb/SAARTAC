@@ -35,6 +35,9 @@ namespace SAARTAC1._1{
         }
 
         public string obtenerRuta() { return ruta; }
+        public int[,] obtenerMatriz() { return matriz; }
+        public int obtenerN() { return N; }
+        public int obtenerM() { return M; }
 
         public void CopiarMatriz(ref int[,] A){
             for (int i = 0; i < N; i++){
