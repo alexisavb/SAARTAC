@@ -16,10 +16,11 @@ namespace SAARTAC1._1 {
         private Seccion seccion;
         private Regla regla;
         private static int ventanaZoom = 100;
-        private bool draw = false, reglaBool = false, zoomCon = false;
+        private bool draw = false, reglaBool = false, zoomCon = false, 
+            region_creciente = false, seleccion_region = false;
         private List<Bitmap> imagenesCaja1 = new List<Bitmap>();
         private List<Bitmap> imagenesCaja2 = new List<Bitmap>();
-        private int id_tac, num_tacs, uh_per, factor_per, bandera = 0;
+        private int id_tac, num_tacs, uh_per, factor_per, bandera = 0, banderaPersonalizada;
         private LecturaArchivosDicom lect;
         private string ruta;
         //private int abrirArchivo = 0;
@@ -36,10 +37,15 @@ namespace SAARTAC1._1 {
             this.MouseWheel += new MouseEventHandler(ventanaMouseWheel);
         }
 
-        //Evento MouseWheel
-        private void ventanaMouseWheel(object sender, MouseEventArgs e) {
-            if (mostrarOriginal.Image != null) {
-                if (e.Delta > 0) {
+
+
+        //Eventos de los botones
+        //---------------------------------------------------------------------------------------------------------------------------------------------------
+
+        //Evento MouseWheel cambiar imagen con el scroll
+        private void ventanaMouseWheel(object sender, MouseEventArgs e){
+            if (mostrarOriginal.Image != null){
+                if (e.Delta > 0){
                     if (id_tac >= num_tacs - 1)
                         id_tac = 0;
                     else
@@ -49,7 +55,7 @@ namespace SAARTAC1._1 {
                     if (imagenesCaja2.Count > 0)
                         MostrarImagenTratada();
                 }
-                if (e.Delta < 0) {
+                if (e.Delta < 0){
                     if (id_tac == 0)
                         id_tac = num_tacs - 1;
                     else
@@ -62,8 +68,6 @@ namespace SAARTAC1._1 {
             }
         }
 
-        //Eventos de los botones
-        //---------------------------------------------------------------------------------------------------------------------------------------------------
         //Abrir archivos.
         private void abrirBarraHerramientas_Click(object sender, EventArgs e){
             
@@ -182,9 +186,16 @@ namespace SAARTAC1._1 {
 
         //Evento cuando es mousedown sacar el punto de inicio.
         private void mostrarOriginal_MouseDown(object sender, MouseEventArgs e){
+            int x = mostrarOriginal.PointToClient(Cursor.Position).X;
+            int y = mostrarOriginal.PointToClient(Cursor.Position).Y;
+            if (e.Button == MouseButtons.Left && auxUH != null && region_creciente) {
+                ProcesoRegionCreciente(x, y);
+                region_creciente = false;
+                return;
+            }
             if (e.Button == MouseButtons.Left && reglaBool != true && auxUH != null && bandera != 1){                
                 draw = true;
-                seccion = new Seccion(mostrarOriginal.PointToClient(Cursor.Position).X, mostrarOriginal.PointToClient(Cursor.Position).Y, auxUH);
+                seccion = new Seccion(x, y, auxUH);
             }
         }
 
@@ -200,6 +211,16 @@ namespace SAARTAC1._1 {
                 Thread.Sleep(milliseconds);
                 mostrarOriginal.Invalidate();
             }
+            if (seleccion_region) {
+                seleccion_region = false;
+                var seleccion = seccion.obtenerImagen(imagenesCaja1 [id_tac]);
+                Bitmap ajustarImagen = new Bitmap(seleccion, new Size(512, 512));
+                MostrarImagenTratada(ajustarImagen);
+            }
+        }
+
+        private void MostrarImagenTratada(Bitmap seleccion) {
+            mostrarTratada.Image = seleccion;
         }
 
         //Se activa la bandera para sacar distancia.
@@ -321,8 +342,7 @@ namespace SAARTAC1._1 {
             zoomCon = true;
         }
 
-        private void ProcesoKMeans(BackgroundWorker bw)
-        {
+        private void ProcesoKMeans(BackgroundWorker bw){
             kMeans k = new kMeans(lect, 6, 10, lect.num_archivos(), bw);
             if (bw.CancellationPending)
                 return;
@@ -330,8 +350,7 @@ namespace SAARTAC1._1 {
             int[,,] clases = k.getClases();
             imagenesCaja2.Clear();
 
-            for (int i = 0; i < lect.num_archivos(); i++)
-            {
+            for (int i = 0; i < lect.num_archivos(); i++){
                 imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));
                 bw.ReportProgress(90 + (10 * (i + 1)) / lect.num_archivos());
             }
@@ -339,16 +358,13 @@ namespace SAARTAC1._1 {
             MostrarImagenTratada();
         }
 
-        private void ProcesoFuzzyCMeans(BackgroundWorker bw)
-        {
+        private void ProcesoFuzzyCMeans(BackgroundWorker bw){
             FuzzyCMeans algoritmo = new FuzzyCMeans(lect, bw, 6, lect.num_archivos());
             if (bw.CancellationPending)
                 return;
-
             int[,,] clases = algoritmo.getClases();
             imagenesCaja2.Clear();
-            for (int i = 0; i < lect.num_archivos(); i++)
-            {
+            for (int i = 0; i < lect.num_archivos(); i++){
                 imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));
                 bw.ReportProgress(90 + (10 * (i + 1)) / lect.num_archivos());
             }
@@ -365,7 +381,7 @@ namespace SAARTAC1._1 {
                 case 1:
                     AbrirArchivosDICOM(bw);
                     break;
-                if (lect == null) return;
+                
                 case 2:
                     ProcesoKMeans(bw);
                     break;
@@ -419,7 +435,7 @@ namespace SAARTAC1._1 {
             //PARTE DEL ZOOM
             if (zoomCon){
                 if (mostrarTratada.Image != null){
-                    Bitmap zoomTratedImage = imagenesCaja2[id_tac];
+                    Bitmap zoomTratedImage = (Bitmap) mostrarTratada.Image;
                     Rectangle zoomRect2 = new Rectangle(x - (ventanaZoom / 2), y - (ventanaZoom / 2), ventanaZoom, ventanaZoom);
                     if (zoomRect2.Left >= 0 && zoomRect2.Top >= 0 && zoomRect2.Right <= 512 && zoomRect2.Bottom <= 512){
                         var newzoomImage = zoomTratedImage.Clone(zoomRect2, zoomTratedImage.PixelFormat);
@@ -432,6 +448,9 @@ namespace SAARTAC1._1 {
 
         //Cluster de k-means 
         private void kmeans_Click(object sender, EventArgs e){
+
+            if (lect == null)
+                return;
             panelProgressBar.Visible = true;
             progressBar1.Value = 1;
             backgroundWorker1.RunWorkerAsync(2);
@@ -439,6 +458,9 @@ namespace SAARTAC1._1 {
 
         //Cluster C-fuzzy
         private void fuzzy_Click(object sender, EventArgs e){
+
+            if (lect == null)
+                return;
             panelProgressBar.Visible = true;
             progressBar1.Value = 1;
             backgroundWorker1.RunWorkerAsync(3);
@@ -499,8 +521,47 @@ namespace SAARTAC1._1 {
         //exportar tratada
         private void exportarTratada_Click(object sender, EventArgs e){ exportarTratadaIcono_Click(sender,e); }
 
+        //acciones de la personalización
+        private void botonAplicarPersonalizada_Click(object sender, EventArgs e){            
+            try{
+                int centro = int.Parse(valorCentro.Text);
+                int ancho = int.Parse(valorAncho.Text);
+                int mitad = ancho / 2;
+                if (banderaPersonalizada == 0)                    
+                    generalEscalaGris(centro - mitad, centro + mitad);                
+                else
+                    imagenesCaja2.Clear(); dibujarUmbral(centro,ancho, Color.FromArgb(40, 67, 120));                    
+                             
+            }
+            catch (Exception ex){
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
+            panelPersonalizada.Visible = false;
+        }
 
+        //personalizar la venta para unbralización
+        private void personalizadaBarraDeHerramientas_Click(object sender, EventArgs e){
+            textoUHPerso.Visible = true;
+            textoUmbralPersonal.Visible = true;
+            textoToleranciaUH.Visible = true;
+            textoCentroPersonalizada.Visible = false;
+            textoAnchoPersonalizada.Visible = false;
+            textoPersonalizada.Visible = false;
+            panelPersonalizada.Visible = true;
+            banderaPersonalizada = 1;
+        }
 
+        //personalizar la venta para contraste
+        private void pesonalizadaVBarraDeHerramientas_Click(object sender, EventArgs e){
+            textoUHPerso.Visible = false;
+            textoUmbralPersonal.Visible = false;
+            textoToleranciaUH.Visible = false;
+            textoCentroPersonalizada.Visible = true;
+            textoAnchoPersonalizada.Visible = true;
+            textoPersonalizada.Visible = true;
+            banderaPersonalizada = 0;
+            panelPersonalizada.Visible = true;
+        }
 
         ///---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -511,11 +572,9 @@ namespace SAARTAC1._1 {
 
 
         private void dibujarUmbral(string lectura, Color color){
-            try
-            {
+            try{
                 Umbralizacion operaciones = new Umbralizacion();
-                for (int i = 0; i < lect.num_archivos(); i++)
-                {
+                for (int i = 0; i < lect.num_archivos(); i++){
                     var archivo = lect.obtenerArchivo(i);
                     var matrizResultado = operaciones.UmbralizacionPara(lectura, archivo.matriz);
                     var imagenResultado = obtenerImagenUmbral(matrizResultado, archivo.ObtenerImagen(), color);
@@ -523,22 +582,29 @@ namespace SAARTAC1._1 {
                 }
                 MostrarImagenTratada();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex){
                 MessageBox.Show("No se ha cargado ningún archivo", "Error");
             }
         }
-        private void personalizadaBarraDeHerramientas_Click(object sender, EventArgs e) {
-            panelPersonalizada.Visible = true;
+
+
+        private void dibujarUmbral(int valorUH, int tolerancia, Color color){
+            try{
+                Umbralizacion operaciones = new Umbralizacion(valorUH,tolerancia);
+                for (int i = 0; i < lect.num_archivos(); i++){
+                    var archivo = lect.obtenerArchivo(i);
+                    var matrizResultado = operaciones.UmbralizacionPara("Personalizada", archivo.matriz);
+                    var imagenResultado = obtenerImagenUmbral(matrizResultado, archivo.ObtenerImagen(), color);
+                    imagenesCaja2.Add(imagenResultado);
+                }
+                MostrarImagenTratada();
+            }
+            catch (Exception ex){
+                MessageBox.Show("No se ha cargado ningún archivo", "Error");
+            }
         }
 
-        private void pesonalizadaVBarraDeHerramientas_Click(object sender, EventArgs e) {
-            panelPersonalizada.Visible = true;
-        }
 
-        private void botonAplicarPersonalizada_Click(object sender, EventArgs e) {
-            panelPersonalizada.Visible = false;
-        }
         private void exportarBarraIconos_Click(object sender, EventArgs e){}
 
         private void butonCancelarProceso_Click(object sender, EventArgs e) {
@@ -547,9 +613,36 @@ namespace SAARTAC1._1 {
             
         }
 
-        private void mostrarOriginal_MouseHover(object sender, EventArgs e)
-        {
+        private void panelPersonalizada_Paint(object sender, PaintEventArgs e){
 
+        }
+
+        private void regionCrecienteToolStripMenuItem_Click(object sender, EventArgs e) {
+            region_creciente = true;
+        }
+
+        private void ProcesoRegionCreciente(int y, int x, int calidad = 1) {
+
+            RegionCreciente aux = new RegionCreciente(auxUH.obtenerMatriz(), y, x);
+            int [,] mancha = aux.ObtenerRegion(calidad);
+            imagenesCaja2 [id_tac] = CrearImagenRegion(mancha);
+            MostrarImagenTratada();
+        }
+
+        private void seleccionarToolStripMenuItem_Click(object sender, EventArgs e) {
+            seleccion_region = true;
+        }
+
+        private Bitmap CrearImagenRegion(int [,] mancha) {
+            int N = auxUH.obtenerN();
+            int M = auxUH.obtenerM();
+            Bitmap salida = new Bitmap(N, M);
+            for(int i = 0; i < N; i++) {
+                for(int j = 0; j < M; j++) {
+                    salida.SetPixel(i, j, (mancha [i, j] == 1 ? Color.White : Color.Black));
+                }
+            }
+            return salida;
         }
 
         private void MostrarImagenOriginal(){
@@ -559,6 +652,7 @@ namespace SAARTAC1._1 {
                     var archivo = lect.obtenerArchivo(i);
                     var imagenResultado = archivo.ObtenerImagen();
                     imagenesCaja1.Add(imagenResultado);
+                    imagenesCaja2.Add(null);
                 }
             }
             mostrarOriginal.Image = imagenesCaja1[id_tac];

@@ -36,6 +36,10 @@ namespace SAARTAC1._1
 
         public Rectangle getRectangle() { return RectanguloSeleccion; }
 
+        public Bitmap obtenerImagen(Bitmap original) {
+            Bitmap salida = original.Clone(RectanguloSeleccion, original.PixelFormat);
+            return salida;
+        }
 
         public int createAverage(){
             int limY = RectanguloSeleccion.Y + RectanguloSeleccion.Height;
