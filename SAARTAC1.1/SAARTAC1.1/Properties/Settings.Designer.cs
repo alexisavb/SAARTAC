@@ -23,21 +23,27 @@ namespace SAARTAC1._1.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("D:\\Python27\\python.exe")]
-        public string rutaPyton {
+        public string rutaPython {
             get {
-                return ((string)(this["rutaPyton"]));
+                return ((string)(this["rutaPython"]));
+            }
+            set {
+                this["rutaPython"] = value;
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"D:\\Trabajo Terminal\\SAARTAC\\TT2.0C#\\sum.py\"")]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\Trabajo Terminal\\SAARTAC\\TT2.0C#\\sum.py")]
         public string rutaLecturaDicom {
             get {
                 return ((string)(this["rutaLecturaDicom"]));
+            }
+            set {
+                this["rutaLecturaDicom"] = value;
             }
         }
     }

@@ -20,8 +20,8 @@ namespace SAARTAC1._1
         public MatrizDicom obtenerArchivo(int x) { return archivosDicom[x]; }
 
         public LecturaArchivosDicom(string ruta, BackgroundWorker reporte_progreso) {
-            python = Properties.Settings.Default.rutaPyton;
-            myPythonApp = Properties.Settings.Default.rutaLecturaDicom;
+            python = Properties.Settings.Default.rutaPython;
+            myPythonApp = "\"" + Properties.Settings.Default.rutaLecturaDicom + "\"";
 
             reporte_progreso.ReportProgress(0);
             cargado = 0;
