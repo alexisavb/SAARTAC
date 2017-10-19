@@ -621,6 +621,15 @@ namespace SAARTAC1._1 {
             region_creciente = true;
         }
 
+        private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e) {
+            Configuracion frm = new Configuracion();
+            frm.Show();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
         private void ProcesoRegionCreciente(int y, int x, int calidad = 1) {
 
             RegionCreciente aux = new RegionCreciente(auxUH.obtenerMatriz(), y, x);

@@ -1,7 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SAARTAC1._1.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="rutaPython" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\Python27\python.exe</Value>
+    </Setting>
+    <Setting Name="rutaLecturaDicom" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\Trabajo Terminal\SAARTAC\TT2.0C#\sum.py</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
