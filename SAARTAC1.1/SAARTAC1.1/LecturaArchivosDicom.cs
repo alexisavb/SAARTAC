@@ -3,6 +3,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Threading;
 using System.ComponentModel;
+using System.Configuration;
 
 namespace SAARTAC1._1
 {
@@ -13,12 +14,15 @@ namespace SAARTAC1._1
         public Thread[] threadsArray;
         private static Mutex[] mutex;
         private int numeroHilos = 4;
-        private const string python = @"D:\Python27\python.exe";
+        private static string python;
         //C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#
-        private const string myPythonApp = "\"D:\\Trabajo Terminal\\SAARTAC\\TT2.0C#\\sum.py\"";
+        private static string myPythonApp;
         public MatrizDicom obtenerArchivo(int x) { return archivosDicom[x]; }
 
         public LecturaArchivosDicom(string ruta, BackgroundWorker reporte_progreso) {
+            python = Properties.Settings.Default.rutaPython;
+            myPythonApp = "\"" + Properties.Settings.Default.rutaLecturaDicom + "\"";
+
             reporte_progreso.ReportProgress(0);
             cargado = 0;
             mutex = new Mutex[numeroHilos];
