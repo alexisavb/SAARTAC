@@ -240,7 +240,7 @@ namespace SAARTAC1._1 {
                 Graphics objGrafico = this.mostrarOriginal.CreateGraphics();
                 Pen myPen = new Pen(Color.Red, 1);
                 objGrafico.DrawLine(myPen, regla.getPointInicio(), regla.getPoinFinal());
-                double[] distancias = LecturaArchivosDicom.Pregunta_Python_Dimensiones(1, auxUH.obtenerRuta());
+                double[] distancias = LecturaArchivosDicom.Pregunta_Python_Dimensiones(auxUH.obtenerRuta());
                 resultadoDistancia.Text = (regla.getDistancia(distancias[0], distancias[1])).ToString("N3");
                 int milliseconds = 1200;
                 Thread.Sleep(milliseconds);
