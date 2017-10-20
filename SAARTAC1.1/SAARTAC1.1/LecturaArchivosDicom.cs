@@ -9,6 +9,15 @@ namespace SAARTAC1._1
 {
     internal class LecturaArchivosDicom{
 
+        const int DimensionesPixel = 1;
+        const int Edad = 3;
+        const int EspesorRebanada = 6;
+        const int Fecha = 5;
+        const int Hospital = 7;
+        const int MatrizDICOM = 0;
+        const int Nombre = 2;
+        const int Sexo = 4;
+
         public static MatrizDicom[] archivosDicom;
         public static int cargado = 0;
         public Thread[] threadsArray;
@@ -67,8 +76,7 @@ namespace SAARTAC1._1
 
         public int num_archivos() { return archivosDicom.Length; }
 
-        public static double[] Pregunta_Python_Dimensiones(int pregunta, string ruta){
-            
+        public static string PreguntaPythonGeneral(int pregunta, string ruta) {
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
             myProcessStartInfo.UseShellExecute = false;
@@ -84,10 +92,49 @@ namespace SAARTAC1._1
 
             StreamReader myStreamReader = myProcess.StandardOutput;
 
-            string myString = myStreamReader.ReadLine();
-            string[] tokens = myString.Split();
-            double[] M = { Convert.ToDouble(tokens[0]), Convert.ToDouble(tokens[1]) };
+            return myStreamReader.ReadLine();
+        }
+
+        public static double [] Pregunta_Python_Dimensiones(string ruta) {
+            string myString = PreguntaPythonGeneral(DimensionesPixel, ruta);
+            string [] tokens = myString.Split();
+            double [] M = { Convert.ToDouble(tokens [0]), Convert.ToDouble(tokens [1]) };
             return M;
+        }
+
+        public static string PreguntaNombre(string ruta) {
+            string myString = PreguntaPythonGeneral(Nombre, ruta);
+            return myString.Replace('^', ' ');
+        }
+
+        public static int PreguntaEdad(string ruta) {
+
+            string myString = PreguntaPythonGeneral(Edad, ruta);
+            myString = myString.Remove(myString.Length - 1);
+            return Int32.Parse(myString);
+        }
+
+        public static int PreguntaEspesor(string ruta) {
+
+            string myString = PreguntaPythonGeneral(EspesorRebanada, ruta);
+            return Int32.Parse(myString);
+        }
+
+        public static string PreguntaHospital(string ruta) {
+
+            return PreguntaPythonGeneral(Hospital, ruta);
+        }
+
+        public static string PreguntaSexo(string ruta) {
+
+            return PreguntaPythonGeneral(Sexo, ruta);
+        }
+
+        public static string PreguntaFecha(string ruta) {
+
+            string myString = PreguntaPythonGeneral(Sexo, ruta);
+            string fecha = myString.Substring(6, 2) + "/" + myString.Substring(4, 2) + "/" + myString.Substring(0, 4);
+            return fecha;
         }
 
         public static int EncuentraHiloLibre(){
