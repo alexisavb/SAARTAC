@@ -46,5 +46,17 @@ namespace SAARTAC1._1.Properties {
                 this["rutaLecturaDicom"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public int NumeroProcesos {
+            get {
+                return ((int)(this["NumeroProcesos"]));
+            }
+            set {
+                this["NumeroProcesos"] = value;
+            }
+        }
     }
 }
