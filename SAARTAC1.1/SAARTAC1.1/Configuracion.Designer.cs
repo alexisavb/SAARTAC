@@ -37,6 +37,9 @@
             this.button4 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Procesos = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.Procesos)).BeginInit();
             this.SuspendLayout();
             // 
             // RutaPython
@@ -117,12 +120,42 @@
             this.textBox1.Size = new System.Drawing.Size(271, 20);
             this.textBox1.TabIndex = 1;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(24, 183);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(153, 18);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Número de procesos:";
+            // 
+            // Procesos
+            // 
+            this.Procesos.Location = new System.Drawing.Point(218, 185);
+            this.Procesos.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.Procesos.Name = "Procesos";
+            this.Procesos.Size = new System.Drawing.Size(60, 20);
+            this.Procesos.TabIndex = 11;
+            this.Procesos.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // Configuracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(648, 569);
+            this.Controls.Add(this.Procesos);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -134,6 +167,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Configuracion";
             this.Text = "Configuracion";
+            ((System.ComponentModel.ISupportInitialize)(this.Procesos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,5 +183,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown Procesos;
     }
 }

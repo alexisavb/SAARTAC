@@ -9,53 +9,39 @@ namespace SAARTAC1._1
 {
     internal class LecturaArchivosDicom{
 
-        const int DimensionesPixel = 1;
-        const int Edad = 3;
-        const int EspesorRebanada = 6;
-        const int Fecha = 5;
-        const int Hospital = 7;
-        const int MatrizDICOM = 0;
-        const int Nombre = 2;
-        const int Sexo = 4;
-
         public static MatrizDicom[] archivosDicom;
-        public static int cargado = 0;
-        public Thread[] threadsArray;
-        private static Mutex[] mutex;
-        private int numeroHilos = 4;
-        private static string python;
-        //C:\Users\raull\Documents\VersionFinalGit\SAARTAC\TT2.0C#
-        private static string myPythonApp;
+        public static int cargado, numeroHilos;
+        private static Mutex mutex;
+        private static string python, myPythonApp;
+
         public MatrizDicom obtenerArchivo(int x) { return archivosDicom[x]; }
 
         public LecturaArchivosDicom(string ruta, BackgroundWorker reporte_progreso) {
+            numeroHilos = Properties.Settings.Default.NumeroProcesos;
             python = Properties.Settings.Default.rutaPython;
             myPythonApp = "\"" + Properties.Settings.Default.rutaLecturaDicom + "\"";
 
             reporte_progreso.ReportProgress(0);
             cargado = 0;
-            mutex = new Mutex[numeroHilos];
-            for (int i = 0; i < mutex.Length; i++)            
-                mutex[i] = new Mutex();            
-            int x = 0;
-            string[] fileEntries = Directory.GetFiles(ruta);
+            mutex = new Mutex();
 
-            DateTime start = DateTime.Now;
+            string[] fileEntries = Directory.GetFiles(ruta);
             int N = fileEntries.Length;
-            threadsArray = new Thread[N];
+            Thread [] threadsArray = new Thread[N];
             archivosDicom = new MatrizDicom[N];
+
             for (int i = 0; i < N; i++){
-                //Console.WriteLine(fileEntries[i]);
                 string parametro = "\"" + fileEntries[i] + "\"";
-                ParametroPython aux = new ParametroPython(x, parametro, i);
+                ParametroPython aux = new ParametroPython(0, parametro, i);
                 threadsArray[i] = new Thread(() => Pregunta_Python(aux));
 
             }
+
             reporte_progreso.ReportProgress(3);
             for (int i = 0; i < N; i++)            
                 threadsArray[i].Start();
-            for (int i = 0; i < N; i++) {
-                threadsArray [i].Join();
+
+            while(cargado < N) {
                 Thread.Sleep(100);
                 Console.WriteLine((cargado * 90) / N);
                 reporte_progreso.ReportProgress((cargado * 90) / N);
@@ -63,14 +49,7 @@ namespace SAARTAC1._1
                     return;
                 }
             }
-            TimeSpan timeDiff = DateTime.Now - start;
-            var res = timeDiff.TotalMilliseconds;
-            Console.WriteLine("Tiempo de ejecucion: " + res);
-            //var pruebaImagen = archivosDicom[1].ObtenerImagen();
-            //pruebaImagen.Save("prueba.jpg");
-            //pruebaImagen.Dispose();
-
-            //Console.WriteLine("llegue aqui");
+            
             reporte_progreso.ReportProgress(90);
         }
 
@@ -78,16 +57,14 @@ namespace SAARTAC1._1
 
         public static string PreguntaPythonGeneral(int pregunta, string ruta) {
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
-
             myProcessStartInfo.UseShellExecute = false;
             myProcessStartInfo.RedirectStandardOutput = true;
             ruta = "\"" + ruta + "\"";
             myProcessStartInfo.Arguments = myPythonApp + " " + pregunta + " " + ruta;
             myProcessStartInfo.CreateNoWindow = true;
+
             Process myProcess = new Process();
             myProcess.StartInfo = myProcessStartInfo;
-
-            //Console.WriteLine("Calling Python script with arguments {0} and {1} pos == {2}", pregunta, ruta, pos);
             myProcess.Start();
 
             StreamReader myStreamReader = myProcess.StandardOutput;
@@ -137,35 +114,32 @@ namespace SAARTAC1._1
             return fecha;
         }
 
-        public static int EncuentraHiloLibre(){
-            int pos_hilo = 0;
+        public static void EncuentraHiloLibre(){
             while (true){
-                if (!mutex[pos_hilo].WaitOne(100)){
-                    pos_hilo++;
-                    pos_hilo %= mutex.Length;
-                }
-                else  break;                
+                mutex.WaitOne();
+                if(numeroHilos > 0) {
+                    numeroHilos--;
+                    mutex.ReleaseMutex();
+                    return;
+                }        
+                mutex.ReleaseMutex();
             }
-            return pos_hilo;
         }
 
         public static void Pregunta_Python(ParametroPython o){
-            int pos_hilo = EncuentraHiloLibre();
+            EncuentraHiloLibre();
             string ruta = o.ruta;
             int pregunta = o.x;
             int pos = o.pos;
 
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
-
             myProcessStartInfo.UseShellExecute = false;
             myProcessStartInfo.RedirectStandardOutput = true;
-
             myProcessStartInfo.Arguments = myPythonApp + " " + pregunta + " " + ruta;
             myProcessStartInfo.CreateNoWindow = true;
+
             Process myProcess = new Process();
             myProcess.StartInfo = myProcessStartInfo;
-
-            //Console.WriteLine("Calling Python script with arguments {0} and {1} pos == {2}", pregunta, ruta, pos);
             myProcess.Start();
 
             StreamReader myStreamReader = myProcess.StandardOutput;
@@ -176,6 +150,7 @@ namespace SAARTAC1._1
             int M = Convert.ToInt32(tokens[1]);
             MatrizDicom dicom = new MatrizDicom(ruta, N, M);
             int[,] auxMatriz = new int[N, M];
+
             for (int j = 0; j < N; j++){
                 myString = myStreamReader.ReadLine();
                 string[] tokens2 = myString.Split();
@@ -183,13 +158,28 @@ namespace SAARTAC1._1
                 for (int k = 0; k < M; k++)                
                     auxMatriz[k, j] = filaDicom[k] - 1000;                
             }
+
             dicom.CopiarMatriz(ref auxMatriz);
             myProcess.WaitForExit();
             myProcess.Close();
+
             archivosDicom[pos] = dicom;
-            mutex[pos_hilo].ReleaseMutex();
+
+            mutex.WaitOne();
             cargado++;
+            numeroHilos++;
+            mutex.ReleaseMutex();
         }
+
+        const int DimensionesPixel = 1;
+        const int Edad = 3;
+        const int EspesorRebanada = 6;
+        const int Fecha = 5;
+        const int Hospital = 7;
+        const int MatrizDICOM = 0;
+        const int Nombre = 2;
+        const int Sexo = 4;
+
     }
 
 }

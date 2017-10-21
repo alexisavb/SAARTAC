@@ -23,8 +23,7 @@ namespace SAARTAC1._1 {
         private int id_tac, num_tacs, uh_per, factor_per, bandera = 0, banderaPersonalizada;
         private LecturaArchivosDicom lect;
         private string ruta;
-        //private int abrirArchivo = 0;
-        
+
         public mainVentana() {
             InitializeComponent();
             barraHerramientas.Renderer = new MyRenderer();
@@ -573,16 +572,30 @@ namespace SAARTAC1._1 {
 
         private void dibujarUmbral(string lectura, Color color){
             try{
-                Umbralizacion operaciones = new Umbralizacion();
-                for (int i = 0; i < lect.num_archivos(); i++){
-                    var archivo = lect.obtenerArchivo(i);
-                    var matrizResultado = operaciones.UmbralizacionPara(lectura, archivo.matriz);
-                    var imagenResultado = obtenerImagenUmbral(matrizResultado, archivo.ObtenerImagen(), color);
-                    imagenesCaja2.Add(imagenResultado);
+                Cursor.Current = Cursors.WaitCursor;
+                Umbralizacion operaciones = new Umbralizacion(lect.num_archivos());
+                int N = lect.num_archivos();
+                Thread [] threadsArray = new Thread [N];
+
+                for (int i = 0; i < N; i++) {
+                    MatrizDicom dicom = lect.obtenerArchivo(i);
+                    ParametroUmbralizacion aux = new ParametroUmbralizacion(lectura, dicom, i, color);
+                    threadsArray [i] = new Thread(() => operaciones.UmbraHilos(aux));
+
                 }
+                for (int i = 0; i < N; i++) {
+                    threadsArray [i].Start();
+                }
+                for (int i = 0; i < N; i++) {
+                    threadsArray [i].Join();
+                    imagenesCaja2.Add(Umbralizacion.imagenes [i]);
+                }
+
                 MostrarImagenTratada();
+                Cursor.Current = Cursors.Default;
             }
             catch (Exception ex){
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show("No se ha cargado ningún archivo", "Error");
             }
         }
@@ -590,13 +603,25 @@ namespace SAARTAC1._1 {
 
         private void dibujarUmbral(int valorUH, int tolerancia, Color color){
             try{
-                Umbralizacion operaciones = new Umbralizacion(valorUH,tolerancia);
-                for (int i = 0; i < lect.num_archivos(); i++){
-                    var archivo = lect.obtenerArchivo(i);
-                    var matrizResultado = operaciones.UmbralizacionPara("Personalizada", archivo.matriz);
-                    var imagenResultado = obtenerImagenUmbral(matrizResultado, archivo.ObtenerImagen(), color);
-                    imagenesCaja2.Add(imagenResultado);
+                Umbralizacion operaciones = new Umbralizacion(valorUH, tolerancia, lect.num_archivos());
+                int N = lect.num_archivos();
+                Thread [] threadsArray = new Thread [N];
+
+                for (int i = 0; i < N; i++) {
+                    string tipo = "Personalizada";
+                    MatrizDicom dicom = lect.obtenerArchivo(i);
+                    ParametroUmbralizacion aux = new ParametroUmbralizacion(tipo, dicom, i, color);
+                    threadsArray [i] = new Thread(() => operaciones.UmbraHilos(aux));
+
                 }
+                for (int i = 0; i < N; i++) {
+                    threadsArray [i].Start();
+                }
+                for (int i = 0; i < N; i++) {
+                    threadsArray [i].Join();
+                    imagenesCaja2.Add(Umbralizacion.imagenes [i]);
+                }
+
                 MostrarImagenTratada();
             }
             catch (Exception ex){
@@ -657,12 +682,8 @@ namespace SAARTAC1._1 {
         private void MostrarImagenOriginal(){
             if (lect == null) return;
             if (imagenesCaja1.Count() <= 0) {
-                for (int i = 0; i < lect.num_archivos(); i++) {
-                    var archivo = lect.obtenerArchivo(i);
-                    var imagenResultado = archivo.ObtenerImagen();
-                    imagenesCaja1.Add(imagenResultado);
-                    imagenesCaja2.Add(null);
-                }
+                generalEscalaGris(-1000, 1600);
+                return;
             }
             mostrarOriginal.Image = imagenesCaja1[id_tac];
         }
@@ -676,13 +697,28 @@ namespace SAARTAC1._1 {
        
         //genera escala de gris.
         private void generalEscalaGris(int lim_inf, int lim_sup){
+            Cursor.Current = Cursors.WaitCursor;
             imagenesCaja1.Clear();
-            for (int i = 0; i < lect.num_archivos(); i++){
-                var archivo = lect.obtenerArchivo(i);
-                var imagen = obtenerImagenConVentana(archivo.matriz, lim_inf, lim_sup);
-                imagenesCaja1.Add(imagen);
+            int N = lect.num_archivos();
+            Contraste operaciones = new Contraste(N);
+            Thread [] threadsArray = new Thread [N];
+
+            for (int i = 0; i < N; i++) {
+                MatrizDicom dicom = lect.obtenerArchivo(i);
+                ParametroContraste aux = new ParametroContraste(dicom.matriz, lim_inf, lim_sup, i);
+                threadsArray [i] = new Thread(() => operaciones.obtenerImagenConVentana(aux));
             }
+            for (int i = 0; i < N; i++) {
+                threadsArray [i].Start();
+            }
+            for (int i = 0; i < N; i++) {
+                threadsArray [i].Join();
+                imagenesCaja1.Add(Contraste.imagenes [i]);
+            }
+
+            MostrarImagenTratada();
             MostrarImagenOriginal();
+            Cursor.Current = Cursors.Default;
         }
 
         //genera la imagen con el umbral
@@ -697,27 +733,7 @@ namespace SAARTAC1._1 {
             return resultado;
         }
 
-        //Crea una imagen con la nueva ventana establecida.
-        private Bitmap obtenerImagenConVentana(int[,] matriz, int limiteInferior, int limiteSuperior){
-            int N = matriz.GetLength(0);
-            int M = matriz.GetLength(1);
-            Bitmap imagen = new Bitmap(N, M);
-            int tam = limiteSuperior - limiteInferior + 1;
-            double porcion = 255.0 / tam;
-
-            for (int i = 0; i < N; i++){
-                for (int j = 0; j < M; j++){
-                    int valorGris = (int)(porcion * (double)(matriz[i, j] - limiteInferior + 1));
-                    if (matriz[i, j] < limiteInferior)
-                        valorGris = 0;
-                    if (matriz[i, j] > limiteSuperior)
-                        valorGris = 255;
-                    Color color = Color.FromArgb(valorGris, valorGris, valorGris);
-                    imagen.SetPixel(i, j, color);
-                }
-            }
-            return imagen;
-        }
+        
 
         //se genera la imagen con base a las clases que se tiene
         private Bitmap obtenerImgK(Bitmap matrizOriginal, int[,,] lista, int p){

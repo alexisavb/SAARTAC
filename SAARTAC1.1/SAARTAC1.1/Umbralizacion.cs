@@ -1,13 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Threading;
 
-namespace SAARTAC1._1
-{
+namespace SAARTAC1._1 {
+
     internal class Umbralizacion{
         private Dictionary<string, int[]> umbralesDelCuerpo = new Dictionary<string, int[]>();
+        public static Bitmap [] imagenes;
+        private static Mutex mutex;
+        private static int numeroHilos;
 
-        public Umbralizacion(){
-            umbralesDelCuerpo["Agua"] = new int[] { 0, 10 };
+        public Umbralizacion(int N){
+            imagenes = new Bitmap [N];
+
+            mutex = new Mutex();
+            numeroHilos = Properties.Settings.Default.NumeroProcesos;
+            umbralesDelCuerpo ["Agua"] = new int[] { 0, 10 };
             umbralesDelCuerpo["Aire"] = new int[] { -1000, 150 };
             umbralesDelCuerpo["FluidoEspinal"] = new int[] { 11, 6 };
             umbralesDelCuerpo["CerebralBlanca"] = new int[] { 30, 6 };
@@ -23,8 +32,46 @@ namespace SAARTAC1._1
             umbralesDelCuerpo["SangreCoagulada"] = new int[] { 55, 5 };
         }
 
-        public Umbralizacion(int valorUH, int tolerancia){
-            umbralesDelCuerpo["Personalizada"] = new int[] {valorUH, tolerancia };
+        public Umbralizacion(int valorUH, int tolerancia, int N){
+            imagenes = new Bitmap [N];
+
+            mutex = new Mutex();
+            numeroHilos = Properties.Settings.Default.NumeroProcesos;
+            umbralesDelCuerpo ["Personalizada"] = new int[] {valorUH, tolerancia };
+        }
+
+
+        public static void EncuentraHiloLibre() {
+            while (true) {
+                mutex.WaitOne();
+                if (numeroHilos > 0) {
+                    numeroHilos--;
+                    mutex.ReleaseMutex();
+                    return;
+                }
+                mutex.ReleaseMutex();
+            }
+        }
+
+        public void UmbraHilos(ParametroUmbralizacion o) {
+            EncuentraHiloLibre();
+            var matrizResultado = UmbralizacionPara(o.tipo, o.archivo.matriz);
+            imagenes [o.indice] = obtenerImagenUmbral(matrizResultado, o.archivo.ObtenerImagen(), o.color);
+            mutex.WaitOne();
+            numeroHilos++;
+            mutex.ReleaseMutex();
+
+        }
+
+        private Bitmap obtenerImagenUmbral(bool [,] umbral, Bitmap matrizOriginal, Color color) {
+            Bitmap resultado = new Bitmap(matrizOriginal);
+            int N = umbral.GetLength(0);
+            int M = umbral.GetLength(1);
+            for (int i = 0; i < N; i++)
+                for (int j = 0; j < M; j++)
+                    if (umbral [i, j])
+                        resultado.SetPixel(i, j, color);
+            return resultado;
         }
 
 

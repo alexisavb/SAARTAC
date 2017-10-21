@@ -15,6 +15,7 @@ namespace SAARTAC1._1 {
             InitializeComponent();
             textBox1.Text = Properties.Settings.Default.rutaPython;
             textBox2.Text = Properties.Settings.Default.rutaLecturaDicom;
+            Procesos.Value = Properties.Settings.Default.NumeroProcesos;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
@@ -66,6 +67,7 @@ namespace SAARTAC1._1 {
         private void button4_Click(object sender, EventArgs e) {
             Properties.Settings.Default.rutaPython = textBox1.Text;
             Properties.Settings.Default.rutaLecturaDicom = textBox2.Text;
+            Properties.Settings.Default.NumeroProcesos = (int)Procesos.Value;
             Properties.Settings.Default.Save();
             this.Close();
         }
@@ -73,6 +75,5 @@ namespace SAARTAC1._1 {
         private void button3_Click(object sender, EventArgs e) {
             this.Close();
         }
-
     }
 }
