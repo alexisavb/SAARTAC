@@ -8,5 +8,8 @@
     <Setting Name="rutaLecturaDicom" Type="System.String" Scope="User">
       <Value Profile="(Default)">D:\Trabajo Terminal\SAARTAC\TT2.0C#\sum.py</Value>
     </Setting>
+    <Setting Name="NumeroProcesos" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
