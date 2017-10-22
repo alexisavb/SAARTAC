@@ -38,6 +38,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Procesos = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numIteraciones = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Procesos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +48,7 @@
             this.RutaPython.AutoSize = true;
             this.RutaPython.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.RutaPython.ForeColor = System.Drawing.Color.White;
-            this.RutaPython.Location = new System.Drawing.Point(49, 62);
+            this.RutaPython.Location = new System.Drawing.Point(24, 65);
             this.RutaPython.Name = "RutaPython";
             this.RutaPython.Size = new System.Drawing.Size(93, 18);
             this.RutaPython.TabIndex = 0;
@@ -147,12 +149,32 @@
             0,
             0});
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(24, 222);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(136, 18);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Núm de iteraciones";
+            // 
+            // numIteraciones
+            // 
+            this.numIteraciones.Location = new System.Drawing.Point(218, 223);
+            this.numIteraciones.Name = "numIteraciones";
+            this.numIteraciones.Size = new System.Drawing.Size(100, 20);
+            this.numIteraciones.TabIndex = 13;
+            // 
             // Configuracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(648, 569);
+            this.Controls.Add(this.numIteraciones);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.Procesos);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
@@ -183,5 +205,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown Procesos;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox numIteraciones;
     }
 }
