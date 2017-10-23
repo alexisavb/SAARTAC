@@ -72,6 +72,8 @@
             this.kmeans = new System.Windows.Forms.ToolStripMenuItem();
             this.fuzzy = new System.Windows.Forms.ToolStripMenuItem();
             this.configuracionCluster = new System.Windows.Forms.ToolStripMenuItem();
+            this.indicarCentrosKmeans = new System.Windows.Forms.ToolStripMenuItem();
+            this.indicarCentrosCfuzzy = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeSAARTACBarraDeHerramientas = new System.Windows.Forms.ToolStripMenuItem();
             this.segmentacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,6 +95,8 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.contenedorBarraDeIconos = new System.Windows.Forms.ToolStripContainer();
+            this.centrosRestantes = new System.Windows.Forms.Label();
+            this.puntosRestantes = new System.Windows.Forms.Label();
             this.panelPersonalizada = new System.Windows.Forms.Panel();
             this.numFuzzy = new System.Windows.Forms.Label();
             this.numKmeans = new System.Windows.Forms.Label();
@@ -141,8 +145,6 @@
             this.barraIconoRegla = new System.Windows.Forms.ToolStrip();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.indicarCentrosKmeans = new System.Windows.Forms.ToolStripMenuItem();
-            this.indicarCentrosCfuzzy = new System.Windows.Forms.ToolStripMenuItem();
             this.barraHerramientas.SuspendLayout();
             this.barraDeIconos.SuspendLayout();
             this.contenedorBarraDeIconos.ContentPanel.SuspendLayout();
@@ -661,6 +663,24 @@
             this.configuracionCluster.Text = "Configuración";
             this.configuracionCluster.Click += new System.EventHandler(this.configuraciónToolStripMenuItem1_Click);
             // 
+            // indicarCentrosKmeans
+            // 
+            this.indicarCentrosKmeans.BackColor = System.Drawing.Color.Black;
+            this.indicarCentrosKmeans.ForeColor = System.Drawing.Color.White;
+            this.indicarCentrosKmeans.Name = "indicarCentrosKmeans";
+            this.indicarCentrosKmeans.Size = new System.Drawing.Size(297, 24);
+            this.indicarCentrosKmeans.Text = "Indicar centros precisión media";
+            this.indicarCentrosKmeans.Click += new System.EventHandler(this.indicarCentrosKmeans_Click);
+            // 
+            // indicarCentrosCfuzzy
+            // 
+            this.indicarCentrosCfuzzy.BackColor = System.Drawing.Color.Black;
+            this.indicarCentrosCfuzzy.ForeColor = System.Drawing.Color.White;
+            this.indicarCentrosCfuzzy.Name = "indicarCentrosCfuzzy";
+            this.indicarCentrosCfuzzy.Size = new System.Drawing.Size(297, 24);
+            this.indicarCentrosCfuzzy.Text = "Indicar centros precisión alta";
+            this.indicarCentrosCfuzzy.Click += new System.EventHandler(this.indicarCentrosCfuzzy_Click);
+            // 
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -857,6 +877,8 @@
             // 
             this.contenedorBarraDeIconos.ContentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.contenedorBarraDeIconos.ContentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.centrosRestantes);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.puntosRestantes);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.panelPersonalizada);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.panelProgressBar);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.zoom);
@@ -886,6 +908,26 @@
             // 
             this.contenedorBarraDeIconos.TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.contenedorBarraDeIconos.TopToolStripPanel.Click += new System.EventHandler(this.contenedorBarraDeIconos_TopToolStripPanel_Click);
+            // 
+            // centrosRestantes
+            // 
+            this.centrosRestantes.AutoSize = true;
+            this.centrosRestantes.ForeColor = System.Drawing.Color.White;
+            this.centrosRestantes.Location = new System.Drawing.Point(1260, 447);
+            this.centrosRestantes.Name = "centrosRestantes";
+            this.centrosRestantes.Size = new System.Drawing.Size(0, 20);
+            this.centrosRestantes.TabIndex = 10;
+            // 
+            // puntosRestantes
+            // 
+            this.puntosRestantes.AutoSize = true;
+            this.puntosRestantes.ForeColor = System.Drawing.Color.White;
+            this.puntosRestantes.Location = new System.Drawing.Point(1117, 447);
+            this.puntosRestantes.Name = "puntosRestantes";
+            this.puntosRestantes.Size = new System.Drawing.Size(138, 20);
+            this.puntosRestantes.TabIndex = 9;
+            this.puntosRestantes.Text = "Puntos restantes: ";
+            this.puntosRestantes.Visible = false;
             // 
             // panelPersonalizada
             // 
@@ -1403,23 +1445,6 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // indicarCentrosKmeans
-            // 
-            this.indicarCentrosKmeans.BackColor = System.Drawing.Color.Black;
-            this.indicarCentrosKmeans.ForeColor = System.Drawing.Color.White;
-            this.indicarCentrosKmeans.Name = "indicarCentrosKmeans";
-            this.indicarCentrosKmeans.Size = new System.Drawing.Size(297, 24);
-            this.indicarCentrosKmeans.Text = "Indicar centros precisión media";
-            this.indicarCentrosKmeans.Click += new System.EventHandler(this.indicarCentrosKmeans_Click);
-            // 
-            // indicarCentrosCfuzzy
-            // 
-            this.indicarCentrosCfuzzy.BackColor = System.Drawing.Color.Black;
-            this.indicarCentrosCfuzzy.ForeColor = System.Drawing.Color.White;
-            this.indicarCentrosCfuzzy.Name = "indicarCentrosCfuzzy";
-            this.indicarCentrosCfuzzy.Size = new System.Drawing.Size(297, 24);
-            this.indicarCentrosCfuzzy.Text = "Indicar centros precisión alta";
-            // 
             // mainVentana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1447,6 +1472,7 @@
             this.barraDeIconos.ResumeLayout(false);
             this.barraDeIconos.PerformLayout();
             this.contenedorBarraDeIconos.ContentPanel.ResumeLayout(false);
+            this.contenedorBarraDeIconos.ContentPanel.PerformLayout();
             this.contenedorBarraDeIconos.ResumeLayout(false);
             this.contenedorBarraDeIconos.PerformLayout();
             this.panelPersonalizada.ResumeLayout(false);
@@ -1595,6 +1621,8 @@
         private System.Windows.Forms.Label personalizarNumCentros;
         private System.Windows.Forms.ToolStripMenuItem indicarCentrosKmeans;
         private System.Windows.Forms.ToolStripMenuItem indicarCentrosCfuzzy;
+        private System.Windows.Forms.Label centrosRestantes;
+        private System.Windows.Forms.Label puntosRestantes;
     }
 }
 

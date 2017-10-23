@@ -39,8 +39,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Procesos = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.numIteraciones = new System.Windows.Forms.TextBox();
+            this.iteNum = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.Procesos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iteNum)).BeginInit();
             this.SuspendLayout();
             // 
             // RutaPython
@@ -160,12 +161,17 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Núm de iteraciones";
             // 
-            // numIteraciones
+            // iteNum
             // 
-            this.numIteraciones.Location = new System.Drawing.Point(218, 223);
-            this.numIteraciones.Name = "numIteraciones";
-            this.numIteraciones.Size = new System.Drawing.Size(100, 20);
-            this.numIteraciones.TabIndex = 13;
+            this.iteNum.Location = new System.Drawing.Point(218, 224);
+            this.iteNum.Name = "iteNum";
+            this.iteNum.Size = new System.Drawing.Size(77, 20);
+            this.iteNum.TabIndex = 13;
+            this.iteNum.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // Configuracion
             // 
@@ -173,7 +179,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(648, 569);
-            this.Controls.Add(this.numIteraciones);
+            this.Controls.Add(this.iteNum);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Procesos);
             this.Controls.Add(this.label1);
@@ -188,6 +194,7 @@
             this.Name = "Configuracion";
             this.Text = "Configuracion";
             ((System.ComponentModel.ISupportInitialize)(this.Procesos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iteNum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,6 +213,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown Procesos;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox numIteraciones;
+        private System.Windows.Forms.NumericUpDown iteNum;
     }
 }

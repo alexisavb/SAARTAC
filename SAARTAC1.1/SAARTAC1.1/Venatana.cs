@@ -230,6 +230,8 @@ namespace SAARTAC1._1 {
 
         //saca la distancia /saca el punto inicial/ /saca el punto final/
         private void mostrarOriginal_Click(object sender, EventArgs e){
+            int x = mostrarOriginal.PointToClient(Cursor.Position).X;
+            int y = mostrarOriginal.PointToClient(Cursor.Position).Y;
             if (lect == null) return;
             if (reglaBool && bandera == 0 && banderaCentros == 0 && contadorCentro == 0){                
                 regla = new Regla(mostrarOriginal.PointToClient(Cursor.Position).X, mostrarOriginal.PointToClient(Cursor.Position).Y);
@@ -249,37 +251,70 @@ namespace SAARTAC1._1 {
                 mostrarOriginal.Invalidate();
             }
             if (banderaCentros == 1 && reglaBool == false && bandera == 0 && contadorCentro != 0){                
-                if (contadorCentro != numCentrosKmeans + 1){
-                    Console.WriteLine(contadorCentro);
-                    int x = mostrarOriginal.PointToClient(Cursor.Position).X;
-                    int y = mostrarOriginal.PointToClient(Cursor.Position).Y;
+                if (contadorCentro != numCentrosKmeans + 1){                    
+                    centrosRestantes.Text = (numCentrosKmeans - contadorCentro).ToString();                    
                     centros.Add(auxUH.ObtenerUH(x, y));
                     contadorCentro++;
                 }
                 if(contadorCentro == numCentrosKmeans + 1){
                     Console.WriteLine("ya entre carnal");
-                    kMeans k = new kMeans(lect, numCentrosKmeans, 10, lect.num_archivos(),centros);
-                    int[,,] clases = k.getClases();
-                    imagenesCaja2.Clear();
-                    for (int i = 0; i < lect.num_archivos(); i++)
-                        imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));                        
-                                       
-                    MostrarImagenTratada();
-
+                    panelProgressBar.Visible = true;
+                    progressBar1.Value = 1;
+                    backgroundWorker1.RunWorkerAsync(4);
+                    puntosRestantes.Visible = false;
+                    centrosRestantes.Visible = false;
+                    centrosRestantes.Text = null;
                     contadorCentro = 0;
                     banderaCentros = 0;
                 }                                
             }
+            if (banderaCentros == 2 && reglaBool == false && bandera == 0 && contadorCentro != 0){
+                if (contadorCentro != numCentrosCfuzzy + 1){                    
+                    centrosRestantes.Text = (numCentrosCfuzzy - contadorCentro).ToString();                    
+                    centros.Add(auxUH.ObtenerUH(x, y));
+                    contadorCentro++;
+                }
+                if (contadorCentro == numCentrosCfuzzy + 1){                    
+                    panelProgressBar.Visible = true;
+                    progressBar1.Value = 1;
+                    backgroundWorker1.RunWorkerAsync(5);
+                    puntosRestantes.Visible = false;
+                    centrosRestantes.Visible = false;
+                    centrosRestantes.Text = null;
+                    contadorCentro = 0;
+                    banderaCentros = 0;
+                }
+            }
+
+
         }
 
         //indicar centros k-means
         private void indicarCentrosKmeans_Click(object sender, EventArgs e){
-            centros = new List<Double>();
+            if (lect == null) return;
+            setIndicarCentros();
+            centrosRestantes.Text = numCentrosKmeans.ToString();
             banderaCentros = 1;
-            if (contadorCentro == 0) contadorCentro++;
-            else contadorCentro = 1;
+                 
         }
 
+        //indicar centros C-fuzzy
+        private void indicarCentrosCfuzzy_Click(object sender, EventArgs e){
+            if (lect == null) return;
+            setIndicarCentros();
+            centrosRestantes.Text = numCentrosCfuzzy.ToString();
+            banderaCentros = 2;
+        }
+
+
+        //configuración básica para poner la información de los centros
+        private void setIndicarCentros(){
+            if (contadorCentro == 0) contadorCentro++;
+            else contadorCentro = 1;
+            puntosRestantes.Visible = true;
+            centrosRestantes.Visible = true;            
+            centros = new List<Double>();
+        }
 
         //umbral de agua
         private void aguaBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Agua", Color.FromArgb(98, 184, 230)); }
@@ -376,7 +411,7 @@ namespace SAARTAC1._1 {
         }
 
         private void ProcesoKMeans(BackgroundWorker bw){
-            kMeans k = new kMeans(lect, numCentrosKmeans, 10, lect.num_archivos(), bw);
+            kMeans k = new kMeans(lect, numCentrosKmeans, Properties.Settings.Default.iteNume, lect.num_archivos(), bw);
             if (bw.CancellationPending)
                 return;
 
@@ -391,8 +426,36 @@ namespace SAARTAC1._1 {
             MostrarImagenTratada();
         }
 
+        private void ProcesoKMeansCentros(BackgroundWorker bw){
+            kMeans k = new kMeans(lect, numCentrosKmeans, Properties.Settings.Default.iteNume, lect.num_archivos(), centros,bw);
+            if (bw.CancellationPending)
+                return;
+            int[,,] clases = k.getClases();
+            imagenesCaja2.Clear();
+
+            for (int i = 0; i < lect.num_archivos(); i++){
+                imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));
+                bw.ReportProgress(90 + (10 * (i + 1)) / lect.num_archivos());
+            }
+            bw.ReportProgress(100);
+            MostrarImagenTratada();
+        }
+
+        private void ProcesoCFuzzyCentros(BackgroundWorker bw){
+            FuzzyCMeans algoritmo = new FuzzyCMeans(lect, bw, numCentrosCfuzzy, lect.num_archivos(), Properties.Settings.Default.iteNume, centros);
+            if (bw.CancellationPending)
+                return;
+            int[,,] clases = algoritmo.getClases();
+            imagenesCaja2.Clear();
+            for (int i = 0; i < lect.num_archivos(); i++){
+                imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));
+                bw.ReportProgress(90 + (10 * (i + 1)) / lect.num_archivos());
+            }
+            MostrarImagenTratada();
+        }
+
         private void ProcesoFuzzyCMeans(BackgroundWorker bw){
-            FuzzyCMeans algoritmo = new FuzzyCMeans(lect, bw, numCentrosCfuzzy, lect.num_archivos());
+            FuzzyCMeans algoritmo = new FuzzyCMeans(lect, bw, numCentrosCfuzzy, lect.num_archivos(), Properties.Settings.Default.iteNume);
             if (bw.CancellationPending)
                 return;
             int[,,] clases = algoritmo.getClases();
@@ -409,17 +472,21 @@ namespace SAARTAC1._1 {
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) {
             int opcion = (int)e.Argument;
             BackgroundWorker bw = sender as BackgroundWorker;
-            switch (opcion)
-            {
+            switch (opcion){
                 case 1:
                     AbrirArchivosDICOM(bw);
-                    break;
-                
+                    break;                
                 case 2:
                     ProcesoKMeans(bw);
                     break;
                 case 3:
                     ProcesoFuzzyCMeans(bw);
+                    break;
+                case 4:
+                    ProcesoKMeansCentros(bw);
+                    break;
+                case 5:
+                    ProcesoCFuzzyCentros(bw);
                     break;
             }
         }
@@ -709,6 +776,8 @@ namespace SAARTAC1._1 {
         private void panelPersonalizada_Paint(object sender, PaintEventArgs e){
 
         }
+
+        
 
         private void regionCrecienteToolStripMenuItem_Click(object sender, EventArgs e) {
             region_creciente = true;

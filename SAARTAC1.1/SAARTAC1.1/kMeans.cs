@@ -36,13 +36,16 @@ namespace SAARTAC1._1
             mainKmeans();
         }
 
-        public kMeans(LecturaArchivosDicom lect, int k, int iteraciones, int numeros_archivos, List<Double> cent){
+        public kMeans(LecturaArchivosDicom lect, int k, int iteraciones, int numeros_archivos, List<Double> cent, BackgroundWorker bw){
             Console.WriteLine(k);
             matrices = lect;
             numerosK = k;                                    
             clases = new int[512, 512, numeros_archivos];
             ite = iteraciones;
             centros = cent;
+            operaciones_cargando = 0;
+            reporte_progreso = bw;
+            reporte_progreso.ReportProgress(0);
             operaciones_total = ite * 512 * matrices.num_archivos();
             mainKmeans();
         }
@@ -66,8 +69,8 @@ namespace SAARTAC1._1
 
                 }
                 promedio();
-                //if (reporte_progreso.CancellationPending)
-                  //  return;
+                if (reporte_progreso.CancellationPending)
+                    return;
             }
 
         }
@@ -100,10 +103,10 @@ namespace SAARTAC1._1
                         sumas[clases[i, j, p] - 1] += matriz_actual.ObtenerUH(i, j);
                         contador[clases[i, j, p] - 1]++;
                     }
-                   // if (reporte_progreso.CancellationPending)
-                     //   return;
+                    if (reporte_progreso.CancellationPending)
+                        return;
                     operaciones_cargando++;
-                 //   reporte_progreso.ReportProgress((90 * operaciones_cargando) / operaciones_total);
+                    reporte_progreso.ReportProgress((90 * operaciones_cargando) / operaciones_total);
                 }
 
             }
