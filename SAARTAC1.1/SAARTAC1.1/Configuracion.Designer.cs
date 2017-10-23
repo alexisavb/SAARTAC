@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configuracion));
             this.RutaPython = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -46,7 +47,7 @@
             this.RutaPython.AutoSize = true;
             this.RutaPython.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.RutaPython.ForeColor = System.Drawing.Color.White;
-            this.RutaPython.Location = new System.Drawing.Point(49, 62);
+            this.RutaPython.Location = new System.Drawing.Point(24, 65);
             this.RutaPython.Name = "RutaPython";
             this.RutaPython.Size = new System.Drawing.Size(93, 18);
             this.RutaPython.TabIndex = 0;
@@ -163,6 +164,7 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.RutaPython);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Configuracion";
             this.Text = "Configuracion";
             ((System.ComponentModel.ISupportInitialize)(this.Procesos)).EndInit();

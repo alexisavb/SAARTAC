@@ -247,6 +247,22 @@ namespace SAARTAC1._1 {
             }
         }
 
+        private void mostrarDatosPaciente() {
+            auxUH = lect.obtenerArchivo(id_tac);
+            string nombreP = LecturaArchivosDicom.PreguntaNombre(auxUH.obtenerRuta());
+            int edadP = LecturaArchivosDicom.PreguntaEdad(auxUH.obtenerRuta());
+            string sexoP = LecturaArchivosDicom.PreguntaSexo(auxUH.obtenerRuta());
+            string hospital = LecturaArchivosDicom.PreguntaHospital(auxUH.obtenerRuta());
+            string fecha = LecturaArchivosDicom.PreguntaFecha(auxUH.obtenerRuta());
+            informacioNombreP.Text = nombreP;
+            informacionEdad.Text = edadP.ToString();
+            informacionGenero.Text = sexoP;
+            informacionHospital.Text = hospital;
+            informacionFecha.Text = fecha;
+            panelDatosPaciente.Visible = true;
+
+        }
+
         //umbral de agua
         private void aguaBarraDeHerramientas_Click(object sender, EventArgs e){ imagenesCaja2.Clear(); dibujarUmbral("Agua", Color.FromArgb(98, 184, 230)); }
 
@@ -481,7 +497,10 @@ namespace SAARTAC1._1 {
                 progressBar1.Value = 100;
                 Thread.Sleep(500);
                 panelProgressBar.Visible = false;
+                mostrarDatosPaciente();
+
             }
+
         }
 
         //zoom para restarle
