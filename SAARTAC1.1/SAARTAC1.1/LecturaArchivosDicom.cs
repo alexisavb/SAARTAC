@@ -31,7 +31,7 @@ namespace SAARTAC1._1
             archivosDicom = new MatrizDicom[N];
 
             for (int i = 0; i < N; i++){
-                string parametro = "\"" + fileEntries[i] + "\"";
+                string parametro = fileEntries[i];
                 ParametroPython aux = new ParametroPython(0, parametro, i);
                 threadsArray[i] = new Thread(() => Pregunta_Python(aux));
 
@@ -56,10 +56,12 @@ namespace SAARTAC1._1
         public int num_archivos() { return archivosDicom.Length; }
 
         public static string PreguntaPythonGeneral(int pregunta, string ruta) {
+            numeroHilos = Properties.Settings.Default.NumeroProcesos;
+            python = Properties.Settings.Default.rutaPython;
+            myPythonApp = "\"" + Properties.Settings.Default.rutaLecturaDicom + "\"";
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
             myProcessStartInfo.UseShellExecute = false;
             myProcessStartInfo.RedirectStandardOutput = true;
-            ruta = "\"" + ruta + "\"";
             myProcessStartInfo.Arguments = myPythonApp + " " + pregunta + " " + ruta;
             myProcessStartInfo.CreateNoWindow = true;
 
@@ -103,13 +105,13 @@ namespace SAARTAC1._1
         }
 
         public static string PreguntaSexo(string ruta) {
-
-            return PreguntaPythonGeneral(Sexo, ruta);
+            
+            return PreguntaPythonGeneral(Sexo, ruta) == "M" ? "Masculino" : "Femenino";
         }
 
         public static string PreguntaFecha(string ruta) {
 
-            string myString = PreguntaPythonGeneral(Sexo, ruta);
+            string myString = PreguntaPythonGeneral(Fecha, ruta);
             string fecha = myString.Substring(6, 2) + "/" + myString.Substring(4, 2) + "/" + myString.Substring(0, 4);
             return fecha;
         }
@@ -135,6 +137,7 @@ namespace SAARTAC1._1
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
             myProcessStartInfo.UseShellExecute = false;
             myProcessStartInfo.RedirectStandardOutput = true;
+            ruta = "\"" + ruta + "\"";
             myProcessStartInfo.Arguments = myPythonApp + " " + pregunta + " " + ruta;
             myProcessStartInfo.CreateNoWindow = true;
 
