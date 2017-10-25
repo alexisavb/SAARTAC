@@ -64,6 +64,7 @@ namespace SAARTAC1._1 {
                     if (imagenesCaja2.Count > 0)
                         MostrarImagenTratada();
                 }
+                actualizarNumeroImagen();
             }
         }
 
@@ -96,7 +97,9 @@ namespace SAARTAC1._1 {
                 MostrarImagenOriginal();
                 if (imagenesCaja2.Count > 0)
                     MostrarImagenTratada();
-            }catch (Exception ex){
+                actualizarNumeroImagen();
+            }
+            catch (Exception ex){
                 MessageBox.Show("No se ha cargado ningún archivo", "Error");
             }
         }
@@ -260,7 +263,16 @@ namespace SAARTAC1._1 {
             informacionHospital.Text = hospital;
             informacionFecha.Text = fecha;
             panelDatosPaciente.Visible = true;
+        }
 
+        private void mostrarNumeroImagenes() {
+            infoImagenActual.Text = (id_tac + 1).ToString();
+            infoNumeroImagenes.Text = num_tacs.ToString();
+            panelNumeroImagen.Visible = true;
+        }
+
+        private void actualizarNumeroImagen() {
+            infoImagenActual.Text = (id_tac + 1).ToString();
         }
 
         //umbral de agua
@@ -332,6 +344,7 @@ namespace SAARTAC1._1 {
                 MostrarImagenOriginal();
                 if (imagenesCaja2.Count > 0)
                     MostrarImagenTratada();
+                actualizarNumeroImagen();
             }
             catch (Exception ex)
             {
@@ -498,7 +511,7 @@ namespace SAARTAC1._1 {
                 Thread.Sleep(500);
                 panelProgressBar.Visible = false;
                 mostrarDatosPaciente();
-
+                mostrarNumeroImagenes();
             }
 
         }
@@ -698,7 +711,7 @@ namespace SAARTAC1._1 {
             return salida;
         }
 
-        private void MostrarImagenOriginal(){
+        private void MostrarImagenOriginal() {
             if (lect == null) return;
             if (imagenesCaja1.Count() <= 0) {
                 generalEscalaGris(-1000, 1600);
