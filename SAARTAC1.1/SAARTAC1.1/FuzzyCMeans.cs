@@ -33,7 +33,7 @@ namespace SAARTAC1._1{
             pertenencia = new double[N, M, k];
             distancias = new double[N, M, k];
             ite = iteraciones;
-            operaciones_total = iteraciones * 512;
+            operaciones_total = iteraciones * N;
             rnd = new Random();
             generarCentros();
             for (int i = 0; i < iteraciones; i++){

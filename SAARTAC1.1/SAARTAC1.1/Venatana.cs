@@ -385,9 +385,11 @@ namespace SAARTAC1._1 {
                 return;
 
             int [,] clases = k.getClases();
-
-            for (int i = region_seleccionada.X; i <= region_seleccionada.Y; i++) {
-                imagenesCaja2[i] = (obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, datos[i].Length, i));
+            int tam = region_seleccionada.Y - region_seleccionada.X + 1;
+            int tam_datos = datos [0].Length;
+            for (int i = 0; i < tam; i++) {
+                var imagen_original = lect.obtenerArchivo(i + region_seleccionada.X).ObtenerImagen();
+                imagenesCaja2 [i + region_seleccionada.X] = obtenerImgK(imagen_original, clases, tam_datos, i);
                 bw.ReportProgress(90 + (10 * (i + 1)) / lect.num_archivos());
             }
             bw.ReportProgress(100);
@@ -403,8 +405,11 @@ namespace SAARTAC1._1 {
             if (bw.CancellationPending)
                 return;
             int [,] clases = algoritmo.getClases();
-            for (int i = region_seleccionada.X; i <= region_seleccionada.Y; i++) {
-                imagenesCaja2 [i] = (obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, datos [i].Length, i));
+            int tam = region_seleccionada.Y - region_seleccionada.X + 1;
+            int tam_datos = datos [0].Length;
+            for (int i = 0; i < tam; i++) {
+                var imagen_original = lect.obtenerArchivo(i + region_seleccionada.X).ObtenerImagen();
+                imagenesCaja2[i + region_seleccionada.X] = obtenerImgK( imagen_original, clases, tam_datos, i);
                 bw.ReportProgress(90 + (10 * (i + 1)) / lect.num_archivos());
             }
             bw.ReportProgress(100);
