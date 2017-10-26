@@ -176,7 +176,7 @@ namespace SAARTAC1._1 {
             }
             //PARTE DEL ZOOM
             if (zoomCon){
-               Bitmap zoomImage = imagenesCaja1[id_tac];
+                Bitmap zoomImage = (Bitmap) mostrarOriginal.Image;
                 Rectangle zoomRect = new Rectangle(x - (ventanaZoom / 2), y - (ventanaZoom / 2), ventanaZoom, ventanaZoom);
                 if (zoomRect.Left >= 0 && zoomRect.Top >= 0 && zoomRect.Right <= 512 && zoomRect.Bottom <= 512){
                     var newzoomImage = zoomImage.Clone(zoomRect, zoomImage.PixelFormat);
