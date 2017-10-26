@@ -35,6 +35,20 @@ namespace SAARTAC1._1
             mainKmeans();
         }
 
+
+        public kMeans(LecturaArchivosDicom lect, int k, int iteraciones, int numeros_archivos, List<Double> cent, BackgroundWorker bw){            
+            matrices = lect;
+            numerosK = k;
+            clases = new int[512, 512, numeros_archivos];
+            ite = iteraciones;
+            centros = cent;
+            operaciones_cargando = 0;
+            reporte_progreso = bw;
+            reporte_progreso.ReportProgress(0);
+            operaciones_total = ite * 512 * matrices.num_archivos();
+            mainKmeans();
+        }
+
         public void generarCentros(){
             centros = new List<Double>();
             rnd = new Random();

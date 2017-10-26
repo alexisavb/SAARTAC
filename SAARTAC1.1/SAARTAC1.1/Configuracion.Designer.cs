@@ -39,7 +39,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Procesos = new System.Windows.Forms.NumericUpDown();
+            this.textNumIteracion = new System.Windows.Forms.Label();
+            this.numIteraciones = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.Procesos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numIteraciones)).BeginInit();
             this.SuspendLayout();
             // 
             // RutaPython
@@ -148,12 +151,37 @@
             0,
             0});
             // 
+            // textNumIteracion
+            // 
+            this.textNumIteracion.AutoSize = true;
+            this.textNumIteracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.textNumIteracion.ForeColor = System.Drawing.Color.White;
+            this.textNumIteracion.Location = new System.Drawing.Point(24, 233);
+            this.textNumIteracion.Name = "textNumIteracion";
+            this.textNumIteracion.Size = new System.Drawing.Size(162, 18);
+            this.textNumIteracion.TabIndex = 12;
+            this.textNumIteracion.Text = "Número de iteraciones:";
+            // 
+            // numIteraciones
+            // 
+            this.numIteraciones.Location = new System.Drawing.Point(218, 235);
+            this.numIteraciones.Name = "numIteraciones";
+            this.numIteraciones.Size = new System.Drawing.Size(60, 20);
+            this.numIteraciones.TabIndex = 13;
+            this.numIteraciones.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
             // Configuracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(648, 569);
+            this.Controls.Add(this.numIteraciones);
+            this.Controls.Add(this.textNumIteracion);
             this.Controls.Add(this.Procesos);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
@@ -167,7 +195,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Configuracion";
             this.Text = "Configuracion";
+            this.Load += new System.EventHandler(this.Configuracion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Procesos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numIteraciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,5 +215,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown Procesos;
+        private System.Windows.Forms.Label textNumIteracion;
+        private System.Windows.Forms.NumericUpDown numIteraciones;
     }
 }

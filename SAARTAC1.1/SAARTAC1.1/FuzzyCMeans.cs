@@ -21,7 +21,7 @@ namespace SAARTAC1._1{
         private BackgroundWorker reporte_progreso;
         private static int operaciones_cargando, operaciones_total;
 
-        public FuzzyCMeans(LecturaArchivosDicom lect, BackgroundWorker reporte_progreso, int k, int numeros_archivos, int iteraciones = 10){
+        public FuzzyCMeans(LecturaArchivosDicom lect, BackgroundWorker reporte_progreso, int k, int numeros_archivos, int iteraciones){
             matrices = lect;
             numerosK = k;
             numArchivos = numeros_archivos;
@@ -34,6 +34,44 @@ namespace SAARTAC1._1{
             operaciones_total = iteraciones * 512;
             rnd = new Random();
             generarCentros();
+            for (int i = 0; i < iteraciones; i++){
+                GenerarDistancias();
+                ActualizarPertenencia();
+                GeneraNuevosCentros();
+                if (reporte_progreso.CancellationPending)
+                    return;
+            }
+            for (int i = 0; i < 512; i++){
+                for (int j = 0; j < 512; j++){
+                    for (int kk = 0; kk < numArchivos; kk++){
+                        int tipo = 0;
+                        double valor = pertenencia[i, j, 0, kk];
+                        for (int p = 1; p < numerosK; p++){
+                            if (valor < pertenencia[i, j, p, kk]){
+                                tipo = p;
+                                valor = pertenencia[i, j, p, kk];
+                            }
+                        }
+                        clases[i, j, kk] = tipo;
+                    }
+                }
+            }
+        }
+
+
+
+        public FuzzyCMeans(LecturaArchivosDicom lect, BackgroundWorker reporte_progreso, int k, int numeros_archivos, int iteraciones, List<Double> cent){
+            matrices = lect;
+            numerosK = k;
+            numArchivos = numeros_archivos;
+            this.reporte_progreso = reporte_progreso;
+            operaciones_cargando = 0;
+            clases = new int[512, 512, numeros_archivos];
+            pertenencia = new double[512, 512, k, numeros_archivos];
+            distancias = new double[512, 512, k, numeros_archivos];
+            ite = iteraciones;
+            operaciones_total = iteraciones * 512;
+            centros = cent;
             for (int i = 0; i < iteraciones; i++){
                 GenerarDistancias();
                 ActualizarPertenencia();
