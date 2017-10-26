@@ -20,9 +20,10 @@ namespace SAARTAC1._1 {
             region_creciente = false, seleccion_region = false;
         private List<Bitmap> imagenesCaja1 = new List<Bitmap>();
         private List<Bitmap> imagenesCaja2 = new List<Bitmap>();
-        private int id_tac, num_tacs, uh_per, factor_per, bandera = 0, banderaPersonalizada;
+        private int id_tac, num_tacs, uh_per, factor_per, bandera = 0, banderaPersonalizada = 100, banderaCentros = 100;
         private LecturaArchivosDicom lect;
         private string ruta;
+        private int numeroCentrosKmeans = 6, numeroCentrosCfuzzy = 6;
 
         public mainVentana() {
             InitializeComponent();
@@ -371,7 +372,7 @@ namespace SAARTAC1._1 {
         }
 
         private void ProcesoKMeans(BackgroundWorker bw){
-            kMeans k = new kMeans(lect, 6, 10, lect.num_archivos(), bw);
+            kMeans k = new kMeans(lect, numeroCentrosKmeans, 10, lect.num_archivos(), bw);
             if (bw.CancellationPending)
                 return;
 
@@ -387,7 +388,7 @@ namespace SAARTAC1._1 {
         }
 
         private void ProcesoFuzzyCMeans(BackgroundWorker bw){
-            FuzzyCMeans algoritmo = new FuzzyCMeans(lect, bw, 6, lect.num_archivos());
+            FuzzyCMeans algoritmo = new FuzzyCMeans(lect, bw, numeroCentrosCfuzzy, lect.num_archivos());
             if (bw.CancellationPending)
                 return;
             int[,,] clases = algoritmo.getClases();
@@ -476,7 +477,6 @@ namespace SAARTAC1._1 {
 
         //Cluster de k-means 
         private void kmeans_Click(object sender, EventArgs e){
-
             if (lect == null)
                 return;
             panelProgressBar.Visible = true;
@@ -558,23 +558,37 @@ namespace SAARTAC1._1 {
                 int centro = int.Parse(valorCentro.Text);
                 int ancho = int.Parse(valorAncho.Text);
                 int mitad = ancho / 2;
-                if (banderaPersonalizada == 0)                    
-                    generalEscalaGris(centro - mitad, centro + mitad);                
-                else
-                    imagenesCaja2.Clear(); dibujarUmbral(centro,ancho, Color.FromArgb(40, 67, 120));                    
+                if (banderaPersonalizada == 0) {
+                    generalEscalaGris(centro - mitad, centro + mitad);
+                }
+                if (banderaPersonalizada == 1) {
+                    imagenesCaja2.Clear();
+                    dibujarUmbral(centro, ancho, Color.FromArgb(40, 67, 120));
+                }                                        
+                if(banderaCentros == 1){
+                    numeroCentrosKmeans = centro;
+                    numeroCentrosCfuzzy = ancho;
+                }
                              
             }
             catch (Exception ex){
                 MessageBox.Show("No se ha cargado ningún archivo", "Error");
             }
+            banderaPersonalizada = 100;
+            banderaCentros = 100;
             panelPersonalizada.Visible = false;
         }
 
         //personalizar la venta para unbralización
         private void personalizadaBarraDeHerramientas_Click(object sender, EventArgs e){
+            valorCentro.Text = null;
+            valorAncho.Text = null;
             textoUHPerso.Visible = true;
             textoUmbralPersonal.Visible = true;
             textoToleranciaUH.Visible = true;
+            configNumCentros.Visible = false;
+            numPrecAlta.Visible = false;
+            nunPrecMedia.Visible = false;
             textoCentroPersonalizada.Visible = false;
             textoAnchoPersonalizada.Visible = false;
             textoPersonalizada.Visible = false;
@@ -584,14 +598,35 @@ namespace SAARTAC1._1 {
 
         //personalizar la venta para contraste
         private void pesonalizadaVBarraDeHerramientas_Click(object sender, EventArgs e){
+            valorCentro.Text = null;
+            valorAncho.Text = null;
             textoUHPerso.Visible = false;
             textoUmbralPersonal.Visible = false;
             textoToleranciaUH.Visible = false;
+            configNumCentros.Visible = false;
+            numPrecAlta.Visible = false;
+            nunPrecMedia.Visible = false;
             textoCentroPersonalizada.Visible = true;
             textoAnchoPersonalizada.Visible = true;
             textoPersonalizada.Visible = true;
             banderaPersonalizada = 0;
             panelPersonalizada.Visible = true;
+        }
+
+        private void configCluster_Click(object sender, EventArgs e){
+            valorCentro.Text = numeroCentrosKmeans.ToString();
+            valorAncho.Text = numeroCentrosCfuzzy.ToString();
+            configNumCentros.Visible = true;
+            numPrecAlta.Visible = true;
+            nunPrecMedia.Visible = true;
+            textoUHPerso.Visible = false;
+            textoUmbralPersonal.Visible = false;
+            textoToleranciaUH.Visible = false;
+            textoCentroPersonalizada.Visible = false;
+            textoAnchoPersonalizada.Visible = false;
+            textoPersonalizada.Visible = false;
+            panelPersonalizada.Visible = true;
+            banderaCentros = 1;
         }
 
         ///---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -682,6 +717,8 @@ namespace SAARTAC1._1 {
             Configuracion frm = new Configuracion();
             frm.Show();
         }
+
+        
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e) {
             this.Close();
