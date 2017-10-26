@@ -158,6 +158,9 @@
             this.configNumCentros = new System.Windows.Forms.Label();
             this.nunPrecMedia = new System.Windows.Forms.Label();
             this.numPrecAlta = new System.Windows.Forms.Label();
+            this.centrosRestantes = new System.Windows.Forms.Label();
+            this.numRestantantesCentros = new System.Windows.Forms.Label();
+            this.numRestantesCentros = new System.Windows.Forms.Label();
             this.barraHerramientas.SuspendLayout();
             this.barraDeIconos.SuspendLayout();
             this.contenedorBarraDeIconos.ContentPanel.SuspendLayout();
@@ -866,6 +869,9 @@
             // 
             this.contenedorBarraDeIconos.ContentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.contenedorBarraDeIconos.ContentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.numRestantesCentros);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.numRestantantesCentros);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.centrosRestantes);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.panelNumeroImagen);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.panelDatosPaciente);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.panelPersonalizada);
@@ -1552,6 +1558,7 @@
             this.insertCentrosMedia.Name = "insertCentrosMedia";
             this.insertCentrosMedia.Size = new System.Drawing.Size(296, 24);
             this.insertCentrosMedia.Text = "Insertar centro precisión media";
+            this.insertCentrosMedia.Click += new System.EventHandler(this.insertCentrosMedia_Click);
             // 
             // insertCentroAlta
             // 
@@ -1603,6 +1610,37 @@
             this.numPrecAlta.Text = "Precisión alta:";
             this.numPrecAlta.Visible = false;
             // 
+            // centrosRestantes
+            // 
+            this.centrosRestantes.AutoSize = true;
+            this.centrosRestantes.ForeColor = System.Drawing.Color.White;
+            this.centrosRestantes.Location = new System.Drawing.Point(1117, 450);
+            this.centrosRestantes.Name = "centrosRestantes";
+            this.centrosRestantes.Size = new System.Drawing.Size(144, 20);
+            this.centrosRestantes.TabIndex = 11;
+            this.centrosRestantes.Text = "Centros restantes: ";
+            this.centrosRestantes.Visible = false;
+            // 
+            // numRestantantesCentros
+            // 
+            this.numRestantantesCentros.AutoSize = true;
+            this.numRestantantesCentros.ForeColor = System.Drawing.Color.White;
+            this.numRestantantesCentros.Location = new System.Drawing.Point(1267, 450);
+            this.numRestantantesCentros.Name = "numRestantantesCentros";
+            this.numRestantantesCentros.Size = new System.Drawing.Size(0, 20);
+            this.numRestantantesCentros.TabIndex = 12;
+            this.numRestantantesCentros.Visible = false;
+            // 
+            // numRestantesCentros
+            // 
+            this.numRestantesCentros.AutoSize = true;
+            this.numRestantesCentros.ForeColor = System.Drawing.Color.White;
+            this.numRestantesCentros.Location = new System.Drawing.Point(1260, 450);
+            this.numRestantesCentros.Name = "numRestantesCentros";
+            this.numRestantesCentros.Size = new System.Drawing.Size(0, 20);
+            this.numRestantesCentros.TabIndex = 13;
+            this.numRestantesCentros.Visible = false;
+            // 
             // mainVentana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1624,6 +1662,7 @@
             this.barraDeIconos.ResumeLayout(false);
             this.barraDeIconos.PerformLayout();
             this.contenedorBarraDeIconos.ContentPanel.ResumeLayout(false);
+            this.contenedorBarraDeIconos.ContentPanel.PerformLayout();
             this.contenedorBarraDeIconos.TopToolStripPanel.ResumeLayout(false);
             this.contenedorBarraDeIconos.TopToolStripPanel.PerformLayout();
             this.contenedorBarraDeIconos.ResumeLayout(false);
@@ -1793,6 +1832,9 @@
         private System.Windows.Forms.Label numPrecAlta;
         private System.Windows.Forms.Label nunPrecMedia;
         private System.Windows.Forms.Label configNumCentros;
+        private System.Windows.Forms.Label numRestantesCentros;
+        private System.Windows.Forms.Label numRestantantesCentros;
+        private System.Windows.Forms.Label centrosRestantes;
     }
 }
 

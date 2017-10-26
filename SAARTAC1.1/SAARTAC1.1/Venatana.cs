@@ -629,6 +629,11 @@ namespace SAARTAC1._1 {
             banderaCentros = 1;
         }
 
+        private void insertCentrosMedia_Click(object sender, EventArgs e){
+
+        }
+
+
         ///---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
