@@ -263,6 +263,7 @@ namespace SAARTAC1._1 {
                     Console.WriteLine("ya entre carnal");
                     panelProgressBar.Visible = true;
                     progressBar1.Value = 1;
+                    this.Cursor = Cursors.Default;
                     backgroundWorker1.RunWorkerAsync(4);
                     restCent.Visible = false;
                     centrosRestantes.Visible = false;
@@ -280,6 +281,7 @@ namespace SAARTAC1._1 {
                 if (contadorCentro == numeroCentrosCfuzzy + 1){
                     panelProgressBar.Visible = true;
                     progressBar1.Value = 1;
+                    this.Cursor = Cursors.Default;
                     backgroundWorker1.RunWorkerAsync(5);
                     restCent.Visible = false;
                     centrosRestantes.Visible = false;
@@ -708,6 +710,7 @@ namespace SAARTAC1._1 {
         //indicar centros k-means
         private void insertCentrosMedia_Click(object sender, EventArgs e){
             if (lect == null) return;
+            this.Cursor = Cursors.Cross;
             setIndicarCentros();
             restCent.Text = numeroCentrosKmeans.ToString();
             banderaCentros = 1;
@@ -724,6 +727,7 @@ namespace SAARTAC1._1 {
 
         private void insertCentroAlta_Click(object sender, EventArgs e){
             if (lect == null) return;
+            this.Cursor = Cursors.Cross;
             setIndicarCentros();
             restCent.Text = numeroCentrosCfuzzy.ToString();
             banderaCentros = 2;
