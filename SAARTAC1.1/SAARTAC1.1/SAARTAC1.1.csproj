@@ -65,6 +65,12 @@
     <Compile Include="RegionCreciente.cs" />
     <Compile Include="Regla.cs" />
     <Compile Include="Seccion.cs" />
+    <Compile Include="SeleccionTiraje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeleccionTiraje.Designer.cs">
+      <DependentUpon>SeleccionTiraje.cs</DependentUpon>
+    </Compile>
     <Compile Include="Umbralizacion.cs" />
     <Compile Include="Venatana.cs">
       <SubType>Form</SubType>
@@ -77,6 +83,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Configuracion.resx">
       <DependentUpon>Configuracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeleccionTiraje.resx">
+      <DependentUpon>SeleccionTiraje.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Venatana.resx">
       <DependentUpon>Venatana.cs</DependentUpon>

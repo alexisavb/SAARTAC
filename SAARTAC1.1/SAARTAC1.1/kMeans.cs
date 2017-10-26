@@ -16,21 +16,22 @@ namespace SAARTAC1._1
         private int min = -1000, max = 2000;
         private List<Double> centros;
         private List<Double> conjunto = new List<Double>();
-        private int[,,] clases;
+        private int[,] clases;
         private Random rnd;
         private BackgroundWorker reporte_progreso;
         private static int operaciones_cargando, operaciones_total;
+        private List<int []> datos;
 
-        public kMeans(LecturaArchivosDicom lect, int k, int iteraciones, int numeros_archivos, BackgroundWorker bw){
-            matrices = lect;
+        public kMeans(List<int[]> datos, int k, int iteraciones, BackgroundWorker bw){
+            this.datos = datos;    
             numerosK = k;
             reporte_progreso = bw;
             reporte_progreso.ReportProgress(0);
             operaciones_cargando = 0;
-            clases = new int[512, 512, numeros_archivos];
+            clases = new int[datos.Count, datos[0].Length];
             ite = iteraciones;
 
-            operaciones_total = ite * 512  * matrices.num_archivos();
+            operaciones_total = ite * datos.Count();
             generarCentros();
             mainKmeans();
         }
@@ -45,13 +46,12 @@ namespace SAARTAC1._1
         public void mainKmeans(){
             for (int k = 0; k < ite; k++){
                 Console.WriteLine(k + 1);
-                for (int p = 0; p < matrices.num_archivos(); p++){
-                    matriz_actual = matrices.obtenerArchivo(p);
-                    for (int i = 0; i < 512; i++)
-                        for (int j = 0; j < 512; j++)
-                            distanciaEuclidiana(i, j, p);
-
+                for(int i = 0; i < datos.Count; i++) {
+                    for(int j = 0; j < datos[i].Length; j++) {
+                        distanciaEuclidiana(i, j);
+                    }
                 }
+                
                 promedio();
                 if (reporte_progreso.CancellationPending)
                     return;
@@ -59,18 +59,18 @@ namespace SAARTAC1._1
 
         }
 
-        public void distanciaEuclidiana(int i, int j, int p){
+        public void distanciaEuclidiana(int i, int j){
             //if (matriz_actual.ObtenerUH(i, j) < -890) return;
             int indc = 0;
             conjunto.Clear();
             foreach (Double indice in centros){
-                Double resta = Math.Abs(matriz_actual.ObtenerUH(i, j) - indice);
+                Double resta = Math.Abs(datos[i][j] - indice);
                 conjunto.Add(resta);
             }
             for (int k = 1; k < conjunto.Count; k++)
                 if (conjunto[indc] > conjunto[k])
                     indc = k;
-            clases[i, j, p] = indc + 1;
+            clases[i, j] = indc + 1;
         }
 
         public void promedio(){
@@ -79,20 +79,16 @@ namespace SAARTAC1._1
             double[] contador = new double[numerosK];
             for (int i = 0; i < numerosK; i++)            
                 sumas[i] = contador[i] = 0;            
-            for (int p = 0; p < matrices.num_archivos(); p++){
-                matriz_actual = matrices.obtenerArchivo(p);
-                for (int i = 0; i < 512; i++){
-                    for (int j = 0; j < 512; j++){
-                        //if (matriz_actual.ObtenerUH(i, j) < -890) continue;
-                        sumas[clases[i, j, p] - 1] += matriz_actual.ObtenerUH(i, j);
-                        contador[clases[i, j, p] - 1]++;
-                    }
-                    if (reporte_progreso.CancellationPending)
-                        return;
-                    operaciones_cargando++;
-                    reporte_progreso.ReportProgress((90 * operaciones_cargando) / operaciones_total);
+            for (int i = 0; i < datos.Count; i++){
+                for (int j = 0; j < datos[i].Length; j++){
+                    //if (matriz_actual.ObtenerUH(i, j) < -890) continue;
+                    sumas[clases[i, j] - 1] += datos[i][j];
+                    contador[clases[i, j] - 1]++;
                 }
-
+                if (reporte_progreso.CancellationPending)
+                    return;
+                operaciones_cargando++;
+                reporte_progreso.ReportProgress((90 * operaciones_cargando) / operaciones_total);
             }
             centros.Clear();
             for (int i = 0; i < numerosK; i++)            
@@ -100,7 +96,7 @@ namespace SAARTAC1._1
             
         }
 
-        public int[,,] getClases(){ return clases;}
+        public int[,] getClases(){ return clases;}
 
     }
 }
