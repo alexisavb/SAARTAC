@@ -21,7 +21,7 @@ namespace SAARTAC1._1{
         private BackgroundWorker reporte_progreso;
         private static int operaciones_cargando, operaciones_total;
         private List<int []> datos;
-
+        
         public FuzzyCMeans(List<int[]> datos, BackgroundWorker reporte_progreso, int k, int iteraciones = 10){
             this.datos = datos;
             numerosK = k;
@@ -58,8 +58,46 @@ namespace SAARTAC1._1{
                 }
             }
         }
+        
+        
+        public FuzzyCMeans(List<int []> datos, List<Double> cent, BackgroundWorker reporte_progreso, int k, int iteraciones = 10){
+            this.datos = datos;
+            numerosK = k;
+            this.reporte_progreso = reporte_progreso;
+            operaciones_cargando = 0;
+            N = datos.Count();
+            M = datos [0].Length;
+            clases = new int[N, M];
+            pertenencia = new double[N, M, k];
+            distancias = new double[N, M, k];
+            ite = iteraciones;
+            operaciones_total = iteraciones * N;
+            rnd = new Random();
+            centros = cent;
+            for (int i = 0; i < iteraciones; i++){
+                GenerarDistancias();
+                ActualizarPertenencia();
+                GeneraNuevosCentros();
+                if (reporte_progreso.CancellationPending)
+                    return;
+            }
+            for (int i = 0; i < N; i++){
+                for (int j = 0; j < M; j++){
+                    int tipo = 0;
+                    double valor = pertenencia[i, j, 0];
+                    for (int p = 1; p < numerosK; p++){
+                        if (valor < pertenencia[i, j, p]){
+                            tipo = p;
+                            valor = pertenencia[i, j, p];
+                        }
+                    }
+                    clases[i, j] = tipo;
+                    
+                }
+            }
+        }
 
-        public void generarCentros() {
+        public void generarCentros(){
             centros = new List<Double>();
             rnd = new Random();
             for (int i = 0; i < numerosK; i++) {

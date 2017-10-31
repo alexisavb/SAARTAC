@@ -36,6 +36,21 @@ namespace SAARTAC1._1
             mainKmeans();
         }
 
+
+        public kMeans(List<int []> datos, int k, int iteraciones, BackgroundWorker bw, List<Double> cent){
+            this.datos = datos;
+            numerosK = k;
+            reporte_progreso = bw;
+            reporte_progreso.ReportProgress(0);
+            operaciones_cargando = 0;
+            clases = new int [datos.Count, datos [0].Length];
+            ite = iteraciones;
+
+            operaciones_total = ite * datos.Count();
+            centros = cent;
+            mainKmeans();
+        }
+
         public void generarCentros(){
             centros = new List<Double>();
             rnd = new Random();
