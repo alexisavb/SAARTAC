@@ -9,29 +9,31 @@ namespace SAARTAC1._1{
     class FuzzyCMeans{
         private LecturaArchivosDicom matrices;
         private MatrizDicom matriz_actual;
-        private int numerosK, ite, numArchivos;
+        private int numerosK, ite, numArchivos, N, M;
         private int min = -1000, max = 1600;
         private List<Double> centros;
         private List<Double> conjunto = new List<Double>();
-        private int[,,] clases;
-        private double[,,,] pertenencia;
-        private double[,,,] distancias;
+        private int[,] clases;
+        private double[,,] pertenencia;
+        private double[,,] distancias;
         private Random rnd;
         private double m = 2.0;
         private BackgroundWorker reporte_progreso;
         private static int operaciones_cargando, operaciones_total;
-
-        public FuzzyCMeans(LecturaArchivosDicom lect, BackgroundWorker reporte_progreso, int k, int numeros_archivos, int iteraciones){
-            matrices = lect;
+        private List<int []> datos;
+        
+        public FuzzyCMeans(List<int[]> datos, BackgroundWorker reporte_progreso, int k, int iteraciones = 10){
+            this.datos = datos;
             numerosK = k;
-            numArchivos = numeros_archivos;
             this.reporte_progreso = reporte_progreso;
             operaciones_cargando = 0;
-            clases = new int[512, 512, numeros_archivos];
-            pertenencia = new double[512, 512, k, numeros_archivos];
-            distancias = new double[512, 512, k, numeros_archivos];
+            N = datos.Count();
+            M = datos [0].Length;
+            clases = new int[N, M];
+            pertenencia = new double[N, M, k];
+            distancias = new double[N, M, k];
             ite = iteraciones;
-            operaciones_total = iteraciones * 512;
+            operaciones_total = iteraciones * N;
             rnd = new Random();
             generarCentros();
             for (int i = 0; i < iteraciones; i++){
@@ -41,36 +43,36 @@ namespace SAARTAC1._1{
                 if (reporte_progreso.CancellationPending)
                     return;
             }
-            for (int i = 0; i < 512; i++){
-                for (int j = 0; j < 512; j++){
-                    for (int kk = 0; kk < numArchivos; kk++){
-                        int tipo = 0;
-                        double valor = pertenencia[i, j, 0, kk];
-                        for (int p = 1; p < numerosK; p++){
-                            if (valor < pertenencia[i, j, p, kk]){
-                                tipo = p;
-                                valor = pertenencia[i, j, p, kk];
-                            }
+            for (int i = 0; i < N; i++){
+                for (int j = 0; j < M; j++){
+                    int tipo = 0;
+                    double valor = pertenencia[i, j, 0];
+                    for (int p = 1; p < numerosK; p++){
+                        if (valor < pertenencia[i, j, p]){
+                            tipo = p;
+                            valor = pertenencia[i, j, p];
                         }
-                        clases[i, j, kk] = tipo;
                     }
+                    clases[i, j] = tipo;
+                    
                 }
             }
         }
-
-
-
-        public FuzzyCMeans(LecturaArchivosDicom lect, BackgroundWorker reporte_progreso, int k, int numeros_archivos, int iteraciones, List<Double> cent){
-            matrices = lect;
+        
+        
+        public FuzzyCMeans(List<int []> datos, List<Double> cent, BackgroundWorker reporte_progreso, int k, int iteraciones = 10){
+            this.datos = datos;
             numerosK = k;
-            numArchivos = numeros_archivos;
             this.reporte_progreso = reporte_progreso;
             operaciones_cargando = 0;
-            clases = new int[512, 512, numeros_archivos];
-            pertenencia = new double[512, 512, k, numeros_archivos];
-            distancias = new double[512, 512, k, numeros_archivos];
+            N = datos.Count();
+            M = datos [0].Length;
+            clases = new int[N, M];
+            pertenencia = new double[N, M, k];
+            distancias = new double[N, M, k];
             ite = iteraciones;
-            operaciones_total = iteraciones * 512;
+            operaciones_total = iteraciones * N;
+            rnd = new Random();
             centros = cent;
             for (int i = 0; i < iteraciones; i++){
                 GenerarDistancias();
@@ -79,19 +81,18 @@ namespace SAARTAC1._1{
                 if (reporte_progreso.CancellationPending)
                     return;
             }
-            for (int i = 0; i < 512; i++){
-                for (int j = 0; j < 512; j++){
-                    for (int kk = 0; kk < numArchivos; kk++){
-                        int tipo = 0;
-                        double valor = pertenencia[i, j, 0, kk];
-                        for (int p = 1; p < numerosK; p++){
-                            if (valor < pertenencia[i, j, p, kk]){
-                                tipo = p;
-                                valor = pertenencia[i, j, p, kk];
-                            }
+            for (int i = 0; i < N; i++){
+                for (int j = 0; j < M; j++){
+                    int tipo = 0;
+                    double valor = pertenencia[i, j, 0];
+                    for (int p = 1; p < numerosK; p++){
+                        if (valor < pertenencia[i, j, p]){
+                            tipo = p;
+                            valor = pertenencia[i, j, p];
                         }
-                        clases[i, j, kk] = tipo;
                     }
+                    clases[i, j] = tipo;
+                    
                 }
             }
         }
@@ -99,43 +100,43 @@ namespace SAARTAC1._1{
         public void generarCentros(){
             centros = new List<Double>();
             rnd = new Random();
-            for (int i = 0; i < numerosK; i++)
-                centros.Add(rnd.Next(min, max));
+            for (int i = 0; i < numerosK; i++) {
+                int filaRandom = rnd.Next(0, datos.Count());
+                int columnaRandom = rnd.Next(0, datos [filaRandom].Length);
+                centros.Add((double)datos [filaRandom] [columnaRandom]);
+            }
         }
 
         public void GenerarDistancias(){
-            for (int i = 0; i < 512; i++){
+            for (int i = 0; i < N; i++){
                 if (reporte_progreso.CancellationPending)
                     return;
-                for (int j = 0; j < 512; j++){
-                    for (int p = 0; p < numArchivos; p++){
-                        matriz_actual = matrices.obtenerArchivo(p);
-                        for (int k = 0; k < numerosK; k++){
-                            double dist = matriz_actual.ObtenerUH(i, j) - centros[k];
-                            distancias[i, j, k, p] = dist * dist;
-                        }
+                for (int j = 0; j < M; j++){
+                    for (int k = 0; k < numerosK; k++){
+                        double dist = datos[i][j] - centros[k];
+                        distancias[i, j, k] = dist * dist;
                     }
+                    
                 }
             }
         }
 
 
         public void ActualizarPertenencia(){
-            for (int i = 0; i < 512; i++){
+            for (int i = 0; i < N; i++){
                 operaciones_cargando++;
                 reporte_progreso.ReportProgress((operaciones_cargando * 90) / operaciones_total);
                 if (reporte_progreso.CancellationPending)
                     return;
-                for (int j = 0; j < 512; j++){
-                    for (int p = 0; p < numArchivos; p++){
-                        for (int k = 0; k < numerosK; k++){
-                            double sum = 0.0;
-                            for (int l = 0; l < numerosK; l++)
-                                sum += Math.Pow(distancias[i, j, k, p] / distancias[i, j, l, p], 2.0 / (m - 1.0));  
-                            pertenencia[i, j, k, p] = 1.0 / sum;
+                for (int j = 0; j < M; j++){
+                    for (int k = 0; k < numerosK; k++){
+                        double sum = 0.0;
+                        for (int l = 0; l < numerosK; l++)
+                            sum += Math.Pow(distancias[i, j, k] / distancias[i, j, l], 2.0 / (m - 1.0));  
+                        pertenencia[i, j, k] = 1.0 / sum;
                             
-                        }
                     }
+                    
                 }
             }
         }
@@ -144,25 +145,23 @@ namespace SAARTAC1._1{
             for (int k = 0; k < numerosK; k++){
                 long aa = 0;
                 long bb = 0;
-                for (int p = 0; p < numArchivos; p++){
+                for (int p = 0; p < N; p++){
                     if (reporte_progreso.CancellationPending)
                         return;
-                    matriz_actual = matrices.obtenerArchivo(p);
-                    for (int i = 0; i < 512; i++){
-                        for (int j = 0; j < 512; j++){
-                            double valor = Math.Round(Math.Pow(pertenencia[i, j, k, p], m), 5);
-                            if (valor <= 0.00001)
-                                continue;
-                            aa += (long)(Math.Round(valor * matriz_actual.ObtenerUH(i, j), 5) * 100000);
-                            bb += (long)(valor * 100000);
-                        }
+                    for (int i = 0; i < M; i++){
+                        double valor = Math.Round(Math.Pow(pertenencia[p, i, k], m), 5);
+                        if (valor <= 0.00001)
+                            continue;
+                        aa += (long)(Math.Round(valor * datos[p][i], 5) * 100000);
+                        bb += (long)(valor * 100000);
+                        
                     }
                 }
                 centros[k] = (double)aa / (double)bb;
             }
         }
 
-        public int[,,] getClases() { return clases;}
+        public int[,] getClases() { return clases;}
 
     }
 }

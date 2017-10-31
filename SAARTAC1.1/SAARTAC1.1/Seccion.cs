@@ -22,8 +22,8 @@ namespace SAARTAC1._1
 
         public void setFinal(int x, int y){
             PuntoFin = new Point(x, y);
-            anchoRectanguloSeleccion = PuntoFin.X - PuntoInicio.X;
-            alturaRectanguloSeleccion = PuntoFin.Y - PuntoInicio.Y;
+            anchoRectanguloSeleccion = PuntoFin.X - PuntoInicio.X + 1;
+            alturaRectanguloSeleccion = PuntoFin.Y - PuntoInicio.Y + 1;
         }
 
         public void setRectangle(){
@@ -39,6 +39,20 @@ namespace SAARTAC1._1
         public Bitmap obtenerImagen(Bitmap original) {
             Bitmap salida = original.Clone(RectanguloSeleccion, original.PixelFormat);
             return salida;
+        }
+
+        public int [] ObtenerDatosRegion(MatrizDicom archivo) {
+            int tamX = PuntoFin.X - PuntoInicio.X + 1;
+            int tamY = PuntoFin.Y - PuntoInicio.Y + 1;
+            int [] datos = new int [tamX * tamY];
+            int pos = 0;
+            for (int i = PuntoInicio.X; i <= PuntoFin.X; i++) {
+                for (int j = PuntoInicio.Y; j <= PuntoFin.Y; j++) {
+                    datos [pos++] = archivo.ObtenerUH(i, j);
+                }
+            }
+            return datos;
+
         }
 
         public int createAverage(){
