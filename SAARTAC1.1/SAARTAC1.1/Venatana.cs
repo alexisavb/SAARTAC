@@ -468,6 +468,8 @@ namespace SAARTAC1._1 {
                 return;
             int [,] clases = k.getClases();
             GenerarImagenesAClases(clases, bw, datos [0].Length);
+            seccion = null;
+            region_seleccionada.X = -1; // resetea la region seleccionada
         }
         
         private void ProcesoFuzzyCMeans(BackgroundWorker bw) {
@@ -477,6 +479,8 @@ namespace SAARTAC1._1 {
                 return;
             int [,] clases = algoritmo.getClases();
             GenerarImagenesAClases(clases, bw, datos [0].Length);
+            seccion = null;
+            region_seleccionada.X = -1;
         }
 
 
@@ -507,37 +511,26 @@ namespace SAARTAC1._1 {
 
 
         private void ProcesoKMeansCentros(BackgroundWorker bw){
-            List<int []> datos = new List<int []>();
-            for (int i = region_seleccionada.X; i <= region_seleccionada.Y; i++) {
-                datos.Add(seccion.ObtenerDatosRegion(lect.obtenerArchivo(i)));
-            }
+            List<int []> datos = obtenerDatosSelecionado();
             kMeans k = new kMeans(datos, numeroCentrosKmeans, Properties.Settings.Default.numIter, bw, centros);
             if (bw.CancellationPending)
                 return;
             int [,] clases = k.getClases();
-            for (int i = region_seleccionada.X; i <= region_seleccionada.Y; i++) {
-                imagenesCaja2 [i] = (obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, datos [i].Length, i));
-                bw.ReportProgress(90 + (10 * (i + 1)) / lect.num_archivos());
-            }
-            bw.ReportProgress(100);
-            MostrarImagenTratada();
+
+            GenerarImagenesAClases(clases, bw, datos [0].Length);
+            seccion = null;
+            region_seleccionada.X = -1; // resetea la region seleccionada
         }
 
         private void ProcesoCFuzzyCentros(BackgroundWorker bw){
-            List<int []> datos = new List<int []>();
-            for (int i = region_seleccionada.X; i <= region_seleccionada.Y; i++) {
-                datos.Add(seccion.ObtenerDatosRegion(lect.obtenerArchivo(i)));
-            }
+            List<int []> datos = obtenerDatosSelecionado();
             FuzzyCMeans algoritmo = new FuzzyCMeans(datos, centros, bw, numeroCentrosCfuzzy, Properties.Settings.Default.numIter);
             if (bw.CancellationPending)
                 return;
             int [,] clases = algoritmo.getClases();
-            for (int i = region_seleccionada.X; i <= region_seleccionada.Y; i++) {
-                imagenesCaja2 [i] = (obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, datos [i].Length, i));
-                bw.ReportProgress(90 + (10 * (i + 1)) / lect.num_archivos());
-            }
-            bw.ReportProgress(100);
-            MostrarImagenTratada();
+            GenerarImagenesAClases(clases, bw, datos [0].Length);
+            seccion = null;
+            region_seleccionada.X = -1; // resetea la region seleccionada
         }
 
 

@@ -37,6 +37,8 @@ namespace SAARTAC1._1
         public Rectangle getRectangle() { return RectanguloSeleccion; }
 
         public Bitmap obtenerImagen(Bitmap original) {
+            if (RectanguloSeleccion.Height == 0)
+                return original;
             Bitmap salida = original.Clone(RectanguloSeleccion, original.PixelFormat);
             return salida;
         }
