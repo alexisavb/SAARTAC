@@ -39,8 +39,11 @@ namespace SAARTAC1._1
         public void generarCentros(){
             centros = new List<Double>();
             rnd = new Random();
-            for (int i = 0; i < numerosK; i++)
-                centros.Add(rnd.Next(min, max));
+            for (int i = 0; i < numerosK; i++) {
+                int filaRandom = rnd.Next(0, datos.Count());
+                int columnaRandom = rnd.Next(0, datos [filaRandom].Length);
+                centros.Add((double)datos [filaRandom][columnaRandom]);
+            }
         }
 
         public void mainKmeans(){
