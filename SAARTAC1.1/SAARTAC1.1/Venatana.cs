@@ -27,6 +27,9 @@ namespace SAARTAC1._1 {
         private int numeroCentrosKmeans = 6, numeroCentrosCfuzzy = 6;
         private int banderaCentros = 100, contadorCentro = 0;
         private List<Double> centros;
+        private Point[,,] ContrasteEnImagen;
+        private List<Point> limites_grupo;
+        private Dictionary<Color, Point> color_a_umbral = new Dictionary<Color, Point>();
 
         public mainVentana() {
             InitializeComponent();
@@ -419,6 +422,8 @@ namespace SAARTAC1._1 {
             bw.ReportProgress(100);
             Thread.Sleep(1000);
             zoomCon = true;
+            var primerArchivo = lect.obtenerArchivo(0);
+            ContrasteEnImagen = new Point [num_tacs, primerArchivo.obtenerN(), primerArchivo.obtenerM()];
         }
 
         private List<int[]> obtenerDatosSelecionado() {
@@ -467,6 +472,7 @@ namespace SAARTAC1._1 {
             if (bw.CancellationPending)
                 return;
             int [,] clases = k.getClases();
+            limites_grupo = k.ObtenerUmbralesGrupos();
             GenerarImagenesAClases(clases, bw, datos [0].Length);
             seccion = null;
             region_seleccionada.X = -1; // resetea la region seleccionada
@@ -478,6 +484,7 @@ namespace SAARTAC1._1 {
             if (bw.CancellationPending)
                 return;
             int [,] clases = algoritmo.getClases();
+            limites_grupo = algoritmo.ObtenerUmbralesGrupos();
             GenerarImagenesAClases(clases, bw, datos [0].Length);
             seccion = null;
             region_seleccionada.X = -1;
@@ -516,7 +523,14 @@ namespace SAARTAC1._1 {
             if (bw.CancellationPending)
                 return;
             int [,] clases = k.getClases();
-
+            
+            limites_grupo = k.ObtenerUmbralesGrupos();
+            for (int i = region_seleccionada.X; i <= region_seleccionada.Y; i++) {
+                imagenesCaja2 [i] = (obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, datos [i].Length, i));
+                bw.ReportProgress(90 + (10 * (i + 1)) / lect.num_archivos());
+            }
+            bw.ReportProgress(100);
+            MostrarImagenTratada();
             GenerarImagenesAClases(clases, bw, datos [0].Length);
             seccion = null;
             region_seleccionada.X = -1; // resetea la region seleccionada
@@ -528,6 +542,13 @@ namespace SAARTAC1._1 {
             if (bw.CancellationPending)
                 return;
             int [,] clases = algoritmo.getClases();
+            limites_grupo = algoritmo.ObtenerUmbralesGrupos();
+            for (int i = region_seleccionada.X; i <= region_seleccionada.Y; i++) {
+                imagenesCaja2 [i] = (obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, datos [i].Length, i));
+                bw.ReportProgress(90 + (10 * (i + 1)) / lect.num_archivos());
+            }
+            bw.ReportProgress(100);
+            MostrarImagenTratada();
             GenerarImagenesAClases(clases, bw, datos [0].Length);
             seccion = null;
             region_seleccionada.X = -1; // resetea la region seleccionada
@@ -574,7 +595,8 @@ namespace SAARTAC1._1 {
         private void mostrarTratada_MouseMove(object sender, MouseEventArgs e) {
             int x = mostrarTratada.PointToClient(Cursor.Position).X;
             int y = mostrarTratada.PointToClient(Cursor.Position).Y;
-            if (auxUH != null) resultadoUHMouse.Text = (auxUH.ObtenerUH(x, y)).ToString();
+            if (auxUH == null)  return;
+            resultadoUHMouse.Text = (auxUH.ObtenerUH(x, y)).ToString();
             //PARTE DEL ZOOM
             if (zoomCon) {
                 if (mostrarTratada.Image != null) {
@@ -627,6 +649,7 @@ namespace SAARTAC1._1 {
                 mostrarNumeroImagenes();
 
                 panelProgressBar.Visible = false;
+                CodigoDeColores();
             }
 
         }
@@ -853,6 +876,26 @@ namespace SAARTAC1._1 {
         private void regionCrecienteToolStripMenuItem_Click(object sender, EventArgs e) {
             region_creciente = true;
         }
+        
+
+        private void mostrarTratada_MouseDown(object sender, MouseEventArgs e) {
+            if (ContrasteEnImagen == null)
+                return;
+
+            int x = mostrarTratada.PointToClient(Cursor.Position).X;
+            int y = mostrarTratada.PointToClient(Cursor.Position).Y;
+            try {
+                Bitmap imagen = (Bitmap) mostrarTratada.Image;
+                Color color_seleccionado = imagen.GetPixel(x, y);
+                Console.WriteLine(color_seleccionado);
+                int LS = color_a_umbral [color_seleccionado].X;
+                int LI = color_a_umbral [color_seleccionado].Y;
+                generalEscalaGris(LI, LS);
+                Console.WriteLine("inferior: " + LI + "   superior: " + LS);
+            } catch {
+                Console.WriteLine("No hay ningun contraste");
+            }
+        }
 
         private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e) {
             Configuracion frm = new Configuracion();
@@ -962,8 +1005,21 @@ namespace SAARTAC1._1 {
                 int x = j % N;
                 int y = j / N;
                 resultado.SetPixel(y, x, colores [lista [p, j]]);
+                color_a_umbral [resultado.GetPixel(y, x)] = limites_grupo [lista [p, j]];
+                ContrasteEnImagen [p, y, x] = limites_grupo [lista [p, j]];
             }
             return new Bitmap(resultado, new Size(512, 512));
+        }
+
+        private void CodigoDeColores() {
+            foreach(var i in color_a_umbral) {
+                Color color_grupo = i.Key;
+                int limite_superior = i.Value.X;
+                int limite_inferior = i.Value.Y;
+                Console.WriteLine(i.Value);
+                Console.WriteLine(i.Key);
+
+            }
         }
 
 
