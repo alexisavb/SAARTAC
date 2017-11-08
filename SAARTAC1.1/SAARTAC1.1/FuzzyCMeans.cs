@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace SAARTAC1._1{
     class FuzzyCMeans{
@@ -21,7 +22,9 @@ namespace SAARTAC1._1{
         private BackgroundWorker reporte_progreso;
         private static int operaciones_cargando, operaciones_total;
         private List<int []> datos;
-        
+
+        private List<Point> umbral_centros;
+
         public FuzzyCMeans(List<int[]> datos, BackgroundWorker reporte_progreso, int k, int iteraciones = 10){
             this.datos = datos;
             numerosK = k;
@@ -57,6 +60,7 @@ namespace SAARTAC1._1{
                     
                 }
             }
+            generaUmbralesCentros();
         }
         
         
@@ -95,6 +99,7 @@ namespace SAARTAC1._1{
                     
                 }
             }
+            generaUmbralesCentros();
         }
 
         public void generarCentros(){
@@ -162,6 +167,24 @@ namespace SAARTAC1._1{
         }
 
         public int[,] getClases() { return clases;}
+        public List<Point> ObtenerUmbralesGrupos() {
+            return umbral_centros;
+        }
+
+        private void generaUmbralesCentros() {
+            umbral_centros = new List<Point>();
+            for (int i = 0; i < numerosK + 1; i++) {
+                umbral_centros.Add(new Point(-10000, 10000));
+            }
+            for (int i = 0; i < datos.Count; i++) {
+                for (int j = 0; j < datos [0].Length; j++) {
+                    int grupo = clases [i, j];
+                    int x = Math.Max(umbral_centros [grupo].X, datos [i] [j]);
+                    int y = Math.Min(umbral_centros [grupo].Y, datos [i] [j]);
+                    umbral_centros [grupo] = new Point(x, y);
+                }
+            }
+        }
 
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace SAARTAC1._1
 {
@@ -21,6 +22,7 @@ namespace SAARTAC1._1
         private BackgroundWorker reporte_progreso;
         private static int operaciones_cargando, operaciones_total;
         private List<int []> datos;
+        private List<Point> umbral_centros;
 
         public kMeans(List<int[]> datos, int k, int iteraciones, BackgroundWorker bw){
             this.datos = datos;    
@@ -30,12 +32,31 @@ namespace SAARTAC1._1
             operaciones_cargando = 0;
             clases = new int[datos.Count, datos[0].Length];
             ite = iteraciones;
-
+            
             operaciones_total = ite * datos.Count();
             generarCentros();
             mainKmeans();
+            generaUmbralesCentros();
         }
 
+        private void generaUmbralesCentros() {
+            umbral_centros = new List<Point>();
+            for (int i = 0; i < numerosK + 1; i++) {
+                umbral_centros.Add(new Point(-10000, 10000));
+            }
+            for (int i = 0; i < datos.Count; i++) {
+                for (int j = 0; j < datos [0].Length; j++) {
+                    int grupo = clases [i, j];
+                    int x = Math.Max(umbral_centros [grupo].X, datos [i] [j]);
+                    int y = Math.Min(umbral_centros [grupo].Y, datos [i] [j]);
+                    umbral_centros [grupo] = new Point(x, y);
+                }
+            }
+        }
+
+        public List <Point> ObtenerUmbralesGrupos() {
+            return umbral_centros;
+        }
 
         public kMeans(List<int []> datos, int k, int iteraciones, BackgroundWorker bw, List<Double> cent){
             this.datos = datos;
@@ -49,6 +70,7 @@ namespace SAARTAC1._1
             operaciones_total = ite * datos.Count();
             centros = cent;
             mainKmeans();
+            generaUmbralesCentros();
         }
 
         public void generarCentros(){
@@ -73,6 +95,11 @@ namespace SAARTAC1._1
                 promedio();
                 if (reporte_progreso.CancellationPending)
                     return;
+            }
+            for (int i = 0; i < datos.Count; i++) {
+                for (int j = 0; j < datos [i].Length; j++) {
+                    distanciaEuclidiana(i, j);
+                }
             }
 
         }
