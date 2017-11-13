@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MainFrame;
+using Kitware.VTK;
 
 namespace SAARTAC1._1 {
     public partial class mainVentana : Form {
@@ -30,6 +32,19 @@ namespace SAARTAC1._1 {
         private Point[,,] ContrasteEnImagen;
         private List<Point> limites_grupo;
         private Dictionary<Color, Point> color_a_umbral = new Dictionary<Color, Point>();
+
+
+        public static Dicom dic;
+        int noImgs;
+        static int opcion = 0;
+        static int count = 0;
+        static Object bloqueador = new Object();
+        static Bitmap[] tejidos;
+        String folderD;
+        static ToolStripProgressBar toolStripProgressBar1;
+        bool opened = false;
+        List<Dicom> dcms = new List<Dicom>();
+        int childs = -1;
 
         public mainVentana() {
             InitializeComponent();
@@ -89,7 +104,18 @@ namespace SAARTAC1._1 {
                     seccion = null;
                 } else Console.WriteLine("Hay un problema al abrir el archivo");
             } catch (Exception ex) { MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido"); }
-
+            dic = new Dicom(ruta);
+            if (!(dic.getError() == 0))
+            {
+                MessageBox.Show("El directorio especificado no contiene archivos DICOM o esta dañado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                opened = false;
+            }
+            else
+            {
+                dcms.Add(dic);
+                tejidos = new Bitmap[noImgs];
+                opened = true;
+            }
 
         }
 
@@ -902,8 +928,38 @@ namespace SAARTAC1._1 {
             frm.Show();
         }
 
+        //REconstruccion
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            //reconstruccion();
+        }
+
         private void mainVentana_Load(object sender, EventArgs e) {
 
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            RenderMain rm = new RenderMain(dic, "Liquido", 2);
+            rm.Show();
+        }
+
+        private void huesoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RenderMain rm = new RenderMain(dcms.ElementAt(0), 6);
+            rm.Show();
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            RenderMain rm = new RenderMain(dic, "Grasa", 2);
+            rm.Show();
+        }
+
+        private void sangreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RenderMain rm = new RenderMain(dic,"Sangre Coagulada",2);            
+            rm.Show();
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -1024,7 +1080,6 @@ namespace SAARTAC1._1 {
 
 
 
-        //*****************************************************************************************************************************************************
-
+        //*****************************************************************************************************************************************************                            
     }
 }
