@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Kitware.mummy.Runtime">
+      <HintPath>..\packages\Activiz.NET.x86.5.8.0\lib\net20\Kitware.mummy.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Kitware.VTK">
+      <HintPath>..\packages\Activiz.NET.x86.5.8.0\lib\net20\Kitware.VTK.dll</HintPath>
+    </Reference>
     <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\OpenTK\1.1\Binaries\OpenTK\Release\OpenTK.dll</HintPath>
@@ -148,6 +154,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\brain-upper-view-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\IPN\ESCOM\TT\Disco - ISCCR022-2012A01612016\Archivos ejecutables\MainFrame\MainFrame\MainFrame.csproj">
+      <Project>{fe81e8d3-1066-46c2-8db0-83ee49ce6667}</Project>
+      <Name>MainFrame</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
