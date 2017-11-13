@@ -156,7 +156,7 @@
     <None Include="Resources\brain-upper-view-outline.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\IPN\ESCOM\TT\Disco - ISCCR022-2012A01612016\Archivos ejecutables\MainFrame\MainFrame\MainFrame.csproj">
+    <ProjectReference Include="..\..\MainFrame\MainFrame\MainFrame.csproj">
       <Project>{fe81e8d3-1066-46c2-8db0-83ee49ce6667}</Project>
       <Name>MainFrame</Name>
     </ProjectReference>
