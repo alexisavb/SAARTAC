@@ -902,6 +902,12 @@ namespace SAARTAC1._1 {
             frm.Show();
         }
 
+        private void splitMergeToolStripMenuItem_Click(object sender, EventArgs e) {
+            SplitMerge algoritmo = new SplitMerge(auxUH.obtenerMatriz(), auxUH.obtenerN(), auxUH.obtenerM());
+            var imagen = algoritmo.ObtenerImagen();
+            MostrarImagenTratada(imagen);
+        }
+
         private void mainVentana_Load(object sender, EventArgs e) {
 
         }
