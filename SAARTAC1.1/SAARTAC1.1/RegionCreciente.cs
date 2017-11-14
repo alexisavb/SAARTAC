@@ -45,7 +45,7 @@ namespace SAARTAC1._1 {
                     int y = actual.Item1 + movimientos [i, 0];
                     int x = actual.Item2 + movimientos [i, 1];
                     if(DentroMapa(y, x)) {
-                        if (salida [y, x] == 1 || Math.Abs(mapa[origenY, origenX] - mapa[actual.Item1, actual.Item2]) > precision[calidad])
+                        if (salida [y, x] == 1 || Math.Abs(mapa[origenY, origenX] - mapa[y, x]) > precision[calidad])
                             continue;
                         salida [y, x] = 1;
                         busqueda.Enqueue(new Tuple<int, int>(y, x));

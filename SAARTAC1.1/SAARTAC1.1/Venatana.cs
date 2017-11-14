@@ -903,7 +903,9 @@ namespace SAARTAC1._1 {
         }
 
         private void splitMergeToolStripMenuItem_Click(object sender, EventArgs e) {
-            SplitMerge algoritmo = new SplitMerge(auxUH.obtenerMatriz(), auxUH.obtenerN(), auxUH.obtenerM());
+            //SplitMerge algoritmo = new SplitMerge(auxUH.obtenerMatriz(), auxUH.obtenerN(), auxUH.obtenerM());
+            SplitMerge algoritmo = new SplitMerge((Bitmap)mostrarOriginal.Image, auxUH.obtenerN(), auxUH.obtenerM());
+
             var imagen = algoritmo.ObtenerImagen();
             MostrarImagenTratada(imagen);
         }
