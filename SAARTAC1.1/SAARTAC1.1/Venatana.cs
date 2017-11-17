@@ -30,6 +30,9 @@ namespace SAARTAC1._1 {
         private Point[,,] ContrasteEnImagen;
         private List<Point> limites_grupo;
         private Dictionary<Color, Point> color_a_umbral = new Dictionary<Color, Point>();
+        private int RCPrecision = 0;
+        private Label[] labelsColor,labelsMin, labelsMax;
+        private Label[] labelsTextMin, labelsTextMax;
 
         public mainVentana() {
             InitializeComponent();
@@ -41,6 +44,7 @@ namespace SAARTAC1._1 {
             barraIconoClasificacion.Renderer = new MyRenderer();
             barraIconoContrste.Renderer = new MyRenderer();
             this.MouseWheel += new MouseEventHandler(ventanaMouseWheel);
+            arregloLabel();
         }
 
 
@@ -197,8 +201,9 @@ namespace SAARTAC1._1 {
             int x = mostrarOriginal.PointToClient(Cursor.Position).X;
             int y = mostrarOriginal.PointToClient(Cursor.Position).Y;
             if (e.Button == MouseButtons.Left && auxUH != null && region_creciente) {
-                ProcesoRegionCreciente(x, y);
+                ProcesoRegionCreciente(x, y, RCPrecision);
                 region_creciente = false;
+                RCPrecision = 0;
                 return;
             }
             if (e.Button == MouseButtons.Left && reglaBool != true && auxUH != null && bandera != 1) {
@@ -468,7 +473,7 @@ namespace SAARTAC1._1 {
 
         private void ProcesoKMeans(BackgroundWorker bw) {
             List<int []> datos = obtenerDatosSelecionado();
-            kMeans k = new kMeans(datos, 6, 10, bw);
+            kMeans k = new kMeans(datos, numeroCentrosKmeans, Properties.Settings.Default.numIter, bw);
             if (bw.CancellationPending)
                 return;
             int [,] clases = k.getClases();
@@ -476,11 +481,13 @@ namespace SAARTAC1._1 {
             GenerarImagenesAClases(clases, bw, datos [0].Length);
             seccion = null;
             region_seleccionada.X = -1; // resetea la region seleccionada
+            //arregloLabel();
+            //CodigoDeColores();                        
         }
         
         private void ProcesoFuzzyCMeans(BackgroundWorker bw) {
             List<int []> datos = obtenerDatosSelecionado();
-            FuzzyCMeans algoritmo = new FuzzyCMeans(datos, bw, 6);
+            FuzzyCMeans algoritmo = new FuzzyCMeans(datos, bw, numeroCentrosCfuzzy, Properties.Settings.Default.numIter);
             if (bw.CancellationPending)
                 return;
             int [,] clases = algoritmo.getClases();
@@ -501,7 +508,7 @@ namespace SAARTAC1._1 {
                     break;
 
                 case 2:
-                    ProcesoKMeans(bw);
+                    ProcesoKMeans(bw);                    
                     break;
                 case 3:
                     ProcesoFuzzyCMeans(bw);
@@ -514,6 +521,19 @@ namespace SAARTAC1._1 {
                     break;
 
             }
+        }
+
+        private void arregloLabel(){
+            Label [] l = { C1, C2, C3, C4, C5, C6, C7,C8,C9 };
+            Label[] tmi = { TMI1, TMI2, TMI3, TMI4, TMI5, TMI6, TMI7, TMI8, TMI9 };
+            Label[] tma = { TMA1, TMA2, TMA3, TMA4, TMA5, TMA6, TMA7, TMA8, TMA9 };
+            Label[] min = { MI1, MI2, MI3 };
+            Label[] max = { MA1, MA2, MA3 };
+            labelsColor = l;
+            labelsTextMin = tmi;
+            labelsTextMax = tma;
+            labelsMax = max;
+            labelsMin = min;
         }
 
 
@@ -648,8 +668,8 @@ namespace SAARTAC1._1 {
                 mostrarDatosPaciente();
                 mostrarNumeroImagenes();
 
-                panelProgressBar.Visible = false;
-                CodigoDeColores();
+                panelProgressBar.Visible = false;                
+                CodigoDeColores();                
             }
 
         }
@@ -874,7 +894,7 @@ namespace SAARTAC1._1 {
         
 
         private void regionCrecienteToolStripMenuItem_Click(object sender, EventArgs e) {
-            region_creciente = true;
+            region_creciente = false;
         }
         
 
@@ -883,7 +903,7 @@ namespace SAARTAC1._1 {
                 return;
 
             int x = mostrarTratada.PointToClient(Cursor.Position).X;
-            int y = mostrarTratada.PointToClient(Cursor.Position).Y;
+            int y = mostrarTratada.PointToClient(Cursor.Position).Y;            
             try {
                 Bitmap imagen = (Bitmap) mostrarTratada.Image;
                 Color color_seleccionado = imagen.GetPixel(x, y);
@@ -900,6 +920,26 @@ namespace SAARTAC1._1 {
         private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e) {
             Configuracion frm = new Configuracion();
             frm.Show();
+        }
+
+        private void RCBaja_Click(object sender, EventArgs e){
+            region_creciente = true;
+            RCPrecision = 1;
+        }
+
+        private void RCMedia_Click(object sender, EventArgs e){
+            region_creciente = true;
+            RCPrecision = 3;
+        }
+
+        private void RCAlta_Click(object sender, EventArgs e){
+            region_creciente = true;
+            RCPrecision = 5;
+        }
+
+        private void contenedorBarraDeIconos_ContentPanel_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void mainVentana_Load(object sender, EventArgs e) {
@@ -998,9 +1038,10 @@ namespace SAARTAC1._1 {
             } else {
                 resultado = new Bitmap(seccion.obtenerImagen(matrizOriginal));
             }
-            List<Color> colores = new List<Color>() { Color.Black, Color.Red, Color.Blue, Color.Orange, Color.Yellow, Color.Pink, Color.Purple };
+            List<Color> colores = new List<Color>() { Color.Black, Color.Red, Color.Blue, Color.Orange, Color.Yellow, Color.Pink, Color.Purple, Color.Aqua};
             int N = resultado.Height;
             int i = 0;
+            color_a_umbral.Clear();
             for (int j = 0; j < tam; j++) {
                 int x = j % N;
                 int y = j / N;
@@ -1012,13 +1053,40 @@ namespace SAARTAC1._1 {
         }
 
         private void CodigoDeColores() {
-            foreach(var i in color_a_umbral) {
+            int con = 0;            
+            for(int i = 0; i < labelsColor.Length; i++) {
+                labelsColor[i].Visible = false;
+                labelsTextMin[i].Visible = false;
+                labelsTextMax[i].Visible = false;                
+            }
+            for(int i = 0; i < labelsMax.Length; i++){
+                labelsMax[i].Visible = false;
+                labelsMin[i].Visible = false;
+            }
+            int cantidad = color_a_umbral.Count - 1;
+            if(cantidad >= 0){
+                //Console.WriteLine( cantidad + " cant");
+                //Console.WriteLine(( cantidad / 3) + " cant");
+                for (int i = 0; i <= (cantidad / 3); i++){
+                    labelsMax[i].Visible = true;
+                    labelsMin[i].Visible = true;
+                }
+            }                
+
+            foreach (var i in color_a_umbral) {                                                       
                 Color color_grupo = i.Key;
                 int limite_superior = i.Value.X;
                 int limite_inferior = i.Value.Y;
-                Console.WriteLine(i.Value);
-                Console.WriteLine(i.Key);
-
+                labelsColor[con].BackColor = color_grupo;
+                labelsColor[con].ForeColor = color_grupo;
+                labelsColor[con].Visible = true;
+                labelsTextMin[con].Text = (limite_inferior).ToString();
+                labelsTextMax[con].Text = (limite_superior).ToString();
+                labelsTextMin[con].Visible = true;
+                labelsTextMax[con].Visible = true;
+                con++;
+                //Console.WriteLine(i.Value);
+                //Console.WriteLine(i.Key);                
             }
         }
 
