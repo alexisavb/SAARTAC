@@ -76,6 +76,9 @@
             this.configCluster = new System.Windows.Forms.ToolStripMenuItem();
             this.segmentacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.regionCrecienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RCBaja = new System.Windows.Forms.ToolStripMenuItem();
+            this.RCMedia = new System.Windows.Forms.ToolStripMenuItem();
+            this.RCAlta = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeSAARTACBarraDeHerramientas = new System.Windows.Forms.ToolStripMenuItem();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
@@ -95,6 +98,20 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.contenedorBarraDeIconos = new System.Windows.Forms.ToolStripContainer();
+            this.MA1 = new System.Windows.Forms.Label();
+            this.MI1 = new System.Windows.Forms.Label();
+            this.TMA3 = new System.Windows.Forms.Label();
+            this.TMA2 = new System.Windows.Forms.Label();
+            this.TMA1 = new System.Windows.Forms.Label();
+            this.TMI2 = new System.Windows.Forms.Label();
+            this.C6 = new System.Windows.Forms.Label();
+            this.TMI3 = new System.Windows.Forms.Label();
+            this.C5 = new System.Windows.Forms.Label();
+            this.C4 = new System.Windows.Forms.Label();
+            this.C3 = new System.Windows.Forms.Label();
+            this.C2 = new System.Windows.Forms.Label();
+            this.TMI1 = new System.Windows.Forms.Label();
+            this.C1 = new System.Windows.Forms.Label();
             this.restCent = new System.Windows.Forms.Label();
             this.numRestantesCentros = new System.Windows.Forms.Label();
             this.numRestantantesCentros = new System.Windows.Forms.Label();
@@ -144,16 +161,32 @@
             this.botonAtras = new System.Windows.Forms.Button();
             this.mostrarTratada = new System.Windows.Forms.PictureBox();
             this.mostrarOriginal = new System.Windows.Forms.PictureBox();
+<<<<<<< HEAD
             this.barraIconos3D = new System.Windows.Forms.ToolStrip();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.huesoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sangreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+=======
+            this.barraIconosUmbralizacion = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.barraIconoRegla = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
+            this.barraIconos3D = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.barraIconoClasificacion = new System.Windows.Forms.ToolStrip();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.kmeansIcono = new System.Windows.Forms.ToolStripMenuItem();
+            this.fuzzyIcono = new System.Windows.Forms.ToolStripMenuItem();
+>>>>>>> osnayaColores
             this.barraIconoContrste = new System.Windows.Forms.ToolStrip();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripSplitButton();
             this.predeterminadoIcono = new System.Windows.Forms.ToolStripMenuItem();
             this.cerebroIcono = new System.Windows.Forms.ToolStripMenuItem();
             this.huesoContrasteIcono = new System.Windows.Forms.ToolStripMenuItem();
+<<<<<<< HEAD
             this.barraIconoClasificacion = new System.Windows.Forms.ToolStrip();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.kmeansIcono = new System.Windows.Forms.ToolStripMenuItem();
@@ -166,6 +199,28 @@
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+=======
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.MI2 = new System.Windows.Forms.Label();
+            this.TMI4 = new System.Windows.Forms.Label();
+            this.TMI5 = new System.Windows.Forms.Label();
+            this.TMI6 = new System.Windows.Forms.Label();
+            this.MA2 = new System.Windows.Forms.Label();
+            this.TMA4 = new System.Windows.Forms.Label();
+            this.TMA5 = new System.Windows.Forms.Label();
+            this.TMA6 = new System.Windows.Forms.Label();
+            this.C7 = new System.Windows.Forms.Label();
+            this.C8 = new System.Windows.Forms.Label();
+            this.C9 = new System.Windows.Forms.Label();
+            this.TMI7 = new System.Windows.Forms.Label();
+            this.TMI8 = new System.Windows.Forms.Label();
+            this.TMI9 = new System.Windows.Forms.Label();
+            this.TMA7 = new System.Windows.Forms.Label();
+            this.TMA8 = new System.Windows.Forms.Label();
+            this.TMA9 = new System.Windows.Forms.Label();
+            this.MI3 = new System.Windows.Forms.Label();
+            this.MA3 = new System.Windows.Forms.Label();
+>>>>>>> osnayaColores
             this.barraHerramientas.SuspendLayout();
             this.barraDeIconos.SuspendLayout();
             this.contenedorBarraDeIconos.ContentPanel.SuspendLayout();
@@ -179,11 +234,19 @@
             this.panelInformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mostrarTratada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mostrarOriginal)).BeginInit();
+<<<<<<< HEAD
             this.barraIconos3D.SuspendLayout();
             this.barraIconoContrste.SuspendLayout();
             this.barraIconoClasificacion.SuspendLayout();
             this.barraIconoRegla.SuspendLayout();
             this.barraIconosUmbralizacion.SuspendLayout();
+=======
+            this.barraIconosUmbralizacion.SuspendLayout();
+            this.barraIconoRegla.SuspendLayout();
+            this.barraIconos3D.SuspendLayout();
+            this.barraIconoClasificacion.SuspendLayout();
+            this.barraIconoContrste.SuspendLayout();
+>>>>>>> osnayaColores
             this.SuspendLayout();
             // 
             // barraHerramientas
@@ -718,11 +781,42 @@
             // regionCrecienteToolStripMenuItem
             // 
             this.regionCrecienteToolStripMenuItem.BackColor = System.Drawing.Color.Black;
+            this.regionCrecienteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.RCBaja,
+            this.RCMedia,
+            this.RCAlta});
             this.regionCrecienteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.regionCrecienteToolStripMenuItem.Name = "regionCrecienteToolStripMenuItem";
             this.regionCrecienteToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
-            this.regionCrecienteToolStripMenuItem.Text = "Region Creciente";
+            this.regionCrecienteToolStripMenuItem.Text = "Región Creciente";
             this.regionCrecienteToolStripMenuItem.Click += new System.EventHandler(this.regionCrecienteToolStripMenuItem_Click);
+            // 
+            // RCBaja
+            // 
+            this.RCBaja.BackColor = System.Drawing.Color.Black;
+            this.RCBaja.ForeColor = System.Drawing.Color.White;
+            this.RCBaja.Name = "RCBaja";
+            this.RCBaja.Size = new System.Drawing.Size(189, 24);
+            this.RCBaja.Text = "Precisión Baja";
+            this.RCBaja.Click += new System.EventHandler(this.RCBaja_Click);
+            // 
+            // RCMedia
+            // 
+            this.RCMedia.BackColor = System.Drawing.Color.Black;
+            this.RCMedia.ForeColor = System.Drawing.Color.White;
+            this.RCMedia.Name = "RCMedia";
+            this.RCMedia.Size = new System.Drawing.Size(189, 24);
+            this.RCMedia.Text = "Precisión Media";
+            this.RCMedia.Click += new System.EventHandler(this.RCMedia_Click);
+            // 
+            // RCAlta
+            // 
+            this.RCAlta.BackColor = System.Drawing.Color.Black;
+            this.RCAlta.ForeColor = System.Drawing.Color.White;
+            this.RCAlta.Name = "RCAlta";
+            this.RCAlta.Size = new System.Drawing.Size(189, 24);
+            this.RCAlta.Text = "Precisión Alta";
+            this.RCAlta.Click += new System.EventHandler(this.RCAlta_Click);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -798,7 +892,7 @@
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripButton4});
-            this.barraDeIconos.Location = new System.Drawing.Point(3, 125);
+            this.barraDeIconos.Location = new System.Drawing.Point(3, 0);
             this.barraDeIconos.Name = "barraDeIconos";
             this.barraDeIconos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.barraDeIconos.Size = new System.Drawing.Size(163, 25);
@@ -901,6 +995,39 @@
             // 
             this.contenedorBarraDeIconos.ContentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.contenedorBarraDeIconos.ContentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.MA3);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.MI3);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMA9);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMA8);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMA7);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMI9);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMI8);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMI7);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.C9);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.C8);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.C7);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMA6);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMA5);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMA4);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.MA2);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMI6);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMI5);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMI4);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.MI2);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.MA1);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.MI1);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMA3);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMA2);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMA1);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMI2);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.C6);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMI3);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.C5);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.C4);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.C3);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.C2);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.TMI1);
+            this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.C1);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.restCent);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.numRestantesCentros);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.numRestantantesCentros);
@@ -915,7 +1042,9 @@
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.botonAtras);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.mostrarTratada);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.mostrarOriginal);
-            this.contenedorBarraDeIconos.ContentPanel.Size = new System.Drawing.Size(1354, 555);
+            this.contenedorBarraDeIconos.ContentPanel.ForeColor = System.Drawing.Color.Transparent;
+            this.contenedorBarraDeIconos.ContentPanel.Size = new System.Drawing.Size(1354, 680);
+            this.contenedorBarraDeIconos.ContentPanel.Load += new System.EventHandler(this.contenedorBarraDeIconos_ContentPanel_Load);
             this.contenedorBarraDeIconos.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // contenedorBarraDeIconos.LeftToolStripPanel
@@ -935,13 +1064,166 @@
             // contenedorBarraDeIconos.TopToolStripPanel
             // 
             this.contenedorBarraDeIconos.TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconos3D);
-            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoContrste);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraDeIconos);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconosUmbralizacion);
             this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoClasificacion);
             this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoRegla);
-            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconosUmbralizacion);
-            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraDeIconos);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconos3D);
             this.contenedorBarraDeIconos.TopToolStripPanel.Click += new System.EventHandler(this.contenedorBarraDeIconos_TopToolStripPanel_Click);
+            // 
+            // MA1
+            // 
+            this.MA1.AutoSize = true;
+            this.MA1.ForeColor = System.Drawing.Color.White;
+            this.MA1.Location = new System.Drawing.Point(824, 527);
+            this.MA1.Name = "MA1";
+            this.MA1.Size = new System.Drawing.Size(38, 20);
+            this.MA1.TabIndex = 29;
+            this.MA1.Text = "Max";
+            this.MA1.Visible = false;
+            // 
+            // MI1
+            // 
+            this.MI1.AutoSize = true;
+            this.MI1.ForeColor = System.Drawing.Color.White;
+            this.MI1.Location = new System.Drawing.Point(765, 527);
+            this.MI1.Name = "MI1";
+            this.MI1.Size = new System.Drawing.Size(34, 20);
+            this.MI1.TabIndex = 28;
+            this.MI1.Text = "Min";
+            this.MI1.Visible = false;
+            // 
+            // TMA3
+            // 
+            this.TMA3.AutoSize = true;
+            this.TMA3.ForeColor = System.Drawing.Color.Transparent;
+            this.TMA3.Location = new System.Drawing.Point(828, 612);
+            this.TMA3.Name = "TMA3";
+            this.TMA3.Size = new System.Drawing.Size(34, 20);
+            this.TMA3.TabIndex = 26;
+            this.TMA3.Text = "min";
+            this.TMA3.Visible = false;
+            // 
+            // TMA2
+            // 
+            this.TMA2.AutoSize = true;
+            this.TMA2.ForeColor = System.Drawing.Color.Transparent;
+            this.TMA2.Location = new System.Drawing.Point(828, 580);
+            this.TMA2.Name = "TMA2";
+            this.TMA2.Size = new System.Drawing.Size(34, 20);
+            this.TMA2.TabIndex = 25;
+            this.TMA2.Text = "min";
+            this.TMA2.Visible = false;
+            // 
+            // TMA1
+            // 
+            this.TMA1.AutoSize = true;
+            this.TMA1.ForeColor = System.Drawing.Color.Transparent;
+            this.TMA1.Location = new System.Drawing.Point(828, 551);
+            this.TMA1.Name = "TMA1";
+            this.TMA1.Size = new System.Drawing.Size(34, 20);
+            this.TMA1.TabIndex = 24;
+            this.TMA1.Text = "min";
+            this.TMA1.Visible = false;
+            // 
+            // TMI2
+            // 
+            this.TMI2.AutoSize = true;
+            this.TMI2.ForeColor = System.Drawing.Color.Transparent;
+            this.TMI2.Location = new System.Drawing.Point(765, 580);
+            this.TMI2.Name = "TMI2";
+            this.TMI2.Size = new System.Drawing.Size(34, 20);
+            this.TMI2.TabIndex = 22;
+            this.TMI2.Text = "min";
+            this.TMI2.Visible = false;
+            // 
+            // C6
+            // 
+            this.C6.AutoSize = true;
+            this.C6.ForeColor = System.Drawing.Color.Transparent;
+            this.C6.Location = new System.Drawing.Point(894, 612);
+            this.C6.Name = "C6";
+            this.C6.Size = new System.Drawing.Size(47, 20);
+            this.C6.TabIndex = 21;
+            this.C6.Text = "C111";
+            this.C6.Visible = false;
+            // 
+            // TMI3
+            // 
+            this.TMI3.AutoSize = true;
+            this.TMI3.ForeColor = System.Drawing.Color.Transparent;
+            this.TMI3.Location = new System.Drawing.Point(765, 612);
+            this.TMI3.Name = "TMI3";
+            this.TMI3.Size = new System.Drawing.Size(34, 20);
+            this.TMI3.TabIndex = 23;
+            this.TMI3.Text = "min";
+            this.TMI3.Visible = false;
+            // 
+            // C5
+            // 
+            this.C5.AutoSize = true;
+            this.C5.ForeColor = System.Drawing.Color.Transparent;
+            this.C5.Location = new System.Drawing.Point(894, 580);
+            this.C5.Name = "C5";
+            this.C5.Size = new System.Drawing.Size(47, 20);
+            this.C5.TabIndex = 20;
+            this.C5.Text = "C111";
+            this.C5.Visible = false;
+            // 
+            // C4
+            // 
+            this.C4.AutoSize = true;
+            this.C4.ForeColor = System.Drawing.Color.Transparent;
+            this.C4.Location = new System.Drawing.Point(894, 551);
+            this.C4.Name = "C4";
+            this.C4.Size = new System.Drawing.Size(47, 20);
+            this.C4.TabIndex = 19;
+            this.C4.Text = "C111";
+            this.C4.Visible = false;
+            // 
+            // C3
+            // 
+            this.C3.AutoSize = true;
+            this.C3.ForeColor = System.Drawing.Color.Transparent;
+            this.C3.Location = new System.Drawing.Point(713, 612);
+            this.C3.Name = "C3";
+            this.C3.Size = new System.Drawing.Size(47, 20);
+            this.C3.TabIndex = 18;
+            this.C3.Text = "C111";
+            this.C3.Visible = false;
+            // 
+            // C2
+            // 
+            this.C2.AutoSize = true;
+            this.C2.ForeColor = System.Drawing.Color.Transparent;
+            this.C2.Location = new System.Drawing.Point(712, 580);
+            this.C2.Name = "C2";
+            this.C2.Size = new System.Drawing.Size(47, 20);
+            this.C2.TabIndex = 17;
+            this.C2.Text = "C111";
+            this.C2.Visible = false;
+            // 
+            // TMI1
+            // 
+            this.TMI1.AutoSize = true;
+            this.TMI1.ForeColor = System.Drawing.Color.Transparent;
+            this.TMI1.Location = new System.Drawing.Point(766, 551);
+            this.TMI1.Name = "TMI1";
+            this.TMI1.Size = new System.Drawing.Size(34, 20);
+            this.TMI1.TabIndex = 16;
+            this.TMI1.Text = "min";
+            this.TMI1.Visible = false;
+            // 
+            // C1
+            // 
+            this.C1.AutoSize = true;
+            this.C1.ForeColor = System.Drawing.Color.Transparent;
+            this.C1.Location = new System.Drawing.Point(713, 551);
+            this.C1.Name = "C1";
+            this.C1.Size = new System.Drawing.Size(47, 20);
+            this.C1.TabIndex = 15;
+            this.C1.Text = "C111";
+            this.C1.Visible = false;
             // 
             // restCent
             // 
@@ -1040,7 +1322,7 @@
             this.panelDatosPaciente.ForeColor = System.Drawing.Color.White;
             this.panelDatosPaciente.Location = new System.Drawing.Point(31, 575);
             this.panelDatosPaciente.Name = "panelDatosPaciente";
-            this.panelDatosPaciente.Size = new System.Drawing.Size(934, 86);
+            this.panelDatosPaciente.Size = new System.Drawing.Size(649, 86);
             this.panelDatosPaciente.TabIndex = 9;
             this.panelDatosPaciente.Visible = false;
             // 
@@ -1467,6 +1749,7 @@
             // 
             // barraIconos3D
             // 
+<<<<<<< HEAD
             this.barraIconos3D.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.barraIconos3D.Dock = System.Windows.Forms.DockStyle.None;
             this.barraIconos3D.GripMargin = new System.Windows.Forms.Padding(0);
@@ -1477,6 +1760,19 @@
             this.barraIconos3D.Size = new System.Drawing.Size(71, 25);
             this.barraIconos3D.TabIndex = 2;
             this.barraIconos3D.Text = "Reconstrucción 3D";
+=======
+            this.barraIconosUmbralizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.barraIconosUmbralizacion.Dock = System.Windows.Forms.DockStyle.None;
+            this.barraIconosUmbralizacion.ImageScalingSize = new System.Drawing.Size(18, 18);
+            this.barraIconosUmbralizacion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton5,
+            this.toolStripButton6,
+            this.toolStripButton7});
+            this.barraIconosUmbralizacion.Location = new System.Drawing.Point(166, 0);
+            this.barraIconosUmbralizacion.Name = "barraIconosUmbralizacion";
+            this.barraIconosUmbralizacion.Size = new System.Drawing.Size(81, 25);
+            this.barraIconosUmbralizacion.TabIndex = 1;
+>>>>>>> osnayaColores
             // 
             // toolStripButton8
             // 
@@ -1550,12 +1846,25 @@
             // 
             // predeterminadoIcono
             // 
+<<<<<<< HEAD
             this.predeterminadoIcono.BackColor = System.Drawing.Color.Black;
             this.predeterminadoIcono.ForeColor = System.Drawing.Color.White;
             this.predeterminadoIcono.Name = "predeterminadoIcono";
             this.predeterminadoIcono.Size = new System.Drawing.Size(159, 22);
             this.predeterminadoIcono.Text = "Predeterminado";
             this.predeterminadoIcono.Click += new System.EventHandler(this.predeterminadoIcono_Click);
+=======
+            this.barraIconoRegla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.barraIconoRegla.Dock = System.Windows.Forms.DockStyle.None;
+            this.barraIconoRegla.ImageScalingSize = new System.Drawing.Size(18, 18);
+            this.barraIconoRegla.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton10});
+            this.barraIconoRegla.Location = new System.Drawing.Point(293, 0);
+            this.barraIconoRegla.Name = "barraIconoRegla";
+            this.barraIconoRegla.Size = new System.Drawing.Size(35, 25);
+            this.barraIconoRegla.TabIndex = 0;
+            this.barraIconoRegla.Text = "Medir distancia";
+>>>>>>> osnayaColores
             // 
             // cerebroIcono
             // 
@@ -1575,6 +1884,28 @@
             this.huesoContrasteIcono.Text = "Hueso";
             this.huesoContrasteIcono.Click += new System.EventHandler(this.huesoContrasteIcono_Click);
             // 
+            // barraIconos3D
+            // 
+            this.barraIconos3D.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.barraIconos3D.Dock = System.Windows.Forms.DockStyle.None;
+            this.barraIconos3D.GripMargin = new System.Windows.Forms.Padding(0);
+            this.barraIconos3D.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton8});
+            this.barraIconos3D.Location = new System.Drawing.Point(328, 0);
+            this.barraIconos3D.Name = "barraIconos3D";
+            this.barraIconos3D.Size = new System.Drawing.Size(31, 25);
+            this.barraIconos3D.TabIndex = 2;
+            this.barraIconos3D.Text = "Reconstrucción 3D";
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
+            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton8.Text = "Reconstrucción 3D";
+            // 
             // barraIconoClasificacion
             // 
             this.barraIconoClasificacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
@@ -1582,7 +1913,7 @@
             this.barraIconoClasificacion.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.barraIconoClasificacion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSplitButton1});
-            this.barraIconoClasificacion.Location = new System.Drawing.Point(104, 50);
+            this.barraIconoClasificacion.Location = new System.Drawing.Point(247, 0);
             this.barraIconoClasificacion.Name = "barraIconoClasificacion";
             this.barraIconoClasificacion.Size = new System.Drawing.Size(46, 25);
             this.barraIconoClasificacion.TabIndex = 6;
@@ -1620,7 +1951,23 @@
             this.fuzzyIcono.Text = "Precisión alta";
             this.fuzzyIcono.Click += new System.EventHandler(this.fuzzyIcono_Click);
             // 
+<<<<<<< HEAD
             // barraIconoRegla
+=======
+            // barraIconoContrste
+            // 
+            this.barraIconoContrste.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.barraIconoContrste.Dock = System.Windows.Forms.DockStyle.None;
+            this.barraIconoContrste.ImageScalingSize = new System.Drawing.Size(18, 18);
+            this.barraIconoContrste.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton9});
+            this.barraIconoContrste.Location = new System.Drawing.Point(247, 28);
+            this.barraIconoContrste.Name = "barraIconoContrste";
+            this.barraIconoContrste.Size = new System.Drawing.Size(46, 25);
+            this.barraIconoContrste.TabIndex = 0;
+            // 
+            // toolStripButton9
+>>>>>>> osnayaColores
             // 
             this.barraIconoRegla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.barraIconoRegla.Dock = System.Windows.Forms.DockStyle.None;
@@ -1667,6 +2014,7 @@
             this.toolStripButton5.Text = "Umbral hueso";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
+<<<<<<< HEAD
             // toolStripButton6
             // 
             this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -1687,6 +2035,8 @@
             this.toolStripButton7.Text = "Umbral sangre";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
+=======
+>>>>>>> osnayaColores
             // backgroundWorker1
             // 
             this.backgroundWorker1.WorkerReportsProgress = true;
@@ -1695,6 +2045,7 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+<<<<<<< HEAD
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.BackColor = System.Drawing.Color.Black;
@@ -1704,6 +2055,205 @@
             this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem3.Text = "Grasa";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+=======
+            // MI2
+            // 
+            this.MI2.AutoSize = true;
+            this.MI2.ForeColor = System.Drawing.Color.White;
+            this.MI2.Location = new System.Drawing.Point(951, 527);
+            this.MI2.Name = "MI2";
+            this.MI2.Size = new System.Drawing.Size(34, 20);
+            this.MI2.TabIndex = 30;
+            this.MI2.Text = "Min";
+            this.MI2.Visible = false;
+            // 
+            // TMI4
+            // 
+            this.TMI4.AutoSize = true;
+            this.TMI4.ForeColor = System.Drawing.Color.White;
+            this.TMI4.Location = new System.Drawing.Point(951, 551);
+            this.TMI4.Name = "TMI4";
+            this.TMI4.Size = new System.Drawing.Size(34, 20);
+            this.TMI4.TabIndex = 31;
+            this.TMI4.Text = "min";
+            this.TMI4.Visible = false;
+            // 
+            // TMI5
+            // 
+            this.TMI5.AutoSize = true;
+            this.TMI5.ForeColor = System.Drawing.Color.White;
+            this.TMI5.Location = new System.Drawing.Point(951, 580);
+            this.TMI5.Name = "TMI5";
+            this.TMI5.Size = new System.Drawing.Size(34, 20);
+            this.TMI5.TabIndex = 32;
+            this.TMI5.Text = "min";
+            this.TMI5.Visible = false;
+            // 
+            // TMI6
+            // 
+            this.TMI6.AutoSize = true;
+            this.TMI6.ForeColor = System.Drawing.Color.Transparent;
+            this.TMI6.Location = new System.Drawing.Point(951, 612);
+            this.TMI6.Name = "TMI6";
+            this.TMI6.Size = new System.Drawing.Size(34, 20);
+            this.TMI6.TabIndex = 33;
+            this.TMI6.Text = "min";
+            this.TMI6.Visible = false;
+            // 
+            // MA2
+            // 
+            this.MA2.AutoSize = true;
+            this.MA2.ForeColor = System.Drawing.Color.White;
+            this.MA2.Location = new System.Drawing.Point(1014, 527);
+            this.MA2.Name = "MA2";
+            this.MA2.Size = new System.Drawing.Size(38, 20);
+            this.MA2.TabIndex = 34;
+            this.MA2.Text = "Max";
+            this.MA2.Visible = false;
+            // 
+            // TMA4
+            // 
+            this.TMA4.AutoSize = true;
+            this.TMA4.ForeColor = System.Drawing.Color.Transparent;
+            this.TMA4.Location = new System.Drawing.Point(1014, 551);
+            this.TMA4.Name = "TMA4";
+            this.TMA4.Size = new System.Drawing.Size(34, 20);
+            this.TMA4.TabIndex = 35;
+            this.TMA4.Text = "min";
+            this.TMA4.Visible = false;
+            // 
+            // TMA5
+            // 
+            this.TMA5.AutoSize = true;
+            this.TMA5.ForeColor = System.Drawing.Color.Transparent;
+            this.TMA5.Location = new System.Drawing.Point(1014, 580);
+            this.TMA5.Name = "TMA5";
+            this.TMA5.Size = new System.Drawing.Size(34, 20);
+            this.TMA5.TabIndex = 36;
+            this.TMA5.Text = "min";
+            this.TMA5.Visible = false;
+            // 
+            // TMA6
+            // 
+            this.TMA6.AutoSize = true;
+            this.TMA6.ForeColor = System.Drawing.Color.Transparent;
+            this.TMA6.Location = new System.Drawing.Point(1014, 612);
+            this.TMA6.Name = "TMA6";
+            this.TMA6.Size = new System.Drawing.Size(34, 20);
+            this.TMA6.TabIndex = 37;
+            this.TMA6.Text = "min";
+            this.TMA6.Visible = false;
+            // 
+            // C7
+            // 
+            this.C7.AutoSize = true;
+            this.C7.Location = new System.Drawing.Point(1090, 551);
+            this.C7.Name = "C7";
+            this.C7.Size = new System.Drawing.Size(47, 20);
+            this.C7.TabIndex = 38;
+            this.C7.Text = "C111";
+            this.C7.Visible = false;
+            // 
+            // C8
+            // 
+            this.C8.AutoSize = true;
+            this.C8.Location = new System.Drawing.Point(1090, 579);
+            this.C8.Name = "C8";
+            this.C8.Size = new System.Drawing.Size(47, 20);
+            this.C8.TabIndex = 39;
+            this.C8.Text = "C111";
+            this.C8.Visible = false;
+            // 
+            // C9
+            // 
+            this.C9.AutoSize = true;
+            this.C9.Location = new System.Drawing.Point(1090, 612);
+            this.C9.Name = "C9";
+            this.C9.Size = new System.Drawing.Size(47, 20);
+            this.C9.TabIndex = 40;
+            this.C9.Text = "C111";
+            this.C9.Visible = false;
+            // 
+            // TMI7
+            // 
+            this.TMI7.AutoSize = true;
+            this.TMI7.Location = new System.Drawing.Point(1160, 551);
+            this.TMI7.Name = "TMI7";
+            this.TMI7.Size = new System.Drawing.Size(34, 20);
+            this.TMI7.TabIndex = 41;
+            this.TMI7.Text = "min";
+            this.TMI7.Visible = false;
+            // 
+            // TMI8
+            // 
+            this.TMI8.AutoSize = true;
+            this.TMI8.Location = new System.Drawing.Point(1160, 580);
+            this.TMI8.Name = "TMI8";
+            this.TMI8.Size = new System.Drawing.Size(34, 20);
+            this.TMI8.TabIndex = 42;
+            this.TMI8.Text = "min";
+            this.TMI8.Visible = false;
+            // 
+            // TMI9
+            // 
+            this.TMI9.AutoSize = true;
+            this.TMI9.Location = new System.Drawing.Point(1160, 612);
+            this.TMI9.Name = "TMI9";
+            this.TMI9.Size = new System.Drawing.Size(34, 20);
+            this.TMI9.TabIndex = 43;
+            this.TMI9.Text = "min";
+            this.TMI9.Visible = false;
+            // 
+            // TMA7
+            // 
+            this.TMA7.AutoSize = true;
+            this.TMA7.Location = new System.Drawing.Point(1228, 551);
+            this.TMA7.Name = "TMA7";
+            this.TMA7.Size = new System.Drawing.Size(34, 20);
+            this.TMA7.TabIndex = 44;
+            this.TMA7.Text = "min";
+            this.TMA7.Visible = false;
+            // 
+            // TMA8
+            // 
+            this.TMA8.AutoSize = true;
+            this.TMA8.Location = new System.Drawing.Point(1228, 580);
+            this.TMA8.Name = "TMA8";
+            this.TMA8.Size = new System.Drawing.Size(34, 20);
+            this.TMA8.TabIndex = 45;
+            this.TMA8.Text = "min";
+            this.TMA8.Visible = false;
+            // 
+            // TMA9
+            // 
+            this.TMA9.AutoSize = true;
+            this.TMA9.Location = new System.Drawing.Point(1228, 612);
+            this.TMA9.Name = "TMA9";
+            this.TMA9.Size = new System.Drawing.Size(34, 20);
+            this.TMA9.TabIndex = 46;
+            this.TMA9.Text = "min";
+            this.TMA9.Visible = false;
+            // 
+            // MI3
+            // 
+            this.MI3.AutoSize = true;
+            this.MI3.Location = new System.Drawing.Point(1160, 527);
+            this.MI3.Name = "MI3";
+            this.MI3.Size = new System.Drawing.Size(34, 20);
+            this.MI3.TabIndex = 47;
+            this.MI3.Text = "Min";
+            this.MI3.Visible = false;
+            // 
+            // MA3
+            // 
+            this.MA3.AutoSize = true;
+            this.MA3.Location = new System.Drawing.Point(1228, 527);
+            this.MA3.Name = "MA3";
+            this.MA3.Size = new System.Drawing.Size(38, 20);
+            this.MA3.TabIndex = 48;
+            this.MA3.Text = "Max";
+            this.MA3.Visible = false;
+>>>>>>> osnayaColores
             // 
             // mainVentana
             // 
@@ -1714,6 +2264,7 @@
             this.ClientSize = new System.Drawing.Size(1354, 733);
             this.Controls.Add(this.contenedorBarraDeIconos);
             this.Controls.Add(this.barraHerramientas);
+            this.Controls.Add(this.barraIconoContrste);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.barraHerramientas;
@@ -1745,6 +2296,7 @@
             this.panelInformacion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mostrarTratada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mostrarOriginal)).EndInit();
+<<<<<<< HEAD
             this.barraIconos3D.ResumeLayout(false);
             this.barraIconos3D.PerformLayout();
             this.barraIconoContrste.ResumeLayout(false);
@@ -1755,6 +2307,18 @@
             this.barraIconoRegla.PerformLayout();
             this.barraIconosUmbralizacion.ResumeLayout(false);
             this.barraIconosUmbralizacion.PerformLayout();
+=======
+            this.barraIconosUmbralizacion.ResumeLayout(false);
+            this.barraIconosUmbralizacion.PerformLayout();
+            this.barraIconoRegla.ResumeLayout(false);
+            this.barraIconoRegla.PerformLayout();
+            this.barraIconos3D.ResumeLayout(false);
+            this.barraIconos3D.PerformLayout();
+            this.barraIconoClasificacion.ResumeLayout(false);
+            this.barraIconoClasificacion.PerformLayout();
+            this.barraIconoContrste.ResumeLayout(false);
+            this.barraIconoContrste.PerformLayout();
+>>>>>>> osnayaColores
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1900,11 +2464,50 @@
         private System.Windows.Forms.Label numRestantantesCentros;
         private System.Windows.Forms.Label centrosRestantes;
         private System.Windows.Forms.Label restCent;
+<<<<<<< HEAD
         private System.Windows.Forms.ToolStripSplitButton toolStripButton8;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem huesoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sangreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+=======
+        private System.Windows.Forms.ToolStripMenuItem RCBaja;
+        private System.Windows.Forms.ToolStripMenuItem RCMedia;
+        private System.Windows.Forms.ToolStripMenuItem RCAlta;
+        private System.Windows.Forms.Label TMI1;
+        private System.Windows.Forms.Label C1;
+        private System.Windows.Forms.Label C6;
+        private System.Windows.Forms.Label C5;
+        private System.Windows.Forms.Label C4;
+        private System.Windows.Forms.Label C3;
+        private System.Windows.Forms.Label C2;
+        private System.Windows.Forms.Label TMA3;
+        private System.Windows.Forms.Label TMA2;
+        private System.Windows.Forms.Label TMA1;
+        private System.Windows.Forms.Label TMI3;
+        private System.Windows.Forms.Label TMI2;
+        private System.Windows.Forms.Label MA1;
+        private System.Windows.Forms.Label MI1;
+        private System.Windows.Forms.Label TMA6;
+        private System.Windows.Forms.Label TMA5;
+        private System.Windows.Forms.Label TMA4;
+        private System.Windows.Forms.Label MA2;
+        private System.Windows.Forms.Label TMI6;
+        private System.Windows.Forms.Label TMI5;
+        private System.Windows.Forms.Label TMI4;
+        private System.Windows.Forms.Label MI2;
+        private System.Windows.Forms.Label MA3;
+        private System.Windows.Forms.Label MI3;
+        private System.Windows.Forms.Label TMA9;
+        private System.Windows.Forms.Label TMA8;
+        private System.Windows.Forms.Label TMA7;
+        private System.Windows.Forms.Label TMI9;
+        private System.Windows.Forms.Label TMI8;
+        private System.Windows.Forms.Label TMI7;
+        private System.Windows.Forms.Label C9;
+        private System.Windows.Forms.Label C8;
+        private System.Windows.Forms.Label C7;
+>>>>>>> osnayaColores
     }
 }
 
