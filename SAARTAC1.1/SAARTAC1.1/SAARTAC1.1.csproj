@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Kitware.mummy.Runtime">
+      <HintPath>..\packages\Activiz.NET.x86.5.8.0\lib\net20\Kitware.mummy.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Kitware.VTK">
+      <HintPath>..\packages\Activiz.NET.x86.5.8.0\lib\net20\Kitware.VTK.dll</HintPath>
+    </Reference>
     <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\OpenTK\1.1\Binaries\OpenTK\Release\OpenTK.dll</HintPath>
@@ -65,6 +71,12 @@
     <Compile Include="RegionCreciente.cs" />
     <Compile Include="Regla.cs" />
     <Compile Include="Seccion.cs" />
+    <Compile Include="SeleccionTiraje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeleccionTiraje.Designer.cs">
+      <DependentUpon>SeleccionTiraje.cs</DependentUpon>
+    </Compile>
     <Compile Include="Umbralizacion.cs" />
     <Compile Include="Venatana.cs">
       <SubType>Form</SubType>
@@ -77,6 +89,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Configuracion.resx">
       <DependentUpon>Configuracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeleccionTiraje.resx">
+      <DependentUpon>SeleccionTiraje.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Venatana.resx">
       <DependentUpon>Venatana.cs</DependentUpon>
@@ -139,6 +154,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\brain-upper-view-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MainFrame\MainFrame\MainFrame.csproj">
+      <Project>{fe81e8d3-1066-46c2-8db0-83ee49ce6667}</Project>
+      <Name>MainFrame</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
