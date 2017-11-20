@@ -948,12 +948,7 @@ namespace SAARTAC1._1 {
             frm.Show();
         }
 
-<<<<<<< HEAD
-        //REconstruccion
-        private void toolStripButton8_Click(object sender, EventArgs e)
-        {
-            //reconstruccion();
-=======
+
         private void RCBaja_Click(object sender, EventArgs e){
             region_creciente = true;
             RCPrecision = 1;
@@ -969,14 +964,14 @@ namespace SAARTAC1._1 {
             RCPrecision = 5;
         }
 
-        private void contenedorBarraDeIconos_ContentPanel_Load(object sender, EventArgs e)
-        {
+        private void toolStripButton8_Click(object sender, EventArgs e){
+            //reconstruccion();
+        }
+        private void contenedorBarraDeIconos_ContentPanel_Load(object sender, EventArgs e){
 
->>>>>>> osnayaColores
         }
 
         private void mainVentana_Load(object sender, EventArgs e) {
-
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
