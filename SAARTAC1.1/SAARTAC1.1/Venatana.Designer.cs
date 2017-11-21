@@ -1000,11 +1000,11 @@
             // contenedorBarraDeIconos.TopToolStripPanel
             // 
             this.contenedorBarraDeIconos.TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraDeIconos);
-            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconosUmbralizacion);
-            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoRegla);
-            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoClasificacion);
             this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconos3D);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoClasificacion);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoRegla);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconosUmbralizacion);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraDeIconos);
             this.contenedorBarraDeIconos.TopToolStripPanel.Click += new System.EventHandler(this.contenedorBarraDeIconos_TopToolStripPanel_Click);
             // 
             // MA3
@@ -1957,7 +1957,7 @@
             this.toolStripSplitButton1});
             this.barraIconoClasificacion.Location = new System.Drawing.Point(104, 25);
             this.barraIconoClasificacion.Name = "barraIconoClasificacion";
-            this.barraIconoClasificacion.Size = new System.Drawing.Size(46, 25);
+            this.barraIconoClasificacion.Size = new System.Drawing.Size(77, 25);
             this.barraIconoClasificacion.TabIndex = 6;
             this.barraIconoClasificacion.Text = "Clasificación";
             // 
@@ -1980,8 +1980,8 @@
             this.kmeansIcono.BackColor = System.Drawing.Color.Black;
             this.kmeansIcono.ForeColor = System.Drawing.Color.White;
             this.kmeansIcono.Name = "kmeansIcono";
-            this.kmeansIcono.Size = new System.Drawing.Size(158, 22);
-            this.kmeansIcono.Text = "Precisión media";
+            this.kmeansIcono.Size = new System.Drawing.Size(152, 22);
+            this.kmeansIcono.Text = "Técnica 1";
             this.kmeansIcono.Click += new System.EventHandler(this.kmeansIcono_Click);
             // 
             // fuzzyIcono
@@ -1989,8 +1989,8 @@
             this.fuzzyIcono.BackColor = System.Drawing.Color.Black;
             this.fuzzyIcono.ForeColor = System.Drawing.Color.White;
             this.fuzzyIcono.Name = "fuzzyIcono";
-            this.fuzzyIcono.Size = new System.Drawing.Size(158, 22);
-            this.fuzzyIcono.Text = "Precisión alta";
+            this.fuzzyIcono.Size = new System.Drawing.Size(152, 22);
+            this.fuzzyIcono.Text = "Técnica 2";
             this.fuzzyIcono.Click += new System.EventHandler(this.fuzzyIcono_Click);
             // 
             // barraIconos3D
