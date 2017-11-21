@@ -37,17 +37,17 @@ namespace SAARTAC1._1 {
         private Label[] labelsTextMin, labelsTextMax;
 
 
-        public static Dicom dic;
-        int noImgs;
+        private Dicom dic;
+        private int noImgs;
         static int opcion = 0;
         static int count = 0;
         static Object bloqueador = new Object();
         static Bitmap[] tejidos;
-        String folderD;
+        private String folderD;
         static ToolStripProgressBar toolStripProgressBar1;
-        bool opened = false;
-        List<Dicom> dcms = new List<Dicom>();
-        int childs = -1;
+        private bool opened = false;
+        private List<Dicom> dcms = new List<Dicom>();
+        private int childs = -1;
 
         public mainVentana() {
             InitializeComponent();
@@ -96,7 +96,6 @@ namespace SAARTAC1._1 {
 
         //Abrir archivos.
         private void abrirBarraHerramientas_Click(object sender, EventArgs e) {
-
             try {
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) { //verifica si se abrio.                    
                     id_tac = 0;
@@ -108,16 +107,15 @@ namespace SAARTAC1._1 {
                     seccion = null;
                 } else Console.WriteLine("Hay un problema al abrir el archivo");
             } catch (Exception ex) { MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido"); }
-            dic = new Dicom(ruta);
-            if (!(dic.getError() == 0))
-            {
+            dic = new Dicom(ruta);            
+            if (!(dic.getError() == 0)){
                 MessageBox.Show("El directorio especificado no contiene archivos DICOM o esta dañado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 opened = false;
             }
-            else
-            {
+            else{
+                dcms.Clear();
                 dcms.Add(dic);
-                tejidos = new Bitmap[noImgs];
+                //tejidos = new Bitmap[noImgs];
                 opened = true;
             }
 
@@ -948,12 +946,7 @@ namespace SAARTAC1._1 {
             frm.Show();
         }
 
-<<<<<<< HEAD
-        //REconstruccion
-        private void toolStripButton8_Click(object sender, EventArgs e)
-        {
-            //reconstruccion();
-=======
+
         private void RCBaja_Click(object sender, EventArgs e){
             region_creciente = true;
             RCPrecision = 1;
@@ -969,14 +962,36 @@ namespace SAARTAC1._1 {
             RCPrecision = 5;
         }
 
-        private void contenedorBarraDeIconos_ContentPanel_Load(object sender, EventArgs e)
-        {
+        private void toolStripButton8_Click(object sender, EventArgs e){
+            //reconstruccion();
+        }
+        private void contenedorBarraDeIconos_ContentPanel_Load(object sender, EventArgs e){
 
->>>>>>> osnayaColores
         }
 
         private void mainVentana_Load(object sender, EventArgs e) {
+        }
 
+        private void aguaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RenderMain rm = new RenderMain(dic, "Liquido", 2);
+            rm.Show();
+        }
+
+        private void huesoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            RenderMain rm = new RenderMain(dcms.ElementAt(0), 6);
+            rm.Show();
+        }
+
+        private void grasaToolStripMenuItem_Click(object sender, EventArgs e){
+            RenderMain rm = new RenderMain(dic, "Grasa", 2);
+            rm.Show();
+        }
+
+        private void sangreToolStripMenuItem1_Click(object sender, EventArgs e){
+            RenderMain rm = new RenderMain(dic, "Sangre Coagulada", 2);
+            rm.Show();
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
