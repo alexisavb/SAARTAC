@@ -750,7 +750,7 @@ namespace SAARTAC1._1 {
                 if(banderaPersonalizada == 2){                    
                     numeroCentrosKmeans = centro;
                     numeroCentrosCfuzzy = ancho;
-                    MessageBox.Show("El cambio para el número de centro fue realizado. \nPrecisión media = " + centro + "\nPrecisión alta = " + ancho, "Correcto");
+                    MessageBox.Show("El cambio para el número de centro fue realizado. \nTécnica 1 = " + centro + "\nTécnica 2 = " + ancho, "Correcto");
                 }
                              
             }
