@@ -1,0 +1,24 @@
+Tabla
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|p{25mm}|p{60mm}|p{60mm}|}
+\hline
+ & & \\
+\hline \hline 
+ &  & \\
+\hline
+ &  & \\
+\hline
+ &  & \\
+\hline
+\end{tabular}
+\caption{nombre tabla}
+\end{center}
+\end{table}
+
+Imagen
+\begin{figure}[H]
+\centering
+\includegraphics[width = 13 cm, height = 5 cm]{imagen}
+\caption{nombre diagrama}
+\end{figure}
