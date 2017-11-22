@@ -94,8 +94,5 @@
 \contentsline {section}{\numberline {7.1}Conclusiones}{92}{section.7.1}
 \contentsline {section}{\numberline {7.2}Trabajo a futuro}{92}{section.7.2}
 \contentsline {chapter}{\numberline {A}C\IeC {\'o}digo K-Means}{94}{appendix.Alph1}
-<<<<<<< HEAD
-=======
 \contentsline {chapter}{\numberline {B}C\IeC {\'o}digo Fuzzy C-Means}{96}{appendix.Alph2}
 \contentsline {chapter}{\numberline {C}Diagrama de clases}{99}{appendix.Alph3}
->>>>>>> refs/remotes/origin/master
