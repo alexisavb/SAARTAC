@@ -1157,6 +1157,8 @@ namespace SAARTAC1._1 {
                 Color color_grupo = i.Key;
                 int limite_superior = i.Value.X;
                 int limite_inferior = i.Value.Y;
+                if (limite_inferior > 4000)
+                    continue;
                 labelsColor[con].BackColor = color_grupo;
                 labelsColor[con].ForeColor = color_grupo;
                 labelsColor[con].Visible = true;
