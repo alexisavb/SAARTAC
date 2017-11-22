@@ -87,3 +87,8 @@
 \BOOKMARK [1][-]{section.7.1}{Conclusiones}{chapter.7}% 87
 \BOOKMARK [1][-]{section.7.2}{Trabajo a futuro}{chapter.7}% 88
 \BOOKMARK [0][-]{appendix.Alph1}{C\363digo K-Means}{}% 89
+<<<<<<< HEAD
+=======
+\BOOKMARK [0][-]{appendix.Alph2}{C\363digo Fuzzy C-Means}{}% 90
+\BOOKMARK [0][-]{appendix.Alph3}{Diagrama de clases}{}% 91
+>>>>>>> refs/remotes/origin/master

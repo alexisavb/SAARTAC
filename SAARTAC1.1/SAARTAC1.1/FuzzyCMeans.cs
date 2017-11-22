@@ -24,8 +24,11 @@ namespace SAARTAC1._1{
         private List<int []> datos;
 
         private List<Point> umbral_centros;
+        private bool IgnorarAire;
+        private int IGNORAR = -200;
 
         public FuzzyCMeans(List<int[]> datos, BackgroundWorker reporte_progreso, int k, int iteraciones = 10){
+            IgnorarAire = Properties.Settings.Default.IgnorarAire;
             this.datos = datos;
             numerosK = k;
             this.reporte_progreso = reporte_progreso;
@@ -46,9 +49,15 @@ namespace SAARTAC1._1{
                 if (reporte_progreso.CancellationPending)
                     return;
             }
+            GenerarDistancias();
+            ActualizarPertenencia();
             for (int i = 0; i < N; i++){
                 for (int j = 0; j < M; j++){
-                    int tipo = 0;
+                    if (IgnorarAire && datos [i] [j] < IGNORAR) {
+                        clases [i, j] = 0;
+                        continue;
+                    }
+                    int tipo = 1;
                     double valor = pertenencia[i, j, 0];
                     for (int p = 1; p < numerosK; p++){
                         if (valor < pertenencia[i, j, p]){
@@ -56,7 +65,7 @@ namespace SAARTAC1._1{
                             valor = pertenencia[i, j, p];
                         }
                     }
-                    clases[i, j] = tipo;
+                    clases[i, j] = tipo + 1;
                     
                 }
             }
@@ -65,6 +74,7 @@ namespace SAARTAC1._1{
         
         
         public FuzzyCMeans(List<int []> datos, List<Double> cent, BackgroundWorker reporte_progreso, int k, int iteraciones = 10){
+            IgnorarAire = Properties.Settings.Default.IgnorarAire;
             this.datos = datos;
             numerosK = k;
             this.reporte_progreso = reporte_progreso;
@@ -85,8 +95,15 @@ namespace SAARTAC1._1{
                 if (reporte_progreso.CancellationPending)
                     return;
             }
+
+            GenerarDistancias();
+            ActualizarPertenencia();
             for (int i = 0; i < N; i++){
                 for (int j = 0; j < M; j++){
+                    if(IgnorarAire && datos[i][j] < IGNORAR) {
+                        clases [i, j] = 0;
+                        continue;
+                    }
                     int tipo = 0;
                     double valor = pertenencia[i, j, 0];
                     for (int p = 1; p < numerosK; p++){
@@ -95,20 +112,26 @@ namespace SAARTAC1._1{
                             valor = pertenencia[i, j, p];
                         }
                     }
-                    clases[i, j] = tipo;
+                    clases[i, j] = tipo + 1;
                     
                 }
             }
             generaUmbralesCentros();
         }
 
+        private int ObtenPixelRandom() {
+
+            int filaRandom = rnd.Next(0, datos.Count());
+            int columnaRandom = rnd.Next(0, datos [filaRandom].Length);
+            return datos [filaRandom] [columnaRandom];
+        }
+
         public void generarCentros(){
             centros = new List<Double>();
             rnd = new Random();
             for (int i = 0; i < numerosK; i++) {
-                int filaRandom = rnd.Next(0, datos.Count());
-                int columnaRandom = rnd.Next(0, datos [filaRandom].Length);
-                centros.Add((double)datos [filaRandom] [columnaRandom]);
+                int numero = rnd.Next((IgnorarAire ? IGNORAR : -1000), 1400);
+                centros.Add((double)numero);
             }
         }
 
@@ -117,6 +140,8 @@ namespace SAARTAC1._1{
                 if (reporte_progreso.CancellationPending)
                     return;
                 for (int j = 0; j < M; j++){
+                    if (IgnorarAire && datos [i] [j] < IGNORAR)
+                        continue;
                     for (int k = 0; k < numerosK; k++){
                         double dist = datos[i][j] - centros[k];
                         distancias[i, j, k] = dist * dist;
@@ -134,6 +159,8 @@ namespace SAARTAC1._1{
                 if (reporte_progreso.CancellationPending)
                     return;
                 for (int j = 0; j < M; j++){
+                    if (IgnorarAire && datos [i] [j] < IGNORAR)
+                        continue;
                     for (int k = 0; k < numerosK; k++){
                         double sum = 0.0;
                         for (int l = 0; l < numerosK; l++)
@@ -154,6 +181,8 @@ namespace SAARTAC1._1{
                     if (reporte_progreso.CancellationPending)
                         return;
                     for (int i = 0; i < M; i++){
+                        if (IgnorarAire && datos [p][i] < IGNORAR)
+                            continue;
                         double valor = Math.Round(Math.Pow(pertenencia[p, i, k], m), 5);
                         if (valor <= 0.00001)
                             continue;
@@ -162,7 +191,11 @@ namespace SAARTAC1._1{
                         
                     }
                 }
-                centros[k] = (double)aa / (double)bb;
+                if (bb <= 0.0001) {
+                    centros [k] = ObtenPixelRandom();
+                } else {
+                    centros [k] = (double)aa / (double)bb;
+                }
             }
         }
 

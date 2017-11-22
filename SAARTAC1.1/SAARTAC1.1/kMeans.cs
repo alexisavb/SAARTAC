@@ -6,15 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
+
+
 namespace SAARTAC1._1
 {
     class kMeans
     {
-
-        private LecturaArchivosDicom matrices;
-        private MatrizDicom matriz_actual;
         private int numerosK, ite;
-        private int min = -1000, max = 2000;
         private List<Double> centros;
         private List<Double> conjunto = new List<Double>();
         private int[,] clases;
@@ -23,8 +21,11 @@ namespace SAARTAC1._1
         private static int operaciones_cargando, operaciones_total;
         private List<int []> datos;
         private List<Point> umbral_centros;
+        private bool IgnorarAire;
+        private int IGNORAR = -200;
 
         public kMeans(List<int[]> datos, int k, int iteraciones, BackgroundWorker bw){
+            IgnorarAire = Properties.Settings.Default.IgnorarAire;
             this.datos = datos;    
             numerosK = k;
             reporte_progreso = bw;
@@ -59,6 +60,8 @@ namespace SAARTAC1._1
         }
 
         public kMeans(List<int []> datos, int k, int iteraciones, BackgroundWorker bw, List<Double> cent){
+
+            IgnorarAire = Properties.Settings.Default.IgnorarAire;
             this.datos = datos;
             numerosK = k;
             reporte_progreso = bw;
@@ -73,13 +76,19 @@ namespace SAARTAC1._1
             generaUmbralesCentros();
         }
 
+        private int ObtenPixelRandom() {
+
+            int filaRandom = rnd.Next(0, datos.Count());
+            int columnaRandom = rnd.Next(0, datos [filaRandom].Length);
+            return datos [filaRandom] [columnaRandom];
+        }
+
         public void generarCentros(){
             centros = new List<Double>();
             rnd = new Random();
             for (int i = 0; i < numerosK; i++) {
-                int filaRandom = rnd.Next(0, datos.Count());
-                int columnaRandom = rnd.Next(0, datos [filaRandom].Length);
-                centros.Add((double)datos [filaRandom][columnaRandom]);
+                int numero = rnd.Next((IgnorarAire ? IGNORAR : -1000), 1400);
+                centros.Add((double)numero);
             }
         }
 
@@ -105,7 +114,7 @@ namespace SAARTAC1._1
         }
 
         public void distanciaEuclidiana(int i, int j){
-            //if (matriz_actual.ObtenerUH(i, j) < -890) return;
+            if (IgnorarAire && datos[i][j] < IGNORAR) return;
             int indc = 0;
             conjunto.Clear();
             foreach (Double indice in centros){
@@ -126,7 +135,8 @@ namespace SAARTAC1._1
                 sumas[i] = contador[i] = 0;            
             for (int i = 0; i < datos.Count; i++){
                 for (int j = 0; j < datos[i].Length; j++){
-                    //if (matriz_actual.ObtenerUH(i, j) < -890) continue;
+                    if (IgnorarAire && datos [i] [j] < IGNORAR)
+                        continue;
                     sumas[clases[i, j] - 1] += datos[i][j];
                     contador[clases[i, j] - 1]++;
                 }
@@ -136,8 +146,13 @@ namespace SAARTAC1._1
                 reporte_progreso.ReportProgress((90 * operaciones_cargando) / operaciones_total);
             }
             centros.Clear();
-            for (int i = 0; i < numerosK; i++)            
-                centros.Add(sumas[i] / contador[i]);
+            for (int i = 0; i < numerosK; i++) {
+                if (contador [i] == 0) {
+                    centros.Add(ObtenPixelRandom());
+                } else {
+                    centros.Add(sumas [i] / contador [i]);
+                }
+            }
             
         }
 

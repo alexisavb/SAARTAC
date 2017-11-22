@@ -35,7 +35,7 @@ namespace SAARTAC1._1 {
         private int RCPrecision = 0;
         private Label[] labelsColor,labelsMin, labelsMax;
         private Label[] labelsTextMin, labelsTextMax;
-
+        private int [] ventana_default = new int[2];
 
         private Dicom dic;
         private int noImgs;
@@ -446,12 +446,14 @@ namespace SAARTAC1._1 {
             imagenesCaja1.Clear();//se limpia la lista del bitmap.
             for (int i = 0; i < num_tacs; i++)
                 imagenesCaja2.Add(null);
+
+            var primerArchivo = lect.obtenerArchivo(0);
+            ventana_default = LecturaArchivosDicom.PreguntaVentanaUH(primerArchivo.obtenerRuta());
             MostrarImagenOriginal();
             MostrarImagenTratada();
             bw.ReportProgress(100);
             Thread.Sleep(1000);
             zoomCon = true;
-            var primerArchivo = lect.obtenerArchivo(0);
             ContrasteEnImagen = new Point [num_tacs, primerArchivo.obtenerN(), primerArchivo.obtenerM()];
         }
 
@@ -1049,7 +1051,7 @@ namespace SAARTAC1._1 {
         private void MostrarImagenOriginal() {
             if (lect == null) return;
             if (imagenesCaja1.Count() <= 0) {
-                generalEscalaGris(-1000, 1600);
+                generalEscalaGris(ventana_default[0] - ventana_default[1], ventana_default[0] + ventana_default[1]);
                 return;
             }
             mostrarOriginal.Image = imagenesCaja1 [id_tac];
@@ -1110,16 +1112,22 @@ namespace SAARTAC1._1 {
             } else {
                 resultado = new Bitmap(seccion.obtenerImagen(matrizOriginal));
             }
-            List<Color> colores = new List<Color>() { Color.Black, Color.Red, Color.Blue, Color.Orange, Color.Yellow, Color.Pink, Color.Purple, Color.Aqua};
+            List<Color> colores = new List<Color>() { Color.Black, Color.Red, Color.Blue, Color.Orange, Color.Yellow, Color.Pink, Color.Purple, Color.Aqua, Color.Green, Color.Chocolate};
             int N = resultado.Height;
             int i = 0;
             color_a_umbral.Clear();
+            for(int j = 0; j < limites_grupo.Count(); j++) {
+                //color_a_umbral [colores [j]] = limites_grupo [j];
+                resultado.SetPixel(0, 0, colores [j]);
+                color_a_umbral [resultado.GetPixel(0, 0)] = limites_grupo[j];
+            }
             for (int j = 0; j < tam; j++) {
                 int x = j % N;
                 int y = j / N;
                 resultado.SetPixel(y, x, colores [lista [p, j]]);
-                color_a_umbral [resultado.GetPixel(y, x)] = limites_grupo [lista [p, j]];
+                var color = resultado.GetPixel(y, x);
                 ContrasteEnImagen [p, y, x] = limites_grupo [lista [p, j]];
+                
             }
             return new Bitmap(resultado, new Size(512, 512));
         }
@@ -1149,6 +1157,8 @@ namespace SAARTAC1._1 {
                 Color color_grupo = i.Key;
                 int limite_superior = i.Value.X;
                 int limite_inferior = i.Value.Y;
+                if (limite_inferior > 4000)
+                    continue;
                 labelsColor[con].BackColor = color_grupo;
                 labelsColor[con].ForeColor = color_grupo;
                 labelsColor[con].Visible = true;

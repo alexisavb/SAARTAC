@@ -41,6 +41,8 @@
             this.Procesos = new System.Windows.Forms.NumericUpDown();
             this.textNumIteracion = new System.Windows.Forms.Label();
             this.numIteraciones = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Procesos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numIteraciones)).BeginInit();
             this.SuspendLayout();
@@ -174,12 +176,35 @@
             0,
             0});
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(24, 284);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(221, 18);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Omitir píxeles de aire o similares";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(251, 288);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 15;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Configuracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(648, 569);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.numIteraciones);
             this.Controls.Add(this.textNumIteracion);
             this.Controls.Add(this.Procesos);
@@ -217,5 +242,7 @@
         private System.Windows.Forms.NumericUpDown Procesos;
         private System.Windows.Forms.Label textNumIteracion;
         private System.Windows.Forms.NumericUpDown numIteraciones;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
