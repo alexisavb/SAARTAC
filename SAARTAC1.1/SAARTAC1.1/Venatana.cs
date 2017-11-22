@@ -35,7 +35,7 @@ namespace SAARTAC1._1 {
         private int RCPrecision = 0;
         private Label[] labelsColor,labelsMin, labelsMax;
         private Label[] labelsTextMin, labelsTextMax;
-
+        private int [] ventana_default = new int[2];
 
         private Dicom dic;
         private int noImgs;
@@ -446,12 +446,14 @@ namespace SAARTAC1._1 {
             imagenesCaja1.Clear();//se limpia la lista del bitmap.
             for (int i = 0; i < num_tacs; i++)
                 imagenesCaja2.Add(null);
+
+            var primerArchivo = lect.obtenerArchivo(0);
+            ventana_default = LecturaArchivosDicom.PreguntaVentanaUH(primerArchivo.obtenerRuta());
             MostrarImagenOriginal();
             MostrarImagenTratada();
             bw.ReportProgress(100);
             Thread.Sleep(1000);
             zoomCon = true;
-            var primerArchivo = lect.obtenerArchivo(0);
             ContrasteEnImagen = new Point [num_tacs, primerArchivo.obtenerN(), primerArchivo.obtenerM()];
         }
 
@@ -1049,7 +1051,7 @@ namespace SAARTAC1._1 {
         private void MostrarImagenOriginal() {
             if (lect == null) return;
             if (imagenesCaja1.Count() <= 0) {
-                generalEscalaGris(-1000, 1600);
+                generalEscalaGris(ventana_default[0] - ventana_default[1], ventana_default[0] + ventana_default[1]);
                 return;
             }
             mostrarOriginal.Image = imagenesCaja1 [id_tac];
@@ -1110,7 +1112,7 @@ namespace SAARTAC1._1 {
             } else {
                 resultado = new Bitmap(seccion.obtenerImagen(matrizOriginal));
             }
-            List<Color> colores = new List<Color>() { Color.Black, Color.Red, Color.Blue, Color.Orange, Color.Yellow, Color.Pink, Color.Purple, Color.Aqua};
+            List<Color> colores = new List<Color>() { Color.Black, Color.Red, Color.Blue, Color.Orange, Color.Yellow, Color.Pink, Color.Purple, Color.Aqua, Color.Green, Color.Chocolate};
             int N = resultado.Height;
             int i = 0;
             color_a_umbral.Clear();

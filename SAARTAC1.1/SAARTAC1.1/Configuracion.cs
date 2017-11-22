@@ -13,10 +13,7 @@ namespace SAARTAC1._1 {
     public partial class Configuracion : Form {
         public Configuracion() {
             InitializeComponent();
-            textBox1.Text = Properties.Settings.Default.rutaPython;
-            textBox2.Text = Properties.Settings.Default.rutaLecturaDicom;
-            Procesos.Value = Properties.Settings.Default.NumeroProcesos;
-            numIteraciones.Value = Properties.Settings.Default.numIter;
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
@@ -70,6 +67,7 @@ namespace SAARTAC1._1 {
             Properties.Settings.Default.rutaLecturaDicom = textBox2.Text;
             Properties.Settings.Default.NumeroProcesos = (int)Procesos.Value;
             Properties.Settings.Default.numIter = (int)numIteraciones.Value;
+            Properties.Settings.Default.IgnorarAire = checkBox1.Checked;
             Properties.Settings.Default.Save();
             this.Close();
         }
@@ -80,6 +78,14 @@ namespace SAARTAC1._1 {
 
         private void Configuracion_Load(object sender, EventArgs e)
         {
+            textBox1.Text = Properties.Settings.Default.rutaPython;
+            textBox2.Text = Properties.Settings.Default.rutaLecturaDicom;
+            Procesos.Value = Properties.Settings.Default.NumeroProcesos;
+            numIteraciones.Value = Properties.Settings.Default.numIter;
+            checkBox1.Checked = Properties.Settings.Default.IgnorarAire;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) {
 
         }
     }

@@ -116,6 +116,16 @@ namespace SAARTAC1._1
             return fecha;
         }
 
+        public static int[] PreguntaVentanaUH(string ruta) {
+
+            string myString = PreguntaPythonGeneral(VentanaUH, ruta);
+            string [] tokens = myString.Split();
+            int [] M = { Convert.ToInt32(tokens [0]), Convert.ToInt32(tokens [1]) };
+            return M;
+
+        }
+
+
         public static void EncuentraHiloLibre(){
             while (true){
                 mutex.WaitOne();
@@ -182,6 +192,7 @@ namespace SAARTAC1._1
         const int MatrizDICOM = 0;
         const int Nombre = 2;
         const int Sexo = 4;
+        const int VentanaUH = 8;
 
     }
 

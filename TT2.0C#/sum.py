@@ -1,6 +1,9 @@
 import dicom
 import sys, os
 
+
+#Siguiente Numero 9
+
 DimensionesPixel = 1
 Edad = 3
 EspesorRebanada = 6
@@ -9,6 +12,8 @@ Hospital = 7
 MatrizDICOM = 0
 Nombre = 2
 Sexo = 4
+VentanaUH = 8
+
 
 def LeerArchivosDICOM(ruta):
 	return dicom.read_file(ruta)
@@ -36,4 +41,6 @@ elif pregunta == EspesorRebanada:
 	print archivoDicom[0x18, 0x50].value
 elif pregunta == Hospital:
 	print archivoDicom[0x08, 0x80].value
+elif pregunta == VentanaUH:
+	print archivoDicom[0x28, 0x1050].value[0], archivoDicom[0x28, 0x1051].value[0]
 

@@ -6,15 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
+
+
 namespace SAARTAC1._1
 {
     class kMeans
     {
-
-        private LecturaArchivosDicom matrices;
-        private MatrizDicom matriz_actual;
         private int numerosK, ite;
-        private int min = -1000, max = 2000;
         private List<Double> centros;
         private List<Double> conjunto = new List<Double>();
         private int[,] clases;
@@ -23,8 +21,11 @@ namespace SAARTAC1._1
         private static int operaciones_cargando, operaciones_total;
         private List<int []> datos;
         private List<Point> umbral_centros;
+        private bool IgnorarAire;
+        private int IGNORAR = -200;
 
         public kMeans(List<int[]> datos, int k, int iteraciones, BackgroundWorker bw){
+            IgnorarAire = Properties.Settings.Default.IgnorarAire;
             this.datos = datos;    
             numerosK = k;
             reporte_progreso = bw;
@@ -59,6 +60,8 @@ namespace SAARTAC1._1
         }
 
         public kMeans(List<int []> datos, int k, int iteraciones, BackgroundWorker bw, List<Double> cent){
+
+            IgnorarAire = Properties.Settings.Default.IgnorarAire;
             this.datos = datos;
             numerosK = k;
             reporte_progreso = bw;
@@ -105,7 +108,7 @@ namespace SAARTAC1._1
         }
 
         public void distanciaEuclidiana(int i, int j){
-            //if (matriz_actual.ObtenerUH(i, j) < -890) return;
+            if (IgnorarAire && datos[i][j] < IGNORAR) return;
             int indc = 0;
             conjunto.Clear();
             foreach (Double indice in centros){
@@ -126,7 +129,8 @@ namespace SAARTAC1._1
                 sumas[i] = contador[i] = 0;            
             for (int i = 0; i < datos.Count; i++){
                 for (int j = 0; j < datos[i].Length; j++){
-                    //if (matriz_actual.ObtenerUH(i, j) < -890) continue;
+                    if (IgnorarAire && datos [i] [j] < IGNORAR)
+                        continue;
                     sumas[clases[i, j] - 1] += datos[i][j];
                     contador[clases[i, j] - 1]++;
                 }
