@@ -1116,12 +1116,18 @@ namespace SAARTAC1._1 {
             int N = resultado.Height;
             int i = 0;
             color_a_umbral.Clear();
+            for(int j = 0; j < limites_grupo.Count(); j++) {
+                //color_a_umbral [colores [j]] = limites_grupo [j];
+                resultado.SetPixel(0, 0, colores [j]);
+                color_a_umbral [resultado.GetPixel(0, 0)] = limites_grupo[j];
+            }
             for (int j = 0; j < tam; j++) {
                 int x = j % N;
                 int y = j / N;
                 resultado.SetPixel(y, x, colores [lista [p, j]]);
-                color_a_umbral [resultado.GetPixel(y, x)] = limites_grupo [lista [p, j]];
+                var color = resultado.GetPixel(y, x);
                 ContrasteEnImagen [p, y, x] = limites_grupo [lista [p, j]];
+                
             }
             return new Bitmap(resultado, new Size(512, 512));
         }
