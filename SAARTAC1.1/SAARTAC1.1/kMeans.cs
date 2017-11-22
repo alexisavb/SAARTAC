@@ -76,13 +76,19 @@ namespace SAARTAC1._1
             generaUmbralesCentros();
         }
 
+        private int ObtenPixelRandom() {
+
+            int filaRandom = rnd.Next(0, datos.Count());
+            int columnaRandom = rnd.Next(0, datos [filaRandom].Length);
+            return datos [filaRandom] [columnaRandom];
+        }
+
         public void generarCentros(){
             centros = new List<Double>();
             rnd = new Random();
             for (int i = 0; i < numerosK; i++) {
-                int filaRandom = rnd.Next(0, datos.Count());
-                int columnaRandom = rnd.Next(0, datos [filaRandom].Length);
-                centros.Add((double)datos [filaRandom][columnaRandom]);
+                int numero = rnd.Next((IgnorarAire ? IGNORAR : -1000), 1400);
+                centros.Add((double)numero);
             }
         }
 
@@ -140,8 +146,13 @@ namespace SAARTAC1._1
                 reporte_progreso.ReportProgress((90 * operaciones_cargando) / operaciones_total);
             }
             centros.Clear();
-            for (int i = 0; i < numerosK; i++)            
-                centros.Add(sumas[i] / contador[i]);
+            for (int i = 0; i < numerosK; i++) {
+                if (contador [i] == 0) {
+                    centros.Add(ObtenPixelRandom());
+                } else {
+                    centros.Add(sumas [i] / contador [i]);
+                }
+            }
             
         }
 

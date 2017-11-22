@@ -49,6 +49,8 @@ namespace SAARTAC1._1{
                 if (reporte_progreso.CancellationPending)
                     return;
             }
+            GenerarDistancias();
+            ActualizarPertenencia();
             for (int i = 0; i < N; i++){
                 for (int j = 0; j < M; j++){
                     if (IgnorarAire && datos [i] [j] < IGNORAR) {
@@ -93,6 +95,9 @@ namespace SAARTAC1._1{
                 if (reporte_progreso.CancellationPending)
                     return;
             }
+
+            GenerarDistancias();
+            ActualizarPertenencia();
             for (int i = 0; i < N; i++){
                 for (int j = 0; j < M; j++){
                     if(IgnorarAire && datos[i][j] < IGNORAR) {
@@ -114,13 +119,19 @@ namespace SAARTAC1._1{
             generaUmbralesCentros();
         }
 
+        private int ObtenPixelRandom() {
+
+            int filaRandom = rnd.Next(0, datos.Count());
+            int columnaRandom = rnd.Next(0, datos [filaRandom].Length);
+            return datos [filaRandom] [columnaRandom];
+        }
+
         public void generarCentros(){
             centros = new List<Double>();
             rnd = new Random();
             for (int i = 0; i < numerosK; i++) {
-                int filaRandom = rnd.Next(0, datos.Count());
-                int columnaRandom = rnd.Next(0, datos [filaRandom].Length);
-                centros.Add((double)datos [filaRandom] [columnaRandom]);
+                int numero = rnd.Next((IgnorarAire ? IGNORAR : -1000), 1400);
+                centros.Add((double)numero);
             }
         }
 
@@ -180,7 +191,11 @@ namespace SAARTAC1._1{
                         
                     }
                 }
-                centros[k] = (double)aa / (double)bb;
+                if (bb <= 0.0001) {
+                    centros [k] = ObtenPixelRandom();
+                } else {
+                    centros [k] = (double)aa / (double)bb;
+                }
             }
         }
 
