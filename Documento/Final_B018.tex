@@ -16,6 +16,7 @@
 \usepackage{pdflscape}
 \usepackage{geometry}
 \usepackage{hyperref}
+\usepackage{listings}
 \graphicspath{ {./imagenes/} }
 
 
@@ -861,7 +862,7 @@ RF3 & Segmentar. & Para poder segmentar una parte de la imagen se hace un tratam
 \hline
 RF4 & Umbralizar. & Se umbraliza una imagen DICOM, el umbral se obtiene con base a la escala de Hounsfield para poder clasificar los tejidos.  \\
 \hline
-RF5 & Obtener un punto creciente. & El usuario dará una semilla (punto de origen) para buscar en su vecindad 4 (celdas adyacentes a su posición), se podrá mover si hay una diferencia menor o igual a Épsilon. \\
+RF5 & Obtener un punto creciente. & El usuario dará una semilla (punto de origen) para buscar en su vecindad 8(celdas adyacentes a su posición), se podrá mover si hay una diferencia menor o igual a Épsilon. \\
 \hline
 RF6 & Clustering. & Es otra técnica para poder clasificar los diferentes tejidos que contiene la imagen DICOM. \\
 \hline
@@ -1570,9 +1571,361 @@ Los clasificadores nos permiten agrupar pixeles con características similares, 
 Se implementó el algoritmo \textit{K-means}para la creación de grupos dentro de la TAC, se usa la distancia Euclidiana entre pixeles como parámetro de similitud. La distancia Euclidiana es calculada con base a las densidades de los tejidos. Este algoritmo es muy útil cuando se buscan grupos cuya deifnición no se encuentra dentro del conjunto de información.
 
 \subsection{Fuzzy C-Means}
-El algoritmo \textit{Fuzzy C-Means} trabaja de manera similar al algoritmo anterior pero en este además de considerar la distania Euclidiana contamos con una matriz de pertenencia, la cual hace que la diferencia en la distancia sea menos tolerable.
+El algoritmo \textit{Fuzzy C-Means} trabaja de manera similar al algoritmo anteriorpero en este la diferencia entre pixeles es menos tolerable dando así un valor más definido de similitud. Además se cuenta con una matriz de pertenencia la cual nos ayuda a identificar el cluster al que pertenece el pixel analizado. La matriz da un valor a cada cluster para cada pixel y se elige el que mayor pertenencia tiene.
 
-\chapter{•}
+\chapter{Pruebas}
+En este capítulo se muestran los diferentes resultados obtenidos durante el funcionamiento del sistema. Para poder llevar acabo estas pruebas de funcionamiento se utilizaron TAC proporcionadas por uno de nuestros directores. En los estudios podemos observar desde el cerebro hasta los pies de diversos pacientes lo cual enriquece estas pruebas y nos permite tener una mayor perspectiva al momento de hacer una autoevaluación del sistema.
+
+\section{Umbralización}
+Las imágenes mostradas a continuación corresponden a diferentes umbralizaciones realizadas con el sistema.
+
+\newpage
+\vspace*{3cm}
+En la umbralización de fluido cerebro espinal se utilizó un TAC obtenida de la zona de la cabeza de un paciente. Teniendo del lado derecho la tomografía sin ningún tratamiento y del lado izquierdo la imagen tratada el fluido puede observarse con un tono verde.  
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15 cm, height = 8 cm]{umbralFluidoCerebralEspinal}
+\caption{Umbralización de fluido cerebro espinal.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+\newpage
+\vspace*{3cm}
+Para la umbralización del tejido graso se utilizó una tomografía de la zona abdominal, en esta zona es donde mayor acumulación de grasa hay regularmente, en otras zonas del cuerpo podemos observar este tejido en la piel.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15 cm, height = 8 cm]{umbralGrasa}
+\caption{Umbralización de grasa.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+\newpage
+\vspace*{3cm}
+En la umbralización de los pulmones podemos observar que no es una figura muy solida y el tejido es muy similar al aire debido al contenido de estos órganos.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15 cm, height = 8 cm]{umbralPulmon}
+\caption{Umbralización de pulmón.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+\newpage
+\vspace*{3cm}
+Continuando con la tomografría de zona abdominal se realizó una umbralización para hueso compacto, donde únicamente podemos ver lo correspondiente a la columna vertebral con un tono rosaceo del lado izquierdo.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15 cm, height = 8 cm]{umbralHuesoCompacto}
+\caption{Umbralización de hueso compacto.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+\newpage
+\vspace*{3cm}
+A diferencia del estudio utilizado para el hueso compacto en el hueso esponjoso se utlizó un estudio cerebral donde podemos ver la protección que el craneo da al cerebro, el hueso esponjoso regularmente se combina con hueso compacto.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15 cm, height = 8 cm]{umbralHuesoEsponjoso}
+\caption{Umbralización de hueso esponjoso.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+\newpage
+\vspace*{3cm}
+La umbralización de sangre se realizó sobre una tomografía de cerebro, el cerebro está inundado de diferentes fluidos por lo cual no observaremos una gran continuidad como se puede ver en el hueso esponjoso.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15 cm, height = 8 cm]{umbralSangre}
+\caption{Umbralización de sangre.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+\newpage
+\vspace*{3cm}
+Otro fluido importante que encontramos en el cerebro es la sustancia cerebral gris, esta se encuentra en una menor proporción que la sangre.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15 cm, height = 8 cm]{umbralSustaciaCerebralGris}
+\caption{Umbralización de sustancia cerebral gris.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+\newpage
+\section{Contraste}
+Las herramientas de contraste en los visores DICOM son muy importantes pues permiten obtener un mayor detalle de las estructuras internas del cuerpo sin hacer un tratamiento sobre la TAC, en este caso se hace un mapeo con la escala de gris para dar más o menos valores a cada tejido.
+\vspace{2cm}
+\begin{figure}[H]
+\centering
+\includegraphics[width = 7 cm, height = 7 cm]{contrasteDefault}
+\caption{TAC con un contraste completo.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = 7 cm, height = 7 cm]{contrasteCerebro}
+\caption{TAC con el contraste recomendado para cerebro.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = 7 cm, height = 7 cm]{contrasteHueso}
+\caption{TAC con el contraste recomendado para hueso.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = 7 cm, height = 7 cm]{contrasteParteBlandas}
+\caption{TAC con el contraste recomendado para partes blandas.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = 7 cm, height = 7 cm]{contrastePulmon}
+\caption{TAC con el contraste recomendado para pulmón.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+\section{Clasificadores}
+A continuación se muestran los resultados obtenidos con las técnicas de clasificación utilizadas.\\
+
+La técnica Fuzzy C-Means se implementa sobre una TAC en la zona abdominal donde podemos encontrar una gran acumulación de diferentes tejidos. Se pueden observar los valores máximos y mínimos de cada grupo y el color con el que está representado. Adicionalmente se puede observar la implementación de la herramienta de zoom para ver con más detalles algunos tejidos.
+
+\vspace{1cm}
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15 cm, height = 10 cm]{clusterCfuzzy}
+\caption{Algoritmo Fuzzy C-Means aplicado a una TAC.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+\newpage
+\vspace*{3cm}
+La técnica K-Means se implementa sobre una TAC de la zona torácica.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15 cm, height = 10 cm]{clusterKmeans}
+\caption{Algoritmo K-Means aplicado a una TAC.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+\section{Segmentación}
+La técnica de Región creciente se implementa sobre una TAC de zona abdominal y intenta aislar organos de hueso y fluidos.
+\vspace*{3cm}
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15 cm, height = 10 cm]{segmentacionRegionCreciente}
+\caption{Región creciente en zona abdominal.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
+
+
+
+\chapter{Conclusiones y trabajo futuro}
+\section{Conclusiones}
+Una vez terminado el sistema se llegó a las siguientes conclusiones:
+\begin{itemize}
+\item Se cumplieron los objetivos planteados para el desarrollo del sistema.
+\item La extensión del sistema cubre aspectos que las herramientas actuales no proporcionan sin embargo sigue siendo una herramienta de menor nivel que los softwares ofrecidos en los equipos médicos especializados.
+\item El hacer una implementación propia de los algoritmos nos ayudó pues pudimos orientarlos a nuestra arquitectura y hacer un manejo integro de los datos, quitando las limitaciones que en muchas ocasiones tienen las librerías.
+\item Cuando el especialista encuentra incongruencias dentro de la TAC el uso de técnicas no supervisadas puede ser muy útil como una segunda opinión de los resultados obtenidos.
+\end{itemize}
+
+
+\section{Trabajo a futuro}
+Las propuestas de trabajo futuro para este sistema son las siguientes:
+\begin{itemize}
+\item Incluir más técnicas de clasificación y segmentación para el análisis de TAC.
+\item Implementar métodos exploratorios en las TAC.
+\item Hacer una implementación propia para la representación en 3D de TAC.
+\item Incluir un módulo de comparación entre las tomografías analizadas e hsitóricos de la medicina.
+\item Agregar más herramientas que faciliten el manejo de las TAC y complementen el análisis.
+\item Permitir al especialista observar todos los campos disponibles en la cabecera del archivo DICOM.
+\item Desarrollar una API de la aplicación para permitir su uso a terceros.
+\end{itemize}
+
+\appendix
+\chapter{Código K-Means}
+
+Esta función genera centros aleatorios.
+\lstset{language=C, breaklines=true, basicstyle=\footnotesize}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=-2pt}
+\begin{lstlisting}[frame=single]
+	public void generarCentros(){
+            centros = new List<Double>();
+            rnd = new Random();
+            for (int i = 0; i < numerosK; i++) {
+                int numero = rnd.Next((IgnorarAire ? IGNORAR : -1000), 1400);
+                centros.Add((double)numero);
+            }
+        }
+\end{lstlisting}
+
+\vspace*{1cm}
+Esta función Euclidiana entre dos densidades. 
+\lstset{language=C, breaklines=true, basicstyle=\footnotesize}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=-2pt}
+\begin{lstlisting}[frame=single]
+	public void distanciaEuclidiana(int i, int j){
+            if (IgnorarAire && datos[i][j] < IGNORAR) return;
+            int indc = 0;
+            conjunto.Clear();
+            foreach (Double indice in centros){
+                Double resta = Math.Abs(datos[i][j] - indice);
+                conjunto.Add(resta);
+            }
+            for (int k = 1; k < conjunto.Count; k++)
+                if (conjunto[indc] > conjunto[k])
+                    indc = k;
+            clases[i, j] = indc + 1;
+        }
+\end{lstlisting}
+
+\newpage
+La función promedio saca el promedio de las densidaes en el cluster y genera nuevos centros con base en el promedio calculado.
+\lstset{language=C, breaklines=true, basicstyle=\footnotesize}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=-2pt}
+\begin{lstlisting}[frame=single]
+	public void promedio(){
+            centros.Clear();
+            double[] sumas = new double[numerosK];
+            double[] contador = new double[numerosK];
+            for (int i = 0; i < numerosK; i++)            
+                sumas[i] = contador[i] = 0;            
+            for (int i = 0; i < datos.Count; i++){
+                for (int j = 0; j < datos[i].Length; j++){
+                    if (IgnorarAire && datos [i] [j] < IGNORAR)
+                        continue;
+                    sumas[clases[i, j] - 1] += datos[i][j];
+                    contador[clases[i, j] - 1]++;
+                }
+                if (reporte_progreso.CancellationPending)
+                    return;
+                operaciones_cargando++;
+                reporte_progreso.ReportProgress((90 * operaciones_cargando) / operaciones_total);
+            }
+            centros.Clear();
+            for (int i = 0; i < numerosK; i++) {
+                if (contador [i] == 0) {
+                    centros.Add(ObtenPixelRandom());
+                } else {
+                    centros.Add(sumas [i] / contador [i]);
+                }
+            }
+            
+        }
+\end{lstlisting}
+
+\chapter{Código Fuzzy C-Means}
+Se generan los centros aleatorios.
+\lstset{language=C, breaklines=true, basicstyle=\footnotesize}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=-2pt}
+\begin{lstlisting}[frame=single]
+	public void generarCentros(){
+            centros = new List<Double>();
+            rnd = new Random();
+            for (int i = 0; i < numerosK; i++) {
+                int numero = rnd.Next((IgnorarAire ? IGNORAR : -1000), 1400);
+                centros.Add((double)numero);
+            }
+        }
+\end{lstlisting}
+
+\vspace*{1cm}
+Se calcula la distancia con base a la diferencia de densidades.
+\lstset{language=C, breaklines=true, basicstyle=\footnotesize}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=-2pt}
+\begin{lstlisting}[frame=single]
+	public void GenerarDistancias(){
+            for (int i = 0; i < N; i++){
+                if (reporte_progreso.CancellationPending)
+                    return;
+                for (int j = 0; j < M; j++){
+                    if (IgnorarAire && datos [i] [j] < IGNORAR)
+                        continue;
+                    for (int k = 0; k < numerosK; k++){
+                        double dist = datos[i][j] - centros[k];
+                        distancias[i, j, k] = dist * dist;
+                    }
+                }
+            }
+        }
+\end{lstlisting}
+
+\newpage
+\vspace*{3cm}
+Se crea la matriz de pertenencia, dando un valor de pertenencia a cada densidad para cada cluster.
+\lstset{language=C, breaklines=true, basicstyle=\footnotesize}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=-2pt}
+\begin{lstlisting}[frame=single]
+	public void ActualizarPertenencia(){
+            for (int i = 0; i < N; i++){
+                operaciones_cargando++;
+                reporte_progreso.ReportProgress((operaciones_cargando * 90) / operaciones_total);
+                if (reporte_progreso.CancellationPending)
+                    return;
+                for (int j = 0; j < M; j++){
+                    if (IgnorarAire && datos [i] [j] < IGNORAR)
+                        continue;
+                    for (int k = 0; k < numerosK; k++){
+                        double sum = 0.0;
+                        for (int l = 0; l < numerosK; l++)
+                            sum += Math.Pow(distancias[i, j, k] / distancias[i, j, l], 2.0 / (m - 1.0));  
+                        pertenencia[i, j, k] = 1.0 / sum;
+                            
+                    }
+                    
+                }
+            }
+        }
+\end{lstlisting}
+
+\newpage
+\vspace*{2cm}
+Se generan los nuevos centros para las iteraciones siguientes.
+\lstset{language=C, breaklines=true, basicstyle=\footnotesize}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=-2pt}
+\begin{lstlisting}[frame=single]
+	public void GeneraNuevosCentros(){
+            for (int k = 0; k < numerosK; k++){
+                long aa = 0;
+                long bb = 0;
+                for (int p = 0; p < N; p++){
+                    if (reporte_progreso.CancellationPending)
+                        return;
+                    for (int i = 0; i < M; i++){
+                        if (IgnorarAire && datos [p][i] < IGNORAR)
+                            continue;
+                        double valor = Math.Round(Math.Pow(pertenencia[p, i, k], m), 5);
+                        if (valor <= 0.00001)
+                            continue;
+                        aa += (long)(Math.Round(valor * datos[p][i], 5) * 100000);
+                        bb += (long)(valor * 100000);
+                        
+                    }
+                }
+                if (bb <= 0.0001) {
+                    centros [k] = ObtenPixelRandom();
+                } else {
+                    centros [k] = (double)aa / (double)bb;
+                }
+            }
+        }
+\end{lstlisting}
+
+\chapter{Diagrama de clases}
+
+La siguiente imagen muestra las clases utilizadas en el sistema. El paradigma de la programación orientada a objetos nos ayudó a llevar un mejor control sobre los diferentes algoritmos y herramientas implementadas.
+\newpage
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15 cm, height = 18 cm]{diagramaClases}
+\caption{Diagrama de clases del sistema.}
+Imagen de elaboración propia.
+\end{figure}
+
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibliografia}

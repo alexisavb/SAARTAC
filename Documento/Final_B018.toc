@@ -1,87 +1,98 @@
 \select@language {spanish}
 \contentsline {chapter}{Lista de figuras}{4}{chapter*.1}
-\contentsline {chapter}{Lista de tablas}{5}{chapter*.2}
-\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{7}{chapter.1}
-\contentsline {section}{\numberline {1.1}Antecedentes}{7}{section.1.1}
-\contentsline {section}{\numberline {1.2}Planteamiento del problema}{9}{section.1.2}
-\contentsline {section}{\numberline {1.3}Propuesta de soluci\IeC {\'o}n}{9}{section.1.3}
-\contentsline {section}{\numberline {1.4}Justificaci\IeC {\'o}n}{10}{section.1.4}
-\contentsline {section}{\numberline {1.5}Objetivos}{11}{section.1.5}
-\contentsline {subsection}{\numberline {1.5.1}Objetivo General}{11}{subsection.1.5.1}
-\contentsline {subsection}{\numberline {1.5.2}Objetivos Particulares}{11}{subsection.1.5.2}
-\contentsline {chapter}{\numberline {2}Marco te\IeC {\'o}rico}{12}{chapter.2}
-\contentsline {section}{\numberline {2.1}Estado del arte}{12}{section.2.1}
-\contentsline {section}{\numberline {2.2}Imagen}{13}{section.2.2}
-\contentsline {section}{\numberline {2.3}Im\IeC {\'a}genes m\IeC {\'e}dicas}{14}{section.2.3}
-\contentsline {section}{\numberline {2.4}Tomograf\IeC {\'\i }a computarizada}{15}{section.2.4}
-\contentsline {section}{\numberline {2.5}DICOM}{17}{section.2.5}
-\contentsline {section}{\numberline {2.6}Escala de Hounsfield}{18}{section.2.6}
-\contentsline {section}{\numberline {2.7}Segmentaci\IeC {\'o}n}{19}{section.2.7}
-\contentsline {subsection}{\numberline {2.7.1}Umbralizaci\IeC {\'o}n}{20}{subsection.2.7.1}
-\contentsline {subsection}{\numberline {2.7.2}Regi\IeC {\'o}n creciente}{22}{subsection.2.7.2}
-\contentsline {subsection}{\numberline {2.7.3}Clasificadores}{23}{subsection.2.7.3}
-\contentsline {subsection}{\numberline {2.7.4}Clustering}{25}{subsection.2.7.4}
-\contentsline {subsubsection}{Algoritmos de clustering}{25}{section*.4}
-\contentsline {chapter}{\numberline {3}An\IeC {\'a}lisis}{27}{chapter.3}
-\contentsline {section}{\numberline {3.1}Comparaci\IeC {\'o}n de software}{27}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Sistemas operativos}{27}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Lenguajes de programaci\IeC {\'o}n}{28}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Elecci\IeC {\'o}n de librer\IeC {\'\i }as}{30}{subsection.3.1.3}
-\contentsline {subsubsection}{Descripci\IeC {\'o}n general de PYDICOM}{30}{section*.5}
-\contentsline {subsubsection}{Descripci\IeC {\'o}n general de DCM4CHE}{30}{section*.6}
-\contentsline {section}{\numberline {3.2}Elecci\IeC {\'o}n de herramientas para el desarrollo}{31}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Software}{31}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Metodolog\IeC {\'\i }a}{32}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Hardware}{35}{subsection.3.2.3}
-\contentsline {section}{\numberline {3.3}An\IeC {\'a}lisis de factibilidad}{35}{section.3.3}
-\contentsline {subsubsection}{Estudio de factibilidad operacional}{36}{section*.7}
-\contentsline {subsubsection}{Estudio de factibilidad t\IeC {\'e}cnica}{36}{section*.8}
-\contentsline {subsubsection}{Estudio de factibilidad econ\IeC {\'o}mica}{37}{section*.9}
-\contentsline {section}{\numberline {3.4}Plan de manejo de riesgos}{42}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Identificaci\IeC {\'o}n de riesgos}{42}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}An\IeC {\'a}lisis del riesgo}{43}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Plan de contenci\IeC {\'o}n de riesgos}{44}{subsection.3.4.3}
-\contentsline {section}{\numberline {3.5}Definici\IeC {\'o}n de requerimientos del sistema}{45}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Requerimientos funcionales}{46}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Requerimientos no funcionales}{47}{subsection.3.5.2}
-\contentsline {chapter}{\numberline {4}Dise\IeC {\~n}o del sistema}{49}{chapter.4}
-\contentsline {section}{\numberline {4.1}Arquitectura del sistema}{49}{section.4.1}
-\contentsline {section}{\numberline {4.2}Casos de uso}{50}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Caso de uso general}{50}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Caso de uso decodificaci\IeC {\'o}n}{51}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Caso de uso selecci\IeC {\'o}n de regi\IeC {\'o}n}{52}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Caso de uso tratamiento de imagen}{53}{subsection.4.2.4}
-\contentsline {section}{\numberline {4.3}Descripci\IeC {\'o}n de casos de uso}{54}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Caso de uso seleccionar archivos}{54}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Caso de uso decodificar DICOM}{56}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Caso de uso obtener arreglo}{57}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Caso de uso seleccionar regi\IeC {\'o}n}{58}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Caso de uso tratar imagen}{60}{subsection.4.3.5}
-\contentsline {subsection}{\numberline {4.3.6}Caso de uso umbralizar}{61}{subsection.4.3.6}
-\contentsline {subsection}{\numberline {4.3.7}Caso de uso segementar regiones}{62}{subsection.4.3.7}
-\contentsline {subsection}{\numberline {4.3.8}Caso de uso clasificar regiones}{63}{subsection.4.3.8}
-\contentsline {subsection}{\numberline {4.3.9}Caso de uso analizar regiones}{64}{subsection.4.3.9}
-\contentsline {subsection}{\numberline {4.3.10}Caso de uso manipular arreglo}{65}{subsection.4.3.10}
-\contentsline {subsection}{\numberline {4.3.11}Caso de uso mostrar tomgraf\IeC {\'\i }a}{66}{subsection.4.3.11}
-\contentsline {section}{\numberline {4.4}Diagramas de secuencia}{67}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Secuencia: Decodificar DICOM}{67}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Secuencia: Seleccionar archivos}{68}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Secuencia: Obtener arreglo}{68}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Secuencia: Seleccionar regiones}{69}{subsection.4.4.4}
-\contentsline {subsection}{\numberline {4.4.5}Secuencia: Analizar imagen}{69}{subsection.4.4.5}
-\contentsline {subsection}{\numberline {4.4.6}Secuencia: Clasificar regiones}{70}{subsection.4.4.6}
-\contentsline {subsection}{\numberline {4.4.7}Secuencia: Manipular arreglo}{70}{subsection.4.4.7}
-\contentsline {subsection}{\numberline {4.4.8}Secuencia: Segmentar regiones}{71}{subsection.4.4.8}
-\contentsline {subsection}{\numberline {4.4.9}Secuencia: Tratar imagen}{71}{subsection.4.4.9}
-\contentsline {subsection}{\numberline {4.4.10}Secuencia: Umbralizar}{72}{subsection.4.4.10}
-\contentsline {subsection}{\numberline {4.4.11}Secuencia: Mostrar tomograf\IeC {\'\i }a}{72}{subsection.4.4.11}
-\contentsline {chapter}{\numberline {5}Desarrollo}{73}{chapter.5}
-\contentsline {section}{\numberline {5.1}Decodificaci\IeC {\'o}n de DICOM}{73}{section.5.1}
-\contentsline {section}{\numberline {5.2}Comunicaci\IeC {\'o}n entre lenguajes}{74}{section.5.2}
-\contentsline {section}{\numberline {5.3}Umbralizaci\IeC {\'o}n}{74}{section.5.3}
-\contentsline {section}{\numberline {5.4}Segmentaci\IeC {\'o}n}{75}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Regi\IeC {\'o}n creciente}{75}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Split and merge}{75}{subsection.5.4.2}
-\contentsline {section}{\numberline {5.5}Clasificaci\IeC {\'o}n}{75}{section.5.5}
-\contentsline {subsection}{\numberline {5.5.1}K-means}{76}{subsection.5.5.1}
-\contentsline {subsection}{\numberline {5.5.2}Fuzzy C-Means}{76}{subsection.5.5.2}
+\contentsline {chapter}{Lista de tablas}{6}{chapter*.2}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{8}{chapter.1}
+\contentsline {section}{\numberline {1.1}Antecedentes}{8}{section.1.1}
+\contentsline {section}{\numberline {1.2}Planteamiento del problema}{10}{section.1.2}
+\contentsline {section}{\numberline {1.3}Propuesta de soluci\IeC {\'o}n}{10}{section.1.3}
+\contentsline {section}{\numberline {1.4}Justificaci\IeC {\'o}n}{11}{section.1.4}
+\contentsline {section}{\numberline {1.5}Objetivos}{12}{section.1.5}
+\contentsline {subsection}{\numberline {1.5.1}Objetivo General}{12}{subsection.1.5.1}
+\contentsline {subsection}{\numberline {1.5.2}Objetivos Particulares}{12}{subsection.1.5.2}
+\contentsline {chapter}{\numberline {2}Marco te\IeC {\'o}rico}{13}{chapter.2}
+\contentsline {section}{\numberline {2.1}Estado del arte}{13}{section.2.1}
+\contentsline {section}{\numberline {2.2}Imagen}{14}{section.2.2}
+\contentsline {section}{\numberline {2.3}Im\IeC {\'a}genes m\IeC {\'e}dicas}{15}{section.2.3}
+\contentsline {section}{\numberline {2.4}Tomograf\IeC {\'\i }a computarizada}{16}{section.2.4}
+\contentsline {section}{\numberline {2.5}DICOM}{18}{section.2.5}
+\contentsline {section}{\numberline {2.6}Escala de Hounsfield}{19}{section.2.6}
+\contentsline {section}{\numberline {2.7}Segmentaci\IeC {\'o}n}{20}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Umbralizaci\IeC {\'o}n}{21}{subsection.2.7.1}
+\contentsline {subsection}{\numberline {2.7.2}Regi\IeC {\'o}n creciente}{23}{subsection.2.7.2}
+\contentsline {subsection}{\numberline {2.7.3}Clasificadores}{24}{subsection.2.7.3}
+\contentsline {subsection}{\numberline {2.7.4}Clustering}{26}{subsection.2.7.4}
+\contentsline {subsubsection}{Algoritmos de clustering}{26}{section*.4}
+\contentsline {chapter}{\numberline {3}An\IeC {\'a}lisis}{28}{chapter.3}
+\contentsline {section}{\numberline {3.1}Comparaci\IeC {\'o}n de software}{28}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Sistemas operativos}{28}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Lenguajes de programaci\IeC {\'o}n}{29}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Elecci\IeC {\'o}n de librer\IeC {\'\i }as}{31}{subsection.3.1.3}
+\contentsline {subsubsection}{Descripci\IeC {\'o}n general de PYDICOM}{31}{section*.5}
+\contentsline {subsubsection}{Descripci\IeC {\'o}n general de DCM4CHE}{31}{section*.6}
+\contentsline {section}{\numberline {3.2}Elecci\IeC {\'o}n de herramientas para el desarrollo}{32}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Software}{32}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Metodolog\IeC {\'\i }a}{33}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Hardware}{36}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}An\IeC {\'a}lisis de factibilidad}{36}{section.3.3}
+\contentsline {subsubsection}{Estudio de factibilidad operacional}{37}{section*.7}
+\contentsline {subsubsection}{Estudio de factibilidad t\IeC {\'e}cnica}{37}{section*.8}
+\contentsline {subsubsection}{Estudio de factibilidad econ\IeC {\'o}mica}{38}{section*.9}
+\contentsline {section}{\numberline {3.4}Plan de manejo de riesgos}{43}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Identificaci\IeC {\'o}n de riesgos}{43}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}An\IeC {\'a}lisis del riesgo}{44}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Plan de contenci\IeC {\'o}n de riesgos}{45}{subsection.3.4.3}
+\contentsline {section}{\numberline {3.5}Definici\IeC {\'o}n de requerimientos del sistema}{46}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Requerimientos funcionales}{47}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Requerimientos no funcionales}{48}{subsection.3.5.2}
+\contentsline {chapter}{\numberline {4}Dise\IeC {\~n}o del sistema}{50}{chapter.4}
+\contentsline {section}{\numberline {4.1}Arquitectura del sistema}{50}{section.4.1}
+\contentsline {section}{\numberline {4.2}Casos de uso}{51}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Caso de uso general}{51}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Caso de uso decodificaci\IeC {\'o}n}{52}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Caso de uso selecci\IeC {\'o}n de regi\IeC {\'o}n}{53}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Caso de uso tratamiento de imagen}{54}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}Descripci\IeC {\'o}n de casos de uso}{55}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Caso de uso seleccionar archivos}{55}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Caso de uso decodificar DICOM}{57}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Caso de uso obtener arreglo}{58}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Caso de uso seleccionar regi\IeC {\'o}n}{59}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Caso de uso tratar imagen}{61}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}Caso de uso umbralizar}{62}{subsection.4.3.6}
+\contentsline {subsection}{\numberline {4.3.7}Caso de uso segementar regiones}{63}{subsection.4.3.7}
+\contentsline {subsection}{\numberline {4.3.8}Caso de uso clasificar regiones}{64}{subsection.4.3.8}
+\contentsline {subsection}{\numberline {4.3.9}Caso de uso analizar regiones}{65}{subsection.4.3.9}
+\contentsline {subsection}{\numberline {4.3.10}Caso de uso manipular arreglo}{66}{subsection.4.3.10}
+\contentsline {subsection}{\numberline {4.3.11}Caso de uso mostrar tomgraf\IeC {\'\i }a}{67}{subsection.4.3.11}
+\contentsline {section}{\numberline {4.4}Diagramas de secuencia}{68}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Secuencia: Decodificar DICOM}{68}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Secuencia: Seleccionar archivos}{69}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Secuencia: Obtener arreglo}{69}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Secuencia: Seleccionar regiones}{70}{subsection.4.4.4}
+\contentsline {subsection}{\numberline {4.4.5}Secuencia: Analizar imagen}{70}{subsection.4.4.5}
+\contentsline {subsection}{\numberline {4.4.6}Secuencia: Clasificar regiones}{71}{subsection.4.4.6}
+\contentsline {subsection}{\numberline {4.4.7}Secuencia: Manipular arreglo}{71}{subsection.4.4.7}
+\contentsline {subsection}{\numberline {4.4.8}Secuencia: Segmentar regiones}{72}{subsection.4.4.8}
+\contentsline {subsection}{\numberline {4.4.9}Secuencia: Tratar imagen}{72}{subsection.4.4.9}
+\contentsline {subsection}{\numberline {4.4.10}Secuencia: Umbralizar}{73}{subsection.4.4.10}
+\contentsline {subsection}{\numberline {4.4.11}Secuencia: Mostrar tomograf\IeC {\'\i }a}{73}{subsection.4.4.11}
+\contentsline {chapter}{\numberline {5}Desarrollo}{74}{chapter.5}
+\contentsline {section}{\numberline {5.1}Decodificaci\IeC {\'o}n de DICOM}{74}{section.5.1}
+\contentsline {section}{\numberline {5.2}Comunicaci\IeC {\'o}n entre lenguajes}{75}{section.5.2}
+\contentsline {section}{\numberline {5.3}Umbralizaci\IeC {\'o}n}{75}{section.5.3}
+\contentsline {section}{\numberline {5.4}Segmentaci\IeC {\'o}n}{76}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Regi\IeC {\'o}n creciente}{76}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Split and merge}{76}{subsection.5.4.2}
+\contentsline {section}{\numberline {5.5}Clasificaci\IeC {\'o}n}{76}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}K-means}{77}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}Fuzzy C-Means}{77}{subsection.5.5.2}
+\contentsline {chapter}{\numberline {6}Pruebas}{78}{chapter.6}
+\contentsline {section}{\numberline {6.1}Umbralizaci\IeC {\'o}n}{78}{section.6.1}
+\contentsline {section}{\numberline {6.2}Contraste}{86}{section.6.2}
+\contentsline {section}{\numberline {6.3}Clasificadores}{89}{section.6.3}
+\contentsline {section}{\numberline {6.4}Segmentaci\IeC {\'o}n}{91}{section.6.4}
+\contentsline {chapter}{\numberline {7}Conclusiones y trabajo futuro}{92}{chapter.7}
+\contentsline {section}{\numberline {7.1}Conclusiones}{92}{section.7.1}
+\contentsline {section}{\numberline {7.2}Trabajo a futuro}{92}{section.7.2}
+\contentsline {chapter}{\numberline {A}C\IeC {\'o}digo K-Means}{94}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}C\IeC {\'o}digo Fuzzy C-Means}{96}{appendix.Alph2}
+\contentsline {chapter}{\numberline {C}Diagrama de clases}{99}{appendix.Alph3}
