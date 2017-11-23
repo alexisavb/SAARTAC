@@ -15,13 +15,13 @@ namespace SAARTAC1._1 {
         public int LMI, LMS;
         private int [,] visitados;
         private long sumaTotal, cuadrosTotales;
-        private int EPS_merge = 10;
+        private int EPS_merge = 5;
         private static int [,] movimientos = { { -1, 0 },
                                               { 1, 0 },
                                               { 0, -1 },
                                               { 0, 1}};
 
-        public SplitMerge(Bitmap imagen, int N, int M, long eps = 100) {
+        public SplitMerge(Bitmap imagen, int N, int M, long eps = 50) {
             this.datos = new int [N, M];
             for(int i = 0; i < N; i++) {
                 for(int j = 0; j < M; j++) {
@@ -190,6 +190,25 @@ namespace SAARTAC1._1 {
                     if (resultado [i, j] < LMI)
                         valorGris = 0;
                     if (resultado [i, j] > LMS)
+                        valorGris = 255;
+                    Color color = Color.FromArgb(valorGris, valorGris, valorGris);
+                    imagen.SetPixel(i, j, color);
+                }
+            }
+            return imagen;
+        }
+
+        public Bitmap ObtenerImagen(int I, int S) {
+            Bitmap imagen = new Bitmap(N, M);
+            int tam = S - I + 1;
+            double porcion = 255.0 / tam;
+
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < M; j++) {
+                    int valorGris = (int)(porcion * (double)(resultado [i, j] - I + 1));
+                    if (resultado [i, j] < I)
+                        valorGris = 0;
+                    if (resultado [i, j] > S)
                         valorGris = 255;
                     Color color = Color.FromArgb(valorGris, valorGris, valorGris);
                     imagen.SetPixel(i, j, color);

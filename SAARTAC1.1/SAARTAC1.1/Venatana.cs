@@ -985,20 +985,15 @@ namespace SAARTAC1._1 {
             RenderMain rm = new RenderMain(dic, "Sangre Coagulada", 2);
             rm.Show();
         }
-
-        private void splitAndMergeToolStripMenuItem_Click(object sender, EventArgs e) {
-            SplitMerge algoritmo = new SplitMerge(auxUH.obtenerMatriz(), auxUH.obtenerN(), auxUH.obtenerM());
-            //SplitMerge algoritmo = new SplitMerge((Bitmap)mostrarOriginal.Image, auxUH.obtenerN(), auxUH.obtenerM());
-
-            var imagen = algoritmo.ObtenerImagen();
-            MostrarImagenTratada(imagen);
-        }
+        
 
         private void splitAndMergeToolStripMenuItem_Click_1(object sender, EventArgs e) {
             //SplitMerge algoritmo = new SplitMerge(auxUH.obtenerMatriz(), auxUH.obtenerN(), auxUH.obtenerM());
             SplitMerge algoritmo = new SplitMerge((Bitmap)mostrarOriginal.Image, auxUH.obtenerN(), auxUH.obtenerM());
 
+            //var imagen = algoritmo.ObtenerImagen(ventana_default [0] - ventana_default [1], ventana_default [0] + ventana_default [1]);
             var imagen = algoritmo.ObtenerImagen();
+
             MostrarImagenTratada(imagen);
         }
 
