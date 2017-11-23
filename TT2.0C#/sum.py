@@ -42,5 +42,8 @@ elif pregunta == EspesorRebanada:
 elif pregunta == Hospital:
 	print archivoDicom[0x08, 0x80].value
 elif pregunta == VentanaUH:
-	print archivoDicom[0x28, 0x1050].value[0], archivoDicom[0x28, 0x1051].value[0]
+	if(isinstance(archivoDicom[0x28, 0x1050].value, list)):
+		print archivoDicom[0x28, 0x1050].value[0], archivoDicom[0x28, 0x1051].value[0]
+	else:
+		print archivoDicom[0x28, 0x1050].value, archivoDicom[0x28, 0x1051].value
 
