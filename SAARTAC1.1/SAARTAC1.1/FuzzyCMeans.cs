@@ -8,10 +8,7 @@ using System.Drawing;
 
 namespace SAARTAC1._1{
     class FuzzyCMeans{
-        private LecturaArchivosDicom matrices;
-        private MatrizDicom matriz_actual;
-        private int numerosK, ite, numArchivos, N, M;
-        private int min = -1000, max = 1600;
+        private int numerosK, ite, N, M;
         private List<Double> centros;
         private List<Double> conjunto = new List<Double>();
         private int[,] clases;
