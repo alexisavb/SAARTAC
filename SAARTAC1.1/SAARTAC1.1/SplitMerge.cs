@@ -15,7 +15,7 @@ namespace SAARTAC1._1 {
         public int LMI, LMS;
         private int [,] visitados;
         private long sumaTotal, cuadrosTotales;
-        private int EPS_merge = 40;
+        private int EPS_merge = 30;
         private static int [,] movimientos = { { -1, 0 },
                                               { 1, 0 },
                                               { 0, -1 },
@@ -41,7 +41,7 @@ namespace SAARTAC1._1 {
             MergeRegion();
         }
 
-        public SplitMerge(int [,] datos, int N, int M, long eps = 10000) {
+        public SplitMerge(int [,] datos, int N, int M, long eps = 400) {
             this.datos = datos;
             this.eps = eps;
             this.N = N;
@@ -87,12 +87,13 @@ namespace SAARTAC1._1 {
             visitados [yy, xx] = 2;
             while (busqueda.Count > 0) {
                 Tuple<int, int> actual = (Tuple<int, int>)busqueda.Dequeue();
+                int valor_original = resultado [actual.Item1, actual.Item2];
                 resultado [actual.Item1, actual.Item2] = set;
                 for (int i = 0; i < 4; i++) {
                     int y = actual.Item1 + movimientos [i, 0];
                     int x = actual.Item2 + movimientos [i, 1];
                     if (DentroMapa(y, x)) {
-                        if (visitados [y, x] == 2 || Math.Abs(resultado [y, x] - resultado [actual.Item1, actual.Item2]) > EPS_merge)
+                        if (visitados [y, x] == 2 || Math.Abs(resultado [y, x] - valor_original) > EPS_merge)
                             continue;
                         visitados [y, x] = 2;
                         busqueda.Enqueue(new Tuple<int, int>(y, x));
@@ -116,6 +117,7 @@ namespace SAARTAC1._1 {
                         JuntaRegiones(i, j, resultado[i, j]);
                         long valor = sumaTotal / cuadrosTotales;
                         ActualizaValor(i, j, resultado [i, j], (int)valor);
+                        Console.WriteLine(cuadrosTotales);
                     }
                 }
             }
