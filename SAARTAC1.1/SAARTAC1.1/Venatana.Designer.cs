@@ -752,6 +752,7 @@
             this.acercaDeSAARTACBarraDeHerramientas.Name = "acercaDeSAARTACBarraDeHerramientas";
             this.acercaDeSAARTACBarraDeHerramientas.Size = new System.Drawing.Size(233, 24);
             this.acercaDeSAARTACBarraDeHerramientas.Text = "Acerca De SAARTAC";
+            this.acercaDeSAARTACBarraDeHerramientas.Click += new System.EventHandler(this.acercaDeSAARTACBarraDeHerramientas_Click);
             // 
             // BottomToolStripPanel
             // 
@@ -809,7 +810,7 @@
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripButton4});
-            this.barraDeIconos.Location = new System.Drawing.Point(3, 100);
+            this.barraDeIconos.Location = new System.Drawing.Point(3, 0);
             this.barraDeIconos.Name = "barraDeIconos";
             this.barraDeIconos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.barraDeIconos.Size = new System.Drawing.Size(163, 25);
@@ -960,7 +961,7 @@
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.mostrarTratada);
             this.contenedorBarraDeIconos.ContentPanel.Controls.Add(this.mostrarOriginal);
             this.contenedorBarraDeIconos.ContentPanel.ForeColor = System.Drawing.Color.Transparent;
-            this.contenedorBarraDeIconos.ContentPanel.Size = new System.Drawing.Size(1354, 580);
+            this.contenedorBarraDeIconos.ContentPanel.Size = new System.Drawing.Size(1354, 680);
             this.contenedorBarraDeIconos.ContentPanel.Load += new System.EventHandler(this.contenedorBarraDeIconos_ContentPanel_Load);
             this.contenedorBarraDeIconos.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
@@ -1869,7 +1870,7 @@
             this.barraIconos3D.GripMargin = new System.Windows.Forms.Padding(0);
             this.barraIconos3D.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton8});
-            this.barraIconos3D.Location = new System.Drawing.Point(110, 25);
+            this.barraIconos3D.Location = new System.Drawing.Point(318, 0);
             this.barraIconos3D.Name = "barraIconos3D";
             this.barraIconos3D.Size = new System.Drawing.Size(40, 25);
             this.barraIconos3D.TabIndex = 2;
@@ -1932,7 +1933,7 @@
             this.barraIconoClasificacion.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.barraIconoClasificacion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSplitButton1});
-            this.barraIconoClasificacion.Location = new System.Drawing.Point(104, 50);
+            this.barraIconoClasificacion.Location = new System.Drawing.Point(266, 0);
             this.barraIconoClasificacion.Name = "barraIconoClasificacion";
             this.barraIconoClasificacion.Size = new System.Drawing.Size(46, 25);
             this.barraIconoClasificacion.TabIndex = 6;
@@ -1977,7 +1978,7 @@
             this.barraIconoRegla.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.barraIconoRegla.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton10});
-            this.barraIconoRegla.Location = new System.Drawing.Point(115, 0);
+            this.barraIconoRegla.Location = new System.Drawing.Point(368, 0);
             this.barraIconoRegla.Name = "barraIconoRegla";
             this.barraIconoRegla.Size = new System.Drawing.Size(35, 25);
             this.barraIconoRegla.TabIndex = 0;
@@ -2002,7 +2003,7 @@
             this.toolStripButton5,
             this.toolStripButton6,
             this.toolStripButton7});
-            this.barraIconosUmbralizacion.Location = new System.Drawing.Point(69, 75);
+            this.barraIconosUmbralizacion.Location = new System.Drawing.Point(178, 0);
             this.barraIconosUmbralizacion.Name = "barraIconosUmbralizacion";
             this.barraIconosUmbralizacion.Size = new System.Drawing.Size(81, 25);
             this.barraIconosUmbralizacion.TabIndex = 1;
@@ -2139,6 +2140,8 @@
             // 
             // splitAndMergeToolStripMenuItem
             // 
+            this.splitAndMergeToolStripMenuItem.BackColor = System.Drawing.Color.Black;
+            this.splitAndMergeToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.splitAndMergeToolStripMenuItem.Name = "splitAndMergeToolStripMenuItem";
             this.splitAndMergeToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
             this.splitAndMergeToolStripMenuItem.Text = "Split and Merge";

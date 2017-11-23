@@ -997,6 +997,11 @@ namespace SAARTAC1._1 {
             MostrarImagenTratada(imagen);
         }
 
+        private void acercaDeSAARTACBarraDeHerramientas_Click(object sender, EventArgs e) {
+            AcercaDe aux = new AcercaDe();
+            aux.Show();
+        }
+
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             RenderMain rm = new RenderMain(dic, "Liquido", 2);
