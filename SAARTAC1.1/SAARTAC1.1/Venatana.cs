@@ -281,11 +281,12 @@ namespace SAARTAC1._1 {
             int x = mostrarOriginal.PointToClient(Cursor.Position).X;
             int y = mostrarOriginal.PointToClient(Cursor.Position).Y;
             if (lect == null) return;
-            if (reglaBool && bandera == 0 && banderaCentros == 0 && contadorCentro == 0){
+            if (reglaBool && bandera == 0){
                 regla = new Regla(mostrarOriginal.PointToClient(Cursor.Position).X, mostrarOriginal.PointToClient(Cursor.Position).Y);
                 bandera = 1;
+                return;
             }
-            if (reglaBool && bandera == 1 && banderaCentros == 0 && contadorCentro == 0){
+            if (reglaBool && bandera == 1){
                 reglaBool = false;
                 bandera = 0;
                 regla.setFinal(mostrarOriginal.PointToClient(Cursor.Position).X, mostrarOriginal.PointToClient(Cursor.Position).Y);
@@ -297,6 +298,7 @@ namespace SAARTAC1._1 {
                 int milliseconds = 1200;
                 Thread.Sleep(milliseconds);
                 mostrarOriginal.Invalidate();
+                return;
             }
             if (banderaCentros == 1 && reglaBool == false && bandera == 0 && contadorCentro != 0){
                 if (contadorCentro != numeroCentrosKmeans + 1){
@@ -316,6 +318,7 @@ namespace SAARTAC1._1 {
                     contadorCentro = 0;
                     banderaCentros = 0;
                 }
+                return;
             }
             if (banderaCentros == 2 && reglaBool == false && bandera == 0 && contadorCentro != 0){
                 if (contadorCentro != numeroCentrosCfuzzy + 1){
@@ -565,18 +568,11 @@ namespace SAARTAC1._1 {
 
         private void ProcesoKMeansCentros(BackgroundWorker bw){
             List<int []> datos = obtenerDatosSelecionado();
-            kMeans k = new kMeans(datos, numeroCentrosKmeans, Properties.Settings.Default.numIter, bw, centros);
+            kMeans k = new kMeans(datos, numeroCentrosKmeans, 4, bw, centros);
             if (bw.CancellationPending)
                 return;
             int [,] clases = k.getClases();
-            
             limites_grupo = k.ObtenerUmbralesGrupos();
-            for (int i = region_seleccionada.X; i <= region_seleccionada.Y; i++) {
-                imagenesCaja2 [i] = (obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, datos [i].Length, i));
-                bw.ReportProgress(90 + (10 * (i + 1)) / lect.num_archivos());
-            }
-            bw.ReportProgress(100);
-            MostrarImagenTratada();
             GenerarImagenesAClases(clases, bw, datos [0].Length);
             seccion = null;
             region_seleccionada.X = -1; // resetea la region seleccionada
@@ -589,15 +585,9 @@ namespace SAARTAC1._1 {
                 return;
             int [,] clases = algoritmo.getClases();
             limites_grupo = algoritmo.ObtenerUmbralesGrupos();
-            for (int i = region_seleccionada.X; i <= region_seleccionada.Y; i++) {
-                imagenesCaja2 [i] = (obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, datos [i].Length, i));
-                bw.ReportProgress(90 + (10 * (i + 1)) / lect.num_archivos());
-            }
-            bw.ReportProgress(100);
-            MostrarImagenTratada();
             GenerarImagenesAClases(clases, bw, datos [0].Length);
             seccion = null;
-            region_seleccionada.X = -1; // resetea la region seleccionada
+            region_seleccionada.X = -1;
         }
 
 
@@ -994,6 +984,22 @@ namespace SAARTAC1._1 {
         private void sangreToolStripMenuItem1_Click(object sender, EventArgs e){
             RenderMain rm = new RenderMain(dic, "Sangre Coagulada", 2);
             rm.Show();
+        }
+        
+
+        private void splitAndMergeToolStripMenuItem_Click_1(object sender, EventArgs e) {
+            //SplitMerge algoritmo = new SplitMerge(auxUH.obtenerMatriz(), auxUH.obtenerN(), auxUH.obtenerM());
+            SplitMerge algoritmo = new SplitMerge((Bitmap)mostrarOriginal.Image, auxUH.obtenerN(), auxUH.obtenerM());
+
+            //var imagen = algoritmo.ObtenerImagen(ventana_default [0] - ventana_default [1], ventana_default [0] + ventana_default [1]);
+            var imagen = algoritmo.ObtenerImagen();
+
+            MostrarImagenTratada(imagen);
+        }
+
+        private void acercaDeSAARTACBarraDeHerramientas_Click(object sender, EventArgs e) {
+            AcercaDe aux = new AcercaDe();
+            aux.Show();
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)

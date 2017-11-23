@@ -15,6 +15,7 @@
             }
             base.Dispose(disposing);
         }   
+ 
         #region Código generado por el Diseñador de Windows Forms
 
         /// <summary>
@@ -29,8 +30,8 @@
             this.exportarBarraHerramientas = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarOriginal = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarTratada = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarBarraHerramientas = new System.Windows.Forms.ToolStripMenuItem();
             this.seleccionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HerramientasBarraDeHerramientas = new System.Windows.Forms.ToolStripMenuItem();
@@ -200,6 +201,7 @@
             this.huesoContrasteIcono = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.splitAndMergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barraHerramientas.SuspendLayout();
             this.barraDeIconos.SuspendLayout();
             this.contenedorBarraDeIconos.ContentPanel.SuspendLayout();
@@ -291,15 +293,6 @@
             this.exportarTratada.Text = "Tratada";
             this.exportarTratada.Click += new System.EventHandler(this.exportarTratada_Click);
             // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.BackColor = System.Drawing.Color.Black;
-            this.salirToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(218, 24);
-            this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
-            // 
             // configuraciónToolStripMenuItem
             // 
             this.configuraciónToolStripMenuItem.BackColor = System.Drawing.Color.Black;
@@ -308,6 +301,15 @@
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(218, 24);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
             this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.BackColor = System.Drawing.Color.Black;
+            this.salirToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(218, 24);
+            this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // editarBarraHerramientas
             // 
@@ -685,7 +687,8 @@
             // segmentacionToolStripMenuItem
             // 
             this.segmentacionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.regionCrecienteToolStripMenuItem});
+            this.regionCrecienteToolStripMenuItem,
+            this.splitAndMergeToolStripMenuItem});
             this.segmentacionToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.segmentacionToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.segmentacionToolStripMenuItem.Name = "segmentacionToolStripMenuItem";
@@ -749,6 +752,7 @@
             this.acercaDeSAARTACBarraDeHerramientas.Name = "acercaDeSAARTACBarraDeHerramientas";
             this.acercaDeSAARTACBarraDeHerramientas.Size = new System.Drawing.Size(233, 24);
             this.acercaDeSAARTACBarraDeHerramientas.Text = "Acerca De SAARTAC";
+            this.acercaDeSAARTACBarraDeHerramientas.Click += new System.EventHandler(this.acercaDeSAARTACBarraDeHerramientas_Click);
             // 
             // BottomToolStripPanel
             // 
@@ -806,7 +810,7 @@
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripButton4});
-            this.barraDeIconos.Location = new System.Drawing.Point(6, 0);
+            this.barraDeIconos.Location = new System.Drawing.Point(3, 0);
             this.barraDeIconos.Name = "barraDeIconos";
             this.barraDeIconos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.barraDeIconos.Size = new System.Drawing.Size(163, 25);
@@ -978,11 +982,11 @@
             // contenedorBarraDeIconos.TopToolStripPanel
             // 
             this.contenedorBarraDeIconos.TopToolStripPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconos3D);
-            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoClasificacion);
-            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoRegla);
-            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconosUmbralizacion);
             this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraDeIconos);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconosUmbralizacion);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoClasificacion);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconos3D);
+            this.contenedorBarraDeIconos.TopToolStripPanel.Controls.Add(this.barraIconoRegla);
             this.contenedorBarraDeIconos.TopToolStripPanel.Click += new System.EventHandler(this.contenedorBarraDeIconos_TopToolStripPanel_Click);
             // 
             // MA3
@@ -1866,7 +1870,7 @@
             this.barraIconos3D.GripMargin = new System.Windows.Forms.Padding(0);
             this.barraIconos3D.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton8});
-            this.barraIconos3D.Location = new System.Drawing.Point(303, 0);
+            this.barraIconos3D.Location = new System.Drawing.Point(318, 0);
             this.barraIconos3D.Name = "barraIconos3D";
             this.barraIconos3D.Size = new System.Drawing.Size(40, 25);
             this.barraIconos3D.TabIndex = 2;
@@ -1929,7 +1933,7 @@
             this.barraIconoClasificacion.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.barraIconoClasificacion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSplitButton1});
-            this.barraIconoClasificacion.Location = new System.Drawing.Point(257, 0);
+            this.barraIconoClasificacion.Location = new System.Drawing.Point(266, 0);
             this.barraIconoClasificacion.Name = "barraIconoClasificacion";
             this.barraIconoClasificacion.Size = new System.Drawing.Size(46, 25);
             this.barraIconoClasificacion.TabIndex = 6;
@@ -1974,7 +1978,7 @@
             this.barraIconoRegla.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.barraIconoRegla.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton10});
-            this.barraIconoRegla.Location = new System.Drawing.Point(347, 0);
+            this.barraIconoRegla.Location = new System.Drawing.Point(368, 0);
             this.barraIconoRegla.Name = "barraIconoRegla";
             this.barraIconoRegla.Size = new System.Drawing.Size(35, 25);
             this.barraIconoRegla.TabIndex = 0;
@@ -1999,7 +2003,7 @@
             this.toolStripButton5,
             this.toolStripButton6,
             this.toolStripButton7});
-            this.barraIconosUmbralizacion.Location = new System.Drawing.Point(176, 0);
+            this.barraIconosUmbralizacion.Location = new System.Drawing.Point(178, 0);
             this.barraIconosUmbralizacion.Name = "barraIconosUmbralizacion";
             this.barraIconosUmbralizacion.Size = new System.Drawing.Size(81, 25);
             this.barraIconosUmbralizacion.TabIndex = 1;
@@ -2133,6 +2137,15 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // splitAndMergeToolStripMenuItem
+            // 
+            this.splitAndMergeToolStripMenuItem.BackColor = System.Drawing.Color.Black;
+            this.splitAndMergeToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.splitAndMergeToolStripMenuItem.Name = "splitAndMergeToolStripMenuItem";
+            this.splitAndMergeToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.splitAndMergeToolStripMenuItem.Text = "Split and Merge";
+            this.splitAndMergeToolStripMenuItem.Click += new System.EventHandler(this.splitAndMergeToolStripMenuItem_Click_1);
             // 
             // mainVentana
             // 
@@ -2370,6 +2383,7 @@
         private System.Windows.Forms.ToolStripMenuItem huesoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem grasaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sangreToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem splitAndMergeToolStripMenuItem;
     }
 }
 

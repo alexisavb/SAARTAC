@@ -16,7 +16,7 @@ namespace SAARTAC1._1
         private List<Double> centros;
         private List<Double> conjunto = new List<Double>();
         private int[,] clases;
-        private Random rnd;
+        private Random rnd = new Random();
         private BackgroundWorker reporte_progreso;
         private static int operaciones_cargando, operaciones_total;
         private List<int []> datos;
@@ -85,7 +85,6 @@ namespace SAARTAC1._1
 
         public void generarCentros(){
             centros = new List<Double>();
-            rnd = new Random();
             for (int i = 0; i < numerosK; i++) {
                 int numero = rnd.Next((IgnorarAire ? IGNORAR : -1000), 1400);
                 centros.Add((double)numero);

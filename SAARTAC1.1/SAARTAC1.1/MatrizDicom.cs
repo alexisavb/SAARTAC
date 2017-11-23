@@ -51,12 +51,19 @@ namespace SAARTAC1._1{
 
         public Bitmap ObtenerImagen(){
             Bitmap imagen = new Bitmap(N, M);
+            int [] ventana = LecturaArchivosDicom.PreguntaVentanaUH(ruta);
+            minValor = ventana [0] - ventana [1];
+            maxValor = ventana [0] + ventana [1];
             int tam = maxValor - minValor + 1;
             double porcion = 256.0 / tam;
 
             for (int i = 0; i < N; i++){
                 for (int j = 0; j < M; j++){
                     int valorGris = (int)(porcion * (matriz[i, j] - minValor));
+                    if (matriz [i, j] < minValor)
+                        valorGris = 0;
+                    if (matriz [i, j] > maxValor)
+                        valorGris = 255;
                     Color color = Color.FromArgb(valorGris, valorGris, valorGris);
                     imagen.SetPixel(i, j, color);
                 }
