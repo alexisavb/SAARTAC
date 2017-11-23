@@ -986,6 +986,22 @@ namespace SAARTAC1._1 {
             rm.Show();
         }
 
+        private void splitAndMergeToolStripMenuItem_Click(object sender, EventArgs e) {
+            SplitMerge algoritmo = new SplitMerge(auxUH.obtenerMatriz(), auxUH.obtenerN(), auxUH.obtenerM());
+            //SplitMerge algoritmo = new SplitMerge((Bitmap)mostrarOriginal.Image, auxUH.obtenerN(), auxUH.obtenerM());
+
+            var imagen = algoritmo.ObtenerImagen();
+            MostrarImagenTratada(imagen);
+        }
+
+        private void splitAndMergeToolStripMenuItem_Click_1(object sender, EventArgs e) {
+            //SplitMerge algoritmo = new SplitMerge(auxUH.obtenerMatriz(), auxUH.obtenerN(), auxUH.obtenerM());
+            SplitMerge algoritmo = new SplitMerge((Bitmap)mostrarOriginal.Image, auxUH.obtenerN(), auxUH.obtenerM());
+
+            var imagen = algoritmo.ObtenerImagen();
+            MostrarImagenTratada(imagen);
+        }
+
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             RenderMain rm = new RenderMain(dic, "Liquido", 2);

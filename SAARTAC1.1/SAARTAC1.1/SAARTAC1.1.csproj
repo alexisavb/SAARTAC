@@ -77,6 +77,7 @@
     <Compile Include="SeleccionTiraje.Designer.cs">
       <DependentUpon>SeleccionTiraje.cs</DependentUpon>
     </Compile>
+    <Compile Include="SplitMerge.cs" />
     <Compile Include="Umbralizacion.cs" />
     <Compile Include="Venatana.cs">
       <SubType>Form</SubType>
