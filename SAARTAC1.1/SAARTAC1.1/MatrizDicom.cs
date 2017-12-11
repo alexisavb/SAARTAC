@@ -52,8 +52,8 @@ namespace SAARTAC1._1{
         public Bitmap ObtenerImagen(){
             Bitmap imagen = new Bitmap(N, M);
             int [] ventana = LecturaArchivosDicom.PreguntaVentanaUH(ruta);
-            minValor = ventana [0] - ventana [1];
-            maxValor = ventana [0] + ventana [1];
+            minValor = ventana [0] - ventana [1] / 2;
+            maxValor = ventana [0] + ventana [1] / 2;
             int tam = maxValor - minValor + 1;
             double porcion = 256.0 / tam;
 
