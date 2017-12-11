@@ -70,7 +70,7 @@ Los equipos necesarios para la generación de estudios como las TAC cuentan con 
 Las herramientas de asistencia que son accesibles en muchas ocasiones se limitan a algunas funciones básicas de análisis como rotar, escalar o hacer mediciones a las imágenes; algunas otras ofrecen más funciones como representación en 3D pero sólo es posible cuando las imágenes  cuentan más de un tipo de corte sobre el cuerpo humano.\cite{occi}, \cite{nifty}, \cite{osirix}, \cite{3dim}\\
 
 \section{Propuesta de solución}
-Para dar solución a la problemática anteriormente planteada se propone diseñar y desarrollar una herramienta de visualización y tratamiento de tomografías axiales computarizadas a partir de la información ofrecida por el archivo DICOM que las contiene, la cual permitirá a los especialistas una fácil y mejorada interpretación de  los resultados.\\
+Para dar solución a la problema anteriormente planteado se propone diseñar y desarrollar una herramienta de visualización y tratamiento de tomografías axiales computarizadas a partir de la información ofrecida por el archivo DICOM que las contiene, la cual permitirá a los especialistas una fácil y mejorada interpretación de  los resultados.\\
 
 El primer paso será la decodificación de un archivo DICOM, una vez decodificada la imagen el usuario podrá observar la información contenida en el archivo DICOM mediante un visor. Adicionalmente, el usuario podrá utilizar diversas herramientas del sistema para que la información sea analizada y así obtener propiedades particulares de la imagen.
 
@@ -85,7 +85,7 @@ Imagen de creación propia.
 \section{Justificación}
 A lo largo de los años la evolución de la ciencia y la tecnología han permitido que el campo de la medicina se desarrolle y avance en un gran nivel, al permitir el desarrollo de medicinas y aparatos quirúrgicos que facilitan y minimizan el error dentro de los procesos, desafortunadamente no en todos los campos del área esto se ha logrado, cuando hablamos de errores médicos debemos tomar en cuenta que las consecuencias que estos pueden traer son muy delicadas pues en muchas ocasiones representan la vida o muerte de los pacientes.\\ 
 
-“La interpretación de los estudios tomográficos radiológicos se realiza comúnmente con base a un análisis visual de las imágenes adquiridas de los equipos imageneológicos por parte del médico radiólogo, estos análisis son susceptibles a malas interpretaciones debido a error humano”, por esto es que decidimos realizar este trabajo con el fin de ayudar a la interpretación de estos estudios.\\
+La interpretación de los estudios tomográficos radiológicos se realiza comúnmente con base a un análisis visual de las imágenes adquiridas de los equipos imageneológicos por parte del médico radiólogo, estos análisis son susceptibles a malas interpretaciones debido a error humano, por esto es que decidimos realizar este trabajo con el fin de ayudar a la interpretación de estos estudios.\\
 
 El uso de algoritmos computacionales para la delineación de estructuras anatómicas y otras regiones de interés del cuerpo humano se han vuelto muy importantes en la asistencia y realización de tareas radiológicas específicas. Estos algoritmos, llamados algoritmos de segmentación de imagen, tienen un papel muy importante en diversas aplicaciones de imágenes biomédicas , como la cuantificación del volumen de tejidos, diagnóstico, localización de patologías, estudio de estructuras anatómicas, planeación del tratamiento y cirugía computarizada.\cite{metodos}\\ 
 
@@ -99,9 +99,9 @@ Desarrollar un software de asistencia al especialista para la interpretación ad
 \item Leer e interpretar la información contenida en una imagen DICOM.
 \item Umbralizar una imagen médica en formato DICOM.
 \item Segmentar regiones determinadas dentro de una tomografía axial computarizada.
-\item Clasificar regiones con base a distintos criterios.
-\item Analizar distintas propiedades de regiones específicas.
-\item Facilitar la interpretación de tomografías mediante un visor.
+\item Clasificar regiones con base a la distancia Euclidiana existente entre puntos específicos.
+\item Analizar distintas propiedades de regiones específicas establecidas por el especialista.
+\item Facilitar la interpretación de tomografías mediante un visor en 2D.
 \item Proporcionar una visualización en 3D de las tomografías axiales computarizadas.
 \end{itemize}
 
@@ -1914,6 +1914,126 @@ Se generan los nuevos centros para las iteraciones siguientes.
             }
         }
 \end{lstlisting}
+
+\chapter{Código Split and Merge}
+Esta función verifica para cada región si exsite similutud en ella, si no se cumple la condición, las regiones se separan.
+\lstset{language=C, breaklines=true, basicstyle=\footnotesize}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=-2pt}
+\begin{lstlisting}[frame=single]
+	private void EvaluacionRegion(int y1, int x1, int y2, int x2) {
+            if (y1 > y2 || x1 > x2)
+                return;
+            double promedio = EvaluacionPromedio(y1, x1, y2, x2);
+            if (Desviacion(y1, x1, y2, x2, promedio)) {
+                SeparaRegiones(y1, x1, y2, x2);
+            } else {
+                EstablecerValores(y1, x1, y2, x2, promedio);
+            }
+
+        }
+\end{lstlisting}
+
+\vspace{1cm}
+Esta función separa la imagen en 4 regiones para su evaluación.
+\lstset{language=C, breaklines=true, basicstyle=\footnotesize}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=-2pt}
+\begin{lstlisting}[frame=single]
+	private void SeparaRegiones(int y1, int x1, int y2, int x2) {
+            int PMY = (y1 + y2) / 2;
+            int PMX = (x1 + x2) / 2;
+            EvaluacionRegion(y1, x1, PMY, PMX);
+            EvaluacionRegion(y1, PMX + 1, PMY, x2);
+            EvaluacionRegion(PMY + 1, x1, y2, PMX);
+            EvaluacionRegion(PMY + 1, PMX + 1, y2, x2);
+        }
+\end{lstlisting}
+
+\newpage
+\vspace*{3cm}
+Esta función junta las regiones separadas.
+\lstset{language=C, breaklines=true, basicstyle=\footnotesize}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=-2pt}
+\begin{lstlisting}[frame=single]
+	private void JuntaRegiones(int yy, int xx, int valor) {
+            Queue busqueda = new Queue();
+            busqueda.Enqueue(new Tuple<int, int>(yy, xx));
+            visitados [yy, xx] = 1;
+            while (busqueda.Count > 0) {
+                Tuple<int, int> actual = (Tuple<int, int>)busqueda.Dequeue();
+                cuadrosTotales++;
+                sumaTotal += resultado [actual.Item1, actual.Item2];
+                for (int i = 0; i < 4; i++) {
+                    int y = actual.Item1 + movimientos [i, 0];
+                    int x = actual.Item2 + movimientos [i, 1];
+                    if (DentroMapa(y, x)) {
+                        if (visitados [y, x] == 1 || Math.Abs(resultado [y, x] - resultado [actual.Item1, actual.Item2]) > EPS_merge)
+                            continue;
+                        visitados [y, x] = 1;
+                        busqueda.Enqueue(new Tuple<int, int>(y, x));
+                    }
+                }
+            }
+        }
+\end{lstlisting}
+
+\chapter{Código Región creciente}
+Con esta función se genera la segmentación del objeto con base a una semilla dada por el usuario.
+\lstset{language=C, breaklines=true, basicstyle=\footnotesize}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=-2pt}
+\begin{lstlisting}[frame=single]
+	public int[,] ObtenerRegion(int calidad = 0) {
+            int [,] salida = new int [N, M];
+            Queue busqueda = new Queue();
+            busqueda.Enqueue(new Tuple<int, int>(origenY, origenX));
+            salida [origenY, origenX] = 1;
+            while(busqueda.Count > 0) {
+                Tuple<int, int> actual = (Tuple <int, int>) busqueda.Dequeue();
+                for(int i = 0; i < 8; i++){
+                    int y = actual.Item1 + movimientos [i, 0];
+                    int x = actual.Item2 + movimientos [i, 1];
+                    if(DentroMapa(y, x)) {
+                        if (salida [y, x] == 1 || Math.Abs(mapa[origenY, origenX] - mapa[actual.Item1, actual.Item2]) > precision[calidad])
+                            continue;
+                        salida [y, x] = 1;
+                        busqueda.Enqueue(new Tuple<int, int>(y, x));
+                    }
+                }
+            }
+            return salida;
+        }
+	
+\end{lstlisting}
+
+\chapter{Código generación de contraste}
+Esta función genera un mapeo de los valores de gris y los valores de Hounsfield.
+\lstset{language=C, breaklines=true, basicstyle=\footnotesize}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=-2pt}
+\begin{lstlisting}[frame=single]
+	public void obtenerImagenConVentana(ParametroContraste o) {
+            int [,] matriz = o.matriz;
+            int limiteInferior = o.inicio;
+            int limiteSuperior = o.fin;
+            int N = matriz.GetLength(0);
+            int M = matriz.GetLength(1);
+            Bitmap imagen = new Bitmap(N, M);
+            int tam = limiteSuperior - limiteInferior + 1;
+            double porcion = 255.0 / tam;
+
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < M; j++) {
+                    int valorGris = (int)(porcion * (double)(matriz [i, j] - limiteInferior + 1));
+                    if (matriz [i, j] < limiteInferior)
+                        valorGris = 0;
+                    if (matriz [i, j] > limiteSuperior)
+                        valorGris = 255;
+                    Color color = Color.FromArgb(valorGris, valorGris, valorGris);
+                    imagen.SetPixel(i, j, color);
+                }
+            }
+            imagenes[o.indice] = imagen;
+        }
+\end{lstlisting}
+
 
 \chapter{Diagrama de clases}
 
