@@ -79,7 +79,7 @@ En la figura 1.1 se observa el diagrama general de funcionamiento del sistema.
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{diagramageneral}
 \caption{Diagrama del funcionamiento del sistema.}
-Imagen de creación propia.
+Imagen de elaboración propia.
 \end{figure}
 
 \section{Justificación}
@@ -184,6 +184,7 @@ La TC produce imágenes axiales de la anotomía de un paciente. Dichas imágenes
 \centering
 \includegraphics[width = 5 cm, height = 5 cm]{tac}
 \caption{Cortes axiales en TAC.}
+Imagen obtenida de \textit{https://www.fda.gov/radiation-emittingproducts/radiationemittingproductsandprocedures/medicalimaging/medicalx-rays/ucm115318.htm}
 \end{figure}
 
 La TC es una técnica de diagnóstico para imagen digital. La fuente de rayo X se une rígidamente a un dispositivo detector de la geometría en abanico de los rayos, que rota 360 grados alrededor del paciente y recoge los datos. El detector de imagen presenta un estado gaseoso o sólido, lo que produce señales que sirven como datos de entrada para un ordenador exclusivo. Dicho ordenador procesa los datos mediante técnicas de retroproyección con algoritmo de Fourier, desarrolladas por primera vez por Hounsfield para dar lugar a imágenes de TC. Las imágenes de TC son en sí mismas tridimensionales, de 512 X 512 pixeles típicamente, con un espesor definido por la separación de cortes de la técnica de imagen. Cada elemento de la imagen de TC se denomina vóxel, el cual presenta un valor, al cual se le refiere en unidades de Hounsfield, que describe la densidad de la imagen de TC en dicho punto.\cite{prote}\\
@@ -205,7 +206,8 @@ El formato genérico del archivo de DICOM consiste en dos partes diferenciadas:
 \begin{figure}[H]
 \centering
 \includegraphics[width = 7 cm, height = 8 cm]{estructura}
-\caption{Estructura de un archivo DICOM}
+\caption{Estructura de un archivo DICOM.}
+Imagen obtenida de \cite{edgardo}
 \end{figure}
 
 \section{Escala de Hounsfield}
@@ -218,6 +220,7 @@ La escala Hounsfield se extiende a lo largo de 2000 unidades que difícilmente s
 \centering
 \includegraphics[width = 13 cm, height = 10 cm]{escala}
 \caption{Escala de Hounsfield}
+Imagen obtenida de \cite{hounsdos}
 \end{figure}
 
 
@@ -237,6 +240,7 @@ Las ténicas de umbralización segmentan imágenes escalares al generar una part
 \centering
 \includegraphics[width = 10 cm, height = 10 cm]{umbral}
 \caption{Métodos de características espaciales y región creciente. (a)Histograma con 3 aparentes clases. (b)Característica espacial en 2-D. (c)Ejemplo de región creciente.}
+Imagen obtenida de \cite{metodos}
 \end{figure}
 
 La umbralización es un procedimiento simple pero efectivo para segementar imágenes en las cuales diferentes estructuras tienen intensidades contrastantes u otras características cuantificables. A menudo la partición de la imagen se genera en interacción con el usuario aunque también existen métodos automatizados.\\
@@ -265,6 +269,7 @@ Una vez que se ha llevado a cabo el proceso de división, se comprueba para cada
 \centering
 \includegraphics[width = 7 cm, height = 7 cm]{split}
 \caption{Ejemplo iteración algoritmo Split and Merge.}
+Imagen obtenida de \textit{https:\/\/users.cs.cf.ac.uk\/Dave.Marshall\/Vision\_lecture\/node34.html}
 \end{figure}
 
 
@@ -351,7 +356,8 @@ Lenguaje estable, confiable y fácil de aprender.
 Te permite realizar aplicaciones con menos código que con otros lenguajes. Cuenta con una gran cantidad de Framewoks que se pueden utilizar.\cite{vibora}
  & Ya que es un lenguaje interpretado es lento. No es la mejor opción para el manejo de memoria.\cite{vibora}\\
 \hline
-C\# & Declaraciones en el espacio de nombres. Tipos de datos: Existe un rango más amplio y definido de tipos de datos que los que se encuentran en C, C++ o Java. Atributos: Cada miembro de una clase tiene un atributo de acceso del tipo público, protegido, interno, interno protegido y privado. Pase de parámetros: Se puede declarar los métodos para que acepten un número variable de parámetros. & Se tiene que conseguir una versión reciente de Visual Studio .NET. Se tiene que tener algunos requerimientos mínimos del sistema para poder trabajar adecuadamente como contar con Windows NT 4 o superior. Se requiere mucho espacio de almacenamiento para su instalación. \cite{sisharp}
+C\# & Declaraciones en el espacio de nombres. Tipos de datos: Existe un rango más amplio y definido de tipos de datos que los que se encuentran en C, C++ o Java. Atributos: Cada miembro de una clase tiene un atributo de acceso del tipo público, protegido, interno, interno protegido y privado. Pase de parámetros: Se puede declarar los métodos para que acepten un número variable de parámetros. & Se tiene que conseguir una versión reciente de Visual Studio .NET. Se tiene que tener algunos requerimientos mínimos del sistema para poder trabajar adecuadamente como contar con Windows NT 4 o superior. Se requiere mucho espacio de almacenamiento para su instalación. \cite{sisharp}\\
+\hline
 \end{tabular}
 \caption{Tabla comparativa de lenguajes de programación.}
 \end{center}
@@ -423,6 +429,7 @@ La metodología de trabajo a utilizar en el desarrollo de este sistema será la 
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{incre}
 \caption{Flujo metodología incremental.}
+Imagen obtenida de \cite{meto}
 \end{figure}
 
 La metodología incremental, que es una pieza fundamental para enfoques ágiles, es mejor que la metodología en cascada que está más enfocada al negocio, al e-commerce y a sistemas personales. La metodología incremental refleja la manera en la que resolvemos problemas. Raramente trabajamos la solución de un problema por adelantado, pero nos movemos a través de una serie de pasos para la solución, retroalimentándonos cuando nos damos cuenta de que un error fue cometido. Desarrollar un sistema de forma incremental es barato y con un fácil manejo de cambios mientras este está siendo desarrollado.\cite{meto}\\
@@ -578,10 +585,6 @@ Sistema operativo & Precio \\
 Windows 10 Single Language & MXN \$2,499.00\\
 \hline
 Windows 8.1 pro & MXN \$790.00\\
-\hline
-Ubuntu 15.04 & Sistema de distribución libre.\cite{preubu}\\
-\hline
-elementary OS & Sistema de distribución libre.\cite{preele}\\
 \hline \hline
 Total & MXN \$8,287.00\\
 \hline
@@ -606,6 +609,7 @@ Total & MXN \$0.00\\
 \end{center}
 \end{table}
 
+\newpage
 Se listan los precios de los softwares de apoyo junto con sus precios.
 
 \begin{table}[H]
@@ -719,6 +723,7 @@ Realizacion de pruebas(Módulo visualización) & K & I,J & 13 & 8 &  \$20,056.92
 \end{center}
 \end{table}
 
+\newpage
 Para obtener el valor  completo del sistema se suman los costos obtenidos.
 \begin{table}[H]
 \begin{center}
@@ -918,6 +923,7 @@ En esta sección describimos la entrada, núcleo y salida del sistema en un buen
 \centering
 \includegraphics[width = 13 cm, height =  10 cm]{MainCasos}
 \caption{Diagrama de casos de uso general.}
+Imagen de elaboración propia.
 \end{figure}
 
 En la figura 5.1 se observa el caso de uso general del sistema, el sistema tiene 3 interacciones principales con el usuario: selección de archivos, selección de región y tratamiento de imagen.\\ En la primera interacción el usuario a través de una interfaz selecciona uno o varios archivos en formato DICOM, una vez cargado el archivo el sistema se encargarpa de decodificar la infromación contenida para así poder generar el arreglo de valores de Hounsfield.\\ La segunda interacción principal del usuario parte de la primera, una vez que el usuario puede observar la tomografía tiene la opción de elegir una región específica, una vez acotada la región el sistema determina los valores del arreglo de Hounsfield correspondientes a la nueva región y genera una nueva matriz, posteriormente se despliega la imagen de la nueva región.\\ La tercera y útlima interacción que tiene el usuario con el sistema es el tratamiento de imágenes, para esto es necesario haber obtenido el arreglo de una región acotada, el usuario podrá realizar distintos tipos de manipulación de la imagen como umbralización, segemetación de las regiones, análisis de las regiones, incluso el análisis de la propia imagen. Una vez realizadas las operaciones necesarias el sistema se encargará de manipular el arreglo para que se puedan observar los cambios producidos sobre el estudio tomográfico.
@@ -927,6 +933,7 @@ En la figura 5.1 se observa el caso de uso general del sistema, el sistema tiene
 \centering
 \includegraphics[width = 10 cm, height =  10 cm]{ArchivoCasos}
 \caption{Diagrama caso de uso decodificación.}
+Imagen de elaboración propia.
 \end{figure}
 
 La figura 5.2 muestra el diagrama de caso de uso de decodificación donde el usuario elige el archivo DICOM, una vez en el sistema el archivo se decodifica y se obtiene la matriz que contiene los valores de Hounsfield y con base a esta última se muestra en 2D la tomografía.
@@ -936,6 +943,7 @@ La figura 5.2 muestra el diagrama de caso de uso de decodificación donde el usu
 \centering
 \includegraphics[width = 10 cm, height =  10 cm]{RegionCasos}
 \caption{Diagrama caso de uso de selección de región.}
+Imagen de elaboración propia.
 \end{figure}
 
 En el caso de uso de selección de región mostrado en la figura 5.3 el usuario selecciona una región determinada para su análisis, el archivo ya se ha decodificado con aterioridad por lo que no es necesario hacerlo de nuevo, con base a la región elegida se obtiene la matriz de valores de Hounsfield correspondiente y se muestra en 2D la región seleccionada.
@@ -945,6 +953,7 @@ En el caso de uso de selección de región mostrado en la figura 5.3 el usuario 
 \centering
 \includegraphics[width = 13 cm, height =  10 cm]{TrataCasos}
 \caption{Diagrama caso de uso de tratamiento de imagen.}
+Imagen de elaboración propia.
 \end{figure}
 
 El caso de uso de tratamiento de imagen que se muestra en la figura 5.4 el usuario tiene la posibilidad de hacer diversas operaciones sobre la región analizada, principalmente se podrán aplicar algoritmos para umbralizar, segmentar regiones, analizar regiones y el anális de imagen, algunas operaciones que podrían entrar dentro del análisis de imagen son rotación, escalado, medición de segmentos, entre otros.
@@ -1441,6 +1450,7 @@ Módulo & 3.Visualización.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{Decodificar}
 \caption{Secuencia:Decodificar DICOM.}
+Imagen de elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Seleccionar archivos}
@@ -1448,6 +1458,7 @@ Módulo & 3.Visualización.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{seleccionar_archivo}
 \caption{Secuencia:Seleccionar archivos.}
+Imagen de elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Obtener arreglo}
@@ -1455,6 +1466,7 @@ Módulo & 3.Visualización.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{obtener_arreglo}
 \caption{Secuencia:Obtener arreglo.}
+Imagen de elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Seleccionar regiones}
@@ -1462,6 +1474,7 @@ Módulo & 3.Visualización.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{region}
 \caption{Secuencia:Seleccionar regiones.}
+Imagen de elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Analizar imagen}
@@ -1469,6 +1482,7 @@ Módulo & 3.Visualización.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{analisis}
 \caption{Secuencia:Analizar imagen.}
+Imagen de elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Clasificar regiones}
@@ -1476,6 +1490,7 @@ Módulo & 3.Visualización.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{clasificacion}
 \caption{Secuencia:Clasificar regiones.}
+Imagen de elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Manipular arreglo}
@@ -1483,6 +1498,7 @@ Módulo & 3.Visualización.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{modificar_arreglo}
 \caption{Secuencia:Manipular arreglo.}
+Imagen de elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Segmentar regiones}
@@ -1490,6 +1506,7 @@ Módulo & 3.Visualización.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{segmentacion}
 \caption{Secuencia:Segmentar regiones.}
+Imagen de elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Tratar imagen}
@@ -1497,6 +1514,7 @@ Módulo & 3.Visualización.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{tratamiento}
 \caption{Secuencia:Tratar imagen.}
+Imagen de elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Umbralizar}
@@ -1504,6 +1522,7 @@ Módulo & 3.Visualización.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{umbralizacion}
 \caption{Secuencia:Umbralizar.}
+Imagen de elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Mostrar tomografía}
@@ -1511,6 +1530,7 @@ Módulo & 3.Visualización.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{mostrar_tomografia}
 \caption{Secuencia:Mostrar tomografía.}
+Imagen de elaboración propia.
 \end{figure}
 
 
@@ -1721,6 +1741,14 @@ La técnica de Región creciente se implementa sobre una TAC de zona abdominal y
 Captura de pantalla del sistema en funcionamiento.
 \end{figure}
 
+\section{Representación en 3D}
+Se utiliza una TAC de la zona craneal para mostrar al funcionamiento de la reconstrucción en 3D.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 15 cm, height = 10 cm]{imagen3D}
+\caption{Reconstrucción 3D de un craneo.}
+Captura de pantalla del sistema en funcionamiento.
+\end{figure}
 
 
 \chapter{Conclusiones y trabajo futuro}

@@ -5,35 +5,35 @@
 \contentsline {table}{\numberline {3.1}{\ignorespaces Tabla comparativa de sistemas operativos.}}{30}{table.3.1}
 \contentsline {table}{\numberline {3.2}{\ignorespaces Tabla comparativa de lenguajes de programaci\IeC {\'o}n.}}{31}{table.3.2}
 \contentsline {table}{\numberline {3.3}{\ignorespaces Especificaciones de hardware}}{37}{table.3.3}
-\contentsline {table}{\numberline {3.4}{\ignorespaces Sistemas operativos a utilizar.}}{38}{table.3.4}
+\contentsline {table}{\numberline {3.4}{\ignorespaces Sistemas operativos a utilizar.}}{39}{table.3.4}
 \contentsline {table}{\numberline {3.5}{\ignorespaces IDE de desarrollo.}}{39}{table.3.5}
-\contentsline {table}{\numberline {3.6}{\ignorespaces Herramientas de apoyo para documentaci\IeC {\'o}n.}}{39}{table.3.6}
+\contentsline {table}{\numberline {3.6}{\ignorespaces Herramientas de apoyo para documentaci\IeC {\'o}n.}}{40}{table.3.6}
 \contentsline {table}{\numberline {3.7}{\ignorespaces Costos equipos de c\IeC {\'o}mputo.}}{40}{table.3.7}
-\contentsline {table}{\numberline {3.8}{\ignorespaces Costos sistemas operativos.}}{40}{table.3.8}
-\contentsline {table}{\numberline {3.9}{\ignorespaces Costos IDE.}}{40}{table.3.9}
-\contentsline {table}{\numberline {3.10}{\ignorespaces Costos software de apoyo.}}{41}{table.3.10}
-\contentsline {table}{\numberline {3.11}{\ignorespaces Costos servicios.}}{41}{table.3.11}
-\contentsline {table}{\numberline {3.12}{\ignorespaces Estimaci\IeC {\'o}n de sueldos}}{42}{table.3.12}
-\contentsline {table}{\numberline {3.13}{\ignorespaces An\IeC {\'a}lisis PERT del sistema}}{43}{table.3.13}
-\contentsline {table}{\numberline {3.14}{\ignorespaces Costos sistema}}{44}{table.3.14}
-\contentsline {table}{\numberline {3.15}{\ignorespaces An\IeC {\'a}lisis de riesgo}}{46}{table.3.15}
-\contentsline {table}{\numberline {3.16}{\ignorespaces Plan de contenci\IeC {\'o}n de riesgos}}{47}{table.3.16}
-\contentsline {table}{\numberline {3.17}{\ignorespaces Requisitos funcionales del sistema}}{49}{table.3.17}
-\contentsline {table}{\numberline {3.18}{\ignorespaces Requisitos no funcionales del sistema}}{50}{table.3.18}
+\contentsline {table}{\numberline {3.8}{\ignorespaces Costos sistemas operativos.}}{41}{table.3.8}
+\contentsline {table}{\numberline {3.9}{\ignorespaces Costos IDE.}}{41}{table.3.9}
+\contentsline {table}{\numberline {3.10}{\ignorespaces Costos software de apoyo.}}{42}{table.3.10}
+\contentsline {table}{\numberline {3.11}{\ignorespaces Costos servicios.}}{42}{table.3.11}
+\contentsline {table}{\numberline {3.12}{\ignorespaces Estimaci\IeC {\'o}n de sueldos}}{43}{table.3.12}
+\contentsline {table}{\numberline {3.13}{\ignorespaces An\IeC {\'a}lisis PERT del sistema}}{44}{table.3.13}
+\contentsline {table}{\numberline {3.14}{\ignorespaces Costos sistema}}{45}{table.3.14}
+\contentsline {table}{\numberline {3.15}{\ignorespaces An\IeC {\'a}lisis de riesgo}}{47}{table.3.15}
+\contentsline {table}{\numberline {3.16}{\ignorespaces Plan de contenci\IeC {\'o}n de riesgos}}{48}{table.3.16}
+\contentsline {table}{\numberline {3.17}{\ignorespaces Requisitos funcionales del sistema}}{50}{table.3.17}
+\contentsline {table}{\numberline {3.18}{\ignorespaces Requisitos no funcionales del sistema}}{51}{table.3.18}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Caso de uso seleccionar archivos.}}{56}{table.4.1}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Caso de uso decodificar DICOM.}}{58}{table.4.2}
-\contentsline {table}{\numberline {4.3}{\ignorespaces Caso de uso obtener arreglo.}}{59}{table.4.3}
-\contentsline {table}{\numberline {4.4}{\ignorespaces Caso de uso seleccionar regi\IeC {\'o}n.}}{60}{table.4.4}
-\contentsline {table}{\numberline {4.5}{\ignorespaces Caso de uso tratar imagen.}}{62}{table.4.5}
-\contentsline {table}{\numberline {4.6}{\ignorespaces Caso de uso umbralizar.}}{63}{table.4.6}
-\contentsline {table}{\numberline {4.7}{\ignorespaces Caso de uso segmentar regiones.}}{64}{table.4.7}
-\contentsline {table}{\numberline {4.8}{\ignorespaces Caso de uso clasificar regiones.}}{65}{table.4.8}
-\contentsline {table}{\numberline {4.9}{\ignorespaces Caso de uso analizar regiones.}}{66}{table.4.9}
-\contentsline {table}{\numberline {4.10}{\ignorespaces Caso de uso manipular arreglo.}}{67}{table.4.10}
-\contentsline {table}{\numberline {4.11}{\ignorespaces Caso de uso mostrar tomograf\IeC {\'\i }a.}}{68}{table.4.11}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Caso de uso seleccionar archivos.}}{57}{table.4.1}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Caso de uso decodificar DICOM.}}{59}{table.4.2}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Caso de uso obtener arreglo.}}{60}{table.4.3}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Caso de uso seleccionar regi\IeC {\'o}n.}}{61}{table.4.4}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Caso de uso tratar imagen.}}{63}{table.4.5}
+\contentsline {table}{\numberline {4.6}{\ignorespaces Caso de uso umbralizar.}}{64}{table.4.6}
+\contentsline {table}{\numberline {4.7}{\ignorespaces Caso de uso segmentar regiones.}}{65}{table.4.7}
+\contentsline {table}{\numberline {4.8}{\ignorespaces Caso de uso clasificar regiones.}}{66}{table.4.8}
+\contentsline {table}{\numberline {4.9}{\ignorespaces Caso de uso analizar regiones.}}{67}{table.4.9}
+\contentsline {table}{\numberline {4.10}{\ignorespaces Caso de uso manipular arreglo.}}{68}{table.4.10}
+\contentsline {table}{\numberline {4.11}{\ignorespaces Caso de uso mostrar tomograf\IeC {\'\i }a.}}{69}{table.4.11}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Etiquetas DICOM usadas en el sistema.}}{76}{table.5.1}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Etiquetas DICOM usadas en el sistema.}}{82}{table.5.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

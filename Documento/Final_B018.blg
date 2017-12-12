@@ -1,6 +1,8 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: Final_B018.aux
 The style file: IEEEtran.bst
 Database file #1: bibliografia.bib
+Warning--I didn't find a database entry for "preubu"
+Warning--I didn't find a database entry for "preele"
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -8,4 +10,4 @@ Warning--empty title in DICOMNEMA
 Warning--empty title in DICOMNEMA
 
 Done.
-(There were 2 warnings)
+(There were 4 warnings)
