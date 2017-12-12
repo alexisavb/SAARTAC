@@ -37,12 +37,12 @@ namespace SAARTAC1._1 {
             int N = matriz.GetLength(0);
             int M = matriz.GetLength(1);
             Bitmap imagen = new Bitmap(N, M);
-            int tam = limiteSuperior - limiteInferior + 1;
+            int tam = limiteSuperior - limiteInferior;
             double porcion = 255.0 / tam;
 
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
-                    int valorGris = (int)(porcion * (double)(matriz [i, j] - limiteInferior + 1));
+                    int valorGris = (int)(porcion * (double)(matriz [i, j] - limiteInferior));
                     if (matriz [i, j] < limiteInferior)
                         valorGris = 0;
                     if (matriz [i, j] > limiteSuperior)

@@ -97,6 +97,8 @@ namespace SAARTAC1._1 {
         //Abrir archivos.
         private void abrirBarraHerramientas_Click(object sender, EventArgs e) {
             try {
+
+                LimpiarCodigoDeColores();
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) { //verifica si se abrio.                    
                     id_tac = 0;
                     ruta = folderBrowserDialog1.SelectedPath; //se saca el path del archivo.  
@@ -197,7 +199,7 @@ namespace SAARTAC1._1 {
         private void mostrarOriginal_MouseMove(object sender, MouseEventArgs e) {
             int x = mostrarOriginal.PointToClient(Cursor.Position).X;
             int y = mostrarOriginal.PointToClient(Cursor.Position).Y;
-            if (auxUH != null) resultadoUHMouse.Text = (auxUH.ObtenerUH(x, y)).ToString();
+            if (auxUH != null) textoUHMouse.Text = "UH: " + (auxUH.ObtenerUH(x, y)).ToString();
 
             mostrarOriginal.Refresh();
             if (draw & e.Button == MouseButtons.Left) {
@@ -242,7 +244,7 @@ namespace SAARTAC1._1 {
                 Graphics objGrafico = this.mostrarOriginal.CreateGraphics();
                 seccion.setRectangle();
                 objGrafico.DrawRectangle(seccion.getPen(), seccion.getRectangle());
-                resultadoPromedio.Text = (seccion.createAverage()).ToString();
+                textoPromedio.Text = "Promedio: " + (seccion.createAverage()).ToString();
                 draw = false;
                 int milliseconds = 1200;
                 Thread.Sleep(milliseconds);
@@ -290,12 +292,14 @@ namespace SAARTAC1._1 {
                 reglaBool = false;
                 bandera = 0;
                 regla.setFinal(mostrarOriginal.PointToClient(Cursor.Position).X, mostrarOriginal.PointToClient(Cursor.Position).Y);
+                
+                double [] distancias = LecturaArchivosDicom.Pregunta_Python_Dimensiones(auxUH.obtenerRuta());
+                textoDistancia.Text = "Distacia: " + (regla.getDistancia(distancias [0], distancias [1])).ToString("N3") + "mm";
+                this.Refresh();
                 Graphics objGrafico = this.mostrarOriginal.CreateGraphics();
                 Pen myPen = new Pen(Color.Red, 1);
                 objGrafico.DrawLine(myPen, regla.getPointInicio(), regla.getPoinFinal());
-                double [] distancias = LecturaArchivosDicom.Pregunta_Python_Dimensiones(auxUH.obtenerRuta());
-                resultadoDistancia.Text = (regla.getDistancia(distancias [0], distancias [1])).ToString("N3");
-                int milliseconds = 1200;
+                int milliseconds = 4000;
                 Thread.Sleep(milliseconds);
                 mostrarOriginal.Invalidate();
                 return;
@@ -632,7 +636,7 @@ namespace SAARTAC1._1 {
             int x = mostrarTratada.PointToClient(Cursor.Position).X;
             int y = mostrarTratada.PointToClient(Cursor.Position).Y;
             if (auxUH == null)  return;
-            resultadoUHMouse.Text = (auxUH.ObtenerUH(x, y)).ToString();
+            textoUHMouse.Text = "UH: " + (auxUH.ObtenerUH(x, y)).ToString();
             //PARTE DEL ZOOM
             if (zoomCon) {
                 if (mostrarTratada.Image != null) {
@@ -649,6 +653,8 @@ namespace SAARTAC1._1 {
 
         //Cluster de k-means 
         private void kmeans_Click(object sender, EventArgs e){
+
+            LimpiarCodigoDeColores();
             if (lect == null)
                 return;
             panelProgressBar.Visible = true;
@@ -659,6 +665,7 @@ namespace SAARTAC1._1 {
         //Cluster C-fuzzy
         private void fuzzy_Click(object sender, EventArgs e) {
 
+            LimpiarCodigoDeColores();
             if (lect == null)
                 return;
             panelProgressBar.Visible = true;
@@ -839,6 +846,7 @@ namespace SAARTAC1._1 {
 
         private void dibujarUmbral(string lectura, Color color) {
             try {
+                LimpiarCodigoDeColores();
                 Cursor.Current = Cursors.WaitCursor;
                 Umbralizacion operaciones = new Umbralizacion(lect.num_archivos());
                 int N = lect.num_archivos();
@@ -869,6 +877,7 @@ namespace SAARTAC1._1 {
 
         private void dibujarUmbral(int valorUH, int tolerancia, Color color) {
             try {
+                LimpiarCodigoDeColores();
                 Umbralizacion operaciones = new Umbralizacion(valorUH, tolerancia, lect.num_archivos());
                 int N = lect.num_archivos();
                 Thread [] threadsArray = new Thread [N];
@@ -988,18 +997,29 @@ namespace SAARTAC1._1 {
         
 
         private void splitAndMergeToolStripMenuItem_Click_1(object sender, EventArgs e) {
-            //SplitMerge algoritmo = new SplitMerge(auxUH.obtenerMatriz(), auxUH.obtenerN(), auxUH.obtenerM());
-            SplitMerge algoritmo = new SplitMerge((Bitmap)mostrarOriginal.Image, auxUH.obtenerN(), auxUH.obtenerM());
+            LimpiarCodigoDeColores();
+            Cursor.Current = Cursors.WaitCursor;
+            for (int i = 0; i < lect.num_archivos(); i++) {
+                //SplitMerge algoritmo = new SplitMerge(auxUH.obtenerMatriz(), auxUH.obtenerN(), auxUH.obtenerM());
+                var archivo = lect.obtenerArchivo(i);
+                SplitMerge algoritmo = new SplitMerge(imagenesCaja1[i], archivo.obtenerN(), archivo.obtenerM());
 
-            //var imagen = algoritmo.ObtenerImagen(ventana_default [0] - ventana_default [1], ventana_default [0] + ventana_default [1]);
-            var imagen = algoritmo.ObtenerImagen();
+                //var imagen = algoritmo.ObtenerImagen(ventana_default [0] - ventana_default [1], ventana_default [0] + ventana_default [1]);
+                var imagen = algoritmo.ObtenerImagen();
+                imagenesCaja2 [i] = imagen;
+            }
+            MostrarImagenTratada();
 
-            MostrarImagenTratada(imagen);
+            Cursor.Current = Cursors.Default;
         }
 
         private void acercaDeSAARTACBarraDeHerramientas_Click(object sender, EventArgs e) {
             AcercaDe aux = new AcercaDe();
             aux.Show();
+        }
+
+        private void textoUHMouse_Click(object sender, EventArgs e) {
+
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -1031,14 +1051,21 @@ namespace SAARTAC1._1 {
         }
 
         private void ProcesoRegionCreciente(int y, int x, int calidad = 1) {
+            List<int [,]> matrices = new List<int [,]>();
+            for (int i = 0; i < lect.num_archivos(); i++) {
+                matrices.Add(lect.obtenerArchivo(i).obtenerMatriz());
+            }
 
-            RegionCreciente aux = new RegionCreciente(auxUH.obtenerMatriz(), y, x);
-            int [,] mancha = aux.ObtenerRegion(calidad);
-            imagenesCaja2 [id_tac] = CrearImagenRegion(mancha);
+            RegionCreciente aux = new RegionCreciente(matrices, id_tac, y, x);
+            List<int [,]> mancha = aux.ObtenerRegion(calidad);
+            for (int i = 0; i < mancha.Count(); i++) {
+                imagenesCaja2 [i] = CrearImagenRegion( mancha [i]);
+            }
             MostrarImagenTratada();
         }
 
         private void seleccionarToolStripMenuItem_Click(object sender, EventArgs e) {
+            LimpiarCodigoDeColores();
             seleccion_region = true;
         }
 
@@ -1057,7 +1084,7 @@ namespace SAARTAC1._1 {
         private void MostrarImagenOriginal() {
             if (lect == null) return;
             if (imagenesCaja1.Count() <= 0) {
-                generalEscalaGris(ventana_default[0] - ventana_default[1], ventana_default[0] + ventana_default[1]);
+                generalEscalaGris(ventana_default[0] - ventana_default[1] / 2, ventana_default[0] + ventana_default[1] / 2);
                 return;
             }
             mostrarOriginal.Image = imagenesCaja1 [id_tac];
@@ -1072,6 +1099,7 @@ namespace SAARTAC1._1 {
 
         //genera escala de gris.
         private void generalEscalaGris(int lim_inf, int lim_sup) {
+            
             Cursor.Current = Cursors.WaitCursor;
             imagenesCaja1.Clear();
             int N = lect.num_archivos();
@@ -1136,6 +1164,20 @@ namespace SAARTAC1._1 {
                 
             }
             return new Bitmap(resultado, new Size(512, 512));
+        }
+
+        private void LimpiarCodigoDeColores() {
+            for (int i = 0; i < labelsColor.Length; i++) {
+                labelsColor [i].Visible = false;
+                labelsTextMin [i].Visible = false;
+                labelsTextMax [i].Visible = false;
+            }
+            for (int i = 0; i < labelsMax.Length; i++) {
+                labelsMax [i].Visible = false;
+                labelsMin [i].Visible = false;
+            }
+
+            color_a_umbral.Clear();
         }
 
         private void CodigoDeColores() {
